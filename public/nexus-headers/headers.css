@@ -1,0 +1,8 @@
+.headers-page { padding-top: 32px; padding-bottom: 48px; }
+.headers-page > h1 { margin: 24px 0 18px; }
+.headers-page > p { margin: 14px 0; }
+.header-sample { border-top: 1px solid var(--line); padding: 28px 0; }
+.header-sample h2 { margin-bottom: 20px; font-size: 26px; }
+.header-sample img { display: block; width: 100%; height: auto; }
+.header-sample p { margin: 18px 0; overflow-wrap: anywhere; }
+.header-sample pre { padding: 14px; background: var(--panel); border: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; user-select: all; font: 16px/1.5 var(--font); }

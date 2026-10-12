@@ -24,6 +24,9 @@ assert len(data['arena']) == 12 and all(p['points'] for p in data['arena'])
 assert len(data['horseTraits']) == 8
 assert {h['survival'] for h in data['horseTraits']} == {0, 50, 75, 100}
 for vehicle in data['vehicles']:
+    assert vehicle['image'], f'missing vehicle image: {vehicle["name"]}'
+    assert (public/'assets'/vehicle['image']).is_file()
+    assert (public/'assets'/vehicle['image'].replace('.webp', '-thumb.webp')).is_file()
     assert vehicle['mph'] > 0 and abs(vehicle['mph'] * 1.609344 - vehicle['kmh']) < 0.02
     assert all(any(e['id'] == id for e in data['entries']) for id in vehicle['entries'])
     assert vehicle['sound']['source'] and vehicle['sound']['detail']

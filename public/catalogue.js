@@ -22,7 +22,7 @@
         const label = entry.kind === 'reward' ? entry.state : entry.location.split(/: |\. /)[0];
         return `<a href="#ride=${entry.id}">${escape(label)}</a>`;
       }).join('');
-      const portrait = vehicle.image ? `<a class="vehicle-portrait" href="assets/${escape(vehicle.image)}" data-lightbox data-caption="${escape(vehicle.name)} · vehicle render"><img src="assets/${escape(vehicle.image.replace('.webp','-thumb.webp'))}" alt="${escape(vehicle.name)} vehicle render" width="320" height="180" loading="lazy"></a>` : '';
+      const portrait = vehicle.image ? `<a class="vehicle-portrait" href="assets/${escape(vehicle.image)}" data-lightbox data-caption="${escape(vehicle.name)} · vehicle image"><img src="assets/${escape(vehicle.image.replace('.webp','-thumb.webp'))}" alt="${escape(vehicle.name)} vehicle image" width="320" height="180" loading="lazy"></a>` : '';
       const seats = vehicle.passengers ? `<a href="#driving=companions">${vehicle.passengers} passenger${vehicle.passengers === 1 ? '' : 's'}</a>` : 'Solo';
       return `<tr data-profile="${vehicle.profile}"><th scope="row">${portrait}<a href="#ride=${vehicle.entries[0]}">${escape(vehicle.name)}</a><small>${escape(vehicle.description)}</small></th><td>${escape(vehicle.category)}<small class="seat-count">${seats}</small></td><td class="speed-value" data-unit="${unit === 'kmh' ? 'km/h' : 'mph'}">${Math.round(vehicle[unit])}</td><td>${escape(vehicle.fuel)}</td><td class="vehicle-links">${links}</td></tr>`;
     }).join('') || '<tr><td colspan="5" class="catalogue-empty">No vehicles match. <button type="button" id="reset-catalogue">Clear filters</button></td></tr>';

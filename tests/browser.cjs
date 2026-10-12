@@ -23,6 +23,7 @@ const publicRoot = path.resolve(__dirname,'../public');
   assert.equal(await page.title(),'New Vegas Drivables');
   assert.equal(await page.locator('.site-header h1').textContent(),'New Vegas Drivables');
   assert.ok(await page.locator('a[href="https://www.nexusmods.com/profile/intotherough"]').count() >= 1);
+  assert.equal(await page.locator('.home-actions .primary').getAttribute('href'),'https://www.nexusmods.com/newvegas/mods/100007');
   assert.equal(await page.locator('a[href="https://www.youtube.com/@OliverSwanickProductions"]').count(),3);
   assert.equal(await page.evaluate(()=>document.fonts.check('18px Monofonto')),true);
   assert.match(await page.locator('.ride-row').first().evaluate(el=>getComputedStyle(el).fontFamily),/Monofonto/);
@@ -79,6 +80,7 @@ const publicRoot = path.resolve(__dirname,'../public');
 
   await page.getByRole('tab',{name:'Vehicles',exact:true}).click();
   assert.equal(await page.locator('#vehicle-rows tr').count(),32);
+  assert.equal(await page.locator('#vehicle-rows .vehicle-portrait').count(),32);
   await page.locator('#vehicle-search').fill('corvega');
   assert.equal(await page.locator('#vehicle-rows tr').count(),1);
   const mph=Number(await page.locator('.speed-value').textContent());

@@ -12,6 +12,8 @@ No framework, backend or
 external runtime requests.
 The author links go to https://www.nexusmods.com/profile/intotherough and
 https://www.youtube.com/@OliverSwanickProductions.
+The main Nexus links use https://www.nexusmods.com/newvegas/mods/100007,
+the mod page supplied for launch. Its public availability has not been verified.
 
 ## Preview
 
@@ -22,14 +24,15 @@ Windows entry point: `D:\plugins\drivables-nvse-site\public\index.html`.
 
 ## Publish on GitHub Pages
 
-Create a separate public repository for this site, then push this repository's
-`main` branch to it. In that repository choose **Settings → Pages → Build and
-deployment → Source → GitHub Actions**. Run **Publish field guide** in Actions
-if the initial push happened before Pages was enabled. Later pushes to `main`
-deploy automatically. Only the `public/` folder becomes the website.
+Repository: https://github.com/Into-The-Rough/new-vegas-drivables
+
+Website: https://into-the-rough.github.io/new-vegas-drivables/
+
+Pages is configured to use GitHub Actions. Push this repository's `main` branch
+to `origin` to deploy updates automatically. The **Publish field guide** workflow
+can also be run manually. Only the `public/` folder becomes the website.
 
 The workflow follows the [official GitHub Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
-No GitHub repository has been created or pushed by preparing these files.
 The mod source repository is private and is not needed to publish this site.
 
 ## Update the guide
@@ -105,18 +108,32 @@ source again when controls change, including tap/hold behaviour. The loading
 options in the FAQ follow `ConfigMenu.cpp` and `LoadingOptions.cpp`. The author's
 requested December target is the only exception to the site's no-dates copy rule.
 
-The site is prepared for GitHub Pages. Publication requires creating the
-website repository, pushing and enabling Pages.
-
 Additional vehicle images use the mod's 24 studio loading-screen renders. They
 are exported at their intended display aspect ratio, with small catalogue
-thumbnails. Eight gameplay stills come from the author's own videos. The source
+thumbnails. Six more renders and two gameplay screenshots complete all 32 vehicle
+types. Eight guide stills come from the author's own videos. The source
 folders and frame positions are recorded in `scripts/media_sources.py`. Refresh
 these with `python3 scripts/import-media.py /path/to/DrivablesNVSE /path/to/Videos`.
 The regular content export retains the vehicle image mapping. The screenshots
 are normal captured frames with no scene alterations. Images can be enlarged
 from the guides, catalogue and placement entries.
 
-`nexus-description.txt` contains the short Nexus BBCode draft and selected video.
-Its website URL assumes the GitHub repository is named `new-vegas-drivables`
-under `into-the-rough`. Publishing has not been performed by preparing this draft.
+The Commonwealth Tank, DeSoto, Interceptor, Marine APC and Monster Truck use
+existing asset previews. Pershing and Alien Recon use the author's prepared game
+screenshots. The Stunt Biplane is rendered from its shipped mesh with
+`scripts/render-biplane.py`. To reproduce it, run the script with
+`--dump /path/to/DrivablesNVSE /path/to/site/artifacts/missing-media`, then run
+Blender in background mode with `--python scripts/render-biplane.py --
+/path/to/site/artifacts/missing-media`. Use Windows paths for Windows Blender.
+This needs PyFFI and NumPy for extraction, and does not alter the game assets.
+The media importer keeps the bundled images when these local sources are absent.
+
+`nexus-description.txt` contains the short Nexus BBCode draft and selected video,
+using the site's GitHub Pages address.
+
+The 18 original PNG description headers are hosted under `public/nexus-headers/`.
+Open https://into-the-rough.github.io/new-vegas-drivables/nexus-headers/ for the
+previews, direct image URLs and BBCode. Refresh them with
+`python3 scripts/import-nexus-headers.py /path/to/Ready-to-Upload`.
+The files are copied unchanged. Keep these filenames stable because Nexus
+descriptions link to them directly.

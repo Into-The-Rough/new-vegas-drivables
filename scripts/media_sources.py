@@ -1,5 +1,5 @@
 """Vehicle studio images and selected frames from the author's gameplay videos."""
-from PIL import Image
+from PIL import Image, ImageOps
 
 RENDERS = {
     1: 'buggy', 2: 'hotrod', 3: 'rustybicycle', 4: 'motorcycle',
@@ -8,6 +8,17 @@ RENDERS = {
     14: 'patrolcar', 16: 'deathcar', 17: 'hopper', 18: 'pogo',
     19: 'hoverbike', 20: 'vertibird', 33: 'motorchariot', 34: 'formula',
     35: 'boat02', 36: 'smallplane', 37: 'b29', 38: 'golfcart',
+}
+
+EXTRA_IMAGES = {
+    39: ('pershing', 'videos', 'new-vegas-drivables-page-screenshots/Ready to Upload/04 - Tank Destruction.jpg'),
+    40: ('alien', 'videos', 'new-vegas-drivables-page-screenshots/Ready to Upload/05 - Alien Ship Over McCarran.jpg'),
+    41: ('commonwealth', 'mod', 'assets/work/fo4-tank/preview.png'),
+    42: ('marine-apc', 'mod', 'assets/work/marine-apc/preview.png'),
+    43: ('interceptor', 'mod', 'assets/work/interceptor/preview.png'),
+    44: ('desoto', 'mod', 'assets/work/desoto/preview.png'),
+    45: ('biplane', 'site', 'artifacts/missing-media/biplane.png'),
+    46: ('monster-truck', 'mod', 'assets/work/hummer-h1-monster-truck/exterior.png'),
 }
 
 CAPTURES = {
@@ -23,7 +34,8 @@ CAPTURES = {
 
 
 def vehicle_image(profile):
-    return f'fleet/{RENDERS[profile]}.webp' if profile in RENDERS else None
+    name = RENDERS.get(profile) or EXTRA_IMAGES.get(profile, (None,))[0]
+    return f'fleet/{name}.webp' if name else None
 
 
 def export_renders(source, assets):
@@ -39,5 +51,19 @@ def export_renders(source, assets):
 
 def apply_images(data):
     for item in data['entries'] + data['vehicles']:
-        if item.get('profile') in RENDERS:
-            item['image'] = vehicle_image(item['profile'])
+        path = vehicle_image(item.get('profile'))
+        if path:
+            item['image'] = path
+
+
+def export_extra_images(source, videos, assets):
+    roots = {'mod': source, 'videos': videos, 'site': assets.parents[1]}
+    for name, root, relative in EXTRA_IMAGES.values():
+        path = roots[root] / relative
+        destination = assets / 'fleet' / f'{name}.webp'
+        if not path.exists() and destination.exists():
+            continue
+        image = Image.open(path).convert('RGB')
+        image = ImageOps.pad(image, (1024, 576), method=Image.Resampling.LANCZOS, color='#090909')
+        image.save(destination, quality=88, method=6)
+        image.resize((320, 180), Image.Resampling.LANCZOS).save(destination.with_name(f'{name}-thumb.webp'), quality=85, method=6)
