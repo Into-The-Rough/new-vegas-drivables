@@ -8,8 +8,8 @@ development page is authored in `pages/about.html`. The FAQ is authored in
 `pages/faq.html`, including release plans, compatibility and optional presentation
 settings. The page generator includes it in the main FAQ tab and the standalone
 FAQ page, and shares the main navigation with the standalone pages.
-No framework, backend or
-external runtime requests.
+No framework or backend. Cloudflare Web Analytics is installed from the shared
+`pages/analytics.html` snippet on the guide and header gallery pages.
 The author links go to https://www.nexusmods.com/profile/intotherough and
 https://www.youtube.com/@OliverSwanickProductions.
 The main Nexus links use https://www.nexusmods.com/newvegas/mods/100007,

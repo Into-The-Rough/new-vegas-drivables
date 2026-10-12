@@ -25,5 +25,5 @@ if not cards:
 (destination / 'index.html').write_text('''<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexus headers · New Vegas Drivables</title><link rel="icon" href="../assets/mark.svg"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="headers.css"></head>
 <body><main class="site-shell headers-page"><p><a href="../index.html">← New Vegas Drivables</a></p><h1>Nexus description headers</h1><p>Copy a header’s BBCode into your Nexus description. Each image also has its own direct link.</p><p><a href="bbcode.txt">All headers as BBCode</a></p>
-''' + '\n'.join(cards) + '</main></body></html>\n')
+''' + '\n'.join(cards) + '</main>' + (root / 'pages/analytics.html').read_text().strip() + '</body></html>\n')
 print(f'Bundled {len(cards)} unchanged PNG headers with direct links and BBCode.')

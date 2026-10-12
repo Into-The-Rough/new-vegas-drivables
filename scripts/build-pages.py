@@ -8,6 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
 index = (public / 'index.html').read_text()
+analytics = (ROOT / 'pages/analytics.html').read_text().strip()
+index, count = re.subn(r'<!--analytics-->.*?<!--/analytics-->', lambda _: '<!--analytics-->' + analytics + '<!--/analytics-->', index, flags=re.S)
+assert count == 1, 'expected one analytics slot'
 faq = (ROOT / 'pages/faq.html').read_text()
 embedded_faq = faq.replace('<h1>', '<h2>').replace('</h1>', '</h2>').replace('href="index.html#', 'href="#')
 index, count = re.subn(r'<!--faq-content-->.*?<!--/faq-content-->', lambda _: '<!--faq-content-->\n' + embedded_faq + '      <!--/faq-content-->', index, flags=re.S)
@@ -21,7 +24,7 @@ def page(title, body, active=''):
     nav = f'<nav class="page-tabs" aria-label="Guide sections">{links}</nav>'
     return f'''<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>{title} · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script></head>
-<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div></body></html>'''
+<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div>{analytics}</body></html>'''
 
 
 rows = []
