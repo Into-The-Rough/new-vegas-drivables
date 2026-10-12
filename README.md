@@ -128,9 +128,6 @@ Blender in background mode with `--python scripts/render-biplane.py --
 This needs PyFFI and NumPy for extraction, and does not alter the game assets.
 The media importer keeps the bundled images when these local sources are absent.
 
-`nexus-description.txt` contains the short Nexus BBCode draft and selected video,
-using the site's GitHub Pages address.
-
 The 18 original PNG description headers are hosted under `public/nexus-headers/`.
 Open https://into-the-rough.github.io/new-vegas-drivables/nexus-headers/ for the
 previews, direct image URLs and BBCode. Refresh them with
