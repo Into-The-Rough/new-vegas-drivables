@@ -74,7 +74,7 @@
       <p class="detail-index">${escape(entry.category)} / ${escape(entry.region)}</p>
       <h3>${escape(entry.name)}</h3>
       <p class="detail-state">${escape(entry.state)}</p>
-      ${entry.image?`<figure class="detail-image"><img src="assets/${escape(entry.image)}" width="1400" height="1100" alt="${escape(entry.name)} vehicle model"><figcaption>Restored vehicle</figcaption></figure>`:''}
+      ${entry.image?`<figure class="detail-image"><a href="assets/${escape(entry.image)}" data-lightbox data-caption="${escape(entry.name)} · vehicle render"><img src="assets/${escape(entry.image)}" width="1024" height="576" alt="${escape(entry.name)} vehicle model"></a><figcaption>Vehicle render · enlarge ↗</figcaption></figure>`:''}
       <p class="detail-location">${escape(show?entry.location:'Exact location hidden. Enable “Show exact locations” to see directions.')}${show&&entry.approximate?'<small>Regional map pin · follow these directions inside the area.</small>':''}</p>
       <dl class="requirements"><div><dt>${label}</dt><dd>${escape(skill)}</dd></div><div><dt>Supplies</dt><dd>${escape(entry.parts)}</dd></div><div><dt>Runs on</dt><dd>${escape(entry.fuel)}</dd></div><div><dt>Access</dt><dd>${entry.kind==='herd'?'Tame first':entry.kind==='reward'?'Earned':entry.kind==='excluded'?'Not placed':entry.repair?'Restore':entry.state==='Quest reward'?'Quest':'Discover'}</dd></div></dl>
       </div>

@@ -102,7 +102,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/b29.webp",
       "note": "The Volare! unlock is implemented. A reported runway / ground-support fault still affects takeoff."
     },
     {
@@ -127,7 +127,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/rustybicycle.webp",
       "note": ""
     },
     {
@@ -152,7 +152,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/motorcycle.webp",
       "note": ""
     },
     {
@@ -177,7 +177,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/skateboard.webp",
       "note": ""
     },
     {
@@ -202,7 +202,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/oldrustycar.webp",
       "note": ""
     },
     {
@@ -227,7 +227,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/patrolcar.webp",
       "note": ""
     },
     {
@@ -252,7 +252,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/wheelchair.webp",
       "note": ""
     },
     {
@@ -277,7 +277,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/boat02.webp",
       "note": ""
     },
     {
@@ -302,7 +302,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/golfcart.webp",
       "note": ""
     },
     {
@@ -327,7 +327,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Sensor Module",
-      "image": null,
+      "image": "fleet/vertibird.webp",
       "note": ""
     },
     {
@@ -352,7 +352,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/patrolcar.webp",
       "note": ""
     },
     {
@@ -377,7 +377,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/smallplane.webp",
       "note": ""
     },
     {
@@ -402,7 +402,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/skateboard.webp",
       "note": ""
     },
     {
@@ -427,7 +427,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/skateboard.webp",
       "note": ""
     },
     {
@@ -452,7 +452,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/pogo.webp",
       "note": ""
     },
     {
@@ -477,7 +477,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/wheelchair.webp",
       "note": ""
     },
     {
@@ -502,7 +502,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/rustybicycle.webp",
       "note": ""
     },
     {
@@ -527,7 +527,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/unicycle.webp",
       "note": ""
     },
     {
@@ -552,7 +552,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": "corvega.webp",
+      "image": "fleet/corvega.webp",
       "note": ""
     },
     {
@@ -577,7 +577,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": "buggy.webp",
+      "image": "fleet/buggy.webp",
       "note": ""
     },
     {
@@ -602,7 +602,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/buggy736.webp",
       "note": ""
     },
     {
@@ -627,7 +627,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
-      "image": "highwayman.webp",
+      "image": "fleet/highwayman.webp",
       "note": ""
     },
     {
@@ -652,7 +652,7 @@ window.DRIVABLES = {
       ],
       "approximate": true,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/hopper.webp",
       "note": "The Strip-door transfer fix is implemented. Its corrected round-trip test is still pending."
     },
     {
@@ -677,7 +677,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/hopper.webp",
       "note": "The Strip-door transfer fix is implemented. Its corrected round-trip test is still pending."
     },
     {
@@ -699,7 +699,7 @@ window.DRIVABLES = {
       "mapPoint": null,
       "approximate": false,
       "parts": "No parts",
-      "image": null,
+      "image": "fleet/hoverbike.webp",
       "note": "The reward bike currently stays in Big MT. Transportalponder transfer to the Mojave is not implemented."
     },
     {
@@ -724,7 +724,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/hotrod.webp",
       "note": ""
     },
     {
@@ -749,7 +749,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/truckflatbed.webp",
       "note": ""
     },
     {
@@ -774,7 +774,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/truckflatbed.webp",
       "note": ""
     },
     {
@@ -799,7 +799,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/deathcar.webp",
       "note": ""
     },
     {
@@ -974,7 +974,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": null,
+      "image": "fleet/motorchariot.webp",
       "note": ""
     },
     {
@@ -1070,7 +1070,7 @@ window.DRIVABLES = {
       "repair": 0,
       "tools": 0,
       "parts": "No repair items",
-      "image": null,
+      "image": "fleet/formula.webp",
       "ref": null,
       "note": ""
     },
@@ -1131,7 +1131,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca6"
       ],
-      "image": "buggy.webp",
+      "image": "fleet/buggy.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1152,7 +1152,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cb3"
       ],
-      "image": null,
+      "image": "fleet/hotrod.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1174,7 +1174,7 @@ window.DRIVABLES = {
         "v-000c40",
         "v-000c57"
       ],
-      "image": null,
+      "image": "fleet/rustybicycle.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": true,
@@ -1195,7 +1195,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c42"
       ],
-      "image": null,
+      "image": "fleet/motorcycle.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1218,7 +1218,7 @@ window.DRIVABLES = {
         "v-000c45",
         "v-000c47"
       ],
-      "image": null,
+      "image": "fleet/skateboard.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": true,
@@ -1239,7 +1239,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4f"
       ],
-      "image": null,
+      "image": "fleet/oldrustycar.webp",
       "passengers": 3,
       "passengerNote": "A dog can use the rear position",
       "boost": false,
@@ -1260,7 +1260,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4d"
       ],
-      "image": null,
+      "image": "fleet/unicycle.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": true,
@@ -1281,7 +1281,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca8"
       ],
-      "image": null,
+      "image": "fleet/buggy736.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1302,7 +1302,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca3"
       ],
-      "image": "corvega.webp",
+      "image": "fleet/corvega.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1324,7 +1324,7 @@ window.DRIVABLES = {
         "v-000cb8",
         "v-000cba"
       ],
-      "image": null,
+      "image": "fleet/truckflatbed.webp",
       "passengers": 3,
       "passengerNote": "A dog can use the rear position",
       "boost": false,
@@ -1346,7 +1346,7 @@ window.DRIVABLES = {
         "v-000c53",
         "v-000c55"
       ],
-      "image": null,
+      "image": "fleet/wheelchair.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": false,
@@ -1367,7 +1367,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000caa"
       ],
-      "image": "highwayman.webp",
+      "image": "fleet/highwayman.webp",
       "passengers": 3,
       "passengerNote": "A dog can use the rear position",
       "boost": true,
@@ -1389,7 +1389,7 @@ window.DRIVABLES = {
         "v-000c51",
         "v-000c5d"
       ],
-      "image": null,
+      "image": "fleet/patrolcar.webp",
       "passengers": 3,
       "passengerNote": "A dog can use the rear position",
       "boost": false,
@@ -1410,7 +1410,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cbc"
       ],
-      "image": null,
+      "image": "fleet/deathcar.webp",
       "passengers": 3,
       "passengerNote": "A dog can use the rear position",
       "boost": false,
@@ -1432,7 +1432,7 @@ window.DRIVABLES = {
         "v-000cad",
         "v-000caf"
       ],
-      "image": null,
+      "image": "fleet/hopper.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": false,
@@ -1453,7 +1453,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4b"
       ],
-      "image": null,
+      "image": "fleet/pogo.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": false,
@@ -1474,7 +1474,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cb1"
       ],
-      "image": null,
+      "image": "fleet/hoverbike.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1495,7 +1495,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c5f"
       ],
-      "image": null,
+      "image": "fleet/vertibird.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": false,
@@ -1516,7 +1516,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000ce6"
       ],
-      "image": null,
+      "image": "fleet/motorchariot.webp",
       "passengers": 2,
       "passengerNote": "One dog and one humanoid",
       "boost": true,
@@ -1537,7 +1537,7 @@ window.DRIVABLES = {
       "entries": [
         "formula-racer"
       ],
-      "image": null,
+      "image": "fleet/formula.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": true,
@@ -1558,7 +1558,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c16"
       ],
-      "image": null,
+      "image": "fleet/boat02.webp",
       "passengers": 3,
       "passengerNote": "Two humanoids and one dog",
       "boost": false,
@@ -1579,7 +1579,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c1d"
       ],
-      "image": null,
+      "image": "fleet/smallplane.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": false,
@@ -1600,7 +1600,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c3b"
       ],
-      "image": null,
+      "image": "fleet/b29.webp",
       "passengers": 2,
       "passengerNote": "",
       "boost": false,
@@ -1621,7 +1621,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000c5a"
       ],
-      "image": null,
+      "image": "fleet/golfcart.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": false,

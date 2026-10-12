@@ -107,3 +107,16 @@ requested December target is the only exception to the site's no-dates copy rule
 
 The site is prepared for GitHub Pages. Publication requires creating the
 website repository, pushing and enabling Pages.
+
+Additional vehicle images use the mod's 24 studio loading-screen renders. They
+are exported at their intended display aspect ratio, with small catalogue
+thumbnails. Eight gameplay stills come from the author's own videos. The source
+folders and frame positions are recorded in `scripts/media_sources.py`. Refresh
+these with `python3 scripts/import-media.py /path/to/DrivablesNVSE /path/to/Videos`.
+The regular content export retains the vehicle image mapping. The screenshots
+are normal captured frames with no scene alterations. Images can be enlarged
+from the guides, catalogue and placement entries.
+
+`nexus-description.txt` contains the short Nexus BBCode draft and selected video.
+Its website URL assumes the GitHub repository is named `new-vegas-drivables`
+under `into-the-rough`. Publishing has not been performed by preparing this draft.

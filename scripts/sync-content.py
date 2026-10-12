@@ -9,6 +9,7 @@ from pathlib import Path
 from PIL import Image
 from site_copy import clean_copy
 from reference_content import reference_content
+from media_sources import apply_images, export_renders
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -126,10 +127,12 @@ def export(source):
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
                          landmarks=[landmarks[n] for n in key_landmarks]), entries=entries)
     data.update(reference_content(source, config, entries, horses))
+    export_renders(source, assets)
+    apply_images(data)
     assert len(entries) == 42 and len({v['id'] for v in entries}) == 42
     assert sum(v['kind']=='discovery' for v in entries) == 36
     (ROOT/'public/content.js').write_text('window.DRIVABLES = '+json.dumps(data, ensure_ascii=False, indent=2)+';\n')
-    print(f'Exported {len(entries)} guide entries and 4 images.')
+    print(f'Exported {len(entries)} guide entries and image assets.')
 
 
 if __name__ == '__main__':

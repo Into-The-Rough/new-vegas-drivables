@@ -1,0 +1,40 @@
+.guide-photo { margin: 0 0 24px; min-width: 0; }
+.guide-photo a { display: block; background: #000; }
+.guide-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.guide-photo figcaption { display: flex; justify-content: space-between; gap: 14px; margin-top: 9px; font-size: 14px; color: var(--muted); }
+.guide-photo figcaption span:last-child { white-space: nowrap; }
+.photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.photo-pair .guide-photo { margin-bottom: 24px; }
+.fleet-sampler { border-top: 1px solid var(--line); padding: 28px 0; }
+.fleet-sampler h2 { font-size: 29px; margin-bottom: 22px; }
+.fleet-samples { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.fleet-samples a { display: block; }
+.fleet-samples img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #000; }
+.fleet-samples strong { display: block; font-size: 22px; margin-top: 12px; }
+.fleet-samples span { display: block; font-size: 15px; color: var(--muted); margin-top: 4px; }
+.vehicle-table tbody th > .vehicle-portrait { display: block; width: 160px; margin-bottom: 12px; }
+.vehicle-portrait img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.detail-image img { object-fit: contain; background: #000; opacity: 1; }
+.ride-manual .guide-photo { margin-top: 18px; }
+.world-photo { margin-top: 24px; }
+.start-notes .guide-photo { margin-top: 25px; }
+.start-notes .guide-photo figcaption { display: block; }
+.image-open { overflow: hidden; }
+.image-viewer { padding: 55px 24px 22px; background: #090909; color: var(--ink); border: 1px solid var(--line); width: min(1450px,95vw); max-width: 95vw; max-height: 95vh; }
+.image-viewer::backdrop { background: #000d; }
+.image-viewer figure { margin: 0; }
+.image-viewer img { display: block; width: 100%; height: auto; max-height: calc(95vh - 145px); object-fit: contain; }
+.image-viewer figcaption { margin-top: 16px; font-size: 17px; }
+.image-close { position: absolute; right: 20px; top: 12px; background: none; border: 1px solid var(--line); color: var(--amber); padding: 5px 12px; }
+@media(max-width:800px) {
+  .fleet-samples { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .catalogue-scroll .vehicle-table tbody th > .vehicle-portrait { width: min(190px,100%); }
+}
+@media(max-width:620px) {
+  .photo-pair { grid-template-columns: 1fr; gap: 0; }
+  .guide-photo figcaption { font-size: 13px; }
+  .fleet-sampler h2 { font-size: 26px; }
+  .fleet-samples { gap: 20px 12px; }
+  .fleet-samples strong { font-size: 20px; }
+  .image-viewer { padding: 55px 12px 16px; }
+}

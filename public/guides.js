@@ -59,6 +59,12 @@
   }
   const worlds = data.courses.filter(c => c.id !== 'mojave_steeplechase').map(c => ({id:c.id, name:c.name, style:c.style}));
   worlds.push({id:'thunderdome', name:'Thunderdome', style:'Stunt arena'});
+  function worldPhoto(id) {
+    const shots = {thunderdome:['thunderdome','Monster Truck in the Thunderdome'],ivanpah_buggy:['ivanpah','Ivanpah Buggy Race'],mojave_cycle:['horse-race','Mojave Steeplechase on the shared cycle circuit']};
+    const shot=shots[id];
+    if (!shot) return '';
+    return `<figure class="guide-photo world-photo"><a href="assets/screens/${shot[0]}.webp" data-lightbox data-caption="${shot[1]}"><img src="assets/screens/${shot[0]}.webp" width="1440" height="810" alt="${shot[1]} gameplay" loading="lazy"></a><figcaption><span>${shot[1]}</span><span>Enlarge ↗</span></figcaption></figure>`;
+  }
   let selectedWorld = worlds[0].id;
   function selectWorld(id) {
     if (id === 'mojave_steeplechase') id = 'mojave_cycle';
@@ -66,11 +72,11 @@
     selectedWorld = id;
     document.querySelectorAll('#world-list button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.world === id)));
     if (id === 'thunderdome') {
-      $('world-detail').innerHTML = `<h3>Thunderdome</h3><p>A dedicated arena for jumps, flight challenges and crushing cars. Enter through F10 → Racing → Thunderdome, then use Return Home when you are finished.</p>${arenaMap()}<div class="arena-features"><div><h4>On the ground</h4><p>Ramps and loops, a truck jump, ring of fire and wall of fire. The crush line, crush pit and car tower give heavy vehicles their own challenges.</p></div><div><h4>In the air</h4><p>A ten-hoop course and pylon race, a knife-edge gap, a hangar fly-through, and low passes beneath the bridge and wires.</p></div></div><p class="world-access">The Monster Truck stays in the arena. Visiting once unlocks world spawning for the Stunt Biplane when the general spawning setting allows it.</p><a class="button" href="#stunts">Stunt controls</a>`;
+      $('world-detail').innerHTML = `<h3>Thunderdome</h3><p>A dedicated arena for jumps, flight challenges and crushing cars. Enter through F10 → Racing → Thunderdome, then use Return Home when you are finished.</p>${worldPhoto(id)}${arenaMap()}<div class="arena-features"><div><h4>On the ground</h4><p>Ramps and loops, a truck jump, ring of fire and wall of fire. The crush line, crush pit and car tower give heavy vehicles their own challenges.</p></div><div><h4>In the air</h4><p>A ten-hoop course and pylon race, a knife-edge gap, a hangar fly-through, and low passes beneath the bridge and wires.</p></div></div><p class="world-access">The Monster Truck stays in the arena. Visiting once unlocks world spawning for the Stunt Biplane when the general spawning setting allows it.</p><a class="button" href="#stunts">Stunt controls</a>`;
       return;
     }
     const course = data.courses.find(c => c.id === id);
-    $('world-detail').innerHTML = `<h3>${escape(course.name)}</h3><p>${escape(course.description)}</p>${courseMap(course)}<dl class="course-specs"><div><dt>Lap length</dt><dd>${length(course)}</dd></div><div><dt>Checkpoints</dt><dd>${course.checkpoints}</dd></div><div><dt>Event</dt><dd>${escape(course.style)}</dd></div></dl><p class="world-access">${escape(course.access)}${id === 'mojave_cycle' ? ' Choose Mojave Steeplechase to race horses over eight fences in the same location.' : ''}</p><a class="button" href="#races">Race setup & rules</a>`;
+    $('world-detail').innerHTML = `<h3>${escape(course.name)}</h3><p>${escape(course.description)}</p>${worldPhoto(id)}${courseMap(course)}<dl class="course-specs"><div><dt>Lap length</dt><dd>${length(course)}</dd></div><div><dt>Checkpoints</dt><dd>${course.checkpoints}</dd></div><div><dt>Event</dt><dd>${escape(course.style)}</dd></div></dl><p class="world-access">${escape(course.access)}${id === 'mojave_cycle' ? ' Choose Mojave Steeplechase to race horses over eight fences in the same location.' : ''}</p><a class="button" href="#races">Race setup & rules</a>`;
   }
   worlds.forEach(world => {
     const button = document.createElement('button'); button.className = 'world-row'; button.type = 'button'; button.dataset.world = world.id;
