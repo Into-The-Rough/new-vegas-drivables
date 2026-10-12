@@ -7,6 +7,8 @@ import json
 import re
 from pathlib import Path
 from PIL import Image
+from site_copy import clean_copy
+from reference_content import reference_content
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -117,9 +119,13 @@ def export(source):
                             repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
     key_landmarks = ['Goodsprings','Primm','Novac','Jacobstown','Nellis Air Force Base','Hoover Dam',
                      'Boulder City','Camp Searchlight','Camp McCarran']
-    data = dict(updated='12 October 2026', counts=dict(vehicles=32, placements=36, herds=3),
+    for entry in entries:
+        for key in ('location', 'condition', 'reserve', 'acquisition', 'note'):
+            entry[key] = clean_copy(entry[key])
+    data = dict(counts=dict(vehicles=32, placements=36, herds=3),
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
                          landmarks=[landmarks[n] for n in key_landmarks]), entries=entries)
+    data.update(reference_content(source, config, entries, horses))
     assert len(entries) == 42 and len({v['id'] for v in entries}) == 42
     assert sum(v['kind']=='discovery' for v in entries) == 36
     (ROOT/'public/content.js').write_text('window.DRIVABLES = '+json.dumps(data, ensure_ascii=False, indent=2)+';\n')

@@ -7,7 +7,7 @@
   let selected = 'v-000caa';
   let toastTimer;
   const tabs = [...document.querySelectorAll('[data-view]')];
-  let view = 'placements';
+  let view = 'home';
   try { $('spoilers').checked = localStorage.getItem('drivables-exact-locations') !== 'false'; } catch {}
 
   function showView(id) {
@@ -18,6 +18,10 @@
       tab.tabIndex = active ? 0 : -1;
       $(tab.dataset.view).hidden = !active;
     });
+    if (id === 'placements') {
+      const row = $('discovery-list').querySelector('[aria-current="true"]');
+      if (row) $('discovery-list').scrollTop = row.offsetTop - ($('discovery-list').clientHeight - row.offsetHeight) / 2;
+    }
   }
 
   function filtered() {
@@ -50,7 +54,7 @@
     entries.forEach(entry => {
       const button = document.createElement('button'); button.className='ride-row'; button.type='button';
       button.dataset.id=entry.id; button.setAttribute('aria-current',String(entry.id===selected));
-      const sub = $('spoilers').checked ? entry.location.split(/ — |: |;/)[0] : entry.state;
+      const sub = $('spoilers').checked ? entry.location.split(/: |\. /)[0] : entry.state;
       button.innerHTML = `<strong>${escape(entry.name)}</strong><small>${escape(sub)}</small>`;
       button.addEventListener('click', () => {
         select(entry.id);
@@ -117,13 +121,16 @@
     const section = location.hash.slice(1);
     if (tabs.some(tab => tab.dataset.view === section)) {
       showView(section);
+      if (scroll) window.scrollTo({top:0, behavior:'instant'});
       return;
     }
     const params = new URLSearchParams(location.hash.slice(1));
+    if (params.has('world')) { showView('worlds'); if (scroll) window.scrollTo({top:0, behavior:'instant'}); return; }
+    if (section === 'unlocks') { showView('races'); if (scroll) window.scrollTo({top:0, behavior:'instant'}); return; }
     const id=params.get('ride'); const filter=params.get('category');
     if (id && data.entries.some(entry => entry.id===id)) { showView('placements'); resetFilters(); select(id,false); }
     else if (filter && categories.includes(filter)) { showView('placements'); resetFilters(); category=filter; render(); }
-    else if (!section) { showView('placements'); return; }
+    else if (!section) { showView('home'); return; }
     else return;
     if (scroll) $('placements').scrollIntoView({block:'start'});
     const row=$('discovery-list').querySelector(`[data-id="${selected}"]`);
@@ -154,6 +161,7 @@
     tab.addEventListener('click', event => {
       event.preventDefault();
       showView(tab.dataset.view);
+      window.scrollTo({top:0, behavior:'instant'});
       try { history.pushState(null,'',tab.hash); } catch { location.hash=tab.hash; }
     });
     tab.addEventListener('keydown', event => {
@@ -175,7 +183,7 @@
     event.preventDefault(); $('search').focus(); $('placements').scrollIntoView({block:'start'});
   });
   window.addEventListener('hashchange', () => navigateHash());
-  showView('placements'); render(); navigateHash(false);
+  showView('home'); render(); navigateHash(false);
   const currentRow=$('discovery-list').querySelector('[aria-current="true"]');
   if (currentRow) $('discovery-list').scrollTop=currentRow.offsetTop-($('discovery-list').clientHeight-currentRow.offsetHeight)/2;
 })();

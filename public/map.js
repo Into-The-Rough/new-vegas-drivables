@@ -58,7 +58,7 @@
       const active = entry.id === selected?.id;
       const group = node('g', {transform:`translate(${x} ${y})`, class:`map-marker ${entry.kind==='herd'?'horse':''} ${active?'active':''}`,
         tabindex:0, role:'button', 'aria-label':`${entry.name}: ${entry.location}`, 'aria-pressed':String(active), 'data-id':entry.id});
-      const title = node('title'); title.textContent = `${entry.name} — ${entry.location}`; group.append(title);
+      const title = node('title'); title.textContent = `${entry.name}: ${entry.location}`; group.append(title);
       if (active) group.append(node('circle', {r:21, class:'marker-ring'}));
       group.append(node('circle', {r:active?12:9}));
       group.append(node('rect', {x:-2.6, y:-2.6, width:5.2, height:5.2, class:'pin-core', transform:entry.kind==='herd'?'rotate(45)':''}));

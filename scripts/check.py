@@ -18,6 +18,29 @@ assert next(e for e in data['entries'] if e['name']=='Alien Recon Craft')['fuel'
 assert next(e for e in data['entries'] if e['name']=='Corvega')['fuel'] == 'Reactor Coolant'
 assert '100' in next(e for e in data['entries'] if e['id']=='herd-3')['acquisition']
 assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck'}
+assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 32
+assert len(data['courses']) == 5
+assert len(data['arena']) == 12 and all(p['points'] for p in data['arena'])
+assert len(data['horseTraits']) == 8
+assert {h['survival'] for h in data['horseTraits']} == {0, 50, 75, 100}
+for vehicle in data['vehicles']:
+    assert vehicle['mph'] > 0 and abs(vehicle['mph'] * 1.609344 - vehicle['kmh']) < 0.02
+    assert all(any(e['id'] == id for e in data['entries']) for id in vehicle['entries'])
+for course in data['courses']:
+    assert len(course['outline']) > 20 and course['metres'] > 0 and course['checkpoints'] > 0
+
+
+def check_copy(value):
+    if isinstance(value, dict):
+        for child in value.values(): check_copy(child)
+    elif isinstance(value, list):
+        for child in value: check_copy(child)
+    elif isinstance(value, str):
+        assert '—' not in value and ';' not in value, f'copy punctuation: {value}'
+        assert not re.search(r'\b(?:19|20)\d{2}\b|\b(?:January|February|March|April|June|July|August|September|October|November|December)\b', value), f'date in copy: {value}'
+
+
+check_copy(data)
 for entry in data['entries']:
     assert entry['name'] and entry['location'] and entry['acquisition']
     assert entry['image'] is None or (public/'assets'/entry['image']).is_file()
@@ -39,6 +62,9 @@ class Links(HTMLParser):
         for key in ('src','href'):
             if key in attrs: self.links.append(attrs[key])
 
+    def handle_data(self, text):
+        check_copy(text)
+
 
 pages = {}
 for path in public.glob('*.html'):
@@ -58,6 +84,7 @@ for path in public.rglob('*'):
         text = path.read_text()
         for forbidden in ('/mnt/d/', 'C:\\Users\\', 'D:\\plugins\\', 'git@github.com', 'localhost:'):
             assert forbidden not in text, f'local value in {path.name}: {forbidden}'
-for raw in re.findall(r'url\([\'"]?([^\)\'\"]+)', (public/'style.css').read_text()):
-    assert (public/raw).is_file(), f'missing CSS resource: {raw}'
-print('Static checks passed: 32 obtainable types, 36 placements, 3 herds; links and assets resolve.')
+for css in public.glob('*.css'):
+    for raw in re.findall(r'url\([\'"]?([^\)\'\"]+)', css.read_text()):
+        assert (public/raw).is_file(), f'missing CSS resource: {raw}'
+print('Static checks passed: 32 vehicle types, 36 placements, 3 herds, 5 courses, 8 horse profiles. Links, assets and copy conventions pass.')
