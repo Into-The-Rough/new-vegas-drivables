@@ -6,7 +6,9 @@ beginner guide, placement map, vehicle speeds, driving, stunts, new locations,
 races, horse guide, fuel and repairs, and sound mappings. A separate ethos and
 development page is authored in `pages/about.html`. The FAQ is authored in
 `pages/faq.html`, including release plans, compatibility and optional presentation
-settings. No framework, backend or
+settings. The page generator includes it in the main FAQ tab and the standalone
+FAQ page, and shares the main navigation with the standalone pages.
+No framework, backend or
 external runtime requests.
 The author links go to https://www.nexusmods.com/profile/intotherough and
 https://www.youtube.com/@OliverSwanickProductions.

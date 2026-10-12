@@ -48,7 +48,7 @@ p { color: var(--muted); }
 .page-tabs { display: flex; flex-wrap: wrap; gap: 8px 24px; border-bottom: 1px solid var(--amber); padding: 12px 9px 18px; position: sticky; top: 0; z-index: 20; background: var(--bg); }
 .page-tabs a { color: var(--muted); font-size: 21px; text-transform: uppercase; padding: 5px 9px; margin-left: -9px; border: 1px solid transparent; }
 .page-tabs a:hover { background: #ffb6420d; color: var(--amber); text-decoration: none; }
-.page-tabs a[aria-selected=true] { border-color: var(--amber); background: #ffb64218; color: var(--amber); }
+.page-tabs a[aria-selected=true], .page-tabs a[aria-current=page] { border-color: var(--amber); background: #ffb64218; color: var(--amber); }
 .page-view { scroll-margin-top: 100px; }
 .guide-intro { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0 12px; font-size: 15px; }
 .spoiler-switch { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); cursor: pointer; }

@@ -149,6 +149,8 @@
 .sound-table thead, .passenger-table thead { font-size: 14px; color: var(--muted); text-transform: uppercase; }
 .sound-table tbody th { width: 26%; font-size: 22px; }
 .faq-page { max-width: 900px; margin: 0 auto; }
+.faq-page [id] { scroll-margin-top: 150px; }
+.faq-page > h2:first-child { font-size: 36px; margin: 0 0 24px; }
 .faq-jumps { display: flex; flex-wrap: wrap; gap: 14px 25px; padding: 20px 0 30px; border-bottom: 1px solid var(--line); font-size: 18px; }
 .faq-page h2 { margin: 38px 0 12px; font-size: 30px; }
 .faq-answer { border-bottom: 1px solid var(--line); padding: 21px 0; }

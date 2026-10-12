@@ -23,7 +23,7 @@ const publicRoot = path.resolve(__dirname,'../public');
   assert.equal(await page.title(),'New Vegas Drivables');
   assert.equal(await page.locator('.site-header h1').textContent(),'New Vegas Drivables');
   assert.ok(await page.locator('a[href="https://www.nexusmods.com/profile/intotherough"]').count() >= 1);
-  assert.equal(await page.locator('a[href="https://www.youtube.com/@OliverSwanickProductions"]').count(),2);
+  assert.equal(await page.locator('a[href="https://www.youtube.com/@OliverSwanickProductions"]').count(),3);
   assert.equal(await page.evaluate(()=>document.fonts.check('18px Monofonto')),true);
   assert.match(await page.locator('.ride-row').first().evaluate(el=>getComputedStyle(el).fontFamily),/Monofonto/);
   assert.equal(await page.getByRole('tab',{name:'Home',exact:true}).getAttribute('aria-selected'),'true');
@@ -61,7 +61,13 @@ const publicRoot = path.resolve(__dirname,'../public');
   await page.keyboard.press('Home');
   assert.equal(await page.locator('#home').isVisible(),true);
   await page.keyboard.press('End');
-  assert.equal(await page.locator('#sounds').isVisible(),true);
+  assert.equal(await page.locator('#faq').isVisible(),true);
+  assert.equal(await page.getByRole('tab',{name:'FAQ',exact:true}).getAttribute('aria-selected'),'true');
+  await page.locator('#faq .faq-jumps a[href="#preferences"]').click();
+  await page.waitForURL('**/#preferences');
+  assert.equal(await page.locator('#faq').isVisible(),true);
+  await page.reload({waitUntil:'networkidle'});
+  assert.equal(await page.locator('#faq').isVisible(),true);
   await page.getByRole('tab',{name:'Races',exact:true}).click();
   assert.equal(await page.locator('#unlocks').isVisible(),true);
   await page.screenshot({path:'artifacts/unlocks.png',fullPage:true});
@@ -212,7 +218,7 @@ const publicRoot = path.resolve(__dirname,'../public');
       await page.getByRole('tab',{name:'Placements',exact:true}).click();
       await page.screenshot({path:`artifacts/${label}-guide.png`});
     }
-    for(const tab of ['Start here','Placements','Vehicles','Driving','Stunts','New locations','Races','Horse guide','Fuel & repairs','Sound']) {
+    for(const tab of ['Start here','Placements','Vehicles','Driving','Stunts','New locations','Races','Horse guide','Fuel & repairs','Sound','FAQ']) {
       await page.getByRole('tab',{name:tab,exact:true}).click();
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${tab} fits at ${width}`);
       if(width===390 && ['Start here','Driving','Sound','Vehicles','New locations','Horse guide'].includes(tab)) {
@@ -250,6 +256,8 @@ const publicRoot = path.resolve(__dirname,'../public');
   await page.screenshot({path:'artifacts/about-phone.png',fullPage:true});
   await page.goto(base+'/faq.html',{waitUntil:'networkidle'});
   assert.equal(await page.locator('h1').textContent(),'Frequently asked questions');
+  assert.equal(await page.locator('.page-tabs a').count(),12);
+  assert.equal(await page.locator('.page-tabs [aria-current="page"]').textContent(),'FAQ');
   assert.match(await page.locator('.faq-page').textContent(),/Aiming for December\./);
   assert.match(await page.locator('#loading-wheel').textContent(),/fresh loading screen/);
   assert.match(await page.locator('#main-menu').textContent(),/restart the game/);

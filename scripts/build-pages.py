@@ -1,17 +1,27 @@
 """Generate a no-JavaScript companion guide from the exported public content."""
 import json
+import re
 from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
+index = (public / 'index.html').read_text()
+faq = (ROOT / 'pages/faq.html').read_text()
+embedded_faq = faq.replace('<h1>', '<h2>').replace('</h1>', '</h2>').replace('href="index.html#', 'href="#')
+index, count = re.subn(r'<!--faq-content-->.*?<!--/faq-content-->', lambda _: '<!--faq-content-->\n' + embedded_faq + '      <!--/faq-content-->', index, flags=re.S)
+assert count == 1, 'expected one FAQ content slot'
+(public / 'index.html').write_text(index)
+nav_items = re.findall(r'<a id="tab-([^"]+)" href="[^"]+" data-view="[^"]+">([^<]+)</a>', index)
 
 
-def page(title, body):
+def page(title, body, active=''):
+    links = ''.join(f'<a href="{("faq.html" if id == "faq" else "index.html#" + id)}"' + (' aria-current="page"' if id == active else '') + f'>{label}</a>' for id, label in nav_items)
+    nav = f'<nav class="page-tabs" aria-label="Guide sections">{links}</nav>'
     return f'''<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>{title} · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="guides.css"></head>
-<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="faq.html">FAQ</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header><main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div></body></html>'''
+<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="index.html#start">Player guides ↗</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div></body></html>'''
 
 
 rows = []
@@ -33,6 +43,6 @@ for vehicle in sorted(data['vehicles'], key=lambda v: v['name']):
 sound_rows.append('<tr><th scope="row"><a href="index.html#horses">Horses</a></th><td>Horse recordings</td><td>Hoofbeats, breathing and vocal sounds support pace, movement and behaviour.</td></tr>')
 (public / 'sounds.html').write_text(page('Sound & passengers', f'''<h1>Sound & passengers</h1><p>Recording sources are sound-design choices. They do not change a vehicle’s Fallout identity or fuel supply. <a href="index.html#sounds">Search the sound mappings</a>.</p><div class="table-scroll"><table class="sound-table"><thead><tr><th scope="col">Ride</th><th scope="col">Recording source</th><th scope="col">How it is used</th></tr></thead><tbody>{''.join(sound_rows)}</tbody></table></div><h2>Passenger positions</h2><p>These counts exclude the driver. Some positions require a dog or a humanoid companion. <a href="index.html#driving=companions">Read the companion guide</a>.</p><div class="table-scroll"><table class="passenger-table"><thead><tr><th scope="col">Vehicle</th><th scope="col">Passengers</th><th scope="col">Seating</th></tr></thead><tbody>{''.join(passenger_rows)}</tbody></table></div>'''))
 (public / 'about.html').write_text(page('Ethos & development', (ROOT / 'pages/about.html').read_text()))
-(public / 'faq.html').write_text(page('FAQ', (ROOT / 'pages/faq.html').read_text()))
+(public / 'faq.html').write_text(page('FAQ', faq, 'faq'))
 (public / 'credits.html').write_text(page('Credits', '''<h1>Credits & sources</h1><h2>The mod</h2><p>New Vegas Drivables is a Fallout: New Vegas mod by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>. Watch the mod on <a href="https://www.youtube.com/@OliverSwanickProductions">Oliver Swanick Productions</a>.</p><h2>The guide</h2><p>Locations, restoration requirements and unlock routes come from the mod’s placement records and implementation notes. Vehicle speeds use the same settings and conversion as the F10 garage. Circuit diagrams follow the race routes. Vehicle renders and showcase artwork come from the mod’s own assets and videos. The amber text, selection outlines and tabs follow the in-game F10 menu.</p><h2>Map & game</h2><p>The Mojave map artwork and Fallout: New Vegas belong to their respective rights holders. This is an unofficial fan project.</p><h2>Font</h2><p>Monofonto by Ray Larabie, the typeface used for the game’s menu text. This site includes the unmodified 2.000 release and its <a href="assets/monofonto-readme.html">original readme and licence</a>, which permits use and redistribution. The original package is available from <a href="https://www.abstractfonts.com/font/845">Abstract Fonts</a>. The designer’s current catalogue is at <a href="https://typodermicfonts.com/monofonto/">Typodermic Fonts</a>.</p>'''))
 print('Generated locations.html, vehicles.html, sounds.html, about.html, faq.html and credits.html.')

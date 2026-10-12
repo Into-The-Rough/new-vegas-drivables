@@ -125,6 +125,12 @@
       return;
     }
     const params = new URLSearchParams(location.hash.slice(1));
+    const faqTarget = section && document.getElementById(section);
+    if (faqTarget && $('faq').contains(faqTarget)) {
+      showView('faq');
+      requestAnimationFrame(() => faqTarget.scrollIntoView({block:'start'}));
+      return;
+    }
     if (params.has('driving')) {
       showView('driving');
       const target = document.getElementById(`driving-${params.get('driving')}`);
