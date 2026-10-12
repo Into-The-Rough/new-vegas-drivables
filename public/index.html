@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11110d">
-  <meta name="description" content="Find your next ride in Fallout: New Vegas. The Drivables NVSE field guide covers vehicle locations, repairs, quest rewards and wild horses.">
-  <meta property="og:title" content="Drivables NVSE — The Mojave, in a new gear">
-  <meta property="og:description" content="Explore the fleet. Find the wrecks. Make them yours. An interactive vehicle field guide for Fallout: New Vegas.">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="New Vegas Drivables: vehicle locations, wild horses, repairs, fuel and quest unlocks for Fallout: New Vegas.">
+  <meta property="og:title" content="New Vegas Drivables">
+  <meta property="og:description" content="The vehicle and horse guide. Find placements on the Mojave map and check what you need to get them running.">
   <meta property="og:type" content="website">
-  <title>Drivables NVSE — The Mojave, in a new gear</title>
+  <title>New Vegas Drivables</title>
   <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
   <link rel="stylesheet" href="style.css">
   <script defer src="content.js"></script>
@@ -17,55 +17,88 @@
 </head>
 <body>
 <a class="skip-link" href="#placements">Skip to the vehicle guide</a>
-<header class="site-header">
-  <a class="brand" href="#home" aria-label="Drivables NVSE home"><img src="assets/mark.svg" width="38" height="38" alt=""><span>DRIVABLES <small>NVSE</small></span></a>
-  <nav aria-label="Main navigation"><a href="#placements">Placements</a><a href="#fleet">Garage</a><a href="#horses">Horses</a><a href="#manual">Field manual</a></nav>
-  <a class="profile-link" href="https://www.nexusmods.com/profile/intotherough" target="_blank" rel="noopener">BY INTOTHEROUGH <span aria-hidden="true">↗</span></a>
-</header>
-<main>
-  <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
-    <div class="hero-copy"><p class="eyebrow"><span class="signal" aria-hidden="true"></span> A FALLOUT: NEW VEGAS MOD</p>
-      <h1 id="hero-title">THE MOJAVE.<br>IN A <em>NEW GEAR.</em></h1>
-      <p class="hero-intro">There’s a lot of road out there.<br>Find a ride. Bring it back to life. Make it yours.</p>
-      <div class="hero-actions"><a class="button primary" href="#placements">EXPLORE THE PLACEMENTS <span aria-hidden="true">↗</span></a><a class="text-link" href="#fleet">BROWSE THE FLEET <span aria-hidden="true">→</span></a></div>
-    </div>
-    <div class="hero-vehicle"><div class="hero-grid" aria-hidden="true"></div><img src="assets/highwayman.webp" width="1400" height="1100" alt="The restored, weathered Highwayman with its long tailfins and exposed engine" fetchpriority="high"><div class="vehicle-caption"><span>CHRYSLUS HIGHWAYMAN</span><span>RECOVER. RECHARGE. RIDE.</span></div><span class="hero-coordinate" aria-hidden="true">FALLOUT: NEW VEGAS &nbsp; / &nbsp; FIELD GUIDE</span></div>
-  </section>
-  <div class="stats-bar section-wrap" aria-label="Guide coverage"><div><strong>32</strong><span>RIDES TO FIND & UNLOCK</span></div><div><strong>36</strong><span>WORLD PLACEMENTS</span></div><div><strong>03</strong><span>WILD HORSE HERDS</span></div><p>FROM A RUSTED BICYCLE<br>TO SOMETHING OUT OF THIS WORLD.</p></div>
-
-  <section class="section-wrap placement-section" id="placements" aria-labelledby="placement-heading">
-    <div class="section-heading"><div><p class="eyebrow">01 / OUT IN THE WASTELAND</p><h2 id="placement-heading">FIND YOUR NEXT RIDE.</h2></div><p>Some are ready to roll. Some need a toolbox.<br>Others need you to finish what you started.</p></div>
-    <div class="terminal-frame">
-      <div class="terminal-title"><span><i class="small-square" aria-hidden="true"></i> WORLD DISCOVERIES</span><label class="spoiler-switch"><input type="checkbox" id="spoilers" checked> Show exact locations <span class="switch-track" aria-hidden="true"></span></label></div>
-      <div class="guide-toolbar"><div class="filters" role="group" aria-label="Vehicle category" id="filters"></div><label class="search"><span class="sr-only">Search vehicles and locations</span><input id="search" type="search" placeholder="SEARCH VEHICLE / LOCATION" autocomplete="off"><kbd aria-hidden="true">/</kbd></label></div>
+<div class="site-shell" id="home">
+  <header class="site-header">
+    <div><p class="game-label">A mod for Fallout: New Vegas</p><h1><a href="#placements">New Vegas Drivables</a></h1></div>
+    <a class="profile-link" href="https://www.nexusmods.com/profile/intotherough" target="_blank" rel="noopener">intotherough on Nexus <span aria-hidden="true">↗</span></a>
+  </header>
+  <nav class="page-tabs" aria-label="Guide sections">
+    <a id="tab-placements" href="#placements" data-view="placements">Placements</a>
+    <a id="tab-horses" href="#horses" data-view="horses">Horses</a>
+    <a id="tab-manual" href="#manual" data-view="manual">Fuel & repairs</a>
+    <a id="tab-unlocks" href="#unlocks" data-view="unlocks">Unlocks</a>
+  </nav>
+  <main>
+    <section id="placements" class="page-view" aria-labelledby="tab-placements">
+      <h2 class="sr-only">Vehicle placements</h2>
+      <div class="guide-intro"><p>36 vehicle placements · 3 wild herds</p><label class="spoiler-switch"><input type="checkbox" id="spoilers" checked> Show exact locations</label></div>
+      <div class="guide-toolbar">
+        <div class="filters" role="group" aria-label="Vehicle category" id="filters"></div>
+        <label class="search"><span class="sr-only">Search vehicles and locations</span><input id="search" type="search" placeholder="Search vehicles / locations" autocomplete="off"><kbd aria-hidden="true">/</kbd></label>
+      </div>
       <div class="guide-body">
-        <div class="discovery-column"><div class="list-heading"><span id="result-count" role="status"></span><select id="region" aria-label="Region"><option value="All">ALL REGIONS</option><option value="Mojave">Mojave</option><option value="Big MT">Big MT</option><option value="Unlocks">Unlocks</option></select></div><div id="discovery-list" class="discovery-list" aria-label="Vehicle discoveries"></div></div>
-        <div class="map-column"><div class="map-topline"><span id="map-caption">MOJAVE WASTELAND</span><span aria-hidden="true">N ↑</span></div><div class="map-stage" id="map-stage"><svg id="world-map" viewBox="0 0 1024 1024" aria-label="Interactive Mojave vehicle map. Select a marker or use the discovery list." role="group"><image href="assets/mojave.webp" width="1024" height="1024" class="map-background"></image><g id="landmarks" aria-hidden="true"></g><g id="map-markers"></g></svg><div id="map-message" class="map-message" hidden></div><div class="map-controls"><button id="zoom-in" aria-label="Zoom map in">+</button><button id="zoom-out" aria-label="Zoom map out">−</button><button id="map-reset" aria-label="Reset map view">↺</button></div><span class="map-hint">DRAG TO PAN · USE + / − TO ZOOM</span></div><div class="map-legend"><span><i class="legend-pin"></i> DISCOVERY</span><span><i class="legend-pin horse"></i> WILD HERD</span><span><i class="legend-pin selected"></i> SELECTED</span></div></div>
+        <div class="discovery-column">
+          <div class="list-heading"><span id="result-count" role="status"></span><select id="region" aria-label="Region"><option value="All">All regions</option><option value="Mojave">Mojave</option><option value="Big MT">Big MT</option><option value="Unlocks">Unlocks</option></select></div>
+          <div id="discovery-list" class="discovery-list" aria-label="Vehicle discoveries"></div>
+        </div>
+        <div class="map-column">
+          <div class="map-topline"><span id="map-caption">Mojave Wasteland</span><span aria-hidden="true">N ↑</span></div>
+          <div class="map-stage" id="map-stage">
+            <svg id="world-map" viewBox="0 0 1024 1024" aria-label="Interactive Mojave vehicle map. Select a marker or use the discovery list." role="group"><image href="assets/mojave.webp" width="1024" height="1024" class="map-background"></image><g id="landmarks" aria-hidden="true"></g><g id="map-markers"></g></svg>
+            <div id="map-message" class="map-message" hidden></div>
+            <div class="map-controls"><button id="zoom-in" aria-label="Zoom map in">+</button><button id="zoom-out" aria-label="Zoom map out">−</button><button id="map-reset" aria-label="Reset map view">↺</button></div>
+            <span class="map-hint">Drag to pan · + / − to zoom</span>
+          </div>
+          <div class="map-legend"><span><i class="legend-pin"></i> Vehicle</span><span><i class="legend-pin horse"></i> Herd</span><span><i class="legend-pin selected"></i> Selected</span></div>
+        </div>
         <article class="detail-panel" id="discovery-detail" aria-label="Selected discovery" aria-live="polite"></article>
       </div>
-      <div class="terminal-footer"><span><kbd>↵</kbd> SELECT A RIDE <kbd>/</kbd> SEARCH</span><span>City pins show the area; directions identify the exact spot.</span></div>
-    </div>
-    <p class="under-note">World placements must be enabled in F10 preferences. Quest rewards and restored vehicles follow their own unlock conditions. This guide shows starting conditions, not the state of your save.</p>
-    <noscript><p class="notice">Enable JavaScript for the interactive guide, or <a href="locations.html">read the complete location list</a>.</p></noscript>
-  </section>
+      <div class="guide-footer"><span>City pins mark the area. Follow the entry’s directions.</span><a href="locations.html">Complete location list ↗</a></div>
+      <p class="under-note">Enable world placements in F10 preferences. Conditions shown here are the starting state of each discovery.</p>
+      <noscript><p class="notice">Enable JavaScript for the map, or <a href="locations.html">read the complete location list</a>.</p></noscript>
+    </section>
 
-  <section class="section-wrap fleet-section" id="fleet" aria-labelledby="fleet-heading"><div class="section-heading"><div><p class="eyebrow">02 / THE GARAGE</p><h2 id="fleet-heading">PICK YOUR KIND OF TROUBLE.</h2></div><a class="text-link" href="locations.html">COMPLETE LOCATION LIST ↗</a></div>
-    <div class="featured-fleet"><a class="fleet-feature" href="#ride=v-000ca3"><div class="fleet-image"><img src="assets/corvega.webp" alt="The Chryslus Corvega Atomic V8" width="1400" height="1100" loading="lazy"></div><p class="eyebrow">ATOMIC MOTORING</p><h3>CORVEGA</h3><p>A billboard promise, waiting by the road.<br>Bring tools. Bring coolant.</p><span class="feature-link">FIND THE CORVEGA <span>↗</span></span></a>
-    <a class="fleet-feature" href="#ride=v-000ca6"><div class="fleet-image"><img src="assets/buggy.webp" alt="The open-cab Apocalyptic Buggy" width="1400" height="1100" loading="lazy"></div><p class="eyebrow">LESS BODYWORK. MORE DESERT.</p><h3>APOCALYPTIC BUGGY</h3><p>Tucked away in Bonnie Springs.<br>The engine works. The tank is empty.</p><span class="feature-link">FIND THE BUGGY <span>↗</span></span></a>
-    <div class="reward-feature"><p class="eyebrow">EARN YOUR KEYS</p><h3>NOT EVERY RIDE<br>IS PARKED OUTSIDE.</h3><div id="reward-links"></div></div></div>
-  </section>
+    <section id="horses" class="page-view text-view" aria-labelledby="tab-horses">
+      <div class="text-intro"><h2>Wild horses</h2><p>Three fixed herds, with random horses. Inspect a horse to see its traits and Survival requirement, then tame it before riding.</p><a class="button" href="#category=Horses">Show herds on the map</a></div>
+      <div class="reference-body">
+        <h3>Survival requirements</h3>
+        <dl class="horse-tiers">
+          <div><dt>0</dt><dd>Herd 1 always includes a horse with no skill gate. You still need to tame it.</dd></div>
+          <div><dt>50</dt><dd>Found across the herds. Compare individual traits before choosing a horse.</dd></div>
+          <div><dt>75</dt><dd>Herd 3 guarantees a horse at this tier.</dd></div>
+          <div><dt>100</dt><dd>Rare horses have a 5% chance on eligible new spawns, in any coat. Their names start with “Rare Wild” and all three traits are 5/5. Only one untamed rare can exist at a time.</dd></div>
+        </dl>
+        <h3>Traits & taming</h3><p>Speed, endurance and nerve affect how a horse rides. Taming uses your effective Survival, including temporary bonuses, and costs no items. Riding a tamed horse does not repeat the skill check.</p><p>To keep a horse in your stable, mount it and use <strong>F10 → Horses → Add to Stable</strong>.</p>
+        <h3>Deaths & replacement</h3><p>Ordinary wild horses replenish after three continuous in-game days away. Tamed and rare horses stay dead; a later new horse can roll rare again. Wildlife normally ignores horses, but they can still take damage.</p>
+      </div>
+    </section>
 
-  <section class="horse-section" id="horses" aria-labelledby="horse-heading"><div class="section-wrap horse-layout"><div><p class="eyebrow">03 / A DIFFERENT KIND OF HORSEPOWER</p><h2 id="horse-heading">NO KEYS.<br>JUST TRUST.</h2><p>Three wild herds. Six coats. Horses with their own speed, endurance and nerve. Inspect a horse, meet its Survival requirement, then take the time to tame it.</p><a class="button" href="#category=Horses">FIND THE HERDS <span aria-hidden="true">↗</span></a></div><div class="horse-tiers"><div><span class="tier-number">00</span><div><h3>A PLACE TO START</h3><p>Herd 1 always has a horse with no Survival gate. You still need to tame it.</p></div></div><div><span class="tier-number">50</span><div><h3>KNOW THE WASTELAND</h3><p>Mid-tier horses across the herds. Look at their traits before choosing your companion.</p></div></div><div><span class="tier-number">75</span><div><h3>A STEADIER PARTNER</h3><p>Herd 3 guarantees a Survival 75 horse. Speed, endurance and nerve affect the ride.</p></div></div><div class="rare-tier"><span class="tier-number">100</span><div><h3>RARE FOR A REASON <span>★</span></h3><p>A 5% chance on eligible new horses. Any coat, a visible “Rare Wild” name and 5/5/5 traits. At most one untamed rare at a time.</p></div></div></div></div></section>
+    <section id="manual" class="page-view text-view" aria-labelledby="tab-manual">
+      <div class="text-intro"><h2>Fuel & repairs</h2><p>Check a vehicle’s entry for its supply type, starting reserve and restoration requirements.</p><p>In game, <kbd>F10</kbd> opens the garage.</p><a class="button" href="#placements">Open the vehicle guide</a></div>
+      <div class="reference-body">
+        <h3>Fuel supplies</h3>
+        <dl class="supply-list">
+          <div><dt>Jerry Cans</dt><dd>Used by liquid-fuel vehicles, including the Vertibird. Petrol, diesel and biofuel share the same supply. Partly used cans are consumed; bulk refuelling is supported.</dd></div>
+          <div><dt>Energy Cells / Microfusion Cells</dt><dd>Charge the Highwayman, Hover Bike and Camp Golf Cart. One Microfusion Cell supplies twice the charge of one Energy Cell.</dd></div>
+          <div><dt>Reactor Coolant</dt><dd>Used by the nuclear Corvega.</dd></div>
+          <div><dt>No supply</dt><dd>The Alien Recon Craft needs no fuel or coolant. Human-powered rides use no fuel.</dd></div>
+        </dl>
+        <h3>Restoring a vehicle</h3><p>Inspect a covered vehicle or original wreck to see its repair requirements. Some discoveries only need Repair skill; others also need one or two <strong>Car Repair Tools</strong>. The crashed Vertibird needs a Sensor Module.</p><p>Bring restoration parts in your inventory. Required components are consumed when restoration succeeds. Each map entry lists the exact requirements.</p>
+        <h3>Travel notes</h3><p>The OWB reward Hover Bike is placed in Big MT. Bringing that bike back through the Transportalponder is not implemented.</p><p>The B-29 unlocks after Volare!, but its reported runway / ground-support problem remains open. The Hopper’s corrected Strip-door transfer still needs an in-game round-trip check.</p>
+      </div>
+    </section>
 
-  <section class="section-wrap manual-section" id="manual" aria-labelledby="manual-heading"><div class="section-heading"><div><p class="eyebrow">04 / BEFORE YOU SET OFF</p><h2 id="manual-heading">KEEP IT RUNNING.</h2></div><span class="manual-key"><kbd>F10</kbd> YOUR GARAGE, IN GAME</span></div><div class="manual-grid"><div class="manual-intro"><p>A little preparation goes a long way.</p><p>Use the placement guide to check what a discovery needs before making the trip. Fuel, repairs and unlocks vary by vehicle.</p><a class="text-link" href="https://www.nexusmods.com/profile/intotherough" target="_blank" rel="noopener">MORE FROM INTOTHEROUGH ↗</a></div><div class="manual-accordions">
-      <details open><summary><span>01</span> Fuel, charge & coolant <span class="toggle-icon">+</span></summary><div><p><strong>Jerry Cans</strong> cover liquid-fuel vehicles. Petrol, diesel and biofuel share the same supply. Partly used cans are consumed; bulk refuelling is supported.</p><p><strong>Energy Cells and Microfusion Cells</strong> charge the Highwayman, Hover Bike and Camp Golf Cart. One MFC supplies twice the charge of one Energy Cell.</p><p><strong>Reactor Coolant</strong> keeps the nuclear Corvega running. The Alien Recon Craft needs no fuel or coolant. Human-powered rides use no fuel.</p></div></details>
-      <details><summary><span>02</span> Restoring a discovery <span class="toggle-icon">+</span></summary><div><p>Some discoveries need only Repair skill. Others need one or two <strong>Car Repair Tools</strong>, or a Sensor Module for the crashed Vertibird. Required components are consumed when restoration succeeds.</p><p>Bring restoration parts in your inventory. Inspect a covered vehicle or original wreck to reveal its repair route. The location guide lists the exact requirements.</p></div></details>
-      <details><summary><span>03</span> Races & arena unlocks <span class="toggle-icon">+</span></summary><div><p>Win a completed race against at least one opponent to earn one free <strong>Formula Racer</strong>. Return from the race before claiming it through F10.</p><p>The <strong>Monster Truck</strong> stays in the Thunderdome. Visiting once unlocks world spawning for the <strong>Stunt Biplane</strong>, provided world vehicle spawning is enabled.</p></div></details>
-      <details><summary><span>04</span> Caring for wild horses <span class="toggle-icon">+</span></summary><div><p>Taming checks effective Survival, including temporary bonuses. It costs no items. After taming, riding does not repeat the skill check. Register your horse through <strong>F10 → Horses → Add to Stable</strong>.</p><p>Ordinary wild horses replenish after three continuous in-game days away. Tamed and rare individuals stay dead; later new horses can roll rare again. Wildlife normally leaves horses alone, but horses remain damageable.</p></div></details>
-      <details><summary><span>05</span> Current travel limitations <span class="toggle-icon">+</span></summary><div><p>The OWB reward <strong>Hover Bike</strong> is placed in Big MT; bringing that bike back through the Transportalponder is not implemented.</p><p>The <strong>B-29</strong> unlocks after Volare!, but its reported runway / ground-support problem remains open. The corrected <strong>Hopper</strong> Strip-door transfer still awaits an in-game round-trip check.</p></div></details>
-    </div></div></section>
-</main>
-<footer class="site-footer section-wrap"><a class="brand" href="#home"><img src="assets/mark.svg" width="28" height="28" alt=""><span>DRIVABLES <small>NVSE</small></span></a><p>A mod for Fallout: New Vegas by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.<br>Guide updated 12 October 2026. <a href="credits.html">Credits</a>.</p><a href="#home" class="text-link">BACK TO TOP ↑</a></footer>
+    <section id="unlocks" class="page-view text-view" aria-labelledby="tab-unlocks">
+      <div class="text-intro"><h2>Unlocks</h2><p>Some vehicles are quest rewards or belong to the Thunderdome. Their entries explain when and where they become available.</p><a class="button" href="locations.html">All acquisition requirements</a></div>
+      <div class="reference-body">
+        <h3>Race & arena rewards</h3><div id="reward-links"></div>
+        <h3>Quest rewards</h3><p><a href="#ride=v-000c3b">B-29 Bomber</a> — complete Volare! successfully. The aircraft is hidden until then.</p><p><a href="#ride=v-000cb1">Hover Bike</a> — finish Old World Blues. Find the reward outside the Sink in Big MT.</p>
+        <p class="under-note">World spawning of the unlocked Stunt Biplane also requires spawning to be enabled in the general settings. The Monster Truck stays in the Thunderdome.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>New Vegas Drivables · 12 October 2026</p><div><a href="credits.html">Credits</a><a href="https://www.nexusmods.com/profile/intotherough">Nexus profile ↗</a></div></footer>
+</div>
 <div id="toast" class="toast" role="status" hidden></div>
 </body>
 </html>

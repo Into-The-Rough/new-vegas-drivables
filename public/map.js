@@ -86,8 +86,8 @@
     if (!message.hidden) {
       const title = document.createElement('strong');
       const body = document.createElement('p');
-      title.textContent = !show ? 'KEEP A LITTLE MYSTERY.' : current.region==='Big MT' ? 'BEYOND THE MOJAVE.' : 'EARN IT. THEN DRIVE IT.';
-      body.textContent = !show ? 'Turn on exact locations when you’re ready to track down a ride.' : current.region==='Big MT' ? 'This discovery is in Big MT. Follow the directions in its entry.' : 'This entry has no fixed Mojave discovery. Check its unlock conditions.';
+      title.textContent = !show ? 'Locations hidden' : current.region==='Big MT' ? 'Big MT' : 'No fixed placement';
+      body.textContent = !show ? 'Enable “Show exact locations” to see map pins and directions.' : current.region==='Big MT' ? 'This vehicle is outside the Mojave. Follow the directions in its entry.' : 'Check this vehicle’s unlock conditions in its entry.';
       message.append(title, body);
     }
   }

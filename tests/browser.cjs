@@ -20,8 +20,36 @@ const publicRoot = path.resolve(__dirname,'../public');
   assert.equal(await page.locator('.ride-row').count(),42);
   assert.equal(await page.locator('.map-marker').count(),38);
   assert.equal(await page.locator('#discovery-detail h3').textContent(),'Highwayman');
-  assert.equal(await page.locator('a[href="https://www.nexusmods.com/profile/intotherough"]').count(),3);
+  assert.equal(await page.title(),'New Vegas Drivables');
+  assert.equal(await page.locator('.site-header h1').textContent(),'New Vegas Drivables');
+  assert.ok(await page.locator('a[href="https://www.nexusmods.com/profile/intotherough"]').count() >= 1);
+  assert.equal(await page.evaluate(()=>document.fonts.check('18px Monofonto')),true);
+  assert.match(await page.locator('.ride-row').first().evaluate(el=>getComputedStyle(el).fontFamily),/Monofonto/);
+  assert.equal(await page.getByRole('tab',{name:'Placements',exact:true}).getAttribute('aria-selected'),'true');
+  assert.equal(await page.locator('#horses').isVisible(),false);
+  const guideBounds=await page.locator('.guide-body').boundingBox();
+  const mapBounds=await page.locator('#map-stage').boundingBox();
+  assert.ok(mapBounds.y+mapBounds.height<=guideBounds.y+guideBounds.height,'map stays within the desktop guide');
+  assert.ok(await page.locator('.discovery-list').evaluate(el=>el.scrollHeight>el.clientHeight),'vehicle list scrolls within its column');
+  const listBounds=await page.locator('.discovery-list').boundingBox();
+  const selectedBounds=await page.locator('.ride-row[aria-current=true]').boundingBox();
+  assert.ok(selectedBounds.y>=listBounds.y && selectedBounds.y+selectedBounds.height<=listBounds.y+listBounds.height,'selected vehicle is visible on load');
   await page.screenshot({path:'artifacts/desktop.png',fullPage:true});
+  await page.getByRole('tab',{name:'Horses',exact:true}).click();
+  assert.equal(await page.locator('#horses').isVisible(),true);
+  assert.equal(await page.locator('#placements').isVisible(),false);
+  await page.getByRole('tab',{name:'Horses',exact:true}).focus();
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await page.getByRole('tab',{name:'Fuel & repairs',exact:true}).getAttribute('aria-selected'),'true');
+  assert.equal(await page.locator('#manual').isVisible(),true);
+  await page.keyboard.press('End');
+  assert.equal(await page.locator('#unlocks').isVisible(),true);
+  await page.screenshot({path:'artifacts/unlocks.png',fullPage:true});
+  await page.getByRole('tab',{name:'Placements',exact:true}).click();
+  await page.goBack();
+  assert.equal(await page.locator('#unlocks').isVisible(),true);
+  await page.goForward();
+  assert.equal(await page.locator('#placements').isVisible(),true);
 
   await page.locator('#search').fill('corvega');
   assert.equal(await page.locator('.ride-row').count(),1);
@@ -84,6 +112,16 @@ const publicRoot = path.resolve(__dirname,'../public');
     }
   }
   await page.setViewportSize({width:390,height:844});
+  await page.goto(base+'/#horses',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('#horses').isVisible(),true);
+  await page.getByRole('link',{name:'Show herds on the map'}).click();
+  await page.locator('#placements').waitFor({state:'visible'});
+  assert.equal(await page.locator('#placements').isVisible(),true);
+  assert.equal(await page.locator('.ride-row').count(),3);
+  for (const tab of ['Fuel & repairs','Unlocks']) {
+    await page.getByRole('tab',{name:tab,exact:true}).click();
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${tab} fits on phone`);
+  }
   await page.goto(base+'/#category=Horses',{waitUntil:'networkidle'});
   await page.locator('.ride-row[data-id="herd-2"]').click();
   assert.equal(await page.locator('#discovery-detail h3').textContent(),'Wild horses · Herd 2');
@@ -93,7 +131,7 @@ const publicRoot = path.resolve(__dirname,'../public');
   await page.goto(base+'/locations.html',{waitUntil:'networkidle'});
   assert.equal(await page.locator('tbody tr').count(),42);
   await page.goto(base+'/credits.html',{waitUntil:'networkidle'});
-  assert.equal(await page.locator('h1').textContent(),'CREDITS & SOURCES.');
+  assert.equal(await page.locator('h1').textContent(),'Credits & sources');
 
   const offline=await browser.newContext({javaScriptEnabled:false});
   const fallback=await offline.newPage();

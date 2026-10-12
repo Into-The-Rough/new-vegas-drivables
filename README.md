@@ -1,8 +1,8 @@
-# Drivables NVSE website
+# New Vegas Drivables website
 
-A standalone GitHub Pages site for the mod. F10-inspired amber panels, an
-interactive placement map, searchable acquisition guide, horse herds and a
-field manual. No framework, backend, external runtime requests or download CTA.
+A standalone GitHub Pages site for the mod. Monofonto lettering and F10-style tabs
+open straight into an interactive placement map. Separate tabs cover horse
+taming, fuel and repairs, and unlocks. No framework, backend, external runtime requests or download CTA.
 The author link goes to https://www.nexusmods.com/profile/intotherough.
 
 ## Preview
@@ -66,8 +66,13 @@ tablet, phone, filters, marker selection, URL links, spoilers, storage failure,
 no-JavaScript fallback, clipboard and project-path hosting. Screenshots go to
 the ignored `artifacts/` folder.
 
-The font is Barlow Condensed, SIL OFL (included). Map and vehicle renders come
-from the existing mod workspace; the public credits page records provenance.
+The font is the unmodified Monofonto 2.000 (2004) by Ray Larabie, matching the
+game’s list and label typeface. `public/assets/monofonto-readme.html` preserves
+the accompanying original licence and notices. Source:
+https://www.abstractfonts.com/font/845 (font and readme in the same package).
+Do not replace it with a newer desktop-only release without checking its licence.
+Map and vehicle renders come from the existing mod workspace; the public
+credits page records provenance.
 
 Verified 12 October 2026: static content / link checks and the full browser suite
 pass at 1440, 1024, 768, 390 and 360 pixels. No horizontal overflow or page errors.
