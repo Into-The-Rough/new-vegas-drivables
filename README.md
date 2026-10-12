@@ -22,6 +22,21 @@ http://localhost:4173. The site also works beneath a GitHub project path.
 
 Windows entry point: `D:\plugins\drivables-nvse-site\public\index.html`.
 
+The Modders page is a local draft awaiting review. Open
+`D:\plugins\drivables-nvse-site\public\modders.html`. Do not publish this draft
+until requested. It covers road-car authoring, component notes, command search,
+events, script examples and troubleshooting. The full author kit is not bundled.
+
+Edit `pages/modders.html` for the guide and `pages/command-notes.json` for command
+explanations. Refresh signatures with
+`python3 scripts/import-commands.py /path/to/DrivablesNVSE`, then run
+`python3 scripts/build-pages.py`. The importer checks annotations against the
+registered command list and excludes reserved no-op slots. `pages/commands.json`
+is the portable snapshot used by the page generator. Source metadata establishes
+syntax and condition support, while the handwritten notes describe behaviour.
+Run `BROWSER_EXECUTABLE=/path/to/chrome node tests/modders.cjs` against the preview
+server to check filtering, deep links, copy buttons and small-screen layouts.
+
 ## Publish on GitHub Pages
 
 Repository: https://github.com/Into-The-Rough/new-vegas-drivables

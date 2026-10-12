@@ -1,0 +1,125 @@
+<article class="modders-page">
+  <div class="draft-strip"><span>Local draft</span><p>Road-car authoring and the scripting reference. Author kit downloads and further vehicle templates are still being prepared.</p></div>
+  <div class="modder-heading"><div><p class="eyebrow">For mod authors</p><h1>Make something drive.</h1><p>Bring your own model, give it a place in the Mojave, or use vehicles in a quest. Start with a simple car and add the details once it drives properly.</p></div><a class="button" href="#commands">{{command-count}} commands ↓</a></div>
+  <nav class="modder-jumps" aria-label="Modding topics"><a href="#first-car">Your first car</a><a href="#components">Components</a><a href="#handling">Handling & sound</a><a href="#commands">Commands</a><a href="#events">Events</a><a href="#recipes">Examples</a><a href="#troubleshooting">Troubleshooting</a></nav>
+
+  <section id="components" class="modder-section">
+    <div class="section-intro"><h2>A car, piece by piece</h2><p>Pick a numbered part to read what it needs. The DeSoto illustrates the components. The starter template uses your own model and measurements.</p></div>
+    <div class="component-view">
+      <svg class="component-image" viewBox="0 0 1024 576" role="group" aria-label="DeSoto component guide">
+        <image href="assets/fleet/desoto-studio.webp" width="1024" height="576"/>
+        <g class="component-lines" fill="none"><path d="M384 420 L143 480 H65"/><path d="M410 260 L251 148 H60"/><path d="M182 327 L171 220 H60"/><path d="M544 355 L702 449 H944"/><path d="M862 225 L887 167 H964"/><path d="M560 260 L690 109 H945"/></g>
+        <a href="#wheels" aria-label="1 Wheels and tyres"><circle cx="143" cy="480" r="24"/><text x="143" y="487">1</text></a>
+        <a href="#glass" aria-label="2 Glass"><circle cx="251" cy="148" r="24"/><text x="251" y="155">2</text></a>
+        <a href="#lights" aria-label="3 Lights"><circle cx="171" cy="220" r="24"/><text x="171" y="227">3</text></a>
+        <a href="#body-parts" aria-label="4 Doors and body parts"><circle cx="702" cy="449" r="24"/><text x="702" y="456">4</text></a>
+        <a href="#rear-lamps" aria-label="5 Rear lamps"><circle cx="887" cy="167" r="24"/><text x="887" y="174">5</text></a>
+        <a href="#seats" aria-label="6 Driver and passengers"><circle cx="690" cy="109" r="24"/><text x="690" y="116">6</text></a>
+      </svg>
+      <ol class="component-key"><li><a href="#wheels">Wheels & tyres</a></li><li><a href="#glass">Glass</a></li><li><a href="#lights">Lights</a></li><li><a href="#body-parts">Doors & body parts</a></li><li><a href="#rear-lamps">Rear lamps</a></li><li><a href="#seats">Driver & passengers</a></li></ol>
+    </div>
+  </section>
+
+  <section id="first-car" class="modder-section">
+    <div class="section-intro"><h2>Your first car</h2><p>The current template is <code>drivables:road-car-v1</code>, for a wheeled car with one physical body. You supply a NIF, an ESP and an INI pack.</p></div>
+    <div class="author-columns"><ol class="author-steps">
+      <li><h3>Make the model</h3><p>Author the body, wheel controls and collision in your NIF. Measure the axle positions, wheel sizes, seat and camera points from that model.</p></li>
+      <li><h3>Create the vehicle record</h3><p>In your own ESP, add a <strong>CONT</strong> record and point its model path at your NIF. Use <strong>IDLE</strong> records for driver poses. Detached parts usually use <strong>MSTT</strong> records.</p></li>
+      <li><h3>Describe it in a pack</h3><p>Create <code>pack.ini</code> and a vehicle definition under <code>config/DrivablesNVSE/addons/</code>. Give the pack and vehicle stable names. Fill every measured field in the template.</p></li>
+      <li><h3>Fit the driver and tune it</h3><p>Choose a driver idle or animation pack, fit the seat and check both cameras. Set mass, engine torque, braking and gear ratios. Keep optional damage disabled until its parts are ready.</p></li>
+      <li><h3>Validate, package, then test</h3><p>The author kit checks files and definitions. Check driving, collision, entry, exit and saving in game yourself. Package the ESP, models, textures and definitions as a separate mod.</p></li>
+    </ol><aside class="author-aside"><h3>A pack owns its files</h3><pre><code>MyCar/
+  authoring.json
+  Data/
+    YourCars.esp
+    meshes/yourname/coupe.nif
+    textures/yourname/...
+    config/DrivablesNVSE/addons/
+      yourname.cars/
+        pack.ini
+        vehicles/coupe.ini
+        parts/body.ini</code></pre><p><code>parts/body.ini</code> is optional. <code>authoring.json</code> lists the assets to package. It does not generate your model.</p><p>Keep your definitions in the add-on folder. You do not need to edit the main vehicle INI.</p><div class="download-links"><a href="downloads/road-car-v1.ini" download>Vehicle template ↓</a><a href="downloads/pack.ini" download>Pack manifest example ↓</a></div></aside></div>
+    <details class="author-detail"><summary>Pack and vehicle identity</summary><div class="detail-columns"><div><h3>pack.ini</h3><div class="code-sample"><pre><code>[Pack]
+iFormatVersion=1
+sID=yourname.cars
+sName=Your cars
+sRequiredPlugins=FalloutNV.esm,YourCars.esp
+
+[Files]
+sVehicles=vehicles/coupe.ini</code></pre><button type="button" data-copy>Copy manifest</button></div></div><div><h3>Vehicle identity</h3><div class="code-sample"><pre><code>[Vehicle coupe]
+sTemplate=drivables:road-car-v1
+sForm=YourCars.esp|001234
+sPrompt=Drive Coupe
+sDriverIdleID=YourCars.esp|001235</code></pre><button type="button" data-copy>Copy identity</button></div><p>This is the identity portion only. Complete the geometry and drivetrain fields in the downloaded template.</p><p><code>001234</code> is a local FormID. Leave out the load-order prefix. Keep <code>yourname.cars:coupe</code> unchanged when updating a released pack.</p></div></div></details>
+    <details class="author-detail"><summary>Using the author kit</summary><p>From the extracted author kit, create a project, fill in its files and then run validation and packaging. These commands are for a terminal, not the game console.</p><div class="code-sample"><pre><code>python tools\drivables_author.py new --template road-car-v1 --id yourname.cars --output MyCar
+python tools\drivables_author.py validate --pack MyCar --data "PATH_TO_RESOLVED_DATA"
+python tools\drivables_author.py package --pack MyCar --data "PATH_TO_RESOLVED_DATA" --output MyCar.zip</code></pre><button type="button" data-copy>Copy commands</button></div><p>Replace <code>PATH_TO_RESOLVED_DATA</code> with the Data directory containing the dependencies the game sees. Install the kit’s Python requirements first. PASS means the offline checks passed. ERROR and INCOMPLETE block packaging.</p><p class="draft-note">Draft download note: the full kit is not bundled on this page yet. Its red and blue example cars have offline checks, but still need their first in-game sign-off. The optional exporter creates simple examples from dimensions. A general Blender scene exporter is not included.</p></details>
+  </section>
+
+  <section class="modder-section" id="model"><div class="section-intro"><h2>Build the rig before the details</h2><p>Use the starter hierarchy as a reference. The body and wheels share one vehicle, with one rigid body providing collision.</p></div>
+    <div class="detail-columns"><div class="rig-tree"><pre><code>Vehicle root · BSFadeNode
+├─ collision · one rigid body
+└─ Bip01
+   └─ Base
+      └─ RotControl
+         ├─ Body
+         │  ├─ body geometry
+         │  └─ DriverSeat
+         ├─ SteerFL
+         │  └─ WheelFL
+         ├─ SteerFR
+         │  └─ WheelFR
+         ├─ WheelRL
+         └─ WheelRR</code></pre></div><div><h3>Measure, don’t guess</h3><p>The template asks for front and rear axle distances, half-track, wheel radii and widths, suspension positions, contact probes, seat offsets and camera fit.</p><p>The required controls include <code>Base</code>, <code>RotControl</code>, both front steering nodes and all four wheel nodes. The model also needs usable rigid-body mass and valid transforms.</p><p>Check the exported model, including its collision. A shape that looks correct in the viewport can still have the wrong origin, winding or pivot.</p><p class="reference-note">This tree follows the simple author-kit example. The numbered DeSoto picture is a component index, not a dump of its NIF hierarchy.</p></div></div>
+  </section>
+
+  <div class="component-notes">
+    <section id="wheels"><p class="eyebrow">01 / Rolling gear</p><h2>Wheels & tyres</h2><p>Front wheels spin under their steering controls. Put the steering pivot at the wheel centre and keep the wheel geometry under its spin node.</p><ul><li>Measure front and rear radius and half-width separately.</li><li>Match axle positions and suspension offsets to the exported rig.</li><li>Check spin direction, steering and ground contact in game.</li><li>After mirroring a wheel, check outward normals and triangle winding.</li></ul><div class="mini-flow"><span>SteerFL<small>steering</small></span><b aria-hidden="true">→</b><span>WheelFL<small>rotation</small></span><b aria-hidden="true">→</b><span>Tyre mesh<small>appearance</small></span></div><p>Puncture behaviour is enabled with <code>bTyrePop</code>. Test it with <a href="#DrvPopTyre">DrvPopTyre</a>. A convincing flat tyre needs a compatible deformation rig, beyond a spinning wheel.</p><p class="draft-note">A worked tyre-deformation example is still needed for the public kit.</p></section>
+    <section id="glass"><p class="eyebrow">02 / Windows</p><h2>Glass</h2><p>Keep breakable panes in named geometry shapes. Declare those shapes and their damage groups in <code>[Glass local-id]</code> definitions, linked through your parts set.</p><ul><li>Leave the opaque window frames outside the shattering shapes.</li><li>Check transparency from inside and outside the car.</li><li>Enable <code>bGlassShatter</code> only when the definitions and shapes exist.</li><li>Test damage, repair and reload together.</li></ul><p>The current parts set supports up to sixteen glass shapes. Its names must resolve to geometry in the loaded model.</p></section>
+    <section id="lights"><p class="eyebrow">03 / Seeing the road</p><h2>Headlights</h2><p>A lamp lens, a visible beam and light falling on the world are separate things. Check each one when authoring the front lamps.</p><ul><li><code>HeadlightL</code> and <code>HeadlightR</code> locate the front lights.</li><li>The fleet uses beam geometry named <code>HeadlightConeL</code> and <code>HeadlightConeR</code>.</li><li>Fit the anchors to the model and check aim after steering, pitch and roll.</li><li>Check the lights both parked and while driving.</li></ul><p class="draft-note">The dedicated front-light recipe still needs an add-on example covering lens materials, beam orientation and profile settings. These node names describe the existing implementation.</p></section>
+    <section id="body-parts"><p class="eyebrow">04 / Bodywork</p><h2>Doors, bonnet, boot & bumpers</h2><p>A detachable part needs an attached control node, a separate debris model and a matching prop record. Its definition supplies the node, prop, marker and measured offsets or bounds.</p><ul><li>Most detached props use MSTT records. A bonnet may explicitly use CONT.</li><li><code>bHoodDamage</code> covers bonnet and boot parts. Doors and bumpers have separate gates.</li><li>Fit entry and exit animations to the doors you actually authored.</li><li>Check the part after damage, repair and save/load.</li></ul><p>Per parts set: one bonnet, one boot, two doors and two bumpers. The blue author-kit example demonstrates a detachable bonnet.</p></section>
+    <section id="rear-lamps"><p class="eyebrow">05 / Rear lamps</p><h2>Braking, reversing & damage</h2><p>Declare the brake and reverse parent nodes, their glow shapes, the damaged shapes and hit bounds in <code>[RearLamp local-id]</code>.</p><div class="lamp-states"><span>Brake<small>brake glow parent</small></span><span>Reverse<small>reverse glow parent</small></span><span>Broken<small>damaged shapes</small></span></div><p>The glow must be beneath the parent which switches it. Merely giving a shape the right name is not enough. Rear-lamp damage uses the glass-shatter gate.</p><p>Two lamp slots are supported. Number them from zero without gaps. Test brake and reverse separately, then shoot and repair each lamp.</p></section>
+    <section id="seats"><p class="eyebrow">06 / People</p><h2>Driver & passengers</h2><p>Fit hands, feet and seating height to your model. An existing animation pack provides motion, but its pose will still need checking against a new steering wheel and seat.</p><ul><li>Author the driver anchor and first-person camera separately.</li><li>Allow room for a standing exit beside the car.</li><li>Declare passenger positions explicitly. Their count excludes the driver.</li><li>Check entry and exit from both sides where supported.</li></ul><p>Named driver packs bind through <code>sDriverPack</code>. Entry and exit definitions bind through <code>sTransitionPack</code>. Custom transitions include durations and seat-transfer timing.</p><p><a href="#DrvGetPassengerCount">Query passengers ↗</a></p></section>
+  </div>
+
+  <section class="modder-section" id="handling"><div class="section-intro"><h2>Give it its own character</h2><p>Once the rig works, tune the parts the player will feel and hear.</p></div><div class="topic-grid"><div><h3>Handling</h3><p>Start with mass, wheel geometry, engine torque and brake torque. Set a positive gear ratio for every active gear, decreasing as the gears rise. Check acceleration, turning, braking and rough ground before chasing a top-speed number.</p></div><div><h3>Sound</h3><p>Use <code>[AudioProfile local-id]</code> for RPM banks and cues, bound with <code>sAudioProfile</code>. Fit acceleration and coasting recordings, then ignition and other one-shots. Impact banks have their own material classes and tap, hit and break folders.</p></div><div><h3>Fuel & damage</h3><p>The blank template starts with fuel and boost disabled. Decide which systems suit the vehicle, then configure and test them. Keep the player’s service transaction separate from direct script repairs and fuel changes.</p></div><div><h3>Effects & variants</h3><p>Add liveries, exhaust and a wreck only where the matching resources and configuration exist. Some fleet-specific effects and body dent meshes still use built-in definitions. They need their own add-on support before being promised as generic features.</p></div></div></section>
+
+  <section id="commands" class="modder-section"><div class="section-intro"><h2>Command reference</h2><p>{{command-count}} registered commands, grouped by what they do. Expand a row for syntax and return values. Reserved, removed command slots are omitted.</p></div>
+    <div class="syntax-guide"><div><h3>Calling reference</h3><code>MyCarRef.DrvGetVehicleSpeed</code><p>The reference before the dot is the vehicle being queried. In the console, selecting that vehicle supplies the calling reference.</p></div><div><h3>Explicit argument</h3><code>DrvSetFuel 10 MyCarRef</code><p>The older service commands accept an explicit vehicle after the value. Follow each signature. Square brackets mean an optional argument.</p></div></div>
+    <p>Examples use placeholder editor IDs such as <code>MyCarRef</code>. Replace them with your own records or script variables. In the console, select a placed reference or use its resolved FormID. A base form defines a vehicle type. A reference is one particular vehicle in the world.</p>
+    <div class="command-controls" hidden><label>Find a command<input id="command-search" type="search" placeholder="Name, fuel, passenger, tyre…" autocomplete="off"></label><label>Category<select id="command-category"><option value="">All commands</option><option>Vehicles</option><option>Occupants</option><option>Service & damage</option><option>Access & restoration</option><option>NPC driving</option><option>Races & ramps</option><option>Horses</option></select></label><label class="condition-filter"><input id="command-conditions" type="checkbox">Condition functions only</label><button id="command-reset" type="button">Reset</button></div>
+    <p id="command-count" aria-live="polite">{{command-count}} commands</p><p id="command-empty" hidden>No matching commands. Try a broader search or reset the filters.</p><div class="command-list"><!--command-reference--></div>
+    <details class="author-detail" id="use-failures"><summary>Vehicle-use failure codes</summary><p><code>DrvGetVehicleUseFailure</code> explains the same eligibility check used by <code>CanUseVehicle</code>.</p><dl class="failure-codes"><dt>0</dt><dd>Allowed</dd><dt>1</dt><dd>Invalid or disabled vehicle</dd><dt>2</dt><dd>Invalid or disabled actor, or actor is the vehicle</dd><dt>3</dt><dd>Dead actor or wrecked vehicle</dd><dt>4</dt><dd>Occupied or reserved vehicle</dd><dt>5</dt><dd>Actor already aboard, mounting or reserved</dd><dt>6</dt><dd>Race restriction</dd><dt>7</dt><dd>Vehicle fault</dd><dt>8</dt><dd>Locked</dd><dt>9</dt><dd>Missing player key</dd><dt>10</dt><dd>Water restriction</dd><dt>11</dt><dd>Ownership or theft confirmation required</dd><dt>12</dt><dd>Hostile horse</dd><dt>13</dt><dd>Vehicle or driver not ready</dd><dt>14</dt><dd>Unsupported NPC driving configuration</dd><dt>15</dt><dd>Session or access-record capacity exhausted</dd></dl></details>
+  </section>
+
+  <section id="events" class="modder-section"><div class="section-intro"><h2>React to a ride</h2><p>Use events for changes such as mounting or wrecking. These six events are registered with xNVSE. Handlers are flushed on load, so register them again when your game-load initialisation runs.</p></div><div class="table-scroll"><table class="event-table"><thead><tr><th>Event</th><th>Arguments, in order</th><th>Use</th></tr></thead><tbody>
+    <tr><th><code>Drv:OnMount</code></th><td>vehicle, actor</td><td>React when a rider mounts.</td></tr><tr><th><code>Drv:OnDismount</code></th><td>vehicle, actor</td><td>React when a rider dismounts.</td></tr><tr><th><code>Drv:OnVehicleWrecked</code></th><td>vehicle</td><td>Handle the loss of a vehicle.</td></tr><tr><th><code>Drv:OnRideEnd</code></th><td>vehicle, driver, reason</td><td>Distinguish arrival from an interrupted NPC ride.</td></tr><tr><th><code>Drv:OnEncounterSpawn</code></th><td>quest, leader</td><td>Track the newly started encounter.</td></tr><tr><th><code>Drv:OnEncounterEnd</code></th><td>quest</td><td>Handle the end of an encounter.</td></tr>
+    </tbody></table></div><p>Ride-end reasons: <strong>0</strong> arrived, <strong>1</strong> aborted, <strong>2</strong> stopped, <strong>3</strong> driver lost, <strong>4</strong> wrecked, <strong>5</strong> handover, <strong>6</strong> world reset, <strong>7</strong> robbed.</p><p>Check that a returned reference still exists before acting on it. An accepted command can start a transition or queue work. Use the appropriate state query or event to follow the result.</p><p class="draft-note">A complete event-handler example, including save/load registration, will accompany the wiki reference.</p></section>
+
+  <section id="recipes" class="modder-section"><div class="section-intro"><h2>A few useful starting points</h2><p>These snippets belong inside your own script. Declare the variables you use and replace the example records with your own.</p></div><div class="recipe-grid">
+    <div><h3>Check a player’s ride</h3><div class="code-sample"><pre><code>let vehicle := Player.DrvGetActorVehicle
+if vehicle
+    let condition := vehicle.DrvGetVehicleCondition
+    let passengers := vehicle.DrvGetPassengerCount
+endif</code></pre><button type="button" data-copy>Copy example</button></div><p>This also finds the vehicle when the actor is a passenger. The driver is queried separately.</p></div>
+    <div><h3>Unlock a placed quest reward</h3><div class="code-sample"><pre><code>DrvSetVehicleLocked 0 MyRewardCarRef</code></pre><button type="button" data-copy>Copy example</button></div><p>Run from your quest’s reward logic. This clears the plugin lock. Ownership, keys, faults and other access rules still apply. A placed reference gives you a fixed parking spot.</p></div>
+    <div><h3>Set up a restoration</h3><div class="code-sample"><pre><code>DrvSetVehicleFault "The engine needs a replacement part." MyCarRef
+DrvSetVehicleRestoration MyRepairPart 50 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><p>Run setup once. <code>MyRepairPart</code> must be a MISC item. Later, <a href="#DrvRestoreVehicle">DrvRestoreVehicle</a> attempts the repair using the player’s inventory and Repair skill.</p></div>
+    <div><h3>Give a horse a command</h3><div class="code-sample"><pre><code>let horse := DrvGetActiveHorse
+if horse
+    horse.DrvSetHorseCommand 2
+endif</code></pre><button type="button" data-copy>Copy example</button></div><p>Command 2 means wait. It requires a living stabled horse. Use 1 for follow or 0 for free.</p></div>
+    </div></section>
+
+  <section id="troubleshooting" class="modder-section"><div class="section-intro"><h2>When it doesn’t work</h2><p>Start with the validator’s file, section and field message. For runtime rejection, check <code>drivables_nvse.log</code> in the game directory or your mod manager’s overwrite output.</p></div>
+    <details class="author-detail"><summary>The pack is rejected</summary><p>Check required plugins, qualified FormIDs, record types, duplicate ownership and missing files. Two packs cannot claim the same vehicle base or livery. Unknown definition keys are errors. INCOMPLETE means a check could not run, not that the pack passed.</p></details>
+    <details class="author-detail"><summary>The car appears, but I cannot mount it</summary><p>Check the loaded rigid body, mass, required control nodes and transforms. Then check any declared part nodes, debris models and driver animations. The log includes the vehicle ID and rejection reason. <a href="#DrvGetVehicleUseFailure">DrvGetVehicleUseFailure</a> can identify a gameplay access restriction.</p></details>
+    <details class="author-detail"><summary>The wheels float, turn strangely or shade incorrectly</summary><p>Compare the exported wheel centres and radii with the INI measurements. Check steering and spin pivots, front/rear offsets and contact probes. For a mirrored wheel, inspect triangle winding and outward normals before changing its textures or specular settings.</p></details>
+    <details class="author-detail"><summary>A light or damage feature does nothing</summary><p>Check that the feature is enabled, its parts set is bound and its exact node or shape names exist. For rear lamps, confirm that each glow is a child of its switched parent. Test with a fresh model load after changing the definitions.</p></details>
+    <details class="author-detail"><summary>I changed the files, but the old setup remains</summary><p>Restart the game after changing manifests, forms, models, feature definitions or animations. Use the workshop for supported live numeric tuning. Check which copy of the file wins in your mod manager.</p></details>
+  </section>
+
+  <section id="release-checks" class="modder-section"><div class="section-intro"><h2>Before sharing your vehicle</h2><p>Keep the pack’s stable IDs and dependency declarations intact. Package only the files your add-on needs, with its asset credits.</p></div><ul class="release-checks"><li>Enter, drive, reverse, brake and exit.</li><li>Check collision and wheel contact on uneven ground.</li><li>Check the driver, passengers and both cameras.</li><li>Damage and repair every optional component.</li><li>Save, reload and return after a cell change.</li><li>Install the packaged ZIP in a clean mod-manager profile.</li></ul><p class="draft-note">Draft scope: road cars have the current author template. Aircraft, boats, bikes and living mounts need their own converted templates and examples. Some model-specific effects still need to move into pack definitions.</p></section>
+  <p class="modder-end"><a href="#first-car">Back to your first car ↑</a><a href="#commands">Command reference ↑</a></p>
+  <p id="copy-status" class="sr-only" role="status"></p>
+</article>

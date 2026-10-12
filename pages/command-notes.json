@@ -1,0 +1,422 @@
+{
+  "DrvStartRide": {
+    "group": "NPC driving",
+    "description": "Start an NPC following a route, or wandering if the route is omitted.",
+    "returns": "1 if accepted, 0 if refused.",
+    "note": "Route paths are Data-relative. Acceptance may queue a ride while its model loads.",
+    "example": "DrvStartRide MyCarRef MyDriverRef"
+  },
+  "DrvStartRideTo": {
+    "group": "NPC driving",
+    "description": "Send an NPC in a vehicle to a destination reference.",
+    "returns": "1 if accepted, 0 if refused.",
+    "note": "Use a placed destination reference. A successful request is not proof of arrival.",
+    "example": "DrvStartRideTo MyCarRef MyDriverRef MyDestinationRef"
+  },
+  "DrvStartChase": {
+    "group": "NPC driving",
+    "description": "Ask an NPC driver to pursue a target reference.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "The target may be a vehicle or actor.",
+    "example": "DrvStartChase MyCarRef MyDriverRef Player"
+  },
+  "DrvStopRide": {
+    "group": "NPC driving",
+    "description": "Stop an NPC ride.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "retain motion: 0 stops the ride without retaining motion, 1 requests retaining motion.",
+    "example": "DrvStopRide MyCarRef 0"
+  },
+  "DrvGetRideState": {
+    "group": "NPC driving",
+    "description": "Read the NPC ride state.",
+    "returns": "0 none, 1 pending, 2 route, 3 wander, 4 destination, 5 chasing."
+  },
+  "DrvGetRideDriver": {
+    "group": "NPC driving",
+    "description": "Read the driver assigned to an NPC ride.",
+    "returns": "Driver reference, or 0.",
+    "note": "For a query that also covers the player, use vehicle.DrvGetVehicleDriver."
+  },
+  "DrvGetRideTarget": {
+    "group": "NPC driving",
+    "description": "Read an NPC ride’s chase target.",
+    "returns": "Target reference, or 0."
+  },
+  "DrvSetRideSpeed": {
+    "group": "NPC driving",
+    "description": "Change the cruise speed of an active NPC ride.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Speed is metres per second. Requires an active NPC driving session.",
+    "example": "DrvSetRideSpeed MyCarRef 12"
+  },
+  "DrvSetRideAggression": {
+    "group": "NPC driving",
+    "description": "Change the aggression value of an active NPC ride.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Requires an active NPC driving session. The ride request default is 1.0."
+  },
+  "DrvAddDriver": {
+    "group": "NPC driving",
+    "description": "Spawn a driver at the calling vehicle and start a wandering ride.",
+    "returns": "Spawned driver reference, or 0.",
+    "note": "Call on the vehicle. The optional argument is an actor base, not an existing actor. If omitted, the traffic driver pool is used.",
+    "example": "let driver := MyCarRef.DrvAddDriver"
+  },
+  "DrvStartEncounter": {
+    "group": "NPC driving",
+    "description": "Start a configured vehicle encounter.",
+    "returns": "Leader reference, or 0.",
+    "note": "The quest must belong to a configured encounter."
+  },
+  "DrvGetEncounterAlive": {
+    "group": "NPC driving",
+    "description": "Count surviving members of a configured encounter.",
+    "returns": "Number of surviving members."
+  },
+  "DrvRepairVehicle": {
+    "group": "Service & damage",
+    "description": "Restore vehicle health and supported damaged parts.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This is a direct repair. It does not consume repair tools or apply the menu’s skill check. Active race service restrictions still apply.",
+    "example": "DrvRepairVehicle MyCarRef"
+  },
+  "DrvRefuel": {
+    "group": "Service & damage",
+    "description": "Fill a vehicle’s configured fuel reserve.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This directly fills the reserve without consuming inventory supplies. Active race service restrictions still apply.",
+    "example": "DrvRefuel MyCarRef"
+  },
+  "DrvGetPlayerVehicle": {
+    "group": "Vehicles",
+    "description": "Get the player’s current vehicle.",
+    "returns": "Vehicle reference, or 0.",
+    "example": "let vehicle := DrvGetPlayerVehicle"
+  },
+  "DrvGetVehicleHealth": {
+    "group": "Service & damage",
+    "description": "Read raw vehicle health.",
+    "returns": "Health points, or -1 if unavailable.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetVehicleCondition for a percentage."
+  },
+  "DrvGetFuel": {
+    "group": "Service & damage",
+    "description": "Read the stored fuel reserve.",
+    "returns": "Stored reserve in litres, or -1 for an invalid vehicle.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetFuelCapacity to check whether the vehicle has a supported fuel system."
+  },
+  "DrvSetFuel": {
+    "group": "Service & damage",
+    "description": "Set the stored fuel reserve.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The value is litres, clamped to the vehicle’s capacity. No inventory supply is consumed.",
+    "example": "DrvSetFuel 10 MyCarRef"
+  },
+  "DrvSpawnVehicle": {
+    "group": "Vehicles",
+    "description": "Spawn a registered vehicle base.",
+    "returns": "New vehicle reference, or 0.",
+    "note": "Pass a base form, not a placed reference. The optional placement reference supplies position and heading. It falls back to the caller, then the player. Use an anchor in the player’s current world or cell. Arena unlock restrictions still apply.",
+    "example": "let car := DrvSpawnVehicle MyCarBase MyParkingMarker"
+  },
+  "DrvMount": {
+    "group": "Vehicles",
+    "description": "Request mounting the player on a vehicle.",
+    "returns": "1 if the transition was requested, 0 otherwise.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This starts an action. It does not mean the transition has finished."
+  },
+  "DrvDismount": {
+    "group": "Vehicles",
+    "description": "Request that the player dismount.",
+    "returns": "1 if accepted, 0 otherwise."
+  },
+  "DrvRecoverVehicle": {
+    "group": "Vehicles",
+    "description": "Request recovery of a vehicle.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Recovery can be refused by the vehicle’s current state or race restrictions."
+  },
+  "DrvDamageVehicle": {
+    "group": "Service & damage",
+    "description": "Apply damage to a vehicle.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Amount is raw health damage, not a percentage.",
+    "example": "DrvDamageVehicle 25 MyCarRef"
+  },
+  "DrvPopTyre": {
+    "group": "Service & damage",
+    "description": "Mark a tyre as punctured.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use indices 0–5 for wheel slots. -1 punctures all slots. The vehicle must have an appropriate tyre rig for the expected visual result.",
+    "example": "DrvPopTyre -1 MyCarRef"
+  },
+  "DrvSetVehicleLocked": {
+    "group": "Access & restoration",
+    "description": "Set the plugin’s vehicle lock.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use 0 to unlock, 1 to lock.",
+    "example": "DrvSetVehicleLocked 1 MyCarRef"
+  },
+  "DrvSetHorseTack": {
+    "group": "Horses",
+    "description": "Show or hide a horse’s tack.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Use 0 to hide or 1 to show. Pass a horse reference or call on the horse.",
+    "example": "DrvSetHorseTack 1 MyHorseRef"
+  },
+  "DrvSetVehicleFault": {
+    "group": "Access & restoration",
+    "description": "Set a fault message which prevents normal use.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. An empty string clears the fault.",
+    "example": "DrvSetVehicleFault \"The engine needs a replacement part.\" MyCarRef"
+  },
+  "DrvHasVehicleFault": {
+    "group": "Access & restoration",
+    "description": "Check whether a vehicle has a recorded fault.",
+    "returns": "1 with a fault, otherwise 0.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride."
+  },
+  "DrvSetVehicleRestoration": {
+    "group": "Access & restoration",
+    "description": "Assign a restoration component and Repair requirement.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The component must be a MISC form. Repair skill must be between 0 and 100. Set a fault separately. This defines the requirement, it does not perform a repair.",
+    "example": "DrvSetVehicleRestoration MyRepairPart 50 MyCarRef"
+  },
+  "DrvRestoreVehicle": {
+    "group": "Access & restoration",
+    "description": "Attempt the configured restoration using the player’s skill and inventory.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Requires the vehicle to be loaded, nearby, unlocked and unoccupied. On success the required item is consumed. This is separate from DrvRepairVehicle.",
+    "example": "DrvRestoreVehicle MyCarRef"
+  },
+  "DrvStartRace": {
+    "group": "Races & ramps",
+    "description": "Queue race setup with optional vehicle assignments.",
+    "returns": "1 if queued, 0 if refused.",
+    "note": "Omitted options use defaults. The opponent argument is a FormList of supported vehicle bases, up to 16 entries. This queues setup rather than confirming the race has begun.",
+    "example": "DrvStartRace 3"
+  },
+  "DrvEndRace": {
+    "group": "Races & ramps",
+    "description": "Queue the end of the current race.",
+    "returns": "1 after queuing the request."
+  },
+  "DrvHorseCrap": {
+    "group": "Horses",
+    "description": "Request the horse’s manure action.",
+    "returns": "1 if queued, 0 if unavailable.",
+    "note": "Choose a calm, stationary horse. Pass the horse, select it in the console, or omit the target while riding a horse."
+  },
+  "IsDriving": {
+    "group": "Occupants",
+    "description": "Check whether an actor is driving.",
+    "returns": "1 if driving, otherwise 0.",
+    "note": "Covers non-living vehicles, including stationary active driving sessions. IsRiding is the living-mount query.",
+    "example": "if Player.IsDriving\n    let vehicle := DrvGetPlayerVehicle\nendif",
+    "caller": "actor"
+  },
+  "IsRiding": {
+    "group": "Occupants",
+    "description": "Check whether an actor is riding a horse or another living mount.",
+    "returns": "1 if riding, otherwise 0.",
+    "note": "This is the living-mount query. IsDriving covers non-living vehicles. Use IsPassenger for passenger assignment.",
+    "caller": "actor"
+  },
+  "DrvGetActorVehicle": {
+    "group": "Occupants",
+    "description": "Find an actor’s current vehicle or horse, including passengers.",
+    "returns": "Vehicle or horse reference, or 0.",
+    "example": "let vehicle := Player.DrvGetActorVehicle",
+    "caller": "actor"
+  },
+  "DrvGetVehicleDriver": {
+    "group": "Occupants",
+    "description": "Get a vehicle’s active player or NPC driver.",
+    "returns": "Driver reference, or 0.",
+    "note": "Pending NPC rides do not count as active drivers.",
+    "caller": "vehicle"
+  },
+  "IsPassenger": {
+    "group": "Occupants",
+    "description": "Check whether an actor is assigned as a passenger.",
+    "returns": "1 if assigned, otherwise 0.",
+    "note": "Reports logical seat assignment, including temporary save suspension.",
+    "caller": "actor"
+  },
+  "IsInVehicle": {
+    "group": "Occupants",
+    "description": "Check whether an actor is aboard a specific vehicle.",
+    "returns": "1 if driver or passenger of that vehicle, otherwise 0.",
+    "example": "if Player.IsInVehicle MyCarRef\n    let condition := MyCarRef.DrvGetVehicleCondition\nendif",
+    "caller": "actor"
+  },
+  "IsDrivable": {
+    "group": "Vehicles",
+    "description": "Check whether a reference is a recognised vehicle or horse.",
+    "returns": "1 if recognised, otherwise 0.",
+    "caller": "ref"
+  },
+  "DrvGetVehicleType": {
+    "group": "Vehicles",
+    "description": "Read the vehicle category.",
+    "returns": "0 invalid, 1 road, 2 motorcycle, 3 human-powered, 4 hover, 5 aircraft, 6 boat, 7 horse or living mount.",
+    "caller": "vehicle"
+  },
+  "DrvGetPassengerCount": {
+    "group": "Occupants",
+    "description": "Count passengers assigned to this vehicle.",
+    "returns": "Passenger count, excluding the driver.",
+    "note": "Passenger support concerns the player’s vehicle.",
+    "caller": "vehicle"
+  },
+  "DrvGetPassenger": {
+    "group": "Occupants",
+    "description": "Get the passenger assigned to a seat.",
+    "returns": "Passenger reference, or 0.",
+    "note": "Passenger seats start at 1. Query the driver separately.",
+    "example": "let passenger := MyCarRef.DrvGetPassenger 1",
+    "caller": "vehicle"
+  },
+  "DrvGetVehicleSpeed": {
+    "group": "Vehicles",
+    "description": "Read horizontal speed, including reverse and sideways motion.",
+    "returns": "Speed in metres per second, or -1 if unavailable.",
+    "note": "Loaded parked vehicles return 0. Unloaded vehicles and untracked bumped hulls return -1. Multiply by 3.6 for km/h or 2.23694 for mph.",
+    "example": "let speed := MyCarRef.DrvGetVehicleSpeed",
+    "caller": "vehicle"
+  },
+  "IsEngineRunning": {
+    "group": "Vehicles",
+    "description": "Check whether a motorised engine is running.",
+    "returns": "1 if running, otherwise 0.",
+    "note": "Horses and human-powered rides return 0.",
+    "caller": "vehicle"
+  },
+  "IsVehicleLocked": {
+    "group": "Access & restoration",
+    "description": "Read the plugin’s vehicle lock.",
+    "returns": "1 if locked, otherwise 0.",
+    "caller": "vehicle"
+  },
+  "IsVehicleOccupied": {
+    "group": "Occupants",
+    "description": "Check for an active driver or assigned passenger.",
+    "returns": "1 if occupied, otherwise 0.",
+    "caller": "vehicle"
+  },
+  "IsVehicleWrecked": {
+    "group": "Service & damage",
+    "description": "Check for a destroyed hull or dead vehicle / mount.",
+    "returns": "1 if wrecked or dead, otherwise 0.",
+    "caller": "vehicle"
+  },
+  "DrvGetVehicleCondition": {
+    "group": "Service & damage",
+    "description": "Read rounded vehicle health as a percentage.",
+    "returns": "0–100, or -1 for an invalid vehicle.",
+    "note": "Use DrvGetVehicleHealth for raw health points.",
+    "caller": "vehicle"
+  },
+  "DrvGetFuelCapacity": {
+    "group": "Service & damage",
+    "description": "Read the capacity of a supported fuel system.",
+    "returns": "Capacity in litres, or -1 if unsupported.",
+    "caller": "vehicle"
+  },
+  "CanUseVehicle": {
+    "group": "Access & restoration",
+    "description": "Check whether an actor can begin a fresh ride now.",
+    "returns": "1 if eligible, otherwise 0.",
+    "note": "Does not reserve the vehicle or approve takeovers, theft confirmation or route availability. A later action can still fail.",
+    "example": "if MyCarRef.CanUseVehicle Player\n    DrvMount MyCarRef\nendif",
+    "caller": "vehicle"
+  },
+  "DrvGetVehicleUseFailure": {
+    "group": "Access & restoration",
+    "description": "Explain why an actor cannot begin a fresh ride.",
+    "returns": "0 if allowed, otherwise a failure code from the table below.",
+    "note": "Uses the same eligibility check as CanUseVehicle.",
+    "caller": "vehicle"
+  },
+  "DrvGetActiveHorse": {
+    "group": "Horses",
+    "description": "Get the selected stable horse.",
+    "returns": "Horse reference, or 0.",
+    "example": "let horse := DrvGetActiveHorse"
+  },
+  "IsStabled": {
+    "group": "Horses",
+    "description": "Check whether a horse is registered in the stable.",
+    "returns": "1 if registered, otherwise 0.",
+    "caller": "horse"
+  },
+  "DrvGetHorseCommand": {
+    "group": "Horses",
+    "description": "Read the horse’s current command.",
+    "returns": "0 free, 1 follow, 2 wait, or -1 if invalid.",
+    "caller": "horse"
+  },
+  "DrvSetHorseCommand": {
+    "group": "Horses",
+    "description": "Give a living stabled horse a command.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "0 free, 1 follow, 2 wait. Asking a new horse to follow moves the previous follower to wait.",
+    "example": "MyHorseRef.DrvSetHorseCommand 2",
+    "caller": "horse"
+  },
+  "DrvGetHorseBond": {
+    "group": "Horses",
+    "description": "Read the horse’s bond.",
+    "returns": "0–100 percent, or -1 if invalid.",
+    "caller": "horse"
+  },
+  "DrvGetHorseTrait": {
+    "group": "Horses",
+    "description": "Read one of the horse’s individual ratings.",
+    "returns": "Rating 1–5, or -1 if invalid.",
+    "note": "Trait: 0 speed, 1 endurance, 2 nerve. Ratings are not physics multipliers.",
+    "example": "let nerve := MyHorseRef.DrvGetHorseTrait 2",
+    "caller": "horse"
+  },
+  "DrvGetHorseStamina": {
+    "group": "Horses",
+    "description": "Read the horse’s current stamina.",
+    "returns": "0–100, or -1 if invalid.",
+    "note": "Includes resting recovery. A profile with stamina disabled returns 100.",
+    "caller": "horse"
+  },
+  "IsHorsePanicking": {
+    "group": "Horses",
+    "description": "Check for active panic or a panic rear.",
+    "returns": "1 during panic, otherwise 0.",
+    "note": "An unmounted horse returns 0.",
+    "caller": "horse"
+  },
+  "DrvSetHorseName": {
+    "group": "Horses",
+    "description": "Rename a living player-owned stabled horse.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Accepts a string literal or string variable. Names are trimmed and limited to 31 allowed characters. An empty string restores the base name.",
+    "example": "MyHorseRef.DrvSetHorseName \"Dusty\"",
+    "caller": "horse"
+  },
+  "DrvSetHorseBond": {
+    "group": "Horses",
+    "description": "Set a stabled horse’s bond for testing.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Development console only. Requires a living, enabled, registered horse and a finite percentage from 0 to 100.",
+    "example": "DrvSetHorseBond 50",
+    "caller": "horse",
+    "consoleOnly": true
+  },
+  "DrvPlaceRamp": {
+    "group": "Races & ramps",
+    "description": "Place a static ramp ahead of the player, aligned with their facing.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "Requires a STAT base. Placement uses terrain height where available. Check clearance yourself.",
+    "example": "DrvPlaceRamp DrvMegaTabletop"
+  }
+}
