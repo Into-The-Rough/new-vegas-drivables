@@ -1,6 +1,6 @@
 # New Vegas Drivables website
 
-A standalone GitHub Pages site for the mod, using Monofonto and F10-style tabs.
+A standalone GitHub Pages site for the mod, using Monofonto and F10-style navigation.
 The home page uses artwork from the mod's showcase videos and links into the
 beginner guide, placement map, vehicle speeds, driving, stunts, new locations,
 races, horse guide, fuel and repairs, and sound mappings. A separate ethos and
@@ -22,10 +22,17 @@ http://localhost:4173. The site also works beneath a GitHub project path.
 
 Windows entry point: `D:\plugins\drivables-nvse-site\public\index.html`.
 
-The Modders page is a local draft awaiting review. Open
-`D:\plugins\drivables-nvse-site\public\modders.html`. Do not publish this draft
-until requested. It covers road-car authoring, component notes, command search,
+The Modders page has been accepted for publication. Open
+`D:\plugins\drivables-nvse-site\public\modders.html`. It covers road-car authoring, component notes, command search,
 events, script examples and troubleshooting. The full author kit is not bundled.
+
+Navigation has six main sections: Home, Vehicles, Guides, Activities, Modders and
+FAQ. Vehicles groups the catalogue, placements and sound. Guides groups the
+introduction, controls, fuel and repairs, and horses. Activities groups races,
+stunts and new locations. Each group shows a contextual second row. The shared
+hierarchy lives in `scripts/site_navigation.py`, with the same generated markup
+on the interactive index and standalone pages. Existing fragment URLs remain
+valid. About and credits remain in the footer.
 
 Edit `pages/modders.html` for the guide and `pages/command-notes.json` for command
 explanations. Refresh signatures with

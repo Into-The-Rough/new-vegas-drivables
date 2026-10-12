@@ -15,10 +15,10 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     page.on('pageerror', error => errors.push(String(error)));
     page.on('response', response => { if (response.status() >= 400) errors.push(response.url()); });
     await page.goto(base, {waitUntil: 'networkidle'});
-    await page.locator('.page-tabs a[href="modders.html"]').click();
+    await page.locator('.primary-nav a[href="modders.html"]').click();
     await page.waitForURL('**/modders.html');
     await page.evaluate(() => document.fonts.ready);
-    assert.equal(await page.locator('.page-tabs [aria-current="page"]').textContent(), 'Modders');
+    assert.equal(await page.locator('.primary-nav [aria-current="page"]').textContent(), 'Modders');
     assert.equal(await page.locator('.command-entry').count(), 63);
     await page.locator('#command-search').fill('fuel');
     assert.ok(await page.locator('.command-entry:visible').count() < 63);
@@ -65,6 +65,6 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     assert.equal(await nojs.locator('#DrvGetFuel .command-body').isVisible(), true);
     assert.equal(await nojs.locator('.command-controls').isVisible(), false);
     assert.deepEqual(errors, []);
-    console.log('Modders draft passed: 63 commands, combined filters, deep links, clipboard, component links, mobile, local files and no-JavaScript reading.');
+    console.log('Modders guide passed: 63 commands, combined filters, deep links, clipboard, component links, mobile, local files and no-JavaScript reading.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

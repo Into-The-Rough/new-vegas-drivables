@@ -6,18 +6,15 @@
   let category = 'All';
   let selected = 'v-000caa';
   let toastTimer;
-  const tabs = [...document.querySelectorAll('[data-view]')];
+  const viewLinks = [...document.querySelectorAll('[data-view]')];
+  const views = [...document.querySelectorAll('.page-view')];
   let view = 'home';
   try { $('spoilers').checked = localStorage.getItem('drivables-exact-locations') !== 'false'; } catch {}
 
   function showView(id) {
     view = id;
-    tabs.forEach(tab => {
-      const active = tab.dataset.view === id;
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-      $(tab.dataset.view).hidden = !active;
-    });
+    views.forEach(section => { section.hidden = section.id !== id; });
+    window.DrivablesNavigation.setCurrent(id);
     if (id === 'placements') {
       const row = $('discovery-list').querySelector('[aria-current="true"]');
       if (row) $('discovery-list').scrollTop = row.offsetTop - ($('discovery-list').clientHeight - row.offsetHeight) / 2;
@@ -119,7 +116,7 @@
 
   function navigateHash(scroll = true) {
     const section = location.hash.slice(1);
-    if (tabs.some(tab => tab.dataset.view === section)) {
+    if (views.some(view => view.id === section)) {
       showView(section);
       if (scroll) window.scrollTo({top:0, behavior:'instant'});
       return;
@@ -166,22 +163,15 @@
     link.innerHTML=`<span>${escape(entry.name)}<small>${escape(entry.acquisition)}</small></span><span aria-hidden="true">↗</span>`;
     $('reward-links').append(link);
   });
-  document.querySelector('.page-tabs').setAttribute('role','tablist');
-  tabs.forEach((tab, index) => {
-    tab.setAttribute('role','tab');
-    tab.setAttribute('aria-controls',tab.dataset.view);
-    $(tab.dataset.view).setAttribute('role','tabpanel');
-    tab.addEventListener('click', event => {
+  viewLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
       event.preventDefault();
-      showView(tab.dataset.view);
+      showView(link.dataset.view);
       window.scrollTo({top:0, behavior:'instant'});
-      try { history.pushState(null,'',tab.hash); } catch { location.hash=tab.hash; }
-    });
-    tab.addEventListener('keydown', event => {
-      if (event.key===' ') { event.preventDefault(); tab.click(); return; }
-      const next = event.key==='ArrowRight' ? (index+1)%tabs.length : event.key==='ArrowLeft' ? (index+tabs.length-1)%tabs.length : event.key==='Home' ? 0 : event.key==='End' ? tabs.length-1 : -1;
-      if (next < 0) return;
-      event.preventDefault(); tabs[next].click(); tabs[next].focus();
+      if (location.hash !== link.hash) {
+        try { history.pushState(null,'',link.hash); } catch { location.hash=link.hash; }
+      }
     });
   });
   $('search').addEventListener('input', () => { $('discovery-list').scrollTop=0; render(); });

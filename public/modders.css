@@ -1,5 +1,5 @@
 .modders-page { max-width: 1240px; margin: auto; }
-.modders-page [id] { scroll-margin-top: 160px; }
+.modders-page [id] { scroll-margin-top: var(--navigation-offset, 160px); }
 .modders-page p { max-width: 78ch; }
 .modders-page a { text-decoration: none; }
 .modders-page a:hover { text-decoration: underline; }
@@ -106,7 +106,6 @@
 }
 @media (max-width: 650px) {
   .modders-page [id] { scroll-margin-top: 24px; }
-  body:has(.modders-page) .page-tabs { position: static; }
   .draft-strip { display: block; }
   .draft-strip p { margin-top: 6px; }
   .modder-heading { padding-top: 30px; }

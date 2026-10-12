@@ -11,12 +11,14 @@
   <title>New Vegas Drivables</title>
   <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navigation.css">
   <link rel="stylesheet" href="guides.css">
   <link rel="stylesheet" href="controls.css">
   <link rel="stylesheet" href="media.css">
   <script defer src="content.js"></script>
   <script defer src="map.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="navigation.js"></script>
+  <script defer src="app.js?v=sections"></script>
   <script defer src="catalogue.js"></script>
   <script defer src="control-data.js"></script>
   <script defer src="controls.js"></script>
@@ -31,21 +33,11 @@
     <div><p class="game-label">A mod for Fallout: New Vegas</p><h1><a href="#home">New Vegas Drivables</a></h1></div>
     <div class="profile-links"><a class="profile-link" href="https://www.nexusmods.com/newvegas/mods/100007" target="_blank" rel="noopener">Nexus Mods <span aria-hidden="true">↗</span></a><a class="profile-link" href="https://www.youtube.com/@OliverSwanickProductions" target="_blank" rel="noopener">YouTube <span aria-hidden="true">↗</span></a></div>
   </header>
-  <nav class="page-tabs" aria-label="Guide sections">
-    <a id="tab-home" href="#home" data-view="home">Home</a>
-    <a id="tab-start" href="#start" data-view="start">Start here</a>
-    <a id="tab-placements" href="#placements" data-view="placements">Placements</a>
-    <a id="tab-vehicles" href="#vehicles" data-view="vehicles">Vehicles</a>
-    <a id="tab-driving" href="#driving" data-view="driving">Driving</a>
-    <a id="tab-stunts" href="#stunts" data-view="stunts">Stunts</a>
-    <a id="tab-worlds" href="#worlds" data-view="worlds">New locations</a>
-    <a id="tab-races" href="#races" data-view="races">Races</a>
-    <a id="tab-horses" href="#horses" data-view="horses">Horse guide</a>
-    <a id="tab-manual" href="#manual" data-view="manual">Fuel & repairs</a>
-    <a id="tab-sounds" href="#sounds" data-view="sounds">Sound</a>
-    <a id="tab-faq" href="#faq" data-view="faq">FAQ</a>
-    <a href="modders.html">Modders</a>
-  </nav>
+  <!--site-navigation--><div class="site-navigation" data-current-page="home">
+<nav class="primary-nav" aria-label="Main sections"><a href="#home" data-page="home" data-view="home" data-section="home" id="tab-home" aria-current="page">Home</a><a href="#vehicles" data-page="vehicles" data-view="vehicles" data-section="vehicles">Vehicles</a><a href="#start" data-page="start" data-view="start" data-section="guides">Guides</a><a href="#races" data-page="races" data-view="races" data-section="activities">Activities</a><a href="modders.html" data-page="modders" data-section="modders" id="tab-modders">Modders</a><a href="#faq" data-page="faq" data-view="faq" data-section="faq" id="tab-faq">FAQ</a></nav>
+<nav class="section-nav" data-section-nav="vehicles" aria-label="Vehicles" hidden><a href="#vehicles" data-page="vehicles" data-view="vehicles" id="tab-vehicles">Catalogue</a><a href="#placements" data-page="placements" data-view="placements" id="tab-placements">Placements</a><a href="#sounds" data-page="sounds" data-view="sounds" id="tab-sounds">Sound</a></nav><nav class="section-nav" data-section-nav="guides" aria-label="Guides" hidden><a href="#start" data-page="start" data-view="start" id="tab-start">Start here</a><a href="#driving" data-page="driving" data-view="driving" id="tab-driving">Controls</a><a href="#manual" data-page="manual" data-view="manual" id="tab-manual">Fuel &amp; repairs</a><a href="#horses" data-page="horses" data-view="horses" id="tab-horses">Horse guide</a></nav><nav class="section-nav" data-section-nav="activities" aria-label="Activities" hidden><a href="#races" data-page="races" data-view="races" id="tab-races">Races</a><a href="#stunts" data-page="stunts" data-view="stunts" id="tab-stunts">Stunts</a><a href="#worlds" data-page="worlds" data-view="worlds" id="tab-worlds">New locations</a></nav>
+<noscript><nav class="navigation-fallback" aria-label="All guide pages"><a href="#vehicles" data-page="vehicles" data-view="vehicles">Catalogue</a><a href="#placements" data-page="placements" data-view="placements">Placements</a><a href="#sounds" data-page="sounds" data-view="sounds">Sound</a><a href="#start" data-page="start" data-view="start">Start here</a><a href="#driving" data-page="driving" data-view="driving">Controls</a><a href="#manual" data-page="manual" data-view="manual">Fuel &amp; repairs</a><a href="#horses" data-page="horses" data-view="horses">Horse guide</a><a href="#races" data-page="races" data-view="races">Races</a><a href="#stunts" data-page="stunts" data-view="stunts">Stunts</a><a href="#worlds" data-page="worlds" data-view="worlds">New locations</a></nav></noscript>
+</div><!--/site-navigation-->
   <main>
     <section id="home" class="page-view home-view" aria-labelledby="tab-home">
       <div class="home-feature">

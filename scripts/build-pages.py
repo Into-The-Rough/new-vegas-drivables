@@ -4,6 +4,7 @@ import re
 from html import escape
 from pathlib import Path
 from modder_reference import content as modder_content
+from site_navigation import navigation
 
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
@@ -16,17 +17,17 @@ faq = (ROOT / 'pages/faq.html').read_text()
 embedded_faq = faq.replace('<h1>', '<h2>').replace('</h1>', '</h2>').replace('href="index.html#', 'href="#')
 index, count = re.subn(r'<!--faq-content-->.*?<!--/faq-content-->', lambda _: '<!--faq-content-->\n' + embedded_faq + '      <!--/faq-content-->', index, flags=re.S)
 assert count == 1, 'expected one FAQ content slot'
+index, count = re.subn(r'<!--site-navigation-->.*?<!--/site-navigation-->', lambda _: '<!--site-navigation-->' + navigation(index=True) + '<!--/site-navigation-->', index, flags=re.S)
+assert count == 1, 'expected one navigation slot'
 (public / 'index.html').write_text(index)
-nav_items = re.findall(r'<a id="tab-([^"]+)" href="[^"]+" data-view="[^"]+">([^<]+)</a>', index)
 
-nav_items.append(('modders', 'Modders'))
 
 def page(title, body, active=''):
-    links = ''.join(f'<a href="{(id + ".html" if id in ("faq", "modders") else "index.html#" + id)}"' + (' aria-current="page"' if id == active else '') + f'>{label}</a>' for id, label in nav_items)
+    current = active or {'Complete location guide': 'placements', 'Vehicle speeds': 'vehicles', 'Sound & passengers': 'sounds'}.get(title, '')
     extra_head = '<link rel="stylesheet" href="modders.css"><script defer src="modders.js"></script>' if active == 'modders' else ''
-    nav = f'<nav class="page-tabs" aria-label="Guide sections">{links}</nav>'
+    nav = navigation(current)
     return f'''<!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>{title} · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script>{extra_head}</head>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>{title} · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation.css"><script defer src="navigation.js"></script><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script>{extra_head}</head>
 <body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div>{analytics}</body></html>'''
 
 
