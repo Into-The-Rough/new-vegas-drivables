@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import subprocess
-from media_sources import CAPTURES, apply_images, export_renders, export_extra_images
+from media_sources import CAPTURES, apply_images, export_renders, export_studio_renders
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
@@ -12,7 +12,7 @@ parser.add_argument('videos', type=Path)
 args = parser.parse_args()
 assets = ROOT / 'public/assets'
 export_renders(args.source, assets)
-export_extra_images(args.source, args.videos, assets)
+export_studio_renders(assets)
 (assets / 'screens').mkdir(exist_ok=True)
 for name, (folder, seconds) in CAPTURES.items():
     videos = sorted((args.videos / folder).glob('*.mp4'))

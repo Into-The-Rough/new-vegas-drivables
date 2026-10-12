@@ -824,7 +824,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": "fleet/interceptor.webp",
+      "image": "fleet/interceptor-studio.webp",
       "note": ""
     },
     {
@@ -849,7 +849,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
-      "image": "fleet/desoto.webp",
+      "image": "fleet/desoto-studio.webp",
       "note": ""
     },
     {
@@ -874,7 +874,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
-      "image": "fleet/pershing.webp",
+      "image": "fleet/pershing-studio.webp",
       "note": ""
     },
     {
@@ -899,7 +899,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
-      "image": "fleet/alien.webp",
+      "image": "fleet/alien-studio.webp",
       "note": ""
     },
     {
@@ -924,7 +924,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
-      "image": "fleet/commonwealth.webp",
+      "image": "fleet/commonwealth-studio.webp",
       "note": ""
     },
     {
@@ -949,7 +949,7 @@ window.DRIVABLES = {
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
-      "image": "fleet/marine-apc.webp",
+      "image": "fleet/marine-apc-studio.webp",
       "note": ""
     },
     {
@@ -1092,7 +1092,7 @@ window.DRIVABLES = {
       "repair": 0,
       "tools": 0,
       "parts": "No repair items",
-      "image": "fleet/biplane.webp",
+      "image": "fleet/biplane-studio.webp",
       "ref": null,
       "note": ""
     },
@@ -1114,7 +1114,7 @@ window.DRIVABLES = {
       "repair": 0,
       "tools": 0,
       "parts": "No repair items",
-      "image": "fleet/monster-truck.webp",
+      "image": "fleet/monster-truck-studio.webp",
       "ref": null,
       "note": ""
     }
@@ -1642,7 +1642,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc7"
       ],
-      "image": "fleet/pershing.webp",
+      "image": "fleet/pershing-studio.webp",
       "passengers": 1,
       "passengerNote": "Enclosed crew position",
       "boost": false,
@@ -1663,7 +1663,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc9"
       ],
-      "image": "fleet/alien.webp",
+      "image": "fleet/alien-studio.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": true,
@@ -1684,7 +1684,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cd0"
       ],
-      "image": "fleet/commonwealth.webp",
+      "image": "fleet/commonwealth-studio.webp",
       "passengers": 1,
       "passengerNote": "Enclosed crew position",
       "boost": false,
@@ -1705,7 +1705,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000ce0"
       ],
-      "image": "fleet/marine-apc.webp",
+      "image": "fleet/marine-apc-studio.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": false,
@@ -1726,7 +1726,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc0"
       ],
-      "image": "fleet/interceptor.webp",
+      "image": "fleet/interceptor-studio.webp",
       "passengers": 1,
       "passengerNote": "",
       "boost": true,
@@ -1747,7 +1747,7 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc5"
       ],
-      "image": "fleet/desoto.webp",
+      "image": "fleet/desoto-studio.webp",
       "passengers": 3,
       "passengerNote": "",
       "boost": false,
@@ -1768,7 +1768,7 @@ window.DRIVABLES = {
       "entries": [
         "stunt-biplane"
       ],
-      "image": "fleet/biplane.webp",
+      "image": "fleet/biplane-studio.webp",
       "passengers": 0,
       "passengerNote": "",
       "boost": false,
@@ -1789,7 +1789,7 @@ window.DRIVABLES = {
       "entries": [
         "monster-truck"
       ],
-      "image": "fleet/monster-truck.webp",
+      "image": "fleet/monster-truck-studio.webp",
       "passengers": 3,
       "passengerNote": "",
       "boost": true,

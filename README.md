@@ -110,7 +110,7 @@ requested December target is the only exception to the site's no-dates copy rule
 
 Additional vehicle images use the mod's 24 studio loading-screen renders. They
 are exported at their intended display aspect ratio, with small catalogue
-thumbnails. Six more renders and two gameplay screenshots complete all 32 vehicle
+thumbnails. Eight further studio renders complete all 32 vehicle
 types. Eight guide stills come from the author's own videos. The source
 folders and frame positions are recorded in `scripts/media_sources.py`. Refresh
 these with `python3 scripts/import-media.py /path/to/DrivablesNVSE /path/to/Videos`.
@@ -118,14 +118,14 @@ The regular content export retains the vehicle image mapping. The screenshots
 are normal captured frames with no scene alterations. Images can be enlarged
 from the guides, catalogue and placement entries.
 
-The Commonwealth Tank, DeSoto, Interceptor, Marine APC and Monster Truck use
-existing asset previews. Pershing and Alien Recon use the author's prepared game
-screenshots. The Stunt Biplane is rendered from its shipped mesh with
-`scripts/render-biplane.py`. To reproduce it, run the script with
-`--dump /path/to/DrivablesNVSE /path/to/site/artifacts/missing-media`, then run
-Blender in background mode with `--python scripts/render-biplane.py --
-/path/to/site/artifacts/missing-media`. Use Windows paths for Windows Blender.
-This needs PyFFI and NumPy for extraction, and does not alter the game assets.
+The eight newer vehicles are rendered from their shipped meshes and textures
+with `scripts/render-studio.py`, using softbox lighting and a reflective floor.
+Extract with `python3 scripts/render-studio.py --source /path/to/DrivablesNVSE
+--work /path/to/site/artifacts/studio`, then run Blender in background mode with
+`--python scripts/render-studio.py -- --work /path/to/site/artifacts/studio`.
+Use Windows paths for Windows Blender. `--vehicle desoto commonwealth` limits
+either stage to selected vehicles. Extraction needs PyFFI, Pillow and NumPy.
+Rendering uses Cycles and does not alter the game assets.
 The media importer keeps the bundled images when these local sources are absent.
 
 The 18 original PNG description headers are hosted under `public/nexus-headers/`.
