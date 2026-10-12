@@ -26,6 +26,11 @@ assert {h['survival'] for h in data['horseTraits']} == {0, 50, 75, 100}
 for vehicle in data['vehicles']:
     assert vehicle['mph'] > 0 and abs(vehicle['mph'] * 1.609344 - vehicle['kmh']) < 0.02
     assert all(any(e['id'] == id for e in data['entries']) for id in vehicle['entries'])
+    assert vehicle['sound']['source'] and vehicle['sound']['detail']
+    assert 0 <= vehicle['passengers'] <= 3
+assert next(v for v in data['vehicles'] if v['profile'] == 46)['sound']['source'] == 'Dodge Ram 1500 Hemi'
+assert next(v for v in data['vehicles'] if v['profile'] == 13)['passengers'] == 3
+assert next(v for v in data['vehicles'] if v['profile'] == 42)['passengers'] == 0
 for course in data['courses']:
     assert len(course['outline']) > 20 and course['metres'] > 0 and course['checkpoints'] > 0
 
@@ -37,7 +42,8 @@ def check_copy(value):
         for child in value: check_copy(child)
     elif isinstance(value, str):
         assert '—' not in value and ';' not in value, f'copy punctuation: {value}'
-        assert not re.search(r'\b(?:19|20)\d{2}\b|\b(?:January|February|March|April|June|July|August|September|October|November|December)\b', value), f'date in copy: {value}'
+        dated = re.search(r'\b(?:19|20)\d{2}\b|\b(?:January|February|March|April|June|July|August|September|October|November|December)\b', value)
+        assert not dated or value == 'Aiming for December.', f'date in copy: {value}'
 
 
 check_copy(data)
@@ -64,6 +70,7 @@ class Links(HTMLParser):
 
     def handle_data(self, text):
         check_copy(text)
+        assert not re.search(r'\bAI\b|artificial intelligence|ChatGPT|Codex', text, re.I), f'unwanted attribution: {text}'
 
 
 pages = {}

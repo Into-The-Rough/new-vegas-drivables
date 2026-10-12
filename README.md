@@ -2,8 +2,12 @@
 
 A standalone GitHub Pages site for the mod, using Monofonto and F10-style tabs.
 The home page uses artwork from the mod's showcase videos and links into the
-placement map, vehicle speeds, stunts, new locations, races, horse guide and
-fuel and repairs. No framework, backend or external runtime requests.
+beginner guide, placement map, vehicle speeds, driving, stunts, new locations,
+races, horse guide, fuel and repairs, and sound mappings. A separate ethos and
+development page is authored in `pages/about.html`. The FAQ is authored in
+`pages/faq.html`, including release plans, compatibility and optional presentation
+settings. No framework, backend or
+external runtime requests.
 The author links go to https://www.nexusmods.com/profile/intotherough and
 https://www.youtube.com/@OliverSwanickProductions.
 
@@ -42,6 +46,9 @@ types and top speeds, race routes and the existing map calibration. Speeds use
 the F10 garage conversion of 70 game units per metre. The restore gates and public
 text live in the export scripts. Update those when the implementation changes.
 `site_copy.py` applies UK spelling and punctuation conventions to imported copy.
+`sound_sources.py` supplies the public recording descriptions. The active audio
+profile selects each description. Passenger counts, boost and parachute support
+come directly from the vehicle configuration.
 GitHub Actions publishes the committed export without access to private sources.
 
 The guide covers 32 types with discovery, reward or arena routes. The original
@@ -81,6 +88,20 @@ uses the original Monster Truck, Bicycle Races, Mmm... Donuts and Companion
 Horses Demo thumbnails from the author's video folders. The images are copied
 without alteration. Full video files are not bundled. The public credits page
 records provenance. Original font licence notices are preserved.
+
+The sound audit uses active `DrivablesNVSEAudio.ini` banks and their provenance,
+including the fleet choices, tracked choices, motorcycle, DeSoto and Monster
+Truck manifests. Older donor recommendations can describe superseded choices.
+The driving guide follows the current ride hints and runtime policies. Sound
+sources describe the recording basis, independently of fuel type and vehicle lore.
+
+The visual controller reference has twelve ride layouts, Xbox and Steam Deck
+labels, and a weapon-drawn mode. `control-data.js` follows `RideControlsPolicy.h`,
+the current plane input and parachute input. Shared actions assume the stock
+Fallout pad layout. Stunt combinations use the same button renderer. Check the
+source again when controls change, including tap/hold behaviour. The loading
+options in the FAQ follow `ConfigMenu.cpp` and `LoadingOptions.cpp`. The author's
+requested December target is the only exception to the site's no-dates copy rule.
 
 The site is prepared for GitHub Pages. Publication requires creating the
 website repository, pushing and enabling Pages.

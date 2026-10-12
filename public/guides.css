@@ -108,6 +108,64 @@
 .home-guides p { font-size: 17px; }
 .home-worlds { padding: 18px 0; border-top: 1px solid var(--line); font-size: 16px; }
 .home-worlds a { margin-right: 20px; }
+.home-reference-links { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 17px; padding: 10px 0; }
+.first-ride { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 65px; }
+.first-steps { margin: 0; padding-left: 30px; }
+.first-steps > li { padding: 0 0 30px 12px; color: var(--amber); }
+.first-steps h3 { margin-bottom: 14px; font-size: 27px; }
+.first-steps p + p, .start-notes p + p { margin-top: 12px; }
+.start-notes { border-left: 1px solid var(--line); padding-left: 28px; }
+.start-notes h3 { margin: 28px 0 16px; }
+.start-notes h3:first-child { margin-top: 0; }
+.start-notes > a { display: inline-block; margin-top: 24px; }
+.guide-index-heading { padding: 25px 0 10px; border-top: 1px solid var(--line); font-size: 28px; }
+.guide-index { display: grid; grid-template-columns: 1fr 1fr; gap: 0 45px; }
+.guide-index a { display: block; border-bottom: 1px solid var(--line); padding: 20px 0; }
+.guide-index strong { display: block; font-size: 23px; }
+.guide-index span { display: block; font-size: 17px; color: var(--muted); margin-top: 7px; }
+.about-page { max-width: 980px; }
+.about-page > .about-lead { font-size: 23px; color: var(--ink); }
+.about-page .about-links { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 30px; }
+.guide-jumps { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 16px 0 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.ride-manual { display: grid; grid-template-columns: 1fr 1fr; gap: 38px 50px; padding: 30px 0; }
+.ride-manual article, .companion-guide { scroll-margin-top: 120px; }
+.ride-manual h3 { font-size: 28px; margin-bottom: 16px; }
+.ride-manual h4, .companion-guide h4 { color: var(--amber); font-size: 21px; font-weight: 400; margin: 24px 0 10px; }
+.ride-manual p + p { margin-top: 14px; }
+.ride-manual strong { color: var(--ink); }
+.companion-guide { border-top: 1px solid var(--line); }
+.companion-guide > .view-heading { padding-bottom: 0; }
+.companion-guide > .view-heading h3 { font-size: 30px; }
+.companion-guide .guide-notes { padding-top: 0; }
+.companion-guide > .under-note { margin-top: 16px; }
+.seat-count { display: block; font-size: 13px; margin-top: 7px; white-space: nowrap; }
+.sound-intro { padding-top: 0; }
+.sound-search { display: block; color: var(--muted); font-size: 15px; max-width: 540px; }
+.sound-search input { display: block; width: 100%; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink); font-size: 18px; padding: 10px 12px; margin-top: 8px; }
+.sound-search input::placeholder { color: var(--muted); }
+#sound-count { padding: 12px 0; }
+.sound-table, .passenger-table { border-collapse: collapse; width: 100%; text-align: left; }
+.sound-table th, .sound-table td, .passenger-table th, .passenger-table td { padding: 18px 16px; border-bottom: 1px solid var(--line); vertical-align: top; font-weight: 400; }
+.sound-table thead, .passenger-table thead { font-size: 14px; color: var(--muted); text-transform: uppercase; }
+.sound-table tbody th { width: 26%; font-size: 22px; }
+.faq-page { max-width: 900px; margin: 0 auto; }
+.faq-jumps { display: flex; flex-wrap: wrap; gap: 14px 25px; padding: 20px 0 30px; border-bottom: 1px solid var(--line); font-size: 18px; }
+.faq-page h2 { margin: 38px 0 12px; font-size: 30px; }
+.faq-answer { border-bottom: 1px solid var(--line); padding: 21px 0; }
+.faq-answer h3 { margin: 0 0 12px; font-size: 24px; }
+.faq-answer p { margin: 9px 0 0; max-width: 760px; }
+.faq-config { margin: 25px 0; padding: 18px; border: 1px solid var(--line); }
+.faq-config summary { cursor: pointer; color: var(--amber); font-size: 20px; }
+.faq-config pre { white-space: pre-wrap; font-size: 16px; line-height: 1.6; background: #11100c; padding: 15px; }
+.faq-config code { overflow-wrap: anywhere; }
+.faq-end { margin-top: 30px; }
+.sound-table td:nth-child(2) { width: 30%; }
+.sound-table td:last-child { color: var(--muted); font-size: 16px; }
+.sound-table tr:hover, .passenger-table tr:hover { background: #ffb64208; }
+.passenger-table caption { text-align: left; font-size: 23px; padding-bottom: 14px; color: var(--amber); }
+.passenger-table td:nth-child(2) { color: var(--amber); font-size: 24px; }
+.passenger-table td:last-child { color: var(--muted); }
+#sounds > .under-note { margin-top: 18px; }
 @media (max-width: 1100px) {
   .catalogue-tools { grid-template-columns: minmax(180px, 1fr) 155px 155px; }
   .catalogue-tools > p { grid-column: 1 / -1; padding: 0; }
@@ -121,6 +179,8 @@
   .race-layout { gap: 30px; }
 }
 @media (max-width: 800px) {
+  .first-ride { grid-template-columns: 1fr; gap: 15px; }
+  .start-notes { padding: 24px 0; border-left: 0; border-top: 1px solid var(--line); }
   .view-heading { align-items: start; }
   .catalogue-scroll .vehicle-table thead { display: none; }
   .catalogue-scroll .vehicle-table, .catalogue-scroll .vehicle-table tbody { display: block; }
@@ -146,6 +206,17 @@
   .home-guides h3 { font-size: 24px; }
 }
 @media (max-width: 620px) {
+  .guide-index { grid-template-columns: 1fr; }
+  .ride-manual { grid-template-columns: 1fr; gap: 32px; }
+  .ride-manual article, .companion-guide { scroll-margin-top: 150px; }
+  .guide-jumps { gap: 10px 18px; font-size: 16px; }
+  .sound-table thead { display: none; }
+  .sound-table, .sound-table tbody { display: block; }
+  .sound-table tr { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .sound-table th, .sound-table td, .sound-table tbody th, .sound-table td:nth-child(2) { display: block; padding: 0; border: 0; width: auto; }
+  .sound-table td { margin-top: 8px; }
+  .passenger-table th, .passenger-table td { padding: 12px 8px; font-size: 16px; }
+  .passenger-table td:last-child { font-size: 14px; }
   .view-heading { display: block; padding-top: 25px; }
   .view-heading h2 { font-size: 30px; }
   .view-heading .button { display: inline-block; margin-top: 20px; }

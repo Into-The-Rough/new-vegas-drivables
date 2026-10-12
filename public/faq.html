@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>FAQ · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="guides.css"></head>
+<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="faq.html">FAQ</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header><main class="plain-page"><article class="faq-page">
+  <h1>Frequently asked questions</h1>
+  <p class="about-lead">Release plans, compatibility and the bits you can switch off.</p>
+  <nav class="faq-jumps" aria-label="FAQ topics"><a href="#release">Release & compatibility</a><a href="#playing">Playing</a><a href="#preferences">Make it your own</a><a href="#project">The project</a></nav>
+
+  <h2 id="release">Release & compatibility</h2>
+  <section class="faq-answer"><h3>When is it coming out?</h3><p>Aiming for December.</p><p>Videos are on <a href="https://www.youtube.com/@OliverSwanickProductions">Oliver Swanick Productions</a>. You can also find me on <a href="https://www.nexusmods.com/profile/intotherough">Nexus</a>.</p></section>
+  <section class="faq-answer"><h3>Does it need The Frontier?</h3><p>No. It has nothing to do with The Frontier and does not need it installed.</p><p>Please don’t use these pages to dunk on it. Criticise my mod if you like, but leave other modders out of it.</p></section>
+  <section class="faq-answer"><h3>Does it support Tale of Two Wastelands?</h3><p>Yes, TTW is supported.</p></section>
+  <section class="faq-answer"><h3>What about Viva New Vegas?</h3><p>New Vegas Drivables has been developed and tested with Viva New Vegas in mind.</p></section>
+  <section class="faq-answer"><h3>Can I install it during a playthrough?</h3><p>Yes. It is safe to install mid-playthrough. You do not need to start a new game.</p></section>
+  <section class="faq-answer"><h3>Will there be a Fallout 3 or Fallout 4 version?</h3><p>No. This is a New Vegas mod. TTW support does not mean a separate Fallout 3 release.</p></section>
+
+  <h2 id="playing">Playing</h2>
+  <section class="faq-answer"><h3>Can I use a controller or Steam Deck?</h3><p>Yes. Controllers are supported, and the mod has been tested on Steam Deck.</p><p>Click both sticks together to open the F10 menu. The <a href="index.html#driving">visual control guide</a> has Xbox and Steam Deck button labels, with separate layouts for different rides.</p></section>
+  <section class="faq-answer"><h3>What about first person?</h3><p>First person has improved, but it will never be my priority.</p></section>
+  <section class="faq-answer"><h3>Where do I find a vehicle?</h3><p>Start with the <a href="index.html#placements">placement map</a>. It shows where vehicles are, what condition they start in and what you need to claim them. You can hide exact locations if you would rather explore.</p><p>Some work straight away. Others need repairs, a quest completion or a race win. The <a href="index.html#start">first ride guide</a> walks you through it.</p></section>
+  <section class="faq-answer"><h3>Can companions ride too?</h3><p>Yes. Suitable vehicles have passenger positions, and eligible humanoid companions can ride horses alongside you. The <a href="index.html#driving=companions">companion guide</a> lists the seats and explains the restrictions.</p></section>
+  <section class="faq-answer"><h3>Do I have to keep buying fuel and parts?</h3><p>Powered vehicles use the supply listed in their entry. Jerry Cans, cells and Reactor Coolant cover the different types. The Alien Recon Craft and human-powered rides need no fuel.</p><p>Required repair tools and components are consumed when used. See <a href="index.html#manual">fuel and repairs</a> for the details.</p></section>
+  <section class="faq-answer"><h3>My vehicle is stuck. What now?</h3><p>Use Recover in the F10 garage. On supported rides you can also hold View / Back for 0.7 seconds. A short tap changes camera instead.</p></section>
+
+  <h2 id="preferences">Make it your own</h2>
+  <p>Press <kbd>F10</kbd>, or click both controller sticks together. These options are under <strong>Settings → Loading</strong>. Apply your changes before leaving the menu.</p>
+  <section class="faq-answer" id="loading-wheel"><h3>“I don’t like the loading wheels.”</h3><p>Set <strong>Loading wheel</strong> to <strong>Off</strong>. The change takes effect when a fresh loading screen opens. It leaves whichever loading spinner you otherwise have installed.</p></section>
+  <section class="faq-answer" id="main-menu"><h3>“I don’t like the main menu replacer.”</h3><p>Set <strong>Main menu background</strong> to <strong>Off</strong>, apply it, then restart the game. It takes effect from the next launch.</p></section>
+  <section class="faq-answer" id="loading-screens"><h3>“I don’t want vehicle loading screens either.”</h3><p>Set <strong>Loading screens</strong> to <strong>Off</strong>. This removes the mod’s studio shots and driving tips from the rotation, leaving the game’s and other mods’ screens.</p></section>
+  <details class="faq-config"><summary>Prefer to change the configuration file?</summary><p>With the game closed, edit <code>Data\config\DrivablesNVSE_settings.ini</code> in your active mod setup. These are saved overrides. Add or update the relevant entries under the existing <code>[Display]</code> section, or create that section if it is missing.</p><pre><code>[Display]
+bLoadingWheel=0
+bMainMenuBackground=0
+bLoadingScreens=0</code></pre><p>Use only the lines for the features you want to turn off. Set a value to <code>1</code> to enable it again. If you use Mod Organizer, the saved settings file may be in Overwrite.</p></details>
+  <section class="faq-answer"><h3>“The camera moves too much.”</h3><p>F10 has Full, Reduced and Off camera motion options, plus settings for speed FOV, road shake, camera tilt and jump slow motion. Start by reducing camera motion.</p></section>
+  <section class="faq-answer"><h3>“I don’t want stunt XP.”</h3><p>Set <strong>Stunt XP</strong> to <strong>Off</strong> under <strong>F10 → Settings → Showtime</strong>.</p></section>
+
+  <h2 id="project">The project</h2>
+  <section class="faq-answer"><h3>Whose music is in the videos?</h3><p>All my own tracks. Some are released, some aren’t.</p></section>
+  <section class="faq-answer"><h3>Will the source and vehicle tools be public?</h3><p>Yes. The source will be released under GPLv3, and the vehicle creation tools will be public so you can add your own drivables.</p></section>
+  <section class="faq-answer"><h3>“Some other modder / The Frontier…”</h3><p>Don’t do it. Bitch about me if you want, but not them. This is a place to talk about New Vegas Drivables.</p></section>
+  <p class="faq-end"><a href="about.html">More about the mod’s ethos and development ↗</a></p>
+</article>
+</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div></body></html>

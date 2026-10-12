@@ -1,0 +1,53 @@
+.control-guide { border: 1px solid var(--line); margin: 0 0 35px; padding: 24px; background: #10100e; scroll-margin-top: 120px; }
+.control-picker { display: flex; flex-wrap: wrap; align-items: end; gap: 18px 24px; }
+.control-picker label, .stunt-device { display: grid; gap: 8px; font-size: 17px; color: var(--muted); }
+.control-picker select, .stunt-device select { background: #090909; color: var(--amber); border: 1px solid var(--line); border-radius: 0; padding: 11px 32px 11px 12px; font: inherit; font-size: 19px; max-width: 100%; }
+.control-picker #weapon-choice { display: flex; align-items: center; min-height: 44px; color: var(--ink); }
+.control-picker #weapon-choice[hidden] { display: none; }
+#control-weapon { width: 20px; height: 20px; accent-color: var(--amber); }
+.controller-guide-heading { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 20px; }
+.controller-guide-heading h3 { margin: 0; font-size: 28px; }
+.controller-guide-heading p { font-size: 16px; color: var(--muted); margin-bottom: 0; }
+.controller-diagram { display: block; width: min(100%, 800px); height: auto; margin: 18px auto 4px; color: var(--amber); }
+.pad-body { fill: #191710; stroke: var(--line); stroke-width: 2; }
+.pad-button { fill: #15130d; stroke: var(--line); stroke-width: 1.5; }
+.pad-button text { stroke: none; fill: var(--muted); font: 18px Monofonto, monospace; }
+.pad-button.is-used { fill: #3b2e13; stroke: var(--amber); }
+.pad-button.is-used text { fill: var(--amber); }
+.pad-leader { fill: none; stroke: var(--line); stroke-width: 1; }
+.pad-callout { fill: var(--amber); font: 20px Monofonto, monospace; }
+.pad-callout tspan { fill: var(--ink); font-size: 18px; }
+.pad-legend { fill: var(--muted); font: 15px Monofonto, monospace; }
+.control-rows { list-style: none; margin: 16px 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 24px; }
+.control-rows li { border-top: 1px solid var(--line); padding: 16px 0; }
+.control-rows li > div { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.control-rows strong { display: block; font-size: 20px; font-weight: normal; }
+.pad-cap { display: inline-flex; justify-content: center; align-items: center; min-width: 42px; height: 34px; border: 1px solid var(--amber); border-radius: 5px; padding: 0 9px; font: 21px Monofonto, monospace; color: var(--amber); background: #241e12; box-shadow: 0 2px 0 #60451f; vertical-align: middle; }
+.pad-cap.pad-face { border-radius: 50%; min-width: 34px; width: 34px; padding: 0; }
+.press-kind { font-size: 14px; color: var(--muted); }
+.pad-plus { color: var(--muted); font-size: 19px; padding: 0 3px; }
+.pad-combo { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+#control-note { margin: 4px 0 22px; max-width: 850px; line-height: 1.5; }
+.control-extras { border-top: 1px solid var(--line); padding-top: 17px; }
+.control-extras summary { cursor: pointer; color: var(--amber); }
+.control-menu { border-top: 1px solid var(--line); padding: 20px 0 0; margin-top: 24px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px; }
+.control-menu > span:last-child { font-size: 17px; }
+.control-footnote { font-size: 15px; color: var(--muted); margin-bottom: 0; line-height: 1.5; }
+.stunt-device { max-width: 245px; margin: 0 0 22px; }
+.stunt-pad { border-left: 2px solid var(--line); padding: 8px 0 8px 18px; margin: 15px 0; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.stunt-pad > span:last-child { width: 100%; color: var(--ink); font-size: 16px; }
+.tested-note { border-top: 1px solid var(--line); margin-top: 25px; padding-top: 18px; }
+.tested-note strong { display: block; color: var(--amber); font-weight: normal; font-size: 23px; }
+@media (max-width: 800px) {
+  .control-rows { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 20px; }
+}
+@media (max-width: 620px) {
+  .control-guide { padding: 15px; scroll-margin-top: 150px; }
+  .control-picker { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .controller-diagram { margin: 20px auto 12px; }
+  .pad-callout, .pad-leader, .pad-legend { display: none; }
+  .controller-diagram { width: 100%; }
+  .control-rows { gap: 0 14px; }
+  .control-rows li > div { flex-wrap: wrap; gap: 9px; }
+  .control-rows strong { font-size: 18px; }
+}

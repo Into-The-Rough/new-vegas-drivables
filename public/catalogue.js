@@ -22,7 +22,8 @@
         const label = entry.kind === 'reward' ? entry.state : entry.location.split(/: |\. /)[0];
         return `<a href="#ride=${entry.id}">${escape(label)}</a>`;
       }).join('');
-      return `<tr data-profile="${vehicle.profile}"><th scope="row"><a href="#ride=${vehicle.entries[0]}">${escape(vehicle.name)}</a><small>${escape(vehicle.description)}</small></th><td>${escape(vehicle.category)}</td><td class="speed-value" data-unit="${unit === 'kmh' ? 'km/h' : 'mph'}">${Math.round(vehicle[unit])}</td><td>${escape(vehicle.fuel)}</td><td class="vehicle-links">${links}</td></tr>`;
+      const seats = vehicle.passengers ? `<a href="#driving=companions">${vehicle.passengers} passenger${vehicle.passengers === 1 ? '' : 's'}</a>` : 'Solo';
+      return `<tr data-profile="${vehicle.profile}"><th scope="row"><a href="#ride=${vehicle.entries[0]}">${escape(vehicle.name)}</a><small>${escape(vehicle.description)}</small></th><td>${escape(vehicle.category)}<small class="seat-count">${seats}</small></td><td class="speed-value" data-unit="${unit === 'kmh' ? 'km/h' : 'mph'}">${Math.round(vehicle[unit])}</td><td>${escape(vehicle.fuel)}</td><td class="vehicle-links">${links}</td></tr>`;
     }).join('') || '<tr><td colspan="5" class="catalogue-empty">No vehicles match. <button type="button" id="reset-catalogue">Clear filters</button></td></tr>';
     $('reset-catalogue')?.addEventListener('click', () => {
       $('vehicle-search').value = ''; $('vehicle-category').value = 'All'; render(); $('vehicle-search').focus();

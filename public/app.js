@@ -125,6 +125,13 @@
       return;
     }
     const params = new URLSearchParams(location.hash.slice(1));
+    if (params.has('driving')) {
+      showView('driving');
+      const target = document.getElementById(`driving-${params.get('driving')}`);
+      if (target) requestAnimationFrame(() => target.scrollIntoView({block:'start'}));
+      else if (scroll) window.scrollTo({top:0, behavior:'instant'});
+      return;
+    }
     if (params.has('world')) { showView('worlds'); if (scroll) window.scrollTo({top:0, behavior:'instant'}); return; }
     if (section === 'unlocks') { showView('races'); if (scroll) window.scrollTo({top:0, behavior:'instant'}); return; }
     const id=params.get('ride'); const filter=params.get('category');

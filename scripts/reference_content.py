@@ -1,6 +1,7 @@
 """Public vehicle specifications and course outlines from the shipped settings."""
 from pathlib import Path
 from site_copy import clean_copy
+from sound_sources import sound_source
 
 COURSES = [
     ('nuka_cola_speedway', 'Nuka-Cola Speedway', 'Cars',
@@ -35,7 +36,14 @@ def reference_content(source, config, entries, horses):
                              mph=round(metres_per_second * 2.23693629, 2),
                              kmh=round(metres_per_second * 3.6, 2),
                              description=description, fuel=first['fuel'],
-                             entries=[e['id'] for e in placements], image=first['image']))
+                             entries=[e['id'] for e in placements], image=first['image'],
+                             passengers=c.getint('iNumCompanions', 0),
+                             passengerNote=('One dog and one humanoid' if profile == 33 else
+                                            'Two humanoids and one dog' if profile == 35 else
+                                            'Enclosed crew position' if c.getboolean('bPassengerEnclosed', False) else
+                                            'A dog can use the rear position' if c.get('sPassenger3CreatureIdleID') else ''),
+                             boost=c.getboolean('bBoost', False), parachute=c.getboolean('bParachuteSupply', False),
+                             sound=sound_source(c, profile)))
     courses = []
     for key, name, kind, description, style, access in COURSES:
         lines = (source / f'mod/config/drivables/races/{key}.txt').read_text().splitlines()

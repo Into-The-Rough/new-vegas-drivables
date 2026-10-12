@@ -1131,7 +1131,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca6"
       ],
-      "image": "buggy.webp"
+      "image": "buggy.webp",
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Subaru Impreza GC8",
+        "detail": "2.0-litre boxer engine and exhaust recordings."
+      }
     },
     {
       "profile": 2,
@@ -1144,7 +1152,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cb3"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Challenger 426 Hemi",
+        "detail": "V8 engine and exhaust recordings. Shared by the Hotrod and Ford Falcon Interceptor."
+      }
     },
     {
       "profile": 3,
@@ -1158,7 +1174,15 @@ window.DRIVABLES = {
         "v-000c40",
         "v-000c57"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Bicycle recordings",
+        "detail": "Pedalling, chain, freewheel, tyres, brakes, bell and landing sounds."
+      }
     },
     {
       "profile": 4,
@@ -1171,7 +1195,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c42"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Honda 450cc four-stroke",
+        "detail": "Exhaust-microphone recordings, pitched down for the bike. Also used by the Motor Chariot."
+      }
     },
     {
       "profile": 6,
@@ -1186,7 +1218,15 @@ window.DRIVABLES = {
         "v-000c45",
         "v-000c47"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Skateboard recordings",
+        "detail": "Wheel roll, kicks, deck pops, landings and scrapes."
+      }
     },
     {
       "profile": 7,
@@ -1199,7 +1239,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4f"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Toyota Corolla E30",
+        "detail": "1.2-litre four-cylinder engine and exhaust recordings."
+      }
     },
     {
       "profile": 8,
@@ -1212,7 +1260,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4d"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Cycle and contact sounds",
+        "detail": "Wheel movement and contact sounds without an engine layer."
+      }
     },
     {
       "profile": 9,
@@ -1225,7 +1281,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca8"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Subaru Impreza GD WRX",
+        "detail": "2.0-litre boxer engine and exhaust recordings."
+      }
     },
     {
       "profile": 10,
@@ -1238,7 +1302,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000ca3"
       ],
-      "image": "corvega.webp"
+      "image": "corvega.webp",
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Shelby GT500",
+        "detail": "5.4-litre V8 recordings give the nuclear Corvega its engine sound."
+      }
     },
     {
       "profile": 11,
@@ -1252,7 +1324,15 @@ window.DRIVABLES = {
         "v-000cb8",
         "v-000cba"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Ram 2500 Cummins",
+        "detail": "5.9-litre straight-six diesel engine and exhaust recordings."
+      }
     },
     {
       "profile": 12,
@@ -1266,7 +1346,15 @@ window.DRIVABLES = {
         "v-000c53",
         "v-000c55"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Wheel and contact sounds",
+        "detail": "Rolling and movement sounds without an engine layer."
+      }
     },
     {
       "profile": 13,
@@ -1279,7 +1367,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000caa"
       ],
-      "image": "highwayman.webp"
+      "image": "highwayman.webp",
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Challenger 426 Hemi",
+        "detail": "V8 recordings provide the sound of the fuel-cell-powered Highwayman."
+      }
     },
     {
       "profile": 14,
@@ -1293,7 +1389,15 @@ window.DRIVABLES = {
         "v-000c51",
         "v-000c5d"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Ford Crown Victoria",
+        "detail": "4.6-litre V8 engine and exhaust recordings."
+      }
     },
     {
       "profile": 16,
@@ -1306,7 +1410,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cbc"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "BMW 420d",
+        "detail": "2.0-litre N47 engine recordings."
+      }
     },
     {
       "profile": 17,
@@ -1320,7 +1432,15 @@ window.DRIVABLES = {
         "v-000cad",
         "v-000caf"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Bounce effects",
+        "detail": "Bouncing and landing sounds without an engine layer."
+      }
     },
     {
       "profile": 18,
@@ -1333,7 +1453,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c4b"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Spring and bounce effects",
+        "detail": "Spring movement and landing sounds without an engine layer."
+      }
     },
     {
       "profile": 19,
@@ -1346,7 +1474,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cb1"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Jet aircraft recordings",
+        "detail": "Jet tarmac and take-off recordings shaped into the Hover Bike’s thrusters, with separate hop, dodge and repulsor effects."
+      }
     },
     {
       "profile": 20,
@@ -1359,7 +1495,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c5f"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "Military helicopter recordings",
+        "detail": "Separate idle, cruising and strained rotor sounds, plus landing gear and warning effects."
+      }
     },
     {
       "profile": 33,
@@ -1372,7 +1516,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000ce6"
       ],
-      "image": null
+      "image": null,
+      "passengers": 2,
+      "passengerNote": "One dog and one humanoid",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Honda 450cc four-stroke",
+        "detail": "Exhaust-microphone recordings, pitched down for the bike. Also used by the Motor Chariot."
+      }
     },
     {
       "profile": 34,
@@ -1385,7 +1537,15 @@ window.DRIVABLES = {
       "entries": [
         "formula-racer"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Datsun 240Z",
+        "detail": "2.4-litre straight-six engine and exhaust recordings."
+      }
     },
     {
       "profile": 35,
@@ -1398,7 +1558,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c16"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "Two humanoids and one dog",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Challenger 426 Hemi",
+        "detail": "The boat currently shares the Challenger engine bank."
+      }
     },
     {
       "profile": 36,
@@ -1411,7 +1579,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c1d"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "Propeller aircraft recordings",
+        "detail": "Separate idle, cruise and power loops, with start and shutdown cues."
+      }
     },
     {
       "profile": 37,
@@ -1424,7 +1600,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c3b"
       ],
-      "image": null
+      "image": null,
+      "passengers": 2,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "Fallout: New Vegas B-29 flyby",
+        "detail": "The vanilla flyby is reshaped into sustained, layered four-engine sounds."
+      }
     },
     {
       "profile": 38,
@@ -1437,7 +1621,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000c5a"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Electric monowheel recordings",
+        "detail": "Compact electric drive sounds. Silent at rest, with a reversing beep and small horn."
+      }
     },
     {
       "profile": 39,
@@ -1450,7 +1642,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc7"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "Enclosed crew position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Panther and Hetzer",
+        "detail": "Panther engine recordings with Hetzer start and shutdown sounds."
+      }
     },
     {
       "profile": 40,
@@ -1463,7 +1663,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc9"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": true,
+      "sound": {
+        "source": "Designed science-fiction sound set",
+        "detail": "Staged propulsion, warp boost, landing gear and weapon effects."
+      }
     },
     {
       "profile": 41,
@@ -1476,7 +1684,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cd0"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "Enclosed crew position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Hetzer",
+        "detail": "Tank engine recordings with matching start and shutdown sounds."
+      }
     },
     {
       "profile": 42,
@@ -1489,7 +1705,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000ce0"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Peterbilt 359",
+        "detail": "14.9-litre Caterpillar engine and exhaust recordings, with separate track sounds."
+      }
     },
     {
       "profile": 43,
@@ -1502,7 +1726,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc0"
       ],
-      "image": null
+      "image": null,
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Challenger 426 Hemi",
+        "detail": "V8 engine and exhaust recordings. Shared by the Hotrod and Ford Falcon Interceptor."
+      }
     },
     {
       "profile": 44,
@@ -1515,7 +1747,15 @@ window.DRIVABLES = {
       "entries": [
         "v-000cc5"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Buick Regal",
+        "detail": "V8 exhaust-microphone recordings form the main engine layer."
+      }
     },
     {
       "profile": 45,
@@ -1528,7 +1768,15 @@ window.DRIVABLES = {
       "entries": [
         "stunt-biplane"
       ],
-      "image": null
+      "image": null,
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "B-29-derived propeller bank",
+        "detail": "Uses the bomber’s propeller recordings with its own playback settings."
+      }
     },
     {
       "profile": 46,
@@ -1541,7 +1789,15 @@ window.DRIVABLES = {
       "entries": [
         "monster-truck"
       ],
-      "image": null
+      "image": null,
+      "passengers": 3,
+      "passengerNote": "",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Ram 1500 Hemi",
+        "detail": "5.7-litre V8 engine and exhaust recordings."
+      }
     }
   ],
   "courses": [

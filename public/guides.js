@@ -3,18 +3,22 @@
   const $ = id => document.getElementById(id);
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const tricks = [
+    ['Cars','Handbrake skid','At speed, steer and apply Handbrake.','Release and correct the steering to recover the slide. Grip and surface affect the result.'],
     ['Motorcycle','Wheelie','Hold Jump while moving.','Release to bring the front wheel down.'],
     ['Motorcycle','Stoppie','Brake at speed with the throttle released.','The rear wheel lifts as you slow down.'],
     ['Motorcycle','Burnout','Near a standstill, hold Throttle and Handbrake.','Keep the steering centred. Release either action to finish.'],
     ['Motorcycle','Donut','Start a burnout, then steer left or right.','Hold Throttle and Handbrake briefly before steering.'],
+    ['Motorcycle','Air control','Use Forward and Backward to pitch while airborne.','Adjust the bike’s attitude before landing.'],
     ['Bicycle','Wheelie','Hold Jump while moving.','Balance on the rear wheel.'],
     ['Bicycle','Bunny hop','Use Sprint and Jump together.','Sprint also increases pedalling effort and spends AP.'],
     ['Skateboard','Ollie','Press Jump while moving.','Get rolling before the jump.'],
     ['Skateboard','Kickflip','Use Boost and Jump together.','Land the trick to keep riding.'],
     ['Skateboard','Manual','Hold Handbrake while moving.','Holding it too long can throw you off.'],
-    ['Hopper','Charged jump','Hold Jump, then release.','Applies to the bouncing rides.'],
+    ['Hopper','Charged jump','Hold Jump while grounded, then release.','Forward keeps the ride bouncing. Steer to change direction.'],
+    ['Pogo Stick','Charged jump','Hold Jump while grounded, then release.','Use Forward to bounce and steer to change direction. No fuel is needed.'],
     ['Hover Bike','Side dodge','Double-tap left or right.','A quick sideways move while travelling.'],
     ['Hover Bike','Hop','Press Jump.','Lift over a small obstacle.'],
+    ['Hover Bike','Repulsor pulse','Use Horn / Repulsor.','Push nearby actors away. The standard cooldown is two seconds.'],
     ['Aircraft','Roll','Hold the flight control sideways.','The Stunt Biplane is built for aerobatics.'],
     ['Aircraft','Loop','Pull back on the flight control at speed.','Leave room above and below for the full manoeuvre.'],
     ['Horse','Rear','While standing still, use Sprint and Brake together.','Check the horse guide for gaits, stamina and taming.'],
@@ -22,7 +26,7 @@
   function renderTricks(category) {
     document.querySelectorAll('#stunt-filters button').forEach(b => b.setAttribute('aria-pressed', String(b.textContent === category)));
     $('stunt-list').innerHTML = tricks.filter(t => category === 'All' || t[0] === category).map(t =>
-      `<article class="stunt-row"><div><p class="detail-index">${escape(t[0])}</p><h3>${escape(t[1])}</h3></div><div><p>${escape(t[2])}</p><small>${escape(t[3])}</small></div></article>`).join('');
+      `<article class="stunt-row"><div><p class="detail-index">${escape(t[0])}</p><h3>${escape(t[1])}</h3></div><div>${window.DrivablesControls.stunt(t[0],t[1])}<p>${escape(t[2])}</p><small>${escape(t[3])}</small></div></article>`).join('');
   }
   ['All',...new Set(tricks.map(t => t[0]))].forEach(category => {
     const button = document.createElement('button'); button.type = 'button'; button.textContent = category;
