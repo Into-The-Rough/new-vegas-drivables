@@ -1,0 +1,129 @@
+const {chromium} = require('playwright');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/,'');
+const publicRoot = path.resolve(__dirname,'../public');
+
+(async () => {
+  const browser = await chromium.launch({headless:true,
+    ...(process.env.BROWSER_EXECUTABLE ? {executablePath:process.env.BROWSER_EXECUTABLE} : {}), args:['--no-sandbox']});
+  const errors=[];
+  const context = await browser.newContext({viewport:{width:1440,height:1000}, permissions:['clipboard-read','clipboard-write']});
+  const page=await context.newPage();
+  page.on('pageerror',e=>errors.push(String(e)));
+  page.on('response',r=>{if(r.status()>=400) errors.push(`${r.status()}: ${r.url()}`);});
+  fs.mkdirSync('artifacts',{recursive:true});
+  await page.goto(base,{waitUntil:'networkidle'});
+  await page.evaluate(()=>document.fonts.ready);
+  await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>{image.loading='eager';return image.decode();})));
+  assert.equal(await page.locator('.ride-row').count(),42);
+  assert.equal(await page.locator('.map-marker').count(),38);
+  assert.equal(await page.locator('#discovery-detail h3').textContent(),'Highwayman');
+  assert.equal(await page.locator('a[href="https://www.nexusmods.com/profile/intotherough"]').count(),3);
+  await page.screenshot({path:'artifacts/desktop.png',fullPage:true});
+
+  await page.locator('#search').fill('corvega');
+  assert.equal(await page.locator('.ride-row').count(),1);
+  assert.match(await page.locator('#discovery-detail').textContent(),/Reactor Coolant/);
+  assert.match(await page.locator('#discovery-detail').textContent(),/75/);
+  await page.locator('#search').fill('nothing-matches-this');
+  assert.equal(await page.locator('.ride-row').count(),0);
+  await page.getByRole('button',{name:'CLEAR FILTERS',exact:true}).click();
+  assert.equal(await page.locator('.ride-row').count(),42);
+  await page.getByRole('button',{name:'Horses',exact:true}).click();
+  assert.equal(await page.locator('.ride-row').count(),3);
+  await page.locator('.ride-row[data-id="herd-3"]').click();
+  assert.match(await page.locator('#discovery-detail').textContent(),/50 \/ 75/);
+  await page.locator('#spoilers').uncheck();
+  assert.equal(await page.locator('.map-marker:visible').count(),0);
+  assert.match(await page.locator('#discovery-detail').textContent(),/Exact location hidden/);
+  assert.doesNotMatch(await page.locator('#discovery-detail').textContent(),/Remnants Bunker/);
+  await page.reload({waitUntil:'networkidle'});
+  assert.equal(await page.locator('#spoilers').isChecked(),false);
+  await page.locator('#spoilers').check();
+
+  await page.goto(base+'/#ride=v-000cb1',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('#discovery-detail h3').textContent(),'Hover Bike');
+  assert.equal(await page.locator('.map-marker[data-id="v-000cb1"]').count(),0);
+  assert.match(await page.locator('#map-message').textContent(),/Big MT/);
+  await page.goto(base+'/#ride=formula-racer',{waitUntil:'networkidle'});
+  assert.match(await page.locator('#discovery-detail').textContent(),/at least one opponent/);
+  await page.locator('#copy-link').click();
+  assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),base+'/#ride=formula-racer');
+  await page.goto(base+'/#ride=v-000cad',{waitUntil:'networkidle'});
+  assert.match(await page.locator('.detail-location').textContent(),/Regional map pin/);
+  await page.locator('#region').selectOption('Unlocks');
+  assert.equal(await page.locator('.ride-row').count(),3);
+  await page.locator('#region').selectOption('All');
+  const marker=page.locator('.map-marker[data-id="v-000ca3"]');
+  await marker.focus(); await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#discovery-detail h3').textContent(),'Corvega');
+  assert.equal(await page.evaluate(()=>document.activeElement.dataset.id),'v-000ca3');
+  const initial=await page.locator('#world-map').getAttribute('viewBox');
+  await page.getByRole('button',{name:'Zoom map in'}).click();
+  assert.notEqual(await page.locator('#world-map').getAttribute('viewBox'),initial);
+  await page.getByRole('button',{name:'Reset map view'}).click();
+  assert.equal(await page.locator('#world-map').getAttribute('viewBox'),'0 0 1024 1024');
+  await page.locator('#focus-pin').click();
+  assert.match(await page.locator('#world-map').getAttribute('viewBox'),/420 420$/);
+
+  for (const width of [1440,1024,768,390,360]) {
+    await page.setViewportSize({width,height:900});
+    await page.goto(base,{waitUntil:'networkidle'});
+    await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>{image.loading='eager';return image.decode();})));
+    const metrics=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth,broken:[...document.images].filter(i=>!i.complete||!i.naturalWidth).length}));
+    assert.ok(metrics.scroll<=metrics.width,`horizontal overflow at ${width}: ${JSON.stringify(metrics)}`);
+    assert.equal(metrics.broken,0);
+    if(width===390 || width===768) {
+      const label=width===390?'phone':'tablet';
+      await page.screenshot({path:`artifacts/${label}.png`,fullPage:true});
+      await page.screenshot({path:`artifacts/${label}-top.png`});
+      await page.locator('#placements').scrollIntoViewIfNeeded();
+      await page.screenshot({path:`artifacts/${label}-guide.png`});
+    }
+  }
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(base+'/#category=Horses',{waitUntil:'networkidle'});
+  await page.locator('.ride-row[data-id="herd-2"]').click();
+  assert.equal(await page.locator('#discovery-detail h3').textContent(),'Wild horses · Herd 2');
+  await page.locator('#copy-link').click();
+  await page.locator('#toast').waitFor({state:'visible'});
+  assert.match(await page.locator('#toast').textContent(),/copied/);
+  await page.goto(base+'/locations.html',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('tbody tr').count(),42);
+  await page.goto(base+'/credits.html',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('h1').textContent(),'CREDITS & SOURCES.');
+
+  const offline=await browser.newContext({javaScriptEnabled:false});
+  const fallback=await offline.newPage();
+  await fallback.goto(base);
+  await fallback.getByRole('link',{name:'read the complete location list'}).click();
+  assert.equal(await fallback.locator('tbody tr').count(),42);
+  await offline.close();
+
+  const locked=await browser.newContext();
+  await locked.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new Error('blocked storage');}}));
+  const resilient=await locked.newPage();
+  resilient.on('pageerror',e=>errors.push(String(e)));
+  await resilient.goto(base); await resilient.locator('#spoilers').uncheck(); await resilient.locator('#spoilers').check();
+  assert.equal(await resilient.locator('.ride-row').count(),42);
+  await locked.close();
+
+  //serve the same files under a project path to catch root-relative asset mistakes
+  await page.route('**/drivables-guide/**', async route=>{
+    const pathname=new URL(route.request().url()).pathname.replace('/drivables-guide/','');
+    const file=path.resolve(publicRoot,pathname||'index.html');
+    if(!file.startsWith(publicRoot+path.sep) || !fs.existsSync(file)) return route.fulfill({status:404,body:'Missing'});
+    const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ttf':'font/ttf','.txt':'text/plain'}[path.extname(file)];
+    await route.fulfill({path:file,contentType:mime});
+  });
+  await page.goto(base+'/drivables-guide/#ride=monster-truck',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('#discovery-detail h3').textContent(),'H1 Monster Truck');
+  assert.equal(await page.locator('.ride-row').count(),42);
+  await page.goto('file://'+path.join(publicRoot,'index.html'),{waitUntil:'load'});
+  assert.equal(await page.locator('.ride-row').count(),42);
+  assert.deepEqual(errors,[]);
+  await browser.close();
+  console.log('Browser checks passed: desktop/tablet/phone, search, filters, map, links, spoilers, clipboard, storage, fallback, project path and local files.');
+})().catch(error=>{console.error(error);process.exit(1);});

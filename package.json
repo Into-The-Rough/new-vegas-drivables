@@ -1,0 +1,11 @@
+{
+  "name": "drivables-nvse-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory public",
+    "test": "node tests/browser.cjs",
+    "check": "python3 scripts/check.py"
+  },
+  "devDependencies": { "playwright": "1.58.2" }
+}
