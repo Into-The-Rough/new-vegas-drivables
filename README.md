@@ -168,7 +168,7 @@ only date permitted by the copy check. Installation guidance separates the
 confirmed xNVSE setup and JIP horse-marker support from forthcoming release
 requirements and dependency versions.
 
-Monofonto remains the default. The Reading font button changes body text to a
+Monofonto remains the default. The Simpler text button in the footer changes body text to a
 system sans serif and persists locally across pages. It leaves headings and
 navigation in Monofonto and still works when browser storage is unavailable.
 

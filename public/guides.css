@@ -87,7 +87,6 @@
 .home-intro > p { margin-top: 22px; max-width: 460px; }
 .home-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .button.primary { background: var(--amber); color: var(--bg); border-color: var(--amber); }
-.home-intro .home-controls { font-size: 14px; }
 .home-showcase { margin: 0; min-width: 0; }
 .home-showcase img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .home-showcase figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 14px; color: var(--muted); }

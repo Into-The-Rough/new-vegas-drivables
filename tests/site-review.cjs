@@ -20,17 +20,17 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     assert.equal(await page.locator('video').evaluate(el => Math.round(el.duration)), 32);
     await page.locator('.primary-nav a[data-page="vehicles"]').click();
     assert.equal(await page.locator('video').evaluate(el => el.paused), true);
-    await page.getByRole('button', {name:'Reading font'}).click();
+    await page.getByRole('button', {name:'Simpler text'}).click();
     for (const filename of ['index.html','vehicles.html','locations.html','sounds.html','faq.html','about.html','credits.html','modders.html']) {
       await page.goto(base + '/' + filename);
       assert.match(await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily), /Arial/);
       assert.match(await page.locator('h1').first().evaluate(el => getComputedStyle(el).fontFamily), /Monofonto/);
-      assert.equal(await page.getByRole('button', {name:'Reading font'}).getAttribute('aria-pressed'), 'true');
+      assert.equal(await page.getByRole('button', {name:'Simpler text'}).getAttribute('aria-pressed'), 'true');
       assert.ok(await page.locator('meta[name="description"]').getAttribute('content'));
       assert.match(await page.locator('meta[property="og:image"]').getAttribute('content'), /^https:\/\/into-the-rough\.github\.io\/new-vegas-drivables\/assets\/monster-truck\.jpg$/);
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://into-the-rough.github.io/new-vegas-drivables/' + (filename === 'index.html' ? '' : filename));
     }
-    await page.getByRole('button', {name:'Reading font'}).click();
+    await page.getByRole('button', {name:'Simpler text'}).click();
     await page.goto(base + '/#driving');
     await page.locator('#control-device').selectOption('keyboard');
     for (const ride of await page.locator('#control-ride option').evaluateAll(options => options.map(o => o.value))) {
@@ -67,7 +67,7 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     for (const width of [390,360]) {
       await page.setViewportSize({width, height:844});
       await page.goto(base + '/#driving');
-      await page.getByRole('button', {name:'Reading font'}).click();
+      await page.getByRole('button', {name:'Simpler text'}).click();
       await page.locator('#control-device').selectOption('keyboard');
       await page.locator('#control-ride').selectOption('vtol');
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'keyboard guide fits a phone');
@@ -75,7 +75,7 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     }
     await context.addInitScript(() => {Storage.prototype.getItem = Storage.prototype.setItem = () => {throw new Error('storage disabled');};});
     await page.goto(base);
-    await page.getByRole('button', {name:'Reading font'}).click();
+    await page.getByRole('button', {name:'Simpler text'}).click();
     assert.match(await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily), /Arial/);
     assert.deepEqual(errors, []);
     console.log('Review checks passed: metadata, reading font, keyboard rides and stunts, installation order, map scope and phone layouts.');

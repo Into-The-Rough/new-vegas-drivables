@@ -48,7 +48,7 @@ def check_copy(value):
     elif isinstance(value, str):
         assert '—' not in value and ';' not in value, f'copy punctuation: {value}'
         dated = re.search(r'\b(?:19|20)\d{2}\b|\b(?:January|February|March|April|June|July|August|September|October|November|December)\b', value)
-        assert not dated or value.strip() == 'In development · aiming for December 2026.', f'date in copy: {value}'
+        assert not dated or value.strip() == 'Coming December 2026!', f'date in copy: {value}'
 
 
 check_copy(data)
