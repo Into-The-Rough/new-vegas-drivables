@@ -4,6 +4,8 @@ import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+from xml.etree import ElementTree
+from site_metadata import BASE, PAGES
 
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
@@ -46,7 +48,7 @@ def check_copy(value):
     elif isinstance(value, str):
         assert '—' not in value and ';' not in value, f'copy punctuation: {value}'
         dated = re.search(r'\b(?:19|20)\d{2}\b|\b(?:January|February|March|April|June|July|August|September|October|November|December)\b', value)
-        assert not dated or value == 'Aiming for December.', f'date in copy: {value}'
+        assert not dated or value.strip() == 'In development · aiming for December 2026.', f'date in copy: {value}'
 
 
 check_copy(data)
@@ -88,6 +90,19 @@ for name, page in pages.items():
         assert target.exists(), f'missing asset {raw} in {name}'
         if url.fragment and '=' not in url.fragment and target.name in pages:
             assert url.fragment in pages[target.name].ids, f'missing anchor: {raw}'
+for name in PAGES:
+    text = (public/name).read_text()
+    for field in ('name="description"', 'property="og:title"', 'property="og:description"', 'property="og:image"', 'name="twitter:card"'):
+        assert text.count(field) == 1, f'missing or duplicated metadata in {name}: {field}'
+    canonical = BASE if name == 'index.html' else BASE + name
+    assert f'<link rel="canonical" href="{canonical}">' in text
+    assert BASE + 'assets/monster-truck.jpg' in text
+    for icon in ('favicon-32.png', 'apple-touch-icon.png'):
+        assert icon in text and (public/'assets'/icon).is_file()
+sitemap = ElementTree.parse(public/'sitemap.xml')
+urls = [node.text for node in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
+assert len(urls) == len(PAGES)
+assert set(urls) == {BASE if name == 'index.html' else BASE + name for name in PAGES}
 for path in public.rglob('*'):
     assert not path.is_symlink()
     if path.suffix in ('.js','.html','.css'):

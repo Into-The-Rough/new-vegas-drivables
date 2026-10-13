@@ -71,16 +71,16 @@
       <p class="detail-index">${escape(entry.category)} / ${escape(entry.region)}</p>
       <h3>${escape(entry.name)}</h3>
       <p class="detail-state">${escape(entry.state)}</p>
-      ${entry.image?`<figure class="detail-image"><a href="assets/${escape(entry.image)}" data-lightbox data-caption="${escape(entry.name)} · vehicle image"><img src="assets/${escape(entry.image)}" width="1024" height="576" alt="${escape(entry.name)} vehicle image"></a><figcaption>View image · enlarge ↗</figcaption></figure>`:''}
-      <p class="detail-location">${escape(show?entry.location:'Exact location hidden. Enable “Show exact locations” to see directions.')}${show&&entry.approximate?'<small>Regional map pin · follow these directions inside the area.</small>':''}</p>
+      ${entry.image?`<figure class="detail-image"><a href="assets/${escape(entry.image)}" data-lightbox data-caption="${escape(entry.name)} · vehicle image"><img src="assets/${escape(entry.image)}" width="1024" height="576" alt="${escape(entry.name)} vehicle image"></a><figcaption>View image · enlarge →</figcaption></figure>`:''}
+      <p class="detail-location">${escape(show?entry.location:'Exact location hidden. Enable “Show map details” to see directions.')}${show&&entry.approximate?'<small>Regional map pin · follow these directions inside the area.</small>':''}</p>
       <dl class="requirements"><div><dt>${label}</dt><dd>${escape(skill)}</dd></div><div><dt>Supplies</dt><dd>${escape(entry.parts)}</dd></div><div><dt>Runs on</dt><dd>${escape(entry.fuel)}</dd></div><div><dt>Access</dt><dd>${entry.kind==='herd'?'Tame first':entry.kind==='reward'?'Earned':entry.kind==='excluded'?'Not placed':entry.repair?'Restore':entry.state==='Quest reward'?'Quest':'Discover'}</dd></div></dl>
       </div>
       <div class="detail-description">
       <p class="detail-label acquisition-label">${entry.kind==='herd'?'Taming':'How to get it'}</p>
-      <p class="body-copy acquisition-copy">${escape(show?entry.acquisition:'Unlock instructions are hidden with exact locations.')}</p>
+      <p class="body-copy acquisition-copy">${escape(show?entry.acquisition:'Unlock details are hidden in this map.')}</p>
       <p class="detail-label reserve-label">${entry.kind==='herd'?'At the herd':'Starting condition'}</p>
-      <p class="body-copy reserve-copy">${escape(entry.condition)} ${escape(entry.reserve)}</p>
-      ${entry.note?`<p class="detail-note">${escape(entry.note)}</p>`:''}
+      <p class="body-copy reserve-copy">${escape(show ? entry.condition + ' ' + entry.reserve : 'Starting conditions are hidden in this map.')}</p>
+      ${show && entry.note?`<p class="detail-note">${escape(entry.note)}</p>`:''}
       </div>
       <div class="detail-actions">${entry.mapPoint&&show?'<button type="button" id="focus-pin">Centre on map</button>':''}<button type="button" id="copy-link">Copy entry link</button></div>`;
     $('focus-pin')?.addEventListener('click', () => {
@@ -160,7 +160,7 @@
   });
   ['formula-racer','stunt-biplane','monster-truck'].forEach(id => {
     const entry=data.entries.find(e=>e.id===id); const link=document.createElement('a'); link.className='reward-link'; link.href=shareHash(id);
-    link.innerHTML=`<span>${escape(entry.name)}<small>${escape(entry.acquisition)}</small></span><span aria-hidden="true">↗</span>`;
+    link.innerHTML=`<span>${escape(entry.name)}<small>${escape(entry.acquisition)}</small></span><span aria-hidden="true">→</span>`;
     $('reward-links').append(link);
   });
   viewLinks.forEach(link => {

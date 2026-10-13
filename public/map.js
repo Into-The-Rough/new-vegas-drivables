@@ -87,7 +87,7 @@
       const title = document.createElement('strong');
       const body = document.createElement('p');
       title.textContent = !show ? 'Locations hidden' : current.region==='Big MT' ? 'Big MT' : 'No fixed placement';
-      body.textContent = !show ? 'Enable “Show exact locations” to see map pins and directions.' : current.region==='Big MT' ? 'This vehicle is outside the Mojave. Follow the directions in its entry.' : 'Check this vehicle’s unlock conditions in its entry.';
+      body.textContent = !show ? 'Enable “Show map details” to see map pins and directions.' : current.region==='Big MT' ? 'This vehicle is outside the Mojave. Follow the directions in its entry.' : 'Check this vehicle’s unlock conditions in its entry.';
       message.append(title, body);
     }
   }

@@ -51,3 +51,13 @@
   .control-rows li > div { flex-wrap: wrap; gap: 9px; }
   .control-rows strong { font-size: 18px; }
 }
+.keyboard-diagram { display: flex; justify-content: center; align-items: center; gap: 60px; padding: 30px 15px; background: var(--panel); border: 1px solid var(--line); }
+.keyboard-diagram p { font-size: 16px; margin-top: 14px; text-align: center; }
+.movement-keys { display: grid; grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(2, 52px); gap: 6px; justify-content: center; }
+.movement-keys kbd { display: grid; place-items: center; font-size: 25px; border-color: var(--amber); background: var(--soft); }
+.movement-keys kbd:first-child { grid-column: 2; }
+.movement-keys kbd:nth-child(2) { grid-column: 1; }
+.keyboard-shortcuts { display: grid; gap: 12px; }
+.keyboard-shortcuts > div { display: flex; align-items: center; gap: 14px; }
+.pad-cap { white-space: nowrap; }
+@media (max-width: 620px) { .keyboard-diagram { flex-direction: column; gap: 26px; } }

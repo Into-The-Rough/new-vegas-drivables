@@ -103,7 +103,7 @@ window.DRIVABLES = {
       "approximate": false,
       "parts": "No parts",
       "image": "fleet/b29.webp",
-      "note": "The Volare! unlock is implemented. A reported runway / ground-support fault still affects takeoff."
+      "note": ""
     },
     {
       "id": "v-000c40",
@@ -653,7 +653,7 @@ window.DRIVABLES = {
       "approximate": true,
       "parts": "No parts",
       "image": "fleet/hopper.webp",
-      "note": "The Strip-door transfer fix is implemented. Its corrected round-trip test is still pending."
+      "note": ""
     },
     {
       "id": "v-000caf",
@@ -678,7 +678,7 @@ window.DRIVABLES = {
       "approximate": false,
       "parts": "No parts",
       "image": "fleet/hopper.webp",
-      "note": "The Strip-door transfer fix is implemented. Its corrected round-trip test is still pending."
+      "note": ""
     },
     {
       "id": "v-000cb1",

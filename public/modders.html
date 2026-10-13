@@ -1,6 +1,25 @@
 <!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>Modders · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation.css"><script defer src="navigation.js"></script><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script><link rel="stylesheet" href="modders.css"><script defer src="modders.js"></script></head>
-<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header><div class="site-navigation" data-current-page="modders">
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>Modders · New Vegas Drivables</title>
+<meta name="description" content="Create vehicles for New Vegas Drivables. Guides to meshes, wheels, tyres, glass, lights, configuration, commands and events.">
+<link rel="canonical" href="https://into-the-rough.github.io/new-vegas-drivables/modders.html">
+<meta property="og:title" content="Modders · New Vegas Drivables">
+<meta property="og:description" content="Create vehicles for New Vegas Drivables. Guides to meshes, wheels, tyres, glass, lights, configuration, commands and events.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="New Vegas Drivables">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://into-the-rough.github.io/new-vegas-drivables/modders.html">
+<meta property="og:image" content="https://into-the-rough.github.io/new-vegas-drivables/assets/monster-truck.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="New Vegas Drivables Monster Truck beside the Thunderdome loops">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Modders · New Vegas Drivables">
+<meta name="twitter:description" content="Create vehicles for New Vegas Drivables. Guides to meshes, wheels, tyres, glass, lights, configuration, commands and events.">
+<meta name="twitter:image" content="https://into-the-rough.github.io/new-vegas-drivables/assets/monster-truck.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation.css"><script defer src="navigation.js"></script><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script><link rel="stylesheet" href="modders.css"><script defer src="modders.js"></script><link rel="stylesheet" href="reading.css"><script defer src="reading.js"></script></head>
+<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><button type="button" class="reading-toggle" data-reading-font aria-pressed="false" hidden>Reading font</button><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides →</a></div></header><div class="site-navigation" data-current-page="modders">
 <nav class="primary-nav" aria-label="Main sections"><a href="index.html#home" data-page="home" data-section="home">Home</a><a href="index.html#vehicles" data-page="vehicles" data-section="vehicles">Vehicles</a><a href="index.html#start" data-page="start" data-section="guides">Guides</a><a href="index.html#races" data-page="races" data-section="activities">Activities</a><a href="modders.html" data-page="modders" data-section="modders" aria-current="page">Modders</a><a href="faq.html" data-page="faq" data-section="faq">FAQ</a></nav>
 <nav class="section-nav" data-section-nav="vehicles" aria-label="Vehicles" hidden><a href="index.html#vehicles" data-page="vehicles">Catalogue</a><a href="index.html#placements" data-page="placements">Placements</a><a href="index.html#sounds" data-page="sounds">Sound</a></nav><nav class="section-nav" data-section-nav="guides" aria-label="Guides" hidden><a href="index.html#start" data-page="start">Start here</a><a href="index.html#driving" data-page="driving">Controls</a><a href="index.html#manual" data-page="manual">Fuel &amp; repairs</a><a href="index.html#horses" data-page="horses">Horse guide</a></nav><nav class="section-nav" data-section-nav="activities" aria-label="Activities" hidden><a href="index.html#races" data-page="races">Races</a><a href="index.html#stunts" data-page="stunts">Stunts</a><a href="index.html#worlds" data-page="worlds">New locations</a></nav>
 <noscript><nav class="navigation-fallback" aria-label="All guide pages"><a href="index.html#vehicles" data-page="vehicles">Catalogue</a><a href="index.html#placements" data-page="placements">Placements</a><a href="index.html#sounds" data-page="sounds">Sound</a><a href="index.html#start" data-page="start">Start here</a><a href="index.html#driving" data-page="driving">Controls</a><a href="index.html#manual" data-page="manual">Fuel &amp; repairs</a><a href="index.html#horses" data-page="horses">Horse guide</a><a href="index.html#races" data-page="races">Races</a><a href="index.html#stunts" data-page="stunts">Stunts</a><a href="index.html#worlds" data-page="worlds">New locations</a></nav></noscript>
@@ -85,7 +104,7 @@ python tools\drivables_author.py package --pack MyCar --data "PATH_TO_RESOLVED_D
     <section id="lights"><p class="eyebrow">03 / Seeing the road</p><h2>Headlights</h2><p>A lamp lens, a visible beam and light falling on the world are separate things. Check each one when authoring the front lamps.</p><ul><li><code>HeadlightL</code> and <code>HeadlightR</code> locate the front lights.</li><li>The fleet uses beam geometry named <code>HeadlightConeL</code> and <code>HeadlightConeR</code>.</li><li>Fit the anchors to the model and check aim after steering, pitch and roll.</li><li>Check the lights both parked and while driving.</li></ul><p class="draft-note">The dedicated front-light recipe still needs an add-on example covering lens materials, beam orientation and profile settings. These node names describe the existing implementation.</p></section>
     <section id="body-parts"><p class="eyebrow">04 / Bodywork</p><h2>Doors, bonnet, boot & bumpers</h2><p>A detachable part needs an attached control node, a separate debris model and a matching prop record. Its definition supplies the node, prop, marker and measured offsets or bounds.</p><ul><li>Most detached props use MSTT records. A bonnet may explicitly use CONT.</li><li><code>bHoodDamage</code> covers bonnet and boot parts. Doors and bumpers have separate gates.</li><li>Fit entry and exit animations to the doors you actually authored.</li><li>Check the part after damage, repair and save/load.</li></ul><p>Per parts set: one bonnet, one boot, two doors and two bumpers. The blue author-kit example demonstrates a detachable bonnet.</p></section>
     <section id="rear-lamps"><p class="eyebrow">05 / Rear lamps</p><h2>Braking, reversing & damage</h2><p>Declare the brake and reverse parent nodes, their glow shapes, the damaged shapes and hit bounds in <code>[RearLamp local-id]</code>.</p><div class="lamp-states"><span>Brake<small>brake glow parent</small></span><span>Reverse<small>reverse glow parent</small></span><span>Broken<small>damaged shapes</small></span></div><p>The glow must be beneath the parent which switches it. Merely giving a shape the right name is not enough. Rear-lamp damage uses the glass-shatter gate.</p><p>Two lamp slots are supported. Number them from zero without gaps. Test brake and reverse separately, then shoot and repair each lamp.</p></section>
-    <section id="seats"><p class="eyebrow">06 / People</p><h2>Driver & passengers</h2><p>Fit hands, feet and seating height to your model. An existing animation pack provides motion, but its pose will still need checking against a new steering wheel and seat.</p><ul><li>Author the driver anchor and first-person camera separately.</li><li>Allow room for a standing exit beside the car.</li><li>Declare passenger positions explicitly. Their count excludes the driver.</li><li>Check entry and exit from both sides where supported.</li></ul><p>Named driver packs bind through <code>sDriverPack</code>. Entry and exit definitions bind through <code>sTransitionPack</code>. Custom transitions include durations and seat-transfer timing.</p><p><a href="#DrvGetPassengerCount">Query passengers ↗</a></p></section>
+    <section id="seats"><p class="eyebrow">06 / People</p><h2>Driver & passengers</h2><p>Fit hands, feet and seating height to your model. An existing animation pack provides motion, but its pose will still need checking against a new steering wheel and seat.</p><ul><li>Author the driver anchor and first-person camera separately.</li><li>Allow room for a standing exit beside the car.</li><li>Declare passenger positions explicitly. Their count excludes the driver.</li><li>Check entry and exit from both sides where supported.</li></ul><p>Named driver packs bind through <code>sDriverPack</code>. Entry and exit definitions bind through <code>sTransitionPack</code>. Custom transitions include durations and seat-transfer timing.</p><p><a href="#DrvGetPassengerCount">Query passengers →</a></p></section>
   </div>
 
   <section class="modder-section" id="handling"><div class="section-intro"><h2>Give it its own character</h2><p>Once the rig works, tune the parts the player will feel and hear.</p></div><div class="topic-grid"><div><h3>Handling</h3><p>Start with mass, wheel geometry, engine torque and brake torque. Set a positive gear ratio for every active gear, decreasing as the gears rise. Check acceleration, turning, braking and rough ground before chasing a top-speed number.</p></div><div><h3>Sound</h3><p>Use <code>[AudioProfile local-id]</code> for RPM banks and cues, bound with <code>sAudioProfile</code>. Fit acceleration and coasting recordings, then ignition and other one-shots. Impact banks have their own material classes and tap, hit and break folders.</p></div><div><h3>Fuel & damage</h3><p>The blank template starts with fuel and boost disabled. Decide which systems suit the vehicle, then configure and test them. Keep the player’s service transaction separate from direct script repairs and fuel changes.</p></div><div><h3>Effects & variants</h3><p>Add liveries, exhaust and a wreck only where the matching resources and configuration exist. Some fleet-specific effects and body dent meshes still use built-in definitions. They need their own add-on support before being promised as generic features.</p></div></div></section>
@@ -101,319 +120,319 @@ python tools\drivables_author.py package --pack MyCar --data "PATH_TO_RESOLVED_D
 <ul class="argument-list"><li><code>actor</code> · Actor · required</li></ul>
 <p class="reference-note">Does not reserve the vehicle or approve takeovers, theft confirmation or route availability. A later action can still fail.</p><div class="code-sample"><pre><code>if MyCarRef.CanUseVehicle Player
     DrvMount MyCarRef
-endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#CanUseVehicle">Link to CanUseVehicle ↗</a></div></details>
+endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#CanUseVehicle">Link to CanUseVehicle →</a></div></details>
 <details class="command-entry" id="DrvAddDriver" data-group="NPC driving" data-condition="false">
 <summary><span>DrvAddDriver</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Spawn a driver at the calling vehicle and start a wandering ride.</p><div class="code-sample"><pre><code>DrvAddDriver [driver base]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Spawned driver reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>driver base</code> · AnyForm · optional</li></ul>
-<p class="reference-note">Call on the vehicle. The optional argument is an actor base, not an existing actor. If omitted, the traffic driver pool is used.</p><div class="code-sample"><pre><code>let driver := MyCarRef.DrvAddDriver</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvAddDriver">Link to DrvAddDriver ↗</a></div></details>
+<p class="reference-note">Call on the vehicle. The optional argument is an actor base, not an existing actor. If omitted, the traffic driver pool is used.</p><div class="code-sample"><pre><code>let driver := MyCarRef.DrvAddDriver</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvAddDriver">Link to DrvAddDriver →</a></div></details>
 <details class="command-entry" id="DrvDamageVehicle" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvDamageVehicle</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Apply damage to a vehicle.</p><div class="code-sample"><pre><code>DrvDamageVehicle &lt;value&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>value</code> · Float · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Amount is raw health damage, not a percentage.</p><div class="code-sample"><pre><code>DrvDamageVehicle 25 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvDamageVehicle">Link to DrvDamageVehicle ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Amount is raw health damage, not a percentage.</p><div class="code-sample"><pre><code>DrvDamageVehicle 25 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvDamageVehicle">Link to DrvDamageVehicle →</a></div></details>
 <details class="command-entry" id="DrvDismount" data-group="Vehicles" data-condition="false">
 <summary><span>DrvDismount</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Request that the player dismount.</p><div class="code-sample"><pre><code>DrvDismount</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if accepted, 0 otherwise.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvDismount">Link to DrvDismount ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvDismount">Link to DrvDismount →</a></div></details>
 <details class="command-entry" id="DrvEndRace" data-group="Races &amp; ramps" data-condition="false">
 <summary><span>DrvEndRace</span><span class="command-group">Races &amp; ramps</span></summary>
 <div class="command-body"><p>Queue the end of the current race.</p><div class="code-sample"><pre><code>DrvEndRace</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 after queuing the request.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvEndRace">Link to DrvEndRace ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvEndRace">Link to DrvEndRace →</a></div></details>
 <details class="command-entry" id="DrvGetActiveHorse" data-group="Horses" data-condition="false">
 <summary><span>DrvGetActiveHorse</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Get the selected stable horse.</p><div class="code-sample"><pre><code>DrvGetActiveHorse</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Horse reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><div class="code-sample"><pre><code>let horse := DrvGetActiveHorse</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetActiveHorse">Link to DrvGetActiveHorse ↗</a></div></details>
+<p class="reference-note"></p><div class="code-sample"><pre><code>let horse := DrvGetActiveHorse</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetActiveHorse">Link to DrvGetActiveHorse →</a></div></details>
 <details class="command-entry" id="DrvGetActorVehicle" data-group="Occupants" data-condition="false">
 <summary><span>DrvGetActorVehicle</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Find an actor’s current vehicle or horse, including passengers.</p><div class="code-sample"><pre><code>actor.DrvGetActorVehicle</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Vehicle or horse reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><div class="code-sample"><pre><code>let vehicle := Player.DrvGetActorVehicle</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetActorVehicle">Link to DrvGetActorVehicle ↗</a></div></details>
+<p class="reference-note"></p><div class="code-sample"><pre><code>let vehicle := Player.DrvGetActorVehicle</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetActorVehicle">Link to DrvGetActorVehicle →</a></div></details>
 <details class="command-entry" id="DrvGetEncounterAlive" data-group="NPC driving" data-condition="false">
 <summary><span>DrvGetEncounterAlive</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Count surviving members of a configured encounter.</p><div class="code-sample"><pre><code>DrvGetEncounterAlive &lt;encounter quest&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Number of surviving members.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>encounter quest</code> · Quest · required</li></ul>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetEncounterAlive">Link to DrvGetEncounterAlive ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetEncounterAlive">Link to DrvGetEncounterAlive →</a></div></details>
 <details class="command-entry" id="DrvGetFuel" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvGetFuel</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Read the stored fuel reserve.</p><div class="code-sample"><pre><code>DrvGetFuel [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Stored reserve in litres, or -1 for an invalid vehicle.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetFuelCapacity to check whether the vehicle has a supported fuel system.</p><a class="permalink" href="#DrvGetFuel">Link to DrvGetFuel ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetFuelCapacity to check whether the vehicle has a supported fuel system.</p><a class="permalink" href="#DrvGetFuel">Link to DrvGetFuel →</a></div></details>
 <details class="command-entry" id="DrvGetFuelCapacity" data-group="Service &amp; damage" data-condition="true">
 <summary><span>DrvGetFuelCapacity</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Read the capacity of a supported fuel system.</p><div class="code-sample"><pre><code>vehicle.DrvGetFuelCapacity</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Capacity in litres, or -1 if unsupported.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetFuelCapacity">Link to DrvGetFuelCapacity ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetFuelCapacity">Link to DrvGetFuelCapacity →</a></div></details>
 <details class="command-entry" id="DrvGetHorseBond" data-group="Horses" data-condition="true">
 <summary><span>DrvGetHorseBond</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Read the horse’s bond.</p><div class="code-sample"><pre><code>horse.DrvGetHorseBond</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0–100 percent, or -1 if invalid.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetHorseBond">Link to DrvGetHorseBond ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetHorseBond">Link to DrvGetHorseBond →</a></div></details>
 <details class="command-entry" id="DrvGetHorseCommand" data-group="Horses" data-condition="true">
 <summary><span>DrvGetHorseCommand</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Read the horse’s current command.</p><div class="code-sample"><pre><code>horse.DrvGetHorseCommand</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0 free, 1 follow, 2 wait, or -1 if invalid.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetHorseCommand">Link to DrvGetHorseCommand ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetHorseCommand">Link to DrvGetHorseCommand →</a></div></details>
 <details class="command-entry" id="DrvGetHorseStamina" data-group="Horses" data-condition="true">
 <summary><span>DrvGetHorseStamina</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Read the horse’s current stamina.</p><div class="code-sample"><pre><code>horse.DrvGetHorseStamina</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0–100, or -1 if invalid.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Includes resting recovery. A profile with stamina disabled returns 100.</p><a class="permalink" href="#DrvGetHorseStamina">Link to DrvGetHorseStamina ↗</a></div></details>
+<p class="reference-note">Includes resting recovery. A profile with stamina disabled returns 100.</p><a class="permalink" href="#DrvGetHorseStamina">Link to DrvGetHorseStamina →</a></div></details>
 <details class="command-entry" id="DrvGetHorseTrait" data-group="Horses" data-condition="true">
 <summary><span>DrvGetHorseTrait</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Read one of the horse’s individual ratings.</p><div class="code-sample"><pre><code>horse.DrvGetHorseTrait &lt;trait&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Rating 1–5, or -1 if invalid.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <ul class="argument-list"><li><code>trait</code> · Integer · required</li></ul>
-<p class="reference-note">Trait: 0 speed, 1 endurance, 2 nerve. Ratings are not physics multipliers.</p><div class="code-sample"><pre><code>let nerve := MyHorseRef.DrvGetHorseTrait 2</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetHorseTrait">Link to DrvGetHorseTrait ↗</a></div></details>
+<p class="reference-note">Trait: 0 speed, 1 endurance, 2 nerve. Ratings are not physics multipliers.</p><div class="code-sample"><pre><code>let nerve := MyHorseRef.DrvGetHorseTrait 2</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetHorseTrait">Link to DrvGetHorseTrait →</a></div></details>
 <details class="command-entry" id="DrvGetPassenger" data-group="Occupants" data-condition="false">
 <summary><span>DrvGetPassenger</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Get the passenger assigned to a seat.</p><div class="code-sample"><pre><code>vehicle.DrvGetPassenger &lt;seat&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Passenger reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>seat</code> · Integer · required</li></ul>
-<p class="reference-note">Passenger seats start at 1. Query the driver separately.</p><div class="code-sample"><pre><code>let passenger := MyCarRef.DrvGetPassenger 1</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetPassenger">Link to DrvGetPassenger ↗</a></div></details>
+<p class="reference-note">Passenger seats start at 1. Query the driver separately.</p><div class="code-sample"><pre><code>let passenger := MyCarRef.DrvGetPassenger 1</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetPassenger">Link to DrvGetPassenger →</a></div></details>
 <details class="command-entry" id="DrvGetPassengerCount" data-group="Occupants" data-condition="true">
 <summary><span>DrvGetPassengerCount</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Count passengers assigned to this vehicle.</p><div class="code-sample"><pre><code>vehicle.DrvGetPassengerCount</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Passenger count, excluding the driver.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Passenger support concerns the player’s vehicle.</p><a class="permalink" href="#DrvGetPassengerCount">Link to DrvGetPassengerCount ↗</a></div></details>
+<p class="reference-note">Passenger support concerns the player’s vehicle.</p><a class="permalink" href="#DrvGetPassengerCount">Link to DrvGetPassengerCount →</a></div></details>
 <details class="command-entry" id="DrvGetPlayerVehicle" data-group="Vehicles" data-condition="false">
 <summary><span>DrvGetPlayerVehicle</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Get the player’s current vehicle.</p><div class="code-sample"><pre><code>DrvGetPlayerVehicle</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Vehicle reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><div class="code-sample"><pre><code>let vehicle := DrvGetPlayerVehicle</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetPlayerVehicle">Link to DrvGetPlayerVehicle ↗</a></div></details>
+<p class="reference-note"></p><div class="code-sample"><pre><code>let vehicle := DrvGetPlayerVehicle</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetPlayerVehicle">Link to DrvGetPlayerVehicle →</a></div></details>
 <details class="command-entry" id="DrvGetRideDriver" data-group="NPC driving" data-condition="false">
 <summary><span>DrvGetRideDriver</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Read the driver assigned to an NPC ride.</p><div class="code-sample"><pre><code>DrvGetRideDriver &lt;vehicle&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Driver reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li></ul>
-<p class="reference-note">For a query that also covers the player, use vehicle.DrvGetVehicleDriver.</p><a class="permalink" href="#DrvGetRideDriver">Link to DrvGetRideDriver ↗</a></div></details>
+<p class="reference-note">For a query that also covers the player, use vehicle.DrvGetVehicleDriver.</p><a class="permalink" href="#DrvGetRideDriver">Link to DrvGetRideDriver →</a></div></details>
 <details class="command-entry" id="DrvGetRideState" data-group="NPC driving" data-condition="false">
 <summary><span>DrvGetRideState</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Read the NPC ride state.</p><div class="code-sample"><pre><code>DrvGetRideState &lt;vehicle&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0 none, 1 pending, 2 route, 3 wander, 4 destination, 5 chasing.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li></ul>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetRideState">Link to DrvGetRideState ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetRideState">Link to DrvGetRideState →</a></div></details>
 <details class="command-entry" id="DrvGetRideTarget" data-group="NPC driving" data-condition="false">
 <summary><span>DrvGetRideTarget</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Read an NPC ride’s chase target.</p><div class="code-sample"><pre><code>DrvGetRideTarget &lt;vehicle&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Target reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li></ul>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetRideTarget">Link to DrvGetRideTarget ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetRideTarget">Link to DrvGetRideTarget →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleCondition" data-group="Service &amp; damage" data-condition="true">
 <summary><span>DrvGetVehicleCondition</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Read rounded vehicle health as a percentage.</p><div class="code-sample"><pre><code>vehicle.DrvGetVehicleCondition</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0–100, or -1 for an invalid vehicle.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Use DrvGetVehicleHealth for raw health points.</p><a class="permalink" href="#DrvGetVehicleCondition">Link to DrvGetVehicleCondition ↗</a></div></details>
+<p class="reference-note">Use DrvGetVehicleHealth for raw health points.</p><a class="permalink" href="#DrvGetVehicleCondition">Link to DrvGetVehicleCondition →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleDriver" data-group="Occupants" data-condition="false">
 <summary><span>DrvGetVehicleDriver</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Get a vehicle’s active player or NPC driver.</p><div class="code-sample"><pre><code>vehicle.DrvGetVehicleDriver</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Driver reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Pending NPC rides do not count as active drivers.</p><a class="permalink" href="#DrvGetVehicleDriver">Link to DrvGetVehicleDriver ↗</a></div></details>
+<p class="reference-note">Pending NPC rides do not count as active drivers.</p><a class="permalink" href="#DrvGetVehicleDriver">Link to DrvGetVehicleDriver →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleHealth" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvGetVehicleHealth</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Read raw vehicle health.</p><div class="code-sample"><pre><code>DrvGetVehicleHealth [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Health points, or -1 if unavailable.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetVehicleCondition for a percentage.</p><a class="permalink" href="#DrvGetVehicleHealth">Link to DrvGetVehicleHealth ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use DrvGetVehicleCondition for a percentage.</p><a class="permalink" href="#DrvGetVehicleHealth">Link to DrvGetVehicleHealth →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleSpeed" data-group="Vehicles" data-condition="true">
 <summary><span>DrvGetVehicleSpeed</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Read horizontal speed, including reverse and sideways motion.</p><div class="code-sample"><pre><code>vehicle.DrvGetVehicleSpeed</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Speed in metres per second, or -1 if unavailable.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Loaded parked vehicles return 0. Unloaded vehicles and untracked bumped hulls return -1. Multiply by 3.6 for km/h or 2.23694 for mph.</p><div class="code-sample"><pre><code>let speed := MyCarRef.DrvGetVehicleSpeed</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetVehicleSpeed">Link to DrvGetVehicleSpeed ↗</a></div></details>
+<p class="reference-note">Loaded parked vehicles return 0. Unloaded vehicles and untracked bumped hulls return -1. Multiply by 3.6 for km/h or 2.23694 for mph.</p><div class="code-sample"><pre><code>let speed := MyCarRef.DrvGetVehicleSpeed</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvGetVehicleSpeed">Link to DrvGetVehicleSpeed →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleType" data-group="Vehicles" data-condition="true">
 <summary><span>DrvGetVehicleType</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Read the vehicle category.</p><div class="code-sample"><pre><code>vehicle.DrvGetVehicleType</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0 invalid, 1 road, 2 motorcycle, 3 human-powered, 4 hover, 5 aircraft, 6 boat, 7 horse or living mount.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#DrvGetVehicleType">Link to DrvGetVehicleType ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#DrvGetVehicleType">Link to DrvGetVehicleType →</a></div></details>
 <details class="command-entry" id="DrvGetVehicleUseFailure" data-group="Access &amp; restoration" data-condition="true">
 <summary><span>DrvGetVehicleUseFailure</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Explain why an actor cannot begin a fresh ride.</p><div class="code-sample"><pre><code>vehicle.DrvGetVehicleUseFailure &lt;actor&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>0 if allowed, otherwise a failure code from the table below.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <ul class="argument-list"><li><code>actor</code> · Actor · required</li></ul>
-<p class="reference-note">Uses the same eligibility check as CanUseVehicle.</p><a class="permalink" href="#DrvGetVehicleUseFailure">Link to DrvGetVehicleUseFailure ↗</a></div></details>
+<p class="reference-note">Uses the same eligibility check as CanUseVehicle.</p><a class="permalink" href="#DrvGetVehicleUseFailure">Link to DrvGetVehicleUseFailure →</a></div></details>
 <details class="command-entry" id="DrvHasVehicleFault" data-group="Access &amp; restoration" data-condition="false">
 <summary><span>DrvHasVehicleFault</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Check whether a vehicle has a recorded fault.</p><div class="code-sample"><pre><code>DrvHasVehicleFault [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 with a fault, otherwise 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride.</p><a class="permalink" href="#DrvHasVehicleFault">Link to DrvHasVehicleFault ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride.</p><a class="permalink" href="#DrvHasVehicleFault">Link to DrvHasVehicleFault →</a></div></details>
 <details class="command-entry" id="DrvHorseCrap" data-group="Horses" data-condition="false">
 <summary><span>DrvHorseCrap</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Request the horse’s manure action.</p><div class="code-sample"><pre><code>DrvHorseCrap [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if queued, 0 if unavailable.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Choose a calm, stationary horse. Pass the horse, select it in the console, or omit the target while riding a horse.</p><a class="permalink" href="#DrvHorseCrap">Link to DrvHorseCrap ↗</a></div></details>
+<p class="reference-note">Choose a calm, stationary horse. Pass the horse, select it in the console, or omit the target while riding a horse.</p><a class="permalink" href="#DrvHorseCrap">Link to DrvHorseCrap →</a></div></details>
 <details class="command-entry" id="DrvMount" data-group="Vehicles" data-condition="false">
 <summary><span>DrvMount</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Request mounting the player on a vehicle.</p><div class="code-sample"><pre><code>DrvMount [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if the transition was requested, 0 otherwise.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This starts an action. It does not mean the transition has finished.</p><a class="permalink" href="#DrvMount">Link to DrvMount ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This starts an action. It does not mean the transition has finished.</p><a class="permalink" href="#DrvMount">Link to DrvMount →</a></div></details>
 <details class="command-entry" id="DrvPlaceRamp" data-group="Races &amp; ramps" data-condition="false">
 <summary><span>DrvPlaceRamp</span><span class="command-group">Races &amp; ramps</span></summary>
 <div class="command-body"><p>Place a static ramp ahead of the player, aligned with their facing.</p><div class="code-sample"><pre><code>DrvPlaceRamp &lt;ramp&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>ramp</code> · BoundObject · required</li></ul>
-<p class="reference-note">Requires a STAT base. Placement uses terrain height where available. Check clearance yourself.</p><div class="code-sample"><pre><code>DrvPlaceRamp DrvMegaTabletop</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvPlaceRamp">Link to DrvPlaceRamp ↗</a></div></details>
+<p class="reference-note">Requires a STAT base. Placement uses terrain height where available. Check clearance yourself.</p><div class="code-sample"><pre><code>DrvPlaceRamp DrvMegaTabletop</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvPlaceRamp">Link to DrvPlaceRamp →</a></div></details>
 <details class="command-entry" id="DrvPopTyre" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvPopTyre</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Mark a tyre as punctured.</p><div class="code-sample"><pre><code>DrvPopTyre &lt;value&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>value</code> · Integer · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use indices 0–5 for wheel slots. -1 punctures all slots. The vehicle must have an appropriate tyre rig for the expected visual result.</p><div class="code-sample"><pre><code>DrvPopTyre -1 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvPopTyre">Link to DrvPopTyre ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use indices 0–5 for wheel slots. -1 punctures all slots. The vehicle must have an appropriate tyre rig for the expected visual result.</p><div class="code-sample"><pre><code>DrvPopTyre -1 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvPopTyre">Link to DrvPopTyre →</a></div></details>
 <details class="command-entry" id="DrvRecoverVehicle" data-group="Vehicles" data-condition="false">
 <summary><span>DrvRecoverVehicle</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Request recovery of a vehicle.</p><div class="code-sample"><pre><code>DrvRecoverVehicle [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Recovery can be refused by the vehicle’s current state or race restrictions.</p><a class="permalink" href="#DrvRecoverVehicle">Link to DrvRecoverVehicle ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Recovery can be refused by the vehicle’s current state or race restrictions.</p><a class="permalink" href="#DrvRecoverVehicle">Link to DrvRecoverVehicle →</a></div></details>
 <details class="command-entry" id="DrvRefuel" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvRefuel</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Fill a vehicle’s configured fuel reserve.</p><div class="code-sample"><pre><code>DrvRefuel [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This directly fills the reserve without consuming inventory supplies. Active race service restrictions still apply.</p><div class="code-sample"><pre><code>DrvRefuel MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRefuel">Link to DrvRefuel ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This directly fills the reserve without consuming inventory supplies. Active race service restrictions still apply.</p><div class="code-sample"><pre><code>DrvRefuel MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRefuel">Link to DrvRefuel →</a></div></details>
 <details class="command-entry" id="DrvRepairVehicle" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvRepairVehicle</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Restore vehicle health and supported damaged parts.</p><div class="code-sample"><pre><code>DrvRepairVehicle [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This is a direct repair. It does not consume repair tools or apply the menu’s skill check. Active race service restrictions still apply.</p><div class="code-sample"><pre><code>DrvRepairVehicle MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRepairVehicle">Link to DrvRepairVehicle ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This is a direct repair. It does not consume repair tools or apply the menu’s skill check. Active race service restrictions still apply.</p><div class="code-sample"><pre><code>DrvRepairVehicle MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRepairVehicle">Link to DrvRepairVehicle →</a></div></details>
 <details class="command-entry" id="DrvRestoreVehicle" data-group="Access &amp; restoration" data-condition="false">
 <summary><span>DrvRestoreVehicle</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Attempt the configured restoration using the player’s skill and inventory.</p><div class="code-sample"><pre><code>DrvRestoreVehicle [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Requires the vehicle to be loaded, nearby, unlocked and unoccupied. On success the required item is consumed. This is separate from DrvRepairVehicle.</p><div class="code-sample"><pre><code>DrvRestoreVehicle MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRestoreVehicle">Link to DrvRestoreVehicle ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Requires the vehicle to be loaded, nearby, unlocked and unoccupied. On success the required item is consumed. This is separate from DrvRepairVehicle.</p><div class="code-sample"><pre><code>DrvRestoreVehicle MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvRestoreVehicle">Link to DrvRestoreVehicle →</a></div></details>
 <details class="command-entry" id="DrvSetFuel" data-group="Service &amp; damage" data-condition="false">
 <summary><span>DrvSetFuel</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Set the stored fuel reserve.</p><div class="code-sample"><pre><code>DrvSetFuel &lt;value&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>value</code> · Float · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The value is litres, clamped to the vehicle’s capacity. No inventory supply is consumed.</p><div class="code-sample"><pre><code>DrvSetFuel 10 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetFuel">Link to DrvSetFuel ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The value is litres, clamped to the vehicle’s capacity. No inventory supply is consumed.</p><div class="code-sample"><pre><code>DrvSetFuel 10 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetFuel">Link to DrvSetFuel →</a></div></details>
 <details class="command-entry" id="DrvSetHorseBond" data-group="Horses" data-condition="false">
 <summary><span>DrvSetHorseBond</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Set a stabled horse’s bond for testing.</p><div class="code-sample"><pre><code>horse.DrvSetHorseBond &lt;percent&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Console only</dd></dl>
 <ul class="argument-list"><li><code>percent</code> · Float · required</li></ul>
-<p class="reference-note">Development console only. Requires a living, enabled, registered horse and a finite percentage from 0 to 100.</p><div class="code-sample"><pre><code>DrvSetHorseBond 50</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseBond">Link to DrvSetHorseBond ↗</a></div></details>
+<p class="reference-note">Development console only. Requires a living, enabled, registered horse and a finite percentage from 0 to 100.</p><div class="code-sample"><pre><code>DrvSetHorseBond 50</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseBond">Link to DrvSetHorseBond →</a></div></details>
 <details class="command-entry" id="DrvSetHorseCommand" data-group="Horses" data-condition="false">
 <summary><span>DrvSetHorseCommand</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Give a living stabled horse a command.</p><div class="code-sample"><pre><code>horse.DrvSetHorseCommand &lt;command&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>command</code> · Integer · required</li></ul>
-<p class="reference-note">0 free, 1 follow, 2 wait. Asking a new horse to follow moves the previous follower to wait.</p><div class="code-sample"><pre><code>MyHorseRef.DrvSetHorseCommand 2</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseCommand">Link to DrvSetHorseCommand ↗</a></div></details>
+<p class="reference-note">0 free, 1 follow, 2 wait. Asking a new horse to follow moves the previous follower to wait.</p><div class="code-sample"><pre><code>MyHorseRef.DrvSetHorseCommand 2</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseCommand">Link to DrvSetHorseCommand →</a></div></details>
 <details class="command-entry" id="DrvSetHorseName" data-group="Horses" data-condition="false">
 <summary><span>DrvSetHorseName</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Rename a living player-owned stabled horse.</p><div class="code-sample"><pre><code>horse.DrvSetHorseName &lt;name&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>name</code> · String · required</li></ul>
-<p class="reference-note">Accepts a string literal or string variable. Names are trimmed and limited to 31 allowed characters. An empty string restores the base name.</p><div class="code-sample"><pre><code>MyHorseRef.DrvSetHorseName &quot;Dusty&quot;</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseName">Link to DrvSetHorseName ↗</a></div></details>
+<p class="reference-note">Accepts a string literal or string variable. Names are trimmed and limited to 31 allowed characters. An empty string restores the base name.</p><div class="code-sample"><pre><code>MyHorseRef.DrvSetHorseName &quot;Dusty&quot;</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseName">Link to DrvSetHorseName →</a></div></details>
 <details class="command-entry" id="DrvSetHorseTack" data-group="Horses" data-condition="false">
 <summary><span>DrvSetHorseTack</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Show or hide a horse’s tack.</p><div class="code-sample"><pre><code>DrvSetHorseTack &lt;value&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>value</code> · Integer · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Use 0 to hide or 1 to show. Pass a horse reference or call on the horse.</p><div class="code-sample"><pre><code>DrvSetHorseTack 1 MyHorseRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseTack">Link to DrvSetHorseTack ↗</a></div></details>
+<p class="reference-note">Use 0 to hide or 1 to show. Pass a horse reference or call on the horse.</p><div class="code-sample"><pre><code>DrvSetHorseTack 1 MyHorseRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetHorseTack">Link to DrvSetHorseTack →</a></div></details>
 <details class="command-entry" id="DrvSetRideAggression" data-group="NPC driving" data-condition="false">
 <summary><span>DrvSetRideAggression</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Change the aggression value of an active NPC ride.</p><div class="code-sample"><pre><code>DrvSetRideAggression &lt;vehicle&gt; &lt;value&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>value</code> · Float · required</li></ul>
-<p class="reference-note">Requires an active NPC driving session. The ride request default is 1.0.</p><a class="permalink" href="#DrvSetRideAggression">Link to DrvSetRideAggression ↗</a></div></details>
+<p class="reference-note">Requires an active NPC driving session. The ride request default is 1.0.</p><a class="permalink" href="#DrvSetRideAggression">Link to DrvSetRideAggression →</a></div></details>
 <details class="command-entry" id="DrvSetRideSpeed" data-group="NPC driving" data-condition="false">
 <summary><span>DrvSetRideSpeed</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Change the cruise speed of an active NPC ride.</p><div class="code-sample"><pre><code>DrvSetRideSpeed &lt;vehicle&gt; &lt;value&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>value</code> · Float · required</li></ul>
-<p class="reference-note">Speed is metres per second. Requires an active NPC driving session.</p><div class="code-sample"><pre><code>DrvSetRideSpeed MyCarRef 12</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetRideSpeed">Link to DrvSetRideSpeed ↗</a></div></details>
+<p class="reference-note">Speed is metres per second. Requires an active NPC driving session.</p><div class="code-sample"><pre><code>DrvSetRideSpeed MyCarRef 12</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetRideSpeed">Link to DrvSetRideSpeed →</a></div></details>
 <details class="command-entry" id="DrvSetVehicleFault" data-group="Access &amp; restoration" data-condition="false">
 <summary><span>DrvSetVehicleFault</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Set a fault message which prevents normal use.</p><div class="code-sample"><pre><code>DrvSetVehicleFault &lt;reason&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>reason</code> · String · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. An empty string clears the fault.</p><div class="code-sample"><pre><code>DrvSetVehicleFault &quot;The engine needs a replacement part.&quot; MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleFault">Link to DrvSetVehicleFault ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. An empty string clears the fault.</p><div class="code-sample"><pre><code>DrvSetVehicleFault &quot;The engine needs a replacement part.&quot; MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleFault">Link to DrvSetVehicleFault →</a></div></details>
 <details class="command-entry" id="DrvSetVehicleLocked" data-group="Access &amp; restoration" data-condition="false">
 <summary><span>DrvSetVehicleLocked</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Set the plugin’s vehicle lock.</p><div class="code-sample"><pre><code>DrvSetVehicleLocked &lt;value&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>value</code> · Integer · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use 0 to unlock, 1 to lock.</p><div class="code-sample"><pre><code>DrvSetVehicleLocked 1 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleLocked">Link to DrvSetVehicleLocked ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use 0 to unlock, 1 to lock.</p><div class="code-sample"><pre><code>DrvSetVehicleLocked 1 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleLocked">Link to DrvSetVehicleLocked →</a></div></details>
 <details class="command-entry" id="DrvSetVehicleRestoration" data-group="Access &amp; restoration" data-condition="false">
 <summary><span>DrvSetVehicleRestoration</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Assign a restoration component and Repair requirement.</p><div class="code-sample"><pre><code>DrvSetVehicleRestoration &lt;component&gt; &lt;repair skill&gt; [vehicle]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>component</code> · ObjectID · required</li><li><code>repair skill</code> · Integer · required</li><li><code>vehicle</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The component must be a MISC form. Repair skill must be between 0 and 100. Set a fault separately. This defines the requirement, it does not perform a repair.</p><div class="code-sample"><pre><code>DrvSetVehicleRestoration MyRepairPart 50 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleRestoration">Link to DrvSetVehicleRestoration ↗</a></div></details>
+<p class="reference-note">Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. The component must be a MISC form. Repair skill must be between 0 and 100. Set a fault separately. This defines the requirement, it does not perform a repair.</p><div class="code-sample"><pre><code>DrvSetVehicleRestoration MyRepairPart 50 MyCarRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSetVehicleRestoration">Link to DrvSetVehicleRestoration →</a></div></details>
 <details class="command-entry" id="DrvSpawnVehicle" data-group="Vehicles" data-condition="false">
 <summary><span>DrvSpawnVehicle</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Spawn a registered vehicle base.</p><div class="code-sample"><pre><code>DrvSpawnVehicle &lt;vehicle base&gt; [at]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>New vehicle reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle base</code> · AnyForm · required</li><li><code>at</code> · ObjectRef · optional</li></ul>
-<p class="reference-note">Pass a base form, not a placed reference. The optional placement reference supplies position and heading. It falls back to the caller, then the player. Use an anchor in the player’s current world or cell. Arena unlock restrictions still apply.</p><div class="code-sample"><pre><code>let car := DrvSpawnVehicle MyCarBase MyParkingMarker</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSpawnVehicle">Link to DrvSpawnVehicle ↗</a></div></details>
+<p class="reference-note">Pass a base form, not a placed reference. The optional placement reference supplies position and heading. It falls back to the caller, then the player. Use an anchor in the player’s current world or cell. Arena unlock restrictions still apply.</p><div class="code-sample"><pre><code>let car := DrvSpawnVehicle MyCarBase MyParkingMarker</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvSpawnVehicle">Link to DrvSpawnVehicle →</a></div></details>
 <details class="command-entry" id="DrvStartChase" data-group="NPC driving" data-condition="false">
 <summary><span>DrvStartChase</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Ask an NPC driver to pursue a target reference.</p><div class="code-sample"><pre><code>DrvStartChase &lt;vehicle&gt; &lt;driver&gt; &lt;target&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>driver</code> · Actor · required</li><li><code>target</code> · ObjectRef · required</li></ul>
-<p class="reference-note">The target may be a vehicle or actor.</p><div class="code-sample"><pre><code>DrvStartChase MyCarRef MyDriverRef Player</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartChase">Link to DrvStartChase ↗</a></div></details>
+<p class="reference-note">The target may be a vehicle or actor.</p><div class="code-sample"><pre><code>DrvStartChase MyCarRef MyDriverRef Player</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartChase">Link to DrvStartChase →</a></div></details>
 <details class="command-entry" id="DrvStartEncounter" data-group="NPC driving" data-condition="false">
 <summary><span>DrvStartEncounter</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Start a configured vehicle encounter.</p><div class="code-sample"><pre><code>DrvStartEncounter &lt;encounter quest&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>Leader reference, or 0.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>encounter quest</code> · Quest · required</li></ul>
-<p class="reference-note">The quest must belong to a configured encounter.</p><a class="permalink" href="#DrvStartEncounter">Link to DrvStartEncounter ↗</a></div></details>
+<p class="reference-note">The quest must belong to a configured encounter.</p><a class="permalink" href="#DrvStartEncounter">Link to DrvStartEncounter →</a></div></details>
 <details class="command-entry" id="DrvStartRace" data-group="Races &amp; ramps" data-condition="false">
 <summary><span>DrvStartRace</span><span class="command-group">Races &amp; ramps</span></summary>
 <div class="command-body"><p>Queue race setup with optional vehicle assignments.</p><div class="code-sample"><pre><code>DrvStartRace [laps] [player vehicle base] [opponent vehicle list]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if queued, 0 if refused.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>laps</code> · Integer · optional</li><li><code>player vehicle base</code> · AnyForm · optional</li><li><code>opponent vehicle list</code> · FormList · optional</li></ul>
-<p class="reference-note">Omitted options use defaults. The opponent argument is a FormList of supported vehicle bases, up to 16 entries. This queues setup rather than confirming the race has begun.</p><div class="code-sample"><pre><code>DrvStartRace 3</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRace">Link to DrvStartRace ↗</a></div></details>
+<p class="reference-note">Omitted options use defaults. The opponent argument is a FormList of supported vehicle bases, up to 16 entries. This queues setup rather than confirming the race has begun.</p><div class="code-sample"><pre><code>DrvStartRace 3</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRace">Link to DrvStartRace →</a></div></details>
 <details class="command-entry" id="DrvStartRide" data-group="NPC driving" data-condition="false">
 <summary><span>DrvStartRide</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Start an NPC following a route, or wandering if the route is omitted.</p><div class="code-sample"><pre><code>DrvStartRide &lt;vehicle&gt; &lt;driver&gt; [route file]</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if accepted, 0 if refused.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>driver</code> · Actor · required</li><li><code>route file</code> · String · optional</li></ul>
-<p class="reference-note">Route paths are Data-relative. Acceptance may queue a ride while its model loads.</p><div class="code-sample"><pre><code>DrvStartRide MyCarRef MyDriverRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRide">Link to DrvStartRide ↗</a></div></details>
+<p class="reference-note">Route paths are Data-relative. Acceptance may queue a ride while its model loads.</p><div class="code-sample"><pre><code>DrvStartRide MyCarRef MyDriverRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRide">Link to DrvStartRide →</a></div></details>
 <details class="command-entry" id="DrvStartRideTo" data-group="NPC driving" data-condition="false">
 <summary><span>DrvStartRideTo</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Send an NPC in a vehicle to a destination reference.</p><div class="code-sample"><pre><code>DrvStartRideTo &lt;vehicle&gt; &lt;driver&gt; &lt;destination&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if accepted, 0 if refused.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>driver</code> · Actor · required</li><li><code>destination</code> · ObjectRef · required</li></ul>
-<p class="reference-note">Use a placed destination reference. A successful request is not proof of arrival.</p><div class="code-sample"><pre><code>DrvStartRideTo MyCarRef MyDriverRef MyDestinationRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRideTo">Link to DrvStartRideTo ↗</a></div></details>
+<p class="reference-note">Use a placed destination reference. A successful request is not proof of arrival.</p><div class="code-sample"><pre><code>DrvStartRideTo MyCarRef MyDriverRef MyDestinationRef</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStartRideTo">Link to DrvStartRideTo →</a></div></details>
 <details class="command-entry" id="DrvStopRide" data-group="NPC driving" data-condition="false">
 <summary><span>DrvStopRide</span><span class="command-group">NPC driving</span></summary>
 <div class="command-body"><p>Stop an NPC ride.</p><div class="code-sample"><pre><code>DrvStopRide &lt;vehicle&gt; &lt;retain motion&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 on success, 0 on refusal.</dd><dt>Use</dt><dd>Script / console</dd></dl>
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li><li><code>retain motion</code> · Integer · required</li></ul>
-<p class="reference-note">retain motion: 0 stops the ride without retaining motion, 1 requests retaining motion.</p><div class="code-sample"><pre><code>DrvStopRide MyCarRef 0</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStopRide">Link to DrvStopRide ↗</a></div></details>
+<p class="reference-note">retain motion: 0 stops the ride without retaining motion, 1 requests retaining motion.</p><div class="code-sample"><pre><code>DrvStopRide MyCarRef 0</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#DrvStopRide">Link to DrvStopRide →</a></div></details>
 <details class="command-entry" id="IsDrivable" data-group="Vehicles" data-condition="true">
 <summary><span>IsDrivable</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Check whether a reference is a recognised vehicle or horse.</p><div class="code-sample"><pre><code>ref.IsDrivable</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if recognised, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#IsDrivable">Link to IsDrivable ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#IsDrivable">Link to IsDrivable →</a></div></details>
 <details class="command-entry" id="IsDriving" data-group="Occupants" data-condition="true">
 <summary><span>IsDriving</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Check whether an actor is driving.</p><div class="code-sample"><pre><code>actor.IsDriving</code></pre><button type="button" data-copy>Copy syntax</button></div>
@@ -421,19 +440,19 @@ endif</code></pre><button type="button" data-copy>Copy example</button></div><a 
 <p class="reference-note">No arguments.</p>
 <p class="reference-note">Covers non-living vehicles, including stationary active driving sessions. IsRiding is the living-mount query.</p><div class="code-sample"><pre><code>if Player.IsDriving
     let vehicle := DrvGetPlayerVehicle
-endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#IsDriving">Link to IsDriving ↗</a></div></details>
+endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#IsDriving">Link to IsDriving →</a></div></details>
 <details class="command-entry" id="IsEngineRunning" data-group="Vehicles" data-condition="true">
 <summary><span>IsEngineRunning</span><span class="command-group">Vehicles</span></summary>
 <div class="command-body"><p>Check whether a motorised engine is running.</p><div class="code-sample"><pre><code>vehicle.IsEngineRunning</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if running, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Horses and human-powered rides return 0.</p><a class="permalink" href="#IsEngineRunning">Link to IsEngineRunning ↗</a></div></details>
+<p class="reference-note">Horses and human-powered rides return 0.</p><a class="permalink" href="#IsEngineRunning">Link to IsEngineRunning →</a></div></details>
 <details class="command-entry" id="IsHorsePanicking" data-group="Horses" data-condition="true">
 <summary><span>IsHorsePanicking</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Check for active panic or a panic rear.</p><div class="code-sample"><pre><code>horse.IsHorsePanicking</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 during panic, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">An unmounted horse returns 0.</p><a class="permalink" href="#IsHorsePanicking">Link to IsHorsePanicking ↗</a></div></details>
+<p class="reference-note">An unmounted horse returns 0.</p><a class="permalink" href="#IsHorsePanicking">Link to IsHorsePanicking →</a></div></details>
 <details class="command-entry" id="IsInVehicle" data-group="Occupants" data-condition="true">
 <summary><span>IsInVehicle</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Check whether an actor is aboard a specific vehicle.</p><div class="code-sample"><pre><code>actor.IsInVehicle &lt;vehicle&gt;</code></pre><button type="button" data-copy>Copy syntax</button></div>
@@ -441,43 +460,43 @@ endif</code></pre><button type="button" data-copy>Copy example</button></div><a 
 <ul class="argument-list"><li><code>vehicle</code> · ObjectRef · required</li></ul>
 <p class="reference-note"></p><div class="code-sample"><pre><code>if Player.IsInVehicle MyCarRef
     let condition := MyCarRef.DrvGetVehicleCondition
-endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#IsInVehicle">Link to IsInVehicle ↗</a></div></details>
+endif</code></pre><button type="button" data-copy>Copy example</button></div><a class="permalink" href="#IsInVehicle">Link to IsInVehicle →</a></div></details>
 <details class="command-entry" id="IsPassenger" data-group="Occupants" data-condition="true">
 <summary><span>IsPassenger</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Check whether an actor is assigned as a passenger.</p><div class="code-sample"><pre><code>actor.IsPassenger</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if assigned, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">Reports logical seat assignment, including temporary save suspension.</p><a class="permalink" href="#IsPassenger">Link to IsPassenger ↗</a></div></details>
+<p class="reference-note">Reports logical seat assignment, including temporary save suspension.</p><a class="permalink" href="#IsPassenger">Link to IsPassenger →</a></div></details>
 <details class="command-entry" id="IsRiding" data-group="Occupants" data-condition="true">
 <summary><span>IsRiding</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Check whether an actor is riding a horse or another living mount.</p><div class="code-sample"><pre><code>actor.IsRiding</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if riding, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note">This is the living-mount query. IsDriving covers non-living vehicles. Use IsPassenger for passenger assignment.</p><a class="permalink" href="#IsRiding">Link to IsRiding ↗</a></div></details>
+<p class="reference-note">This is the living-mount query. IsDriving covers non-living vehicles. Use IsPassenger for passenger assignment.</p><a class="permalink" href="#IsRiding">Link to IsRiding →</a></div></details>
 <details class="command-entry" id="IsStabled" data-group="Horses" data-condition="true">
 <summary><span>IsStabled</span><span class="command-group">Horses</span></summary>
 <div class="command-body"><p>Check whether a horse is registered in the stable.</p><div class="code-sample"><pre><code>horse.IsStabled</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if registered, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#IsStabled">Link to IsStabled ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#IsStabled">Link to IsStabled →</a></div></details>
 <details class="command-entry" id="IsVehicleLocked" data-group="Access &amp; restoration" data-condition="true">
 <summary><span>IsVehicleLocked</span><span class="command-group">Access &amp; restoration</span></summary>
 <div class="command-body"><p>Read the plugin’s vehicle lock.</p><div class="code-sample"><pre><code>vehicle.IsVehicleLocked</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if locked, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#IsVehicleLocked">Link to IsVehicleLocked ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#IsVehicleLocked">Link to IsVehicleLocked →</a></div></details>
 <details class="command-entry" id="IsVehicleOccupied" data-group="Occupants" data-condition="true">
 <summary><span>IsVehicleOccupied</span><span class="command-group">Occupants</span></summary>
 <div class="command-body"><p>Check for an active driver or assigned passenger.</p><div class="code-sample"><pre><code>vehicle.IsVehicleOccupied</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if occupied, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#IsVehicleOccupied">Link to IsVehicleOccupied ↗</a></div></details>
+<p class="reference-note"></p><a class="permalink" href="#IsVehicleOccupied">Link to IsVehicleOccupied →</a></div></details>
 <details class="command-entry" id="IsVehicleWrecked" data-group="Service &amp; damage" data-condition="true">
 <summary><span>IsVehicleWrecked</span><span class="command-group">Service &amp; damage</span></summary>
 <div class="command-body"><p>Check for a destroyed hull or dead vehicle / mount.</p><div class="code-sample"><pre><code>vehicle.IsVehicleWrecked</code></pre><button type="button" data-copy>Copy syntax</button></div>
 <dl><dt>Returns</dt><dd>1 if wrecked or dead, otherwise 0.</dd><dt>Use</dt><dd>Script / console / condition</dd></dl>
 <p class="reference-note">No arguments.</p>
-<p class="reference-note"></p><a class="permalink" href="#IsVehicleWrecked">Link to IsVehicleWrecked ↗</a></div></details></div>
+<p class="reference-note"></p><a class="permalink" href="#IsVehicleWrecked">Link to IsVehicleWrecked →</a></div></details></div>
     <details class="author-detail" id="use-failures"><summary>Vehicle-use failure codes</summary><p><code>DrvGetVehicleUseFailure</code> explains the same eligibility check used by <code>CanUseVehicle</code>.</p><dl class="failure-codes"><dt>0</dt><dd>Allowed</dd><dt>1</dt><dd>Invalid or disabled vehicle</dd><dt>2</dt><dd>Invalid or disabled actor, or actor is the vehicle</dd><dt>3</dt><dd>Dead actor or wrecked vehicle</dd><dt>4</dt><dd>Occupied or reserved vehicle</dd><dt>5</dt><dd>Actor already aboard, mounting or reserved</dd><dt>6</dt><dd>Race restriction</dd><dt>7</dt><dd>Vehicle fault</dd><dt>8</dt><dd>Locked</dd><dt>9</dt><dd>Missing player key</dd><dt>10</dt><dd>Water restriction</dd><dt>11</dt><dd>Ownership or theft confirmation required</dd><dt>12</dt><dd>Hostile horse</dd><dt>13</dt><dd>Vehicle or driver not ready</dd><dt>14</dt><dd>Unsupported NPC driving configuration</dd><dt>15</dt><dd>Session or access-record capacity exhausted</dd></dl></details>
   </section>
 

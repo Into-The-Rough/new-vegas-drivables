@@ -5,11 +5,14 @@ from html import escape
 from pathlib import Path
 from modder_reference import content as modder_content
 from site_navigation import navigation
+from site_metadata import metadata, sitemap, PAGES, BASE
 
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
 index = (public / 'index.html').read_text()
+index, count = re.subn(r'<!--metadata-->.*?<!--/metadata-->', lambda _: '<!--metadata-->' + metadata('index.html') + '<!--/metadata-->', index, flags=re.S)
+assert count == 1, 'expected one metadata slot'
 analytics = (ROOT / 'pages/analytics.html').read_text().strip()
 index, count = re.subn(r'<!--analytics-->.*?<!--/analytics-->', lambda _: '<!--analytics-->' + analytics + '<!--/analytics-->', index, flags=re.S)
 assert count == 1, 'expected one analytics slot'
@@ -26,9 +29,10 @@ def page(title, body, active=''):
     current = active or {'Complete location guide': 'placements', 'Vehicle speeds': 'vehicles', 'Sound & passengers': 'sounds'}.get(title, '')
     extra_head = '<link rel="stylesheet" href="modders.css"><script defer src="modders.js"></script>' if active == 'modders' else ''
     nav = navigation(current)
+    filename = next(name for name, details in PAGES.items() if details[0] == title)
     return f'''<!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><title>{title} · New Vegas Drivables</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation.css"><script defer src="navigation.js"></script><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script>{extra_head}</head>
-<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides ↗</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div>{analytics}</body></html>'''
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909">{metadata(filename)}<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation.css"><script defer src="navigation.js"></script><link rel="stylesheet" href="guides.css"><link rel="stylesheet" href="media.css"><script defer src="gallery.js"></script>{extra_head}<link rel="stylesheet" href="reading.css"><script defer src="reading.js"></script></head>
+<body><div class="site-shell"><header class="site-header"><a class="brand" href="index.html">New Vegas Drivables</a><div class="profile-links"><button type="button" class="reading-toggle" data-reading-font aria-pressed="false" hidden>Reading font</button><a class="text-link" href="https://www.nexusmods.com/newvegas/mods/100007">Nexus Mods ↗</a><a class="text-link" href="index.html#start">Player guides →</a></div></header>{nav}<main class="plain-page">{body}</main><footer class="site-footer"><p>New Vegas Drivables by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>.</p><div><a href="faq.html">FAQ</a><a href="about.html">Ethos & development</a><a href="https://www.youtube.com/@OliverSwanickProductions">YouTube ↗</a><a href="index.html" class="text-link">Home</a></div></footer></div>{analytics}</body></html>'''
 
 
 rows = []
@@ -55,3 +59,6 @@ sound_rows.append('<tr><th scope="row"><a href="index.html#horses">Horses</a></t
 (public / 'modders.html').write_text(page('Modders', modder_content(), 'modders'))
 (public / 'credits.html').write_text(page('Credits', '''<h1>Credits & sources</h1><h2>The mod</h2><p>New Vegas Drivables is a Fallout: New Vegas mod by <a href="https://www.nexusmods.com/profile/intotherough">intotherough</a>. Watch the mod on <a href="https://www.youtube.com/@OliverSwanickProductions">Oliver Swanick Productions</a>.</p><h2>The guide</h2><p>Locations, restoration requirements and unlock routes come from the mod’s placement records and implementation notes. Vehicle speeds use the same settings and conversion as the F10 garage. Circuit diagrams follow the race routes. Vehicle renders and showcase artwork come from the mod’s own assets and videos. The amber text, selection outlines and tabs follow the in-game F10 menu.</p><h2>Map & game</h2><p>The Mojave map artwork and Fallout: New Vegas belong to their respective rights holders. This is an unofficial fan project.</p><h2>Font</h2><p>Monofonto by Ray Larabie, the typeface used for the game’s menu text. This site includes the unmodified 2.000 release and its <a href="assets/monofonto-readme.html">original readme and licence</a>, which permits use and redistribution. The original package is available from <a href="https://www.abstractfonts.com/font/845">Abstract Fonts</a>. The designer’s current catalogue is at <a href="https://typodermicfonts.com/monofonto/">Typodermic Fonts</a>.</p>'''))
 print('Generated locations.html, vehicles.html, sounds.html, about.html, faq.html, credits.html and modders.html.')
+
+(public / 'sitemap.xml').write_text(sitemap())
+(public / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + BASE + 'sitemap.xml\n')

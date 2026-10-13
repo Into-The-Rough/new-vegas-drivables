@@ -85,7 +85,7 @@ City-world discoveries use explicitly approximate regional pins with on-page
 directions. The Big MT reward never uses its dormant Mojave authoring coordinates.
 The location toggle controls the interactive guide only. The complete location
 list intentionally contains all spoilers. No console command assumes a user's
-load-order prefix. Known travel limitations are described in the player guide.
+load-order prefix. The map switch also hides starting conditions and unlock details in its entry panel. The catalogue and other guides are explicitly outside its scope.
 
 ## Verify
 
@@ -156,3 +156,30 @@ previews, direct image URLs and BBCode. Refresh them with
 `python3 scripts/import-nexus-headers.py /path/to/Ready-to-Upload`.
 The files are copied unchanged. Keep these filenames stable because Nexus
 descriptions link to them directly.
+
+## Site presentation
+
+Shared descriptions, canonicals, social previews and the sitemap come from
+`scripts/site_metadata.py`. The homepage has a silent 32-second gameplay preview, downloaded only on demand.
+Its YouTube link uses the author-selected video. Rebuild the preview with
+`python3 scripts/make-gameplay-preview.py /path/to/Videos` (FFmpeg required).
+Release status is on the homepage and in `pages/faq.html`. The release year is the
+only date permitted by the copy check. Installation guidance separates the
+confirmed xNVSE setup and JIP horse-marker support from forthcoming release
+requirements and dependency versions.
+
+Monofonto remains the default. The Reading font button changes body text to a
+system sans serif and persists locally across pages. It leaves headings and
+navigation in Monofonto and still works when browser storage is unavailable.
+
+Keyboard defaults in `public/keyboard-data.js` were checked against the mod's
+`RideControlsPolicy.h`, `RideControls.cpp`, `Config.h` and shipped INI. Movement,
+Activate, Jump, Crouch, Fire, Aim, Camera and Pip-Boy follow the game's bindings.
+Other ride keys use the mod's defaults. Keep the keyboard reference in step with
+those sources when bindings change. The control and stunt selectors share their
+input device within the page.
+
+Run `python3 scripts/optimise-images.py` after replacing homepage source artwork
+(Pillow and ImageMagick required). It makes WebP cards, a small map thumbnail and
+PNG icons from the existing SVG mark. The original JPEGs remain available for
+existing links and social previews.

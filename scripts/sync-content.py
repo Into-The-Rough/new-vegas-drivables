@@ -82,13 +82,13 @@ def export(source):
                          acquisition='Complete Old World Blues. Find your reward outside the Think Tank / Sink entrances, then charge it with Energy Cells or Microfusion Cells. No repair or caps required.',
                          note='The reward bike currently stays in Big MT. Transportalponder transfer to the Mojave is not implemented.')
         if n == 37:
-            entry['note'] = 'The Volare! unlock is implemented. A reported runway / ground-support fault still affects takeoff.'
+            entry['note'] = ''
         if n == 40:
             entry['acquisition'] = 'Requires the Wild Wasteland alien encounter. Defeat all three aliens, then use F10 → Garage → Alien Recon Craft → Recover UFO at the camp. Repair 100 and two carried Car Repair Tools are consumed. The original UFO is replaced by your craft on reachable ground.'
         if n == 16:
             entry['acquisition'] = 'Resolve My Kind of Town with any successful sheriff ending and wait for the casino to reopen. Inspect the original display: Repair 75 and one carried Car Repair Tools. Repair consumes the toolbox and moves the restored car and you outside.'
         if n == 17:
-            entry['note'] = 'The Strip-door transfer fix is implemented; its corrected round-trip test is still pending.'
+            entry['note'] = ''
         entries.append(entry)
 
     for i, site in enumerate(horses['proposed_sites']):

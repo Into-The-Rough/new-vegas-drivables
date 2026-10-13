@@ -63,7 +63,7 @@
     const shots = {thunderdome:['thunderdome','Monster Truck in the Thunderdome'],ivanpah_buggy:['ivanpah','Ivanpah Buggy Race'],mojave_cycle:['horse-race','Mojave Steeplechase on the shared cycle circuit']};
     const shot=shots[id];
     if (!shot) return '';
-    return `<figure class="guide-photo world-photo"><a href="assets/screens/${shot[0]}.webp" data-lightbox data-caption="${shot[1]}"><img src="assets/screens/${shot[0]}.webp" width="1440" height="810" alt="${shot[1]} gameplay" loading="lazy"></a><figcaption><span>${shot[1]}</span><span>Enlarge ↗</span></figcaption></figure>`;
+    return `<figure class="guide-photo world-photo"><a href="assets/screens/${shot[0]}.webp" data-lightbox data-caption="${shot[1]}"><img src="assets/screens/${shot[0]}.webp" width="1440" height="810" alt="${shot[1]} gameplay" loading="lazy"></a><figcaption><span>${shot[1]}</span><span>Enlarge →</span></figcaption></figure>`;
   }
   let selectedWorld = worlds[0].id;
   function selectWorld(id) {
@@ -92,6 +92,6 @@
     selectWorld(id || selectedWorld);
   }
   locationHash(); window.addEventListener('hashchange', locationHash);
-  $('race-courses').innerHTML = data.courses.map(course => `<a href="#world=${course.id}" class="race-course"><span><strong>${escape(course.name)}</strong><small>${length(course)} per lap · ${course.checkpoints} checkpoints${course.fences ? ` · ${course.fences} fences` : ''}</small></span><span>${escape(course.kind)} ↗</span></a>`).join('');
+  $('race-courses').innerHTML = data.courses.map(course => `<a href="#world=${course.id}" class="race-course"><span><strong>${escape(course.name)}</strong><small>${length(course)} per lap · ${course.checkpoints} checkpoints${course.fences ? ` · ${course.fences} fences` : ''}</small></span><span>${escape(course.kind)} →</span></a>`).join('');
   $('horse-traits').innerHTML = data.horseTraits.map(horse => `<tr><th scope="row">${escape(horse.name)}</th><td>${horse.survival || 'None'}</td>${['speed','endurance','nerve'].map(stat => `<td><span class="trait-score" aria-label="${horse[stat]} out of 5"><span aria-hidden="true">${'●'.repeat(horse[stat])}${'○'.repeat(5-horse[stat])}</span><small>${horse[stat]}/5</small></span></td>`).join('')}</tr>`).join('');
 })();
