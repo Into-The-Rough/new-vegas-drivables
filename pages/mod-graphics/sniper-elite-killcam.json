@@ -1,0 +1,14 @@
+{
+  "slug": "sniper-elite-killcam",
+  "title": "Sniper Elite Killcam",
+  "brand": "ITR Modding",
+  "style": "ivory-amber",
+  "version": "v1",
+  "headers": [
+    "Overview", "Features", "What Opens It", "Requirements", "Installation",
+    "Configuration", "Compatibility", "Controls", "FAQ", "Limitations",
+    "Known Issues", "Credits", "Changelog", "Permissions", "Downloads",
+    "Support", "Troubleshooting", "Read More", "Website"
+  ],
+  "subheaders": ["Optional", "Automatic", "Cinematic"]
+}

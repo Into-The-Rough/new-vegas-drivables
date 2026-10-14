@@ -1,0 +1,286 @@
+{
+  "mods": {
+    "sniper-elite-killcam": {
+      "title": "Sniper Elite Killcam",
+      "brand": "ITR Modding",
+      "images": [
+        {
+          "kind": "title",
+          "label": "Sniper Elite Killcam",
+          "path": "mod-graphics/mods/sniper-elite-killcam/v1/title.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/mods/sniper-elite-killcam/v1/title.png",
+          "dimensions": [
+            1300,
+            240
+          ],
+          "bytes": 77770,
+          "sha256": "d2f70d8559115d5d75c01a16d83dcb03c2aa34b589c461c834d950eda44c7870"
+        },
+        {
+          "kind": "header",
+          "label": "Overview",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/overview.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/overview.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 28032,
+          "sha256": "5b7440eecbf35899cfa2137140d5cf3f341f8b5dd5faa999b968fe87de8fddcb"
+        },
+        {
+          "kind": "header",
+          "label": "Features",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/features.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/features.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 22609,
+          "sha256": "6e21ef2d420e869c454cab7720068632fc17da546d2cf3048d669fc5381c7967"
+        },
+        {
+          "kind": "header",
+          "label": "What Opens It",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/what-opens-it.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/what-opens-it.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 33944,
+          "sha256": "f9c9ad7156b499b6bcebe0aba0c6a9e5cc39b5a94e78f20bc95b63cbee62c348"
+        },
+        {
+          "kind": "header",
+          "label": "Requirements",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/requirements.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/requirements.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 32257,
+          "sha256": "d226c2334a5bd6f59ca419c45dfd5eff2970d194aa8f2cff31625b188518a0d1"
+        },
+        {
+          "kind": "header",
+          "label": "Installation",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/installation.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/installation.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 29077,
+          "sha256": "956b0072e68b4f66cc75ef16eea56950adea94204f20e3c6ab977c645286ae2c"
+        },
+        {
+          "kind": "header",
+          "label": "Configuration",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/configuration.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/configuration.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 30057,
+          "sha256": "aaaf7b3ddef1e8bfe67bb670f2696808158d79059d1c47f39045cd7c6ccc22c6"
+        },
+        {
+          "kind": "header",
+          "label": "Compatibility",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/compatibility.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/compatibility.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 32032,
+          "sha256": "9b94fd563784e0d00bc727a849572d5be340671c09cb398ebcfe0f2bc652c96c"
+        },
+        {
+          "kind": "header",
+          "label": "Controls",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/controls.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/controls.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 24581,
+          "sha256": "0f250d735a8ce4ed36cd683a5ccbffa5a23eed4a4c9a41cc20b3a2c1d996ac8e"
+        },
+        {
+          "kind": "header",
+          "label": "FAQ",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/faq.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/faq.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 11644,
+          "sha256": "f2f7f99cffcfffe6490eb94d9830313cae0ca18cbd4880290fdd640850c3e5e5"
+        },
+        {
+          "kind": "header",
+          "label": "Limitations",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/limitations.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/limitations.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 26776,
+          "sha256": "006f527608dd4434ee8f51bace3f2fe1349bdd69a875133eeb59d709a95d9852"
+        },
+        {
+          "kind": "header",
+          "label": "Known Issues",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/known-issues.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/known-issues.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 33895,
+          "sha256": "dcdbbe39e101d0405972997afdce726aecd2cee95a3c84a6f94d00a60fe3fa04"
+        },
+        {
+          "kind": "header",
+          "label": "Credits",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/credits.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/credits.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 20032,
+          "sha256": "33642fba0f382b0839b590e5b9f4630edb63f3e2def5ae0ca073f1fe5c484165"
+        },
+        {
+          "kind": "header",
+          "label": "Changelog",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/changelog.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/changelog.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 28835,
+          "sha256": "183c49da167d070bacb3c3d537ccdeb71f919bf192a9599338c755b2d4dda38a"
+        },
+        {
+          "kind": "header",
+          "label": "Permissions",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/permissions.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/permissions.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 30546,
+          "sha256": "80a303c6d1e0fcbf414755d3c27ff57ce76be13c30f50a03bc060bea8ff4dfb0"
+        },
+        {
+          "kind": "header",
+          "label": "Downloads",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/downloads.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/downloads.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 26616,
+          "sha256": "e934199abb84c8e50e298ffeb48dacf8ea3dd48897c5547419bafaaf68c8d5cb"
+        },
+        {
+          "kind": "header",
+          "label": "Support",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/support.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/support.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 22998,
+          "sha256": "aaf025235bd71107baafd358e9d76c6ea6953a66c2f0d44485b6a4c2d254254f"
+        },
+        {
+          "kind": "header",
+          "label": "Troubleshooting",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/troubleshooting.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/troubleshooting.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 39179,
+          "sha256": "dd445d189677701ad1b9bfc63cf3dba2e61be7f923f63bcc2c7b3cd305483272"
+        },
+        {
+          "kind": "header",
+          "label": "Read More",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/read-more.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/read-more.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 22251,
+          "sha256": "4ce42c7d16c68836fc3224598088aa14fc05574387c8bbdee302a0b3fa50fdca"
+        },
+        {
+          "kind": "header",
+          "label": "Website",
+          "path": "mod-graphics/shared/ivory-amber/v1/headers/website.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/headers/website.png",
+          "dimensions": [
+            1300,
+            120
+          ],
+          "bytes": 22936,
+          "sha256": "c39b431007221646245d30e0c7ad45ad4fb6fccbd47930748c310418682ffa4f"
+        },
+        {
+          "kind": "subheader",
+          "label": "Optional",
+          "path": "mod-graphics/shared/ivory-amber/v1/subheaders/optional.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/subheaders/optional.png",
+          "dimensions": [
+            1300,
+            88
+          ],
+          "bytes": 16248,
+          "sha256": "eb4d9cc5af6a29084b298e90e07571c42d555cc0c262bb95e1ece6b18f8cb0eb"
+        },
+        {
+          "kind": "subheader",
+          "label": "Automatic",
+          "path": "mod-graphics/shared/ivory-amber/v1/subheaders/automatic.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/subheaders/automatic.png",
+          "dimensions": [
+            1300,
+            88
+          ],
+          "bytes": 18090,
+          "sha256": "f1ec39b7a72ee1dcbcce389582c15a01dce62bad9c31f169921c31f060cb78e4"
+        },
+        {
+          "kind": "subheader",
+          "label": "Cinematic",
+          "path": "mod-graphics/shared/ivory-amber/v1/subheaders/cinematic.png",
+          "url": "https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/shared/ivory-amber/v1/subheaders/cinematic.png",
+          "dimensions": [
+            1300,
+            88
+          ],
+          "bytes": 16710,
+          "sha256": "391da09e6e59c134fdd4677745388472db23d243053ab8febe552ae40a962c39"
+        }
+      ]
+    }
+  }
+}

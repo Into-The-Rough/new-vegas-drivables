@@ -157,6 +157,41 @@ previews, direct image URLs and BBCode. Refresh them with
 The files are copied unchanged. Keep these filenames stable because Nexus
 descriptions link to them directly.
 
+## Shared mod-page graphics
+
+The reusable ITR Modding header library is at
+https://into-the-rough.github.io/new-vegas-drivables/mod-graphics/.
+It contains public PNG images and BBCode examples. Mod descriptions and private
+plugin source files are not bundled with the website.
+
+- `public/mod-graphics/shared/ivory-amber/v1/headers/`: common section headings.
+- `public/mod-graphics/shared/ivory-amber/v1/subheaders/`: smaller subsection headings.
+- `public/mod-graphics/mods/<mod-slug>/v1/title.png`: individual branded titles.
+- `pages/mod-graphics/<mod-slug>.json`: each mod's title and heading list.
+
+For another mod, copy the JSON manifest, change its slug/title and add any heading
+labels it needs. Render with the local Gothic 821 Condensed font:
+
+```sh
+python3 scripts/build-mod-graphics.py \
+  --config pages/mod-graphics/sniper-elite-killcam.json \
+  --font /path/to/Gothic821Condensed-Regular.otf \
+  --description /path/to/nexus_description.bbcode \
+  --output /path/to/local/mod-page-folder
+```
+
+The output folder contains `nexus_description.bbcode`, `header-bbcode.txt`,
+`Ready to Upload/` PNGs and private `.work` backups/previews. The script replaces
+the page title, section headings, INI subsection headings and Optional label,
+then checks that the remaining description text is unchanged. It does not edit
+the supplied description in place.
+
+Shared images are reused across mods; do not rename or delete published images.
+Changing the font, palette or layout requires a new style version (`v2`, etc.).
+The builder refuses to silently overwrite a shared image with different pixels.
+Only publish the generated public assets and their manifest, never a private
+description file or the font file. Existing `/nexus-headers/` URLs remain valid.
+
 ## Site presentation
 
 Shared descriptions, canonicals, social previews and the sitemap come from
