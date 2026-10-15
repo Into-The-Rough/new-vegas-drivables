@@ -1,7 +1,7 @@
 window.DRIVABLES = {
   "counts": {
-    "vehicles": 33,
-    "placements": 36,
+    "vehicles": 35,
+    "placements": 40,
     "herds": 3
   },
   "map": {
@@ -978,6 +978,106 @@ window.DRIVABLES = {
       "note": ""
     },
     {
+      "id": "v-000d20",
+      "profile": 48,
+      "name": "Wooden Cart",
+      "category": "Oddballs",
+      "kind": "discovery",
+      "ref": "000D20",
+      "location": "188 Trading Post: on the overpass deck beside the water brahmin, down the slope from the hitching post",
+      "state": "Ready to hitch",
+      "condition": "Ready",
+      "reserve": "No fuel: horse-drawn",
+      "acquisition": "Back a mounted horse between the shafts. Free and unowned. No quest or reputation gate.",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        31949.0,
+        31829.0
+      ],
+      "approximate": false,
+      "parts": "No parts",
+      "image": "fleet/wooden-cart-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d22",
+      "profile": 48,
+      "name": "Wooden Cart",
+      "category": "Oddballs",
+      "kind": "discovery",
+      "ref": "000D22",
+      "location": "Grub n' Gulp rest stop: beside the shack",
+      "state": "Ready to hitch",
+      "condition": "Ready",
+      "reserve": "No fuel: horse-drawn",
+      "acquisition": "Back a mounted horse between the shafts. Free and unowned. No quest or reputation gate.",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        7250.0,
+        58850.0
+      ],
+      "approximate": false,
+      "parts": "No parts",
+      "image": "fleet/wooden-cart-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d24",
+      "profile": 47,
+      "name": "Military Trailer",
+      "category": "Oddballs",
+      "kind": "discovery",
+      "ref": "000D24",
+      "location": "Camp Forlorn Hope: outside the camp near the storage shed",
+      "state": "Ready to hitch",
+      "condition": "Ready",
+      "reserve": "No fuel: towed",
+      "acquisition": "Back any tow-hitch car onto the coupler. Free and unowned. No quest or reputation gate.",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        59950.0,
+        -12250.0
+      ],
+      "approximate": false,
+      "parts": "No parts",
+      "image": "fleet/trailer-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d26",
+      "profile": 47,
+      "name": "Military Trailer",
+      "category": "Oddballs",
+      "kind": "discovery",
+      "ref": "000D26",
+      "location": "Camp Golf: on the car park by the camp sign",
+      "state": "Ready to hitch",
+      "condition": "Ready",
+      "reserve": "No fuel: towed",
+      "acquisition": "Back any tow-hitch car onto the coupler. Free and unowned. No quest or reputation gate.",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        31350.0,
+        64250.0
+      ],
+      "approximate": false,
+      "parts": "No parts",
+      "image": "fleet/trailer-studio.webp",
+      "note": ""
+    },
+    {
       "id": "herd-1",
       "name": "Wild horses · Herd 1",
       "category": "Horses",
@@ -1887,6 +1987,50 @@ window.DRIVABLES = {
       }
     },
     {
+      "profile": 47,
+      "name": "Military Trailer",
+      "category": "Oddballs",
+      "mph": 89.48,
+      "kmh": 144.0,
+      "description": "Quarter-ton military cargo trailer on a lunette eye. Reverse a car onto it and it hitches itself. The bed is storage.",
+      "fuel": "None",
+      "entries": [
+        "v-000d24",
+        "v-000d26"
+      ],
+      "image": "fleet/trailer-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Towing and contact sounds",
+        "detail": "Coupler, axle and bump sounds behind the towing car, no engine of its own."
+      }
+    },
+    {
+      "profile": 48,
+      "name": "Wooden Cart",
+      "category": "Oddballs",
+      "mph": 89.48,
+      "kmh": 144.0,
+      "description": "Two-wheel wooden cart. Back a horse between the shafts and it harnesses itself. The bed is storage.",
+      "fuel": "None",
+      "entries": [
+        "v-000d20",
+        "v-000d22"
+      ],
+      "image": "fleet/wooden-cart-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Cart and harness sounds",
+        "detail": "Wheel, shaft and harness sounds, no engine of its own."
+      }
+    },
+    {
       "profile": 100,
       "name": "Go-kart",
       "category": "Oddballs",
@@ -1900,7 +2044,7 @@ window.DRIVABLES = {
       "image": "fleet/go-kart-studio.webp",
       "passengers": 0,
       "passengerNote": "",
-      "boost": false,
+      "boost": true,
       "parachute": false,
       "sound": {
         "source": "250cc dirt bike recordings",

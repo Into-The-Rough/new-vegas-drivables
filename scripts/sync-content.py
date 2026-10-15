@@ -35,7 +35,7 @@ def export(source):
     families = {3: 'Bikes', 4: 'Bikes', 6: 'Oddballs', 8: 'Oddballs', 12: 'Oddballs',
                 17: 'Oddballs', 18: 'Oddballs', 19: 'Bikes', 20: 'Air', 35: 'Water',
                 36: 'Air', 37: 'Air', 39: 'Armour', 40: 'Air', 41: 'Armour',
-                42: 'Armour', 45: 'Air'}
+                42: 'Armour', 45: 'Air', 47: 'Oddballs', 48: 'Oddballs'}
     repairs = {4: (100, 0), 7: (75, 0), 14: (75, 0), 20: (100, 0), 10: (75, 1),
                9: (50, 1), 13: (100, 2), 2: (75, 1), 11: (50, 1), 16: (75, 1),
                43: (75, 1), 44: (50, 1), 39: (100, 2), 40: (100, 2),
@@ -61,7 +61,7 @@ def export(source):
                   'Energy Cells / MFCs' if c.getboolean('bFuelCells', fallback=False) else
                   'Jerry Cans' if c.getboolean('bFuel', fallback=False) else 'None')
         gate, tools = repairs.get(n, (0, 0))
-        condition = 'Quest reward' if n in (16, 19, 37) else 'Recovery' if n == 40 else 'Repair needed' if gate else 'Ready to ride'
+        condition = 'Quest reward' if n in (16, 19, 37) else 'Recovery' if n == 40 else 'Repair needed' if gate else 'Ready to hitch' if n in (47, 48) else 'Ready to ride'
         entry = dict(id='v-' + local.lower(), profile=n, name=names.get(n, raw['name']),
                      category=families.get(n, 'Cars'), kind='discovery', ref=local,
                      location=location_overrides.get(local, raw['location']), state=condition,
@@ -139,14 +139,14 @@ def export(source):
         if found:
             rails.append(dict(name=found[1], point=[float(found[2]), float(found[3])]))
     assert len(rails) == 9, rails
-    data = dict(counts=dict(vehicles=33, placements=36, herds=3),
+    data = dict(counts=dict(vehicles=35, placements=40, herds=3),
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
                          landmarks=[landmarks[n] for n in key_landmarks]), entries=entries, rails=rails)
     data.update(reference_content(source, config, entries, horses))
     export_renders(source, assets)
     apply_images(data)
-    assert len(entries) == 43 and len({v['id'] for v in entries}) == 43
-    assert sum(v['kind']=='discovery' for v in entries) == 36
+    assert len(entries) == 47 and len({v['id'] for v in entries}) == 47
+    assert sum(v['kind']=='discovery' for v in entries) == 40
     (ROOT/'public/content.js').write_text('window.DRIVABLES = '+json.dumps(data, ensure_ascii=False, indent=2)+';\n')
     print(f'Exported {len(entries)} guide entries and image assets.')
 

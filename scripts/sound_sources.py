@@ -35,6 +35,8 @@ UNPOWERED = {
     12: ('Wheel and contact sounds', 'Rolling and movement sounds without an engine layer.'),
     17: ('Bounce effects', 'Bouncing and landing sounds without an engine layer.'),
     18: ('Spring and bounce effects', 'Spring movement and landing sounds without an engine layer.'),
+    47: ('Towing and contact sounds', 'Coupler, axle and bump sounds behind the towing car, no engine of its own.'),
+    48: ('Cart and harness sounds', 'Wheel, shaft and harness sounds, no engine of its own.'),
 }
 
 

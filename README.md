@@ -136,7 +136,7 @@ requested December target is the only exception to the site's no-dates copy rule
 
 Additional vehicle images use the mod's 24 studio loading-screen renders. They
 are exported at their intended display aspect ratio, with small catalogue
-thumbnails. Eight further studio renders complete all 32 vehicle
+thumbnails. Ten further studio renders complete all 35 vehicle
 types. Eight guide stills come from the author's own videos. The source
 folders and frame positions are recorded in `scripts/media_sources.py`. Refresh
 these with `python3 scripts/import-media.py /path/to/DrivablesNVSE /path/to/Videos`.
