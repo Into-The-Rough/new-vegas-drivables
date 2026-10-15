@@ -122,10 +122,11 @@
       return;
     }
     const params = new URLSearchParams(location.hash.slice(1));
-    const faqTarget = section && document.getElementById(section);
-    if (faqTarget && $('faq').contains(faqTarget)) {
-      showView('faq');
-      requestAnimationFrame(() => faqTarget.scrollIntoView({block:'start'}));
+    const anchor = section && !section.includes('=') && document.getElementById(section);
+    const owner = anchor && views.find(view => view.contains(anchor));
+    if (owner) {
+      showView(owner.id);
+      requestAnimationFrame(() => anchor.scrollIntoView({block:'start'}));
       return;
     }
     if (params.has('driving')) {
@@ -158,7 +159,7 @@
     button.addEventListener('click', () => { category=name; $('discovery-list').scrollTop=0; render(); });
     $('filters').append(button);
   });
-  ['formula-racer','stunt-biplane','monster-truck'].forEach(id => {
+  ['formula-racer','stunt-biplane','monster-truck','go-kart'].forEach(id => {
     const entry=data.entries.find(e=>e.id===id); const link=document.createElement('a'); link.className='reward-link'; link.href=shareHash(id);
     link.innerHTML=`<span>${escape(entry.name)}<small>${escape(entry.acquisition)}</small></span><span aria-hidden="true">→</span>`;
     $('reward-links').append(link);

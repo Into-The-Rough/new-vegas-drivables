@@ -10,18 +10,19 @@ from site_metadata import BASE, PAGES
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
-assert len(data['entries']) == 42
-assert len({e['id'] for e in data['entries']}) == 42
+assert len(data['entries']) == 43
+assert len({e['id'] for e in data['entries']}) == 43
 assert sum(e['kind']=='discovery' for e in data['entries']) == data['counts']['placements'] == 36
 assert sum(e['kind']=='herd' for e in data['entries']) == 3
-assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 32
+assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 33
 assert next(e for e in data['entries'] if e['name']=='Hover Bike')['mapPoint'] is None
 assert next(e for e in data['entries'] if e['name']=='Alien Recon Craft')['fuel'] == 'None'
 assert next(e for e in data['entries'] if e['name']=='Corvega')['fuel'] == 'Reactor Coolant'
 assert '100' in next(e for e in data['entries'] if e['id']=='herd-3')['acquisition']
-assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck'}
-assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 32
-assert len(data['courses']) == 5
+assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck','go-kart'}
+assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 33
+assert len(data['courses']) == 6
+assert len(data['rails']) == 9 and all(len(r['point']) == 2 for r in data['rails'])
 assert len(data['arena']) == 12 and all(p['points'] for p in data['arena'])
 assert len(data['horseTraits']) == 8
 assert {h['survival'] for h in data['horseTraits']} == {0, 50, 75, 100}
@@ -112,4 +113,4 @@ for path in public.rglob('*'):
 for css in public.glob('*.css'):
     for raw in re.findall(r'url\([\'"]?([^\)\'\"]+)', css.read_text()):
         assert (public/raw).is_file(), f'missing CSS resource: {raw}'
-print('Static checks passed: 32 vehicle types, 36 placements, 3 herds, 5 courses, 8 horse profiles. Links, assets and copy conventions pass.')
+print('Static checks passed: 33 vehicle types, 36 placements, 3 herds, 9 hitching posts, 6 courses, 8 horse profiles. Links, assets and copy conventions pass.')

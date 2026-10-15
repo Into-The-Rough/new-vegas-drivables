@@ -28,8 +28,9 @@ events, script examples and troubleshooting. The full author kit is not bundled.
 
 Navigation has six main sections: Home, Vehicles, Guides, Activities, Modders and
 FAQ. Vehicles groups the catalogue, placements and sound. Guides groups the
-introduction, controls, fuel and repairs, and horses. Activities groups races,
-stunts and new locations. Each group shows a contextual second row. The shared
+introduction, controls, combat, fuel and repairs, on the road, horses and the F10
+menu reference. Activities groups races, the horde challenge, stunts and new
+locations. Each group shows a contextual second row. The shared
 hierarchy lives in `scripts/site_navigation.py`, with the same generated markup
 on the interactive index and standalone pages. Existing fragment URLs remain
 valid. About and credits remain in the footer.
@@ -78,8 +79,11 @@ profile selects each description. Passenger counts, boost and parachute support
 come directly from the vehicle configuration.
 GitHub Actions publishes the committed export without access to private sources.
 
-The guide covers 32 types with discovery, reward or arena routes. The original
-Golf Cart profile is omitted. Camp Golf provides the cart discovery.
+The guide covers 33 types with discovery, reward or arena routes. The original
+Golf Cart profile is omitted. Camp Golf provides the cart discovery. The go-kart
+comes from the `racing.karts` add-on pack rather than the main INI, exported as
+profile 100 with its own studio render. The nine hitching rails are read from
+`tools/add_hitching_rails.py` and drawn on the placement map beside the herds.
 
 City-world discoveries use explicitly approximate regional pins with on-page
 directions. The Big MT reward never uses its dormant Mojave authoring coordinates.

@@ -59,8 +59,9 @@
   }
   const worlds = data.courses.filter(c => c.id !== 'mojave_steeplechase').map(c => ({id:c.id, name:c.name, style:c.style}));
   worlds.push({id:'thunderdome', name:'Thunderdome', style:'Stunt arena'});
+  worlds.push({id:'mojave_horde', name:'Mojave Drive-in', style:'Horde challenge'});
   function worldPhoto(id) {
-    const shots = {thunderdome:['thunderdome','Monster Truck in the Thunderdome'],ivanpah_buggy:['ivanpah','Ivanpah Buggy Race'],mojave_cycle:['horse-race','Mojave Steeplechase on the shared cycle circuit']};
+    const shots = {thunderdome:['thunderdome','Monster Truck in the Thunderdome'],ivanpah_buggy:['ivanpah','Ivanpah Buggy Race'],mojave_cycle:['horse-race','Mojave Steeplechase on the shared cycle circuit'],repconn_arena:['repconn','The Repconn Arena']};
     const shot=shots[id];
     if (!shot) return '';
     return `<figure class="guide-photo world-photo"><a href="assets/screens/${shot[0]}.webp" data-lightbox data-caption="${shot[1]}"><img src="assets/screens/${shot[0]}.webp" width="1440" height="810" alt="${shot[1]} gameplay" loading="lazy"></a><figcaption><span>${shot[1]}</span><span>Enlarge →</span></figcaption></figure>`;
@@ -73,6 +74,10 @@
     document.querySelectorAll('#world-list button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.world === id)));
     if (id === 'thunderdome') {
       $('world-detail').innerHTML = `<h3>Thunderdome</h3><p>A dedicated arena for jumps, flight challenges and crushing cars. Enter through F10 → Racing → Thunderdome, then use Return Home when you are finished.</p>${worldPhoto(id)}${arenaMap()}<div class="arena-features"><div><h4>On the ground</h4><p>Ramps and loops, a truck jump, ring of fire and wall of fire. The crush line, crush pit and car tower give heavy vehicles their own challenges.</p></div><div><h4>In the air</h4><p>A ten-hoop course and pylon race, a knife-edge gap, a hangar fly-through, and low passes beneath the bridge and wires.</p></div></div><p class="world-access">The Monster Truck stays in the arena. Visiting once unlocks world spawning for the Stunt Biplane when the general spawning setting allows it.</p><a class="button" href="#stunts">Stunt controls</a>`;
+      return;
+    }
+    if (id === 'mojave_horde') {
+      $('world-detail').innerHTML = `<h3>Mojave Drive-in</h3><p>A ruined drive-in cinema turned into a survival arena. Enter through F10 → Racing → Horde → Start Horde, in a loaned Apocalyptic Buggy, and last five minutes against a growing horde of ghouls. Go Home from the results board or the F10 card brings you back.</p><dl class="course-specs"><div><dt>Event</dt><dd>Horde challenge</dd></div><div><dt>Length</dt><dd>Five minutes</dd></div><div><dt>Ride</dt><dd>Loaned Apocalyptic Buggy</dd></div></dl><p class="world-access">Pickups for repairs, boost, wipeouts, cryo and fire appear around the lot. Records are kept in their own file, so they survive a reload.</p><a class="button" href="#horde">Horde rules & pickups</a>`;
       return;
     }
     const course = data.courses.find(c => c.id === id);

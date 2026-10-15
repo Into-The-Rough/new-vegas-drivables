@@ -3,7 +3,7 @@
   const svg = document.getElementById('world-map');
   const layer = document.getElementById('map-markers');
   const message = document.getElementById('map-message');
-  const {map} = window.DRIVABLES;
+  const {map, rails = []} = window.DRIVABLES;
   let view = {x:0, y:0, size:1024};
   let drag = null;
   let suppressClick = false;
@@ -51,6 +51,14 @@
 
   function drawMarkers() {
     layer.replaceChildren();
+    if (visible.some(entry => entry.kind === 'herd')) rails.forEach(rail => {
+      const [x,y] = point(...rail.point);
+      const group = node('g', {transform:`translate(${x} ${y})`, class:'map-marker rail', role:'img', 'aria-label':`${rail.name} hitching post`});
+      const title = node('title'); title.textContent = `${rail.name} hitching post`; group.append(title);
+      group.append(node('rect', {x:-5, y:-5, width:10, height:10}));
+      group.append(node('rect', {x:-1.8, y:-1.8, width:3.6, height:3.6, class:'pin-core'}));
+      layer.append(group);
+    });
     const order = [...visible].filter(entry => entry.mapPoint);
     order.sort((a,b) => Number(a.id===selected?.id)-Number(b.id===selected?.id));
     order.forEach(entry => {

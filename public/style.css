@@ -79,6 +79,9 @@ kbd { font: 14px var(--font); border: 1px solid var(--line); padding: 1px 5px; }
 .map-marker .pin-core { fill: var(--amber); stroke: none; }
 .map-marker.horse circle, .map-marker.horse rect { stroke: #e0d6b7; }
 .map-marker.horse .pin-core { fill: #e0d6b7; }
+.map-marker.rail { cursor: default; }
+.map-marker.rail rect { stroke: #b58b4c; }
+.map-marker.rail .pin-core { fill: #b58b4c; }
 .map-marker.active circle { fill: var(--amber); stroke: #ffe7b5; stroke-width: 2; }
 .map-marker.active .pin-core { fill: #17130c; }
 .map-marker:hover circle, .map-marker:focus circle { stroke: white; stroke-width: 3; }
@@ -92,6 +95,7 @@ kbd { font: 14px var(--font); border: 1px solid var(--line); padding: 1px 5px; }
 .map-legend { display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; min-height: 40px; font-size: 13px; color: var(--muted); padding: 8px; }
 .legend-pin { display: inline-block; width: 8px; height: 8px; border: 1px solid var(--amber); border-radius: 50%; margin-right: 4px; }
 .legend-pin.horse { border-color: #e0d6b7; border-radius: 0; transform: rotate(45deg); }
+.legend-pin.rail { border-color: #b58b4c; border-radius: 0; }
 .legend-pin.selected { background: var(--amber); }
 .map-message { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 32px; background: #090909d9; color: var(--amber); font-size: 26px; gap: 12px; pointer-events: none; }
 .map-message p { font-size: 18px; max-width: 300px; }

@@ -19,6 +19,7 @@ MODELS = {
     'alien': 'alien_craft/alien_craft_onebody.nif',
     'biplane': 'stunt_biplanes/rusty_biplane_onebody.nif',
     'monster-truck': 'hummer/hummer_onebody.nif',
+    'go-kart': 'go_kart/go_kart_onebody.nif',
 }
 
 

@@ -25,6 +25,7 @@ SOURCES = {
     'b29': ('Fallout: New Vegas B-29 flyby', 'The vanilla flyby is reshaped into sustained, layered four-engine sounds.'),
     'biplane': ('B-29-derived propeller bank', 'Uses the bomber’s propeller recordings with its own playback settings.'),
     'alien_craft': ('Designed science-fiction sound set', 'Staged propulsion, warp boost, landing gear and weapon effects.'),
+    'racing.karts:engine': ('250cc dirt bike recordings', 'Stationary idle, separate on-load and off-load loops across eight engine stages, with their own start and shutdown cues.'),
 }
 
 UNPOWERED = {

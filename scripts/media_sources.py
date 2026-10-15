@@ -13,6 +13,7 @@ RENDERS = {
 STUDIO_RENDERS = {
     39: 'pershing', 40: 'alien', 41: 'commonwealth', 42: 'marine-apc',
     43: 'interceptor', 44: 'desoto', 45: 'biplane', 46: 'monster-truck',
+    100: 'go-kart',
 }
 
 CAPTURES = {

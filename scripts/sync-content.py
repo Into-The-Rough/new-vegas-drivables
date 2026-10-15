@@ -102,6 +102,16 @@ def export(source):
                             acquisition=f'Inspect and tame a horse with effective Survival {gate}. Complete the calming interaction out of combat. Taming costs no items. Eligible horses can roll rare: Survival 100 and 5/5/5 traits.',
                             note='Ordinary wild horses replenish after three in-game days away. Tamed and rare individuals stay dead. A later new horse can roll rare.'))
 
+    kart = configparser.ConfigParser(interpolation=None, strict=False)
+    kart.read(source / 'mod/config/DrivablesNVSE/addons/racing.karts/vehicles.ini')
+    config.read_dict({'Vehicle100': dict(kart['Vehicle red'])})
+    entries.append(dict(id='go-kart', profile=100, name='Go-kart', category='Oddballs', kind='reward',
+                        region='Unlocks', mapPoint=None, approximate=False,
+                        location='F10 → Garage → Oddballs, or lent at The Repconn Arena',
+                        state='Garage spawn', condition='Eight colours with the same handling. No fuel, no boost, one seat.',
+                        acquisition='Spawn any colour from F10 → Garage → Oddballs when World vehicle spawning is on. Choose The Repconn Arena in race setup to be lent the red kart against the other seven colours.',
+                        fuel='None', reserve='No fuel', repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
+
     for raw in audit['unplaced_profiles']:
         n = int(raw['profile'].replace('Vehicle', ''))
         if n == 15:
@@ -123,13 +133,19 @@ def export(source):
     for entry in entries:
         for key in ('location', 'condition', 'reserve', 'acquisition', 'note'):
             entry[key] = clean_copy(entry[key])
-    data = dict(counts=dict(vehicles=32, placements=36, herds=3),
+    rails = []
+    for line in (source / 'tools/add_hitching_rails.py').read_text().splitlines():
+        found = re.match(r"\s*\(0x[0-9A-F]+, 0x[0-9A-F]+, '\w+', '([^']+)', \(([-\d.]+), ([-\d.]+), [-\d.]+, [-\d.]+\)\),", line)
+        if found:
+            rails.append(dict(name=found[1], point=[float(found[2]), float(found[3])]))
+    assert len(rails) == 9, rails
+    data = dict(counts=dict(vehicles=33, placements=36, herds=3),
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
-                         landmarks=[landmarks[n] for n in key_landmarks]), entries=entries)
+                         landmarks=[landmarks[n] for n in key_landmarks]), entries=entries, rails=rails)
     data.update(reference_content(source, config, entries, horses))
     export_renders(source, assets)
     apply_images(data)
-    assert len(entries) == 42 and len({v['id'] for v in entries}) == 42
+    assert len(entries) == 43 and len({v['id'] for v in entries}) == 43
     assert sum(v['kind']=='discovery' for v in entries) == 36
     (ROOT/'public/content.js').write_text('window.DRIVABLES = '+json.dumps(data, ensure_ascii=False, indent=2)+';\n')
     print(f'Exported {len(entries)} guide entries and image assets.')

@@ -19,6 +19,9 @@ COURSES = [
     ('mojave_steeplechase', 'Mojave Steeplechase', 'Horses',
      'Horse racing on the cycle circuit, with eight fences around the lap. Keep enough stamina for the next jump and the final stretch.',
      'Horse racing', 'Choose the Mojave Steeplechase course in race setup.'),
+    ('repconn_arena', 'The Repconn Arena', 'Go-karts',
+     'A walled figure-eight with a bridge crossover, banking and grandstands under two Repconn rockets. The wide lobe rewards momentum and the tight lobe needs earlier braking. No debris or raiders.',
+     'Kart racing', 'Choose The Repconn Arena course in race setup. The default field is three laps and eight go-karts, one of each colour. On foot you are lent the red kart.'),
 ]
 
 
@@ -28,7 +31,7 @@ def reference_content(source, config, entries, horses):
         placements = [e for e in entries if e.get('profile') == profile]
         first = placements[0]
         c = config[f'Vehicle{profile}']
-        metres_per_second = c.getfloat('fTopSpeed') / 70.0
+        metres_per_second = c.getfloat('fTopSpeed', fallback=c.getfloat('fSpeedCap', fallback=0)) / 70.0
         description = clean_copy(c.get('sTagline', ''))
         if profile == 19:
             description = 'Prototype hover bike powered by Energy Cells or Microfusion Cells. Hovers over the ground and can hop or dodge sideways.'

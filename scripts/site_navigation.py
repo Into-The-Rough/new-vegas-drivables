@@ -4,8 +4,8 @@ from html import escape
 SECTIONS = (
     ('home', 'Home', 'home', ()),
     ('vehicles', 'Vehicles', 'vehicles', (('vehicles', 'Catalogue'), ('placements', 'Placements'), ('sounds', 'Sound'))),
-    ('guides', 'Guides', 'start', (('start', 'Start here'), ('driving', 'Controls'), ('manual', 'Fuel & repairs'), ('horses', 'Horse guide'))),
-    ('activities', 'Activities', 'races', (('races', 'Races'), ('stunts', 'Stunts'), ('worlds', 'New locations'))),
+    ('guides', 'Guides', 'start', (('start', 'Start here'), ('driving', 'Controls'), ('combat', 'Combat'), ('manual', 'Fuel & repairs'), ('road', 'On the road'), ('horses', 'Horse guide'), ('menu', 'F10 menu'))),
+    ('activities', 'Activities', 'races', (('races', 'Races'), ('horde', 'Horde'), ('stunts', 'Stunts'), ('worlds', 'New locations'))),
     ('modders', 'Modders', 'modders', ()),
     ('faq', 'FAQ', 'faq', ()),
 )

@@ -2,8 +2,8 @@ const assert = require('node:assert/strict');
 
 const parents = {
   'Catalogue': 'Vehicles', 'Placements': 'Vehicles', 'Sound': 'Vehicles',
-  'Start here': 'Guides', 'Controls': 'Guides', 'Fuel & repairs': 'Guides', 'Horse guide': 'Guides',
-  'Races': 'Activities', 'Stunts': 'Activities', 'New locations': 'Activities',
+  'Start here': 'Guides', 'Controls': 'Guides', 'Combat': 'Guides', 'Fuel & repairs': 'Guides', 'On the road': 'Guides', 'Horse guide': 'Guides', 'F10 menu': 'Guides',
+  'Races': 'Activities', 'Horde': 'Activities', 'Stunts': 'Activities', 'New locations': 'Activities',
 };
 
 async function navigate(page, label) {
@@ -19,8 +19,8 @@ async function checkHierarchy(page) {
   assert.deepEqual(await page.locator('.primary-nav a').allTextContents(), ['Home', 'Vehicles', 'Guides', 'Activities', 'Modders', 'FAQ']);
   const current = await page.locator('.site-navigation').getAttribute('data-current-page');
   const group = ['vehicles', 'placements', 'sounds'].includes(current) ? 'Vehicles'
-    : ['start', 'driving', 'manual', 'horses'].includes(current) ? 'Guides'
-    : ['races', 'stunts', 'worlds'].includes(current) ? 'Activities' : null;
+    : ['start', 'driving', 'combat', 'manual', 'road', 'horses', 'menu'].includes(current) ? 'Guides'
+    : ['races', 'horde', 'stunts', 'worlds'].includes(current) ? 'Activities' : null;
   const children = group ? Object.keys(parents).filter(name => parents[name] === group) : [];
   assert.deepEqual(await page.locator('.section-nav:visible a').allTextContents(), children);
   if (group) assert.equal(await page.locator('.primary-nav [aria-current]').textContent(), group);
