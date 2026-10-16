@@ -217,7 +217,7 @@ window.DRIVABLES = {
       "condition": "Damaged ignition",
       "reserve": "Empty: 0 / 60 L",
       "acquisition": "Repair 75 → Restore Engine. No parts, toolbox or caps consumed. Then add Jerry Cans.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "repair": 75,
       "tools": 0,
       "region": "Mojave",
@@ -317,7 +317,7 @@ window.DRIVABLES = {
       "condition": "Damaged flight controls. Tilted crash pose",
       "reserve": "Empty: 0 / 120 L",
       "acquisition": "Repair 100 + 1 Sensor Module in player inventory → Install Part. Module consumed. No toolbox/caps. Recovers onto clear ground northeast of the crater, then needs Jerry Cans.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "repair": 100,
       "tools": 0,
       "region": "Mojave",
@@ -342,7 +342,7 @@ window.DRIVABLES = {
       "condition": "Damaged ignition",
       "reserve": "Empty: 0 / 60 L",
       "acquisition": "Repair 75 → Restore Engine. No parts, toolbox or caps consumed. Then add Jerry Cans.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "repair": 75,
       "tools": 0,
       "region": "Mojave",
@@ -839,7 +839,7 @@ window.DRIVABLES = {
       "condition": "Engine damaged: Repair 50 + one carried Car Repair Tools, consumed by Install Part",
       "reserve": "Empty: 0 / 70 L",
       "acquisition": "Inspect the car and select Install Part. Repair 50 and one carried toolbox clear the fault and claim the car. Add Jerry Cans. Free and unowned, with no quest or caps gate.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "repair": 50,
       "tools": 1,
       "region": "Mojave",
@@ -1571,7 +1571,7 @@ window.DRIVABLES = {
       "mph": 73.82,
       "kmh": 118.8,
       "description": "Nevada Highway Patrol cruiser. Police V8, three-speed, petrol, seats four, siren and lights.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "entries": [
         "v-000c51",
         "v-000c5d"
@@ -1678,7 +1678,7 @@ window.DRIVABLES = {
       "mph": 89.48,
       "kmh": 144.0,
       "description": "Enclave Vertibird. Twin tilt-rotor, two seats, six-stage throttle, fuelled.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "entries": [
         "v-000c5f"
       ],
@@ -1930,7 +1930,7 @@ window.DRIVABLES = {
       "mph": 62.31,
       "kmh": 100.29,
       "description": "Long, rusty DeSoto with a three-speed transmission, bench seats and a rebuilt cabin. Heavy and unhurried.",
-      "fuel": "Jerry Cans",
+      "fuel": "Reactor Coolant",
       "entries": [
         "v-000cc5"
       ],
