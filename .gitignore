@@ -3,5 +3,4 @@ test-results/
 artifacts/
 *.zip
 __pycache__/
-/nexus-description*.txt
-/nexus-description*.html
+/nexus-description*
