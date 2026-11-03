@@ -33,12 +33,15 @@ def reference_content(source, config, entries, horses):
         c = config[f'Vehicle{profile}']
         metres_per_second = c.getfloat('fTopSpeed', fallback=c.getfloat('fSpeedCap', fallback=0)) / 70.0
         description = clean_copy(c.get('sTagline', ''))
+        if profile == 38:
+            description = 'Electric golf cart with a two-seat bench, canopy and single-speed drive.'
         if profile == 19:
             description = 'Prototype hover bike powered by Energy Cells or Microfusion Cells. Hovers over the ground and can hop or dodge sideways.'
         vehicles.append(dict(profile=profile, name=first['name'], category=first['category'],
                              mph=round(metres_per_second * 2.23693629, 2),
                              kmh=round(metres_per_second * 3.6, 2),
                              description=description, fuel=first['fuel'],
+                             cargo=c.getfloat('fCargoLimit', 0),
                              entries=[e['id'] for e in placements], image=first['image'],
                              passengers=c.getint('iNumCompanions', 0),
                              passengerNote=('One dog and one humanoid' if profile == 33 else

@@ -1,8 +1,10 @@
 window.DRIVABLES = {
   "counts": {
-    "vehicles": 35,
-    "placements": 40,
-    "herds": 3
+    "vehicles": 44,
+    "placements": 57,
+    "herds": 3,
+    "rewards": 10,
+    "optionalPlacements": 2
   },
   "map": {
     "bounds": {
@@ -215,7 +217,7 @@ window.DRIVABLES = {
       "location": "Searchlight: south-side passage beside the police station",
       "state": "Repair needed",
       "condition": "Damaged ignition",
-      "reserve": "Empty: 0 / 60 L",
+      "reserve": "Empty coolant reservoir",
       "acquisition": "Repair 75 → Restore Engine. No parts, toolbox or caps consumed. Then add Reactor Coolant.",
       "fuel": "Reactor Coolant",
       "repair": 75,
@@ -283,7 +285,7 @@ window.DRIVABLES = {
     {
       "id": "v-000c5a",
       "profile": 38,
-      "name": "Camp Golf Cart",
+      "name": "Golf Cart",
       "category": "Cars",
       "kind": "discovery",
       "ref": "000C5A",
@@ -315,7 +317,7 @@ window.DRIVABLES = {
       "location": "Crashed Vertibird site: replaces the vanilla wreck",
       "state": "Repair needed",
       "condition": "Damaged flight controls. Tilted crash pose",
-      "reserve": "Empty: 0 / 120 L",
+      "reserve": "Empty coolant reservoir",
       "acquisition": "Repair 100 + 1 Sensor Module in player inventory → Install Part. Module consumed. No toolbox/caps. Recovers onto clear ground northeast of the crater, then needs Reactor Coolant.",
       "fuel": "Reactor Coolant",
       "repair": 100,
@@ -340,7 +342,7 @@ window.DRIVABLES = {
       "location": "Nevada Highway Patrol station: outside, between two wrecks",
       "state": "Repair needed",
       "condition": "Damaged ignition",
-      "reserve": "Empty: 0 / 60 L",
+      "reserve": "Empty coolant reservoir",
       "acquisition": "Repair 75 → Restore Engine. No parts, toolbox or caps consumed. Then add Reactor Coolant.",
       "fuel": "Reactor Coolant",
       "repair": 75,
@@ -540,7 +542,7 @@ window.DRIVABLES = {
       "location": "Southwest of Junction 15 railway station: in front of the Driving Paradise Corvega billboard",
       "state": "Repair needed",
       "condition": "Seized engine. Full hull condition",
-      "reserve": "Empty: 0 / 100% Reactor Coolant",
+      "reserve": "Empty coolant reservoir",
       "acquisition": "Repair 75 + 1 Car Repair Tools in player inventory → Install Part. Toolbox consumed. Then add Reactor Coolant. Free and unowned.",
       "fuel": "Reactor Coolant",
       "repair": 75,
@@ -837,7 +839,7 @@ window.DRIVABLES = {
       "location": "Horowitz farmstead: outdoors along the west side of the occupied barn, facing south",
       "state": "Repair needed",
       "condition": "Engine damaged: Repair 50 + one carried Car Repair Tools, consumed by Install Part",
-      "reserve": "Empty: 0 / 70 L",
+      "reserve": "Empty coolant reservoir",
       "acquisition": "Inspect the car and select Install Part. Repair 50 and one carried toolbox clear the fault and claim the car. Add Reactor Coolant. Free and unowned, with no quest or caps gate.",
       "fuel": "Reactor Coolant",
       "repair": 50,
@@ -894,8 +896,8 @@ window.DRIVABLES = {
       "tools": 2,
       "region": "Mojave",
       "mapPoint": [
-        -44500,
-        140650
+        -44500.0,
+        140650.0
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
@@ -919,8 +921,8 @@ window.DRIVABLES = {
       "tools": 2,
       "region": "Mojave",
       "mapPoint": [
-        19936.64,
-        -8131.46
+        19936.640625,
+        -8131.4599609375
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
@@ -944,8 +946,8 @@ window.DRIVABLES = {
       "tools": 2,
       "region": "Mojave",
       "mapPoint": [
-        -41653.36,
-        18031.71
+        -41653.359375,
+        18031.7109375
       ],
       "approximate": false,
       "parts": "2 Car Repair Tools",
@@ -969,8 +971,8 @@ window.DRIVABLES = {
       "tools": 1,
       "region": "Mojave",
       "mapPoint": [
-        62180,
-        -87300
+        62180.0,
+        -87300.0
       ],
       "approximate": false,
       "parts": "1 Car Repair Tools",
@@ -1161,10 +1163,10 @@ window.DRIVABLES = {
       "region": "Unlocks",
       "mapPoint": null,
       "approximate": false,
-      "location": "F10 → Garage → Oddballs, or lent at The Repconn Arena",
-      "state": "Garage spawn",
+      "location": "The Repconn Arena",
+      "state": "Race loan",
       "condition": "Eight colours with the same handling. No fuel, no boost, one seat.",
-      "acquisition": "Spawn any colour from F10 → Garage → Oddballs when World vehicle spawning is on. Choose The Repconn Arena in race setup to be lent the red kart against the other seven colours.",
+      "acquisition": "Choose The Repconn Arena in F10 → Racing. Starting on foot lends you the red kart against the other seven colours. This is a race loan, not a free garage unlock.",
       "fuel": "None",
       "reserve": "No fuel",
       "repair": 0,
@@ -1205,10 +1207,10 @@ window.DRIVABLES = {
       "region": "Unlocks",
       "mapPoint": null,
       "approximate": false,
-      "location": "Thunderdome. World spawning after visiting once",
-      "state": "Visit Thunderdome",
-      "condition": "Available in the Thunderdome.",
-      "acquisition": "Visit the Thunderdome once to unlock world spawning. The general World vehicle spawning setting must also be enabled.",
+      "location": "Unlock route pending",
+      "state": "PENDING",
+      "condition": "This vehicle exists, but a normal way to obtain it is pending.",
+      "acquisition": "PENDING: the normal acquisition route has not been decided.",
       "fuel": "Jerry Cans",
       "reserve": "See unlock conditions",
       "repair": 0,
@@ -1227,10 +1229,10 @@ window.DRIVABLES = {
       "region": "Unlocks",
       "mapPoint": null,
       "approximate": false,
-      "location": "Thunderdome only",
-      "state": "Arena only",
-      "condition": "Available only in the Thunderdome.",
-      "acquisition": "Use the garage inside the Thunderdome. The Monster Truck cannot be brought home or spawned outside the arena.",
+      "location": "Unlock route pending",
+      "state": "PENDING",
+      "condition": "This vehicle exists, but a normal way to obtain it is pending.",
+      "acquisition": "PENDING: the normal acquisition route has not been decided.",
       "fuel": "Jerry Cans",
       "reserve": "See unlock conditions",
       "repair": 0,
@@ -1238,7 +1240,558 @@ window.DRIVABLES = {
       "parts": "No repair items",
       "image": "fleet/monster-truck-studio.webp",
       "ref": null,
+      "note": "The named Monster Truck awards have their own unlocks."
+    },
+    {
+      "id": "v-000d50",
+      "profile": 49,
+      "name": "Street Cleaner",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D50",
+      "location": "Northern El Dorado Dry Lake, southeast of Vault 11. Inspect the old street cleaner beside the wreck pile.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 25 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 25,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        33091.39453125,
+        16967.34765625
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/street-cleaner-studio.webp",
+      "note": "Restoration moves the cleaner onto nearby ground beside the wreckage."
+    },
+    {
+      "id": "v-000d52",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D52",
+      "location": "Quarry Junction, northern workings.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        -35843.34765625,
+        20194.6015625
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
       "note": ""
+    },
+    {
+      "id": "v-000d54",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D54",
+      "location": "Quarry Junction, western workings.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        -40992.0,
+        16032.0
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d56",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D56",
+      "location": "Quarry Junction, southern approach northwest of Sloan.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        -35920.0,
+        10736.0
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d58",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D58",
+      "location": "Northeast of Sloan, east of Quarry Junction.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        -23988.154296875,
+        17222.927734375
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d5a",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D5A",
+      "location": "East-northeast of HELIOS One, southwest of El Dorado Gas & Service.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        33643.69140625,
+        -7744.51318359375
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d5c",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": "000D5C",
+      "location": "Southern Gypsum Train Yard.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Inspect the original machinery. Repair 35 and one carried box of Car Repair Tools restore it. The toolbox is consumed. Add Reactor Coolant before starting.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        39613.63671875,
+        82995.90625
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000da3",
+      "profile": 51,
+      "name": "Fighter Jet",
+      "category": "Air",
+      "kind": "discovery",
+      "ref": "000DA3",
+      "location": "Nellis apron, beside the B-29 position and facing the long runway.",
+      "state": "Ready to fly",
+      "condition": "Working vehicle",
+      "reserve": "Check before departure",
+      "acquisition": "Board the aircraft at Nellis. It has no quest or restoration gate. Check the fuel before take-off.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        36847.8984375,
+        133788.40625
+      ],
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/fighter-jet-studio.webp",
+      "note": "The separate museum exhibit is unchanged. Completing Volare! is not required for this jet."
+    },
+    {
+      "id": "v-000d72",
+      "profile": 55,
+      "name": "Army Truck",
+      "category": "Cars",
+      "kind": "discovery",
+      "ref": "000D72",
+      "location": "Camp Searchlight, southern truck position.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Repair 50 and one box of Car Repair Tools restore the engine. The toolbox is consumed. Fill with Jerry Cans before driving.",
+      "fuel": "Jerry Cans",
+      "repair": 50,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        29960.4765625,
+        -100448.4453125
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/army-truck-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d74",
+      "profile": 55,
+      "name": "Army Truck",
+      "category": "Cars",
+      "kind": "discovery",
+      "ref": "000D74",
+      "location": "Camp Searchlight, central truck position.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Repair 50 and one box of Car Repair Tools restore the engine. The toolbox is consumed. Fill with Jerry Cans before driving.",
+      "fuel": "Jerry Cans",
+      "repair": 50,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        30950.462890625,
+        -97741.9375
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/army-truck-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d76",
+      "profile": 55,
+      "name": "Army Truck",
+      "category": "Cars",
+      "kind": "discovery",
+      "ref": "000D76",
+      "location": "Camp Searchlight, northern truck position.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Repair 50 and one box of Car Repair Tools restore the engine. The toolbox is consumed. Fill with Jerry Cans before driving.",
+      "fuel": "Jerry Cans",
+      "repair": 50,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        30312.03125,
+        -96306.59375
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/army-truck-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d78",
+      "profile": 56,
+      "name": "Fire Engine",
+      "category": "Cars",
+      "kind": "discovery",
+      "ref": "000D78",
+      "location": "Camp Searchlight fire station, northern engine.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Repair 50 and one box of Car Repair Tools restore the engine. The toolbox is consumed. Fill with Jerry Cans before driving.",
+      "fuel": "Jerry Cans",
+      "repair": 50,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        29932.234375,
+        -98910.28125
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/fire-engine-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000d7a",
+      "profile": 56,
+      "name": "Fire Engine",
+      "category": "Cars",
+      "kind": "discovery",
+      "ref": "000D7A",
+      "location": "Camp Searchlight fire station, southern engine.",
+      "state": "Repair needed",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Repair 50 and one box of Car Repair Tools restore the engine. The toolbox is consumed. Fill with Jerry Cans before driving.",
+      "fuel": "Jerry Cans",
+      "repair": 50,
+      "tools": 1,
+      "region": "Mojave",
+      "mapPoint": [
+        30161.248046875,
+        -99845.171875
+      ],
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/fire-engine-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000dc8",
+      "profile": 53,
+      "name": "Scrambler",
+      "category": "Bikes",
+      "kind": "discovery",
+      "ref": "000DC8",
+      "location": "Red Rock Canyon, by the Great Khan drug lab.",
+      "state": "Khan-owned",
+      "condition": "Working vehicle",
+      "reserve": "Quarter tank",
+      "acquisition": "This is a working Great Khan bike. Taking it before it is yours counts as theft.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        -78150.0,
+        78000.0
+      ],
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/scrambler-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "v-000dca",
+      "profile": 53,
+      "name": "Scrambler",
+      "category": "Bikes",
+      "kind": "discovery",
+      "ref": "000DCA",
+      "location": "Red Rock Canyon, by Papa Khan’s longhouse.",
+      "state": "Khan-owned",
+      "condition": "Working vehicle",
+      "reserve": "Quarter tank",
+      "acquisition": "Complete Oh My Papa successfully. The bike by Papa Khan’s longhouse is given to you and listed in your garage. Taking it beforehand counts as theft.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Mojave",
+      "mapPoint": [
+        -73400.0,
+        71300.0
+      ],
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/scrambler-studio.webp",
+      "note": ""
+    },
+    {
+      "id": "shuriken",
+      "profile": 52,
+      "name": "Shuriken",
+      "category": "Bikes",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Win a motorcycle race",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Finish first on a motorcycle against at least one opponent. Finish the race yourself, then return home and collect the award in F10 → Garage.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/shuriken-studio.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "observation-balloon",
+      "profile": 54,
+      "name": "Observation Balloon",
+      "category": "Air",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Complete Come Fly With Me",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Complete Come Fly With Me successfully, then collect the balloon in F10 → Garage. Its burner uses Flamer Fuel.",
+      "fuel": "Flamer Fuel",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/balloon-studio.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "supercharged-highwayman",
+      "profile": 57,
+      "name": "Supercharged Highwayman",
+      "category": "Cars",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Podium in all six races",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Finish in the top three on every course: Nuka-Cola Speedway, Mojave Oval, Mojave Cycle Circuit, Ivanpah Buggy Race, Mojave Steeplechase and The Repconn Arena. Race against at least one opponent and finish each event yourself. Return home and collect it in F10 → Garage.",
+      "fuel": "Energy Cells / MFCs",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/highwayman.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "brotherhood-vertibird",
+      "profile": 20,
+      "name": "Brotherhood Vertibird",
+      "category": "Air",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Complete Still in the Dark",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Complete Still in the Dark successfully, then collect the Brotherhood Vertibird in F10 → Garage. This is a separate award from repairing the crashed Vertibird.",
+      "fuel": "Reactor Coolant",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/vertibird.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "nuka-monster-truck",
+      "profile": 46,
+      "name": "Nuka-Cola Monster Truck",
+      "category": "Cars",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Win Nuka-Cola Speedway",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Win Nuka-Cola Speedway against at least one opponent and finish the race yourself. Return from the race, visit the Thunderdome and collect the award in F10 → Garage. The truck stays in the Thunderdome.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/monster-truck-studio.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "sunset-monster-truck",
+      "profile": 46,
+      "name": "Sunset Sarsaparilla Monster Truck",
+      "category": "Cars",
+      "kind": "reward",
+      "ref": null,
+      "location": "F10 → Garage",
+      "state": "Complete A Valuable Lesson",
+      "condition": "One award per character",
+      "reserve": "Award delivery",
+      "acquisition": "Complete A Valuable Lesson successfully, then collect the award from F10 → Garage inside the Thunderdome. The truck stays in the Thunderdome.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/monster-truck-studio.webp",
+      "note": "Use the owned entry to retrieve it after collection."
+    },
+    {
+      "id": "long15-construction",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": null,
+      "location": "Long 15, overpass construction site",
+      "state": "Optional patch",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Requires Long15Reloaded.esm and DrivablesNVSE - Long15.esp. Inspect the original cabin, with Repair 35 and one carried box of Car Repair Tools. The toolbox is consumed. Add Reactor Coolant before driving.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Long 15",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": "Outside the Mojave map."
+    },
+    {
+      "id": "long15-junkyard",
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "kind": "discovery",
+      "ref": null,
+      "location": "Long 15, Baker Junkyard",
+      "state": "Optional patch",
+      "condition": "Seized machinery",
+      "reserve": "Empty",
+      "acquisition": "Requires Long15Reloaded.esm and DrivablesNVSE - Long15.esp. Inspect the original cabin, with Repair 35 and one carried box of Car Repair Tools. The toolbox is consumed. Add Reactor Coolant before driving.",
+      "fuel": "Reactor Coolant",
+      "repair": 35,
+      "tools": 1,
+      "region": "Long 15",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "1 Car Repair Tools",
+      "image": "fleet/bucket-loader-studio.webp",
+      "note": "Outside the Mojave map."
     }
   ],
   "rails": [
@@ -1306,6 +1859,92 @@ window.DRIVABLES = {
       ]
     }
   ],
+  "defaults": [
+    {
+      "name": "Handling",
+      "value": "Balanced"
+    },
+    {
+      "name": "Jump assistance",
+      "value": "Fun"
+    },
+    {
+      "name": "Camera motion",
+      "value": "Full"
+    },
+    {
+      "name": "Missile camera chance",
+      "value": "100%"
+    },
+    {
+      "name": "Speed units",
+      "value": "mph"
+    },
+    {
+      "name": "Road dashboard",
+      "value": "Full"
+    },
+    {
+      "name": "World discoveries",
+      "value": "On"
+    },
+    {
+      "name": "World deliveries",
+      "value": "On"
+    },
+    {
+      "name": "Debug free spawning",
+      "value": "Off"
+    },
+    {
+      "name": "Vehicle loading screens",
+      "value": "On"
+    },
+    {
+      "name": "Loading wheel",
+      "value": "On"
+    },
+    {
+      "name": "Main menu background",
+      "value": "On"
+    },
+    {
+      "name": "Stunt XP",
+      "value": "On"
+    },
+    {
+      "name": "Vehicle dust",
+      "value": "On"
+    },
+    {
+      "name": "Horse follows your view",
+      "value": "On"
+    },
+    {
+      "name": "Horse gait ladder",
+      "value": "On"
+    },
+    {
+      "name": "Ambient traffic",
+      "value": "On"
+    },
+    {
+      "name": "Ambient traffic cap",
+      "value": "3 riders"
+    },
+    {
+      "name": "Mounted travellers",
+      "value": "On"
+    },
+    {
+      "name": "Traveller groups with a horse",
+      "value": "10%"
+    },
+    {
+      "name": "Bicycle journeys",
+      "value": "On"
+    }
+  ],
   "vehicles": [
     {
       "profile": 1,
@@ -1315,6 +1954,7 @@ window.DRIVABLES = {
       "kmh": 118.95,
       "description": "Open-cab dune buggy built from scrap. Long-travel suspension, petrol engine, roll cage, radio fitted.",
       "fuel": "Jerry Cans",
+      "cargo": 300.0,
       "entries": [
         "v-000ca6"
       ],
@@ -1336,6 +1976,7 @@ window.DRIVABLES = {
       "kmh": 117.98,
       "description": "Custom hot rod on a stock chassis. High-torque V8, petrol, rear drive, open exhaust.",
       "fuel": "Jerry Cans",
+      "cargo": 250.0,
       "entries": [
         "v-000cb3"
       ],
@@ -1357,6 +1998,7 @@ window.DRIVABLES = {
       "kmh": 35.49,
       "description": "Pedal bicycle, three-speed hub gear, steel frame. No fuel, no engine, one rider.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000c40",
         "v-000c57"
@@ -1379,6 +2021,7 @@ window.DRIVABLES = {
       "kmh": 278.79,
       "description": "Pre-war road motorcycle. Rider plus pillion, six-speed gearbox, petrol, chain drive.",
       "fuel": "Jerry Cans",
+      "cargo": 0,
       "entries": [
         "v-000c42"
       ],
@@ -1400,6 +2043,7 @@ window.DRIVABLES = {
       "kmh": 50.3,
       "description": "Standard pre-war skateboard. Push to move, foot to stop, weight to steer.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000c49",
         "v-000c45",
@@ -1423,6 +2067,7 @@ window.DRIVABLES = {
       "kmh": 110.88,
       "description": "Four-door sedan, mostly original. Three gears, bench seats, working radio, heavy corrosion.",
       "fuel": "Jerry Cans",
+      "cargo": 400.0,
       "entries": [
         "v-000c4f"
       ],
@@ -1444,6 +2089,7 @@ window.DRIVABLES = {
       "kmh": 26.59,
       "description": "Single-wheel pedal cycle. Fixed drive, no gears, no brakes, one rider.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000c4d"
       ],
@@ -1465,6 +2111,7 @@ window.DRIVABLES = {
       "kmh": 100.23,
       "description": "Open-cab utility. Rear engine, rear drive, petrol, canvas top, minimal bodywork.",
       "fuel": "Jerry Cans",
+      "cargo": 350.0,
       "entries": [
         "v-000ca8"
       ],
@@ -1486,6 +2133,7 @@ window.DRIVABLES = {
       "kmh": 110.88,
       "description": "Chryslus Corvega Atomic V8. Fission-powered, three-speed automatic, seats two, radio.",
       "fuel": "Reactor Coolant",
+      "cargo": 500.0,
       "entries": [
         "v-000ca3"
       ],
@@ -1507,6 +2155,7 @@ window.DRIVABLES = {
       "kmh": 76.01,
       "description": "Heavy flatbed, six wheels, twin rear axles. Five-speed, fuelled, cab seats four.",
       "fuel": "Jerry Cans",
+      "cargo": 3000.0,
       "entries": [
         "v-000cb8",
         "v-000cba"
@@ -1529,6 +2178,7 @@ window.DRIVABLES = {
       "kmh": 22.17,
       "description": "Manual folding wheelchair. Two large rear wheels, two castors, hand rims. Single occupant.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000c53",
         "v-000c55"
@@ -1551,6 +2201,7 @@ window.DRIVABLES = {
       "kmh": 114.07,
       "description": "Chryslus Highwayman touring sedan. Fuel cell power, four-speed, seats four, radio.",
       "fuel": "Energy Cells / MFCs",
+      "cargo": 600.0,
       "entries": [
         "v-000caa"
       ],
@@ -1572,6 +2223,7 @@ window.DRIVABLES = {
       "kmh": 118.8,
       "description": "Nevada Highway Patrol cruiser. Police V8, three-speed, petrol, seats four, siren and lights.",
       "fuel": "Reactor Coolant",
+      "cargo": 450.0,
       "entries": [
         "v-000c51",
         "v-000c5d"
@@ -1594,6 +2246,7 @@ window.DRIVABLES = {
       "kmh": 101.83,
       "description": "Coachbuilt pre-war tourer. Three gears, rear drive, long wheelbase, radio fitted.",
       "fuel": "Jerry Cans",
+      "cargo": 400.0,
       "entries": [
         "v-000cbc"
       ],
@@ -1615,6 +2268,7 @@ window.DRIVABLES = {
       "kmh": 21.6,
       "description": "Child's space hopper, adult sized. Human-powered, single rider, no brakes.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000cad",
         "v-000caf"
@@ -1637,6 +2291,7 @@ window.DRIVABLES = {
       "kmh": 15.43,
       "description": "Spring-loaded pogo stick. Steel shaft, two foot pegs, one rider, no brakes.",
       "fuel": "None",
+      "cargo": 0,
       "entries": [
         "v-000c4b"
       ],
@@ -1658,6 +2313,7 @@ window.DRIVABLES = {
       "kmh": 86.4,
       "description": "Prototype hover bike powered by Energy Cells or Microfusion Cells. Hovers over the ground and can hop or dodge sideways.",
       "fuel": "Energy Cells / MFCs",
+      "cargo": 0,
       "entries": [
         "v-000cb1"
       ],
@@ -1679,8 +2335,10 @@ window.DRIVABLES = {
       "kmh": 144.0,
       "description": "Enclave Vertibird. Twin tilt-rotor, two seats, six-stage throttle, fuelled.",
       "fuel": "Reactor Coolant",
+      "cargo": 2000.0,
       "entries": [
-        "v-000c5f"
+        "v-000c5f",
+        "brotherhood-vertibird"
       ],
       "image": "fleet/vertibird.webp",
       "passengers": 1,
@@ -1700,6 +2358,7 @@ window.DRIVABLES = {
       "kmh": 154.29,
       "description": "Legion motor chariot. Twin bikes on a common axle, cart behind, three seats.",
       "fuel": "Jerry Cans",
+      "cargo": 300.0,
       "entries": [
         "v-000ce6"
       ],
@@ -1721,6 +2380,7 @@ window.DRIVABLES = {
       "kmh": 128.57,
       "description": "Front-engined single seater. Open cockpit, exposed wheels, four gears, drum brakes.",
       "fuel": "Jerry Cans",
+      "cargo": 50.0,
       "entries": [
         "formula-racer"
       ],
@@ -1742,6 +2402,7 @@ window.DRIVABLES = {
       "kmh": 32.4,
       "description": "Old fishing boat with an outboard. Direct drive, open deck, four aboard.",
       "fuel": "Jerry Cans",
+      "cargo": 1000.0,
       "entries": [
         "v-000c16"
       ],
@@ -1763,6 +2424,7 @@ window.DRIVABLES = {
       "kmh": 288.0,
       "description": "Twin-prop light plane. Pilot plus one, fuel tanks in the wings, short-field take-off.",
       "fuel": "Jerry Cans",
+      "cargo": 350.0,
       "entries": [
         "v-000c1d"
       ],
@@ -1784,6 +2446,7 @@ window.DRIVABLES = {
       "kmh": 473.14,
       "description": "Four-engine Boomer bomber, restored to fly. Pilot plus two, bomb bay, long take-off run.",
       "fuel": "Jerry Cans",
+      "cargo": 3000.0,
       "entries": [
         "v-000c3b"
       ],
@@ -1799,12 +2462,13 @@ window.DRIVABLES = {
     },
     {
       "profile": 38,
-      "name": "Camp Golf Cart",
+      "name": "Golf Cart",
       "category": "Cars",
       "mph": 24.61,
       "kmh": 39.6,
-      "description": "Four-wheel course cart in resort livery. Direct drive, bench seat for two, canopy.",
+      "description": "Electric golf cart with a two-seat bench, canopy and single-speed drive.",
       "fuel": "Energy Cells / MFCs",
+      "cargo": 150.0,
       "entries": [
         "v-000c5a"
       ],
@@ -1826,6 +2490,7 @@ window.DRIVABLES = {
       "kmh": 38.06,
       "description": "M26 Pershing. Ninety millimetre gun on a full-traverse turret, forty tonnes, petrol V8, tracks either side.",
       "fuel": "Jerry Cans",
+      "cargo": 1000.0,
       "entries": [
         "v-000cc7"
       ],
@@ -1847,6 +2512,7 @@ window.DRIVABLES = {
       "kmh": 216.0,
       "description": "Repaired Zeta scout saucer. Tractor beam, tripod landing legs, nose blaster, one seat.",
       "fuel": "None",
+      "cargo": 600.0,
       "entries": [
         "v-000cc9"
       ],
@@ -1868,6 +2534,7 @@ window.DRIVABLES = {
       "kmh": 32.91,
       "description": "Commonwealth single-gun tank. Continuous tracks and a fully traversing cannon.",
       "fuel": "Jerry Cans",
+      "cargo": 1000.0,
       "entries": [
         "v-000cd0"
       ],
@@ -1889,6 +2556,7 @@ window.DRIVABLES = {
       "kmh": 38.06,
       "description": "LVTP-8A Marine APC. Enclosed tracked transport with a rear loading ramp.",
       "fuel": "Jerry Cans",
+      "cargo": 1500.0,
       "entries": [
         "v-000ce0"
       ],
@@ -1910,6 +2578,7 @@ window.DRIVABLES = {
       "kmh": 126.0,
       "description": "Supercharged V8, rear drive, four gears. Right-hand-drive cabin, side exhausts and twin rear fuel tanks.",
       "fuel": "Jerry Cans",
+      "cargo": 220.0,
       "entries": [
         "v-000cc0"
       ],
@@ -1931,6 +2600,7 @@ window.DRIVABLES = {
       "kmh": 100.29,
       "description": "Long, rusty DeSoto with a three-speed transmission, bench seats and a rebuilt cabin. Heavy and unhurried.",
       "fuel": "Reactor Coolant",
+      "cargo": 450.0,
       "entries": [
         "v-000cc5"
       ],
@@ -1952,6 +2622,7 @@ window.DRIVABLES = {
       "kmh": 205.71,
       "description": "Rusty single-seat biplane. Rolls fast, loops tight, lands short.",
       "fuel": "Jerry Cans",
+      "cargo": 100.0,
       "entries": [
         "stunt-biplane"
       ],
@@ -1973,8 +2644,11 @@ window.DRIVABLES = {
       "kmh": 144.0,
       "description": "Full-size H1 on two-metre tyres. Huge torque, oversized fuel tank, four seats. Built to drive over cars.",
       "fuel": "Jerry Cans",
+      "cargo": 1500.0,
       "entries": [
-        "monster-truck"
+        "monster-truck",
+        "nuka-monster-truck",
+        "sunset-monster-truck"
       ],
       "image": "fleet/monster-truck-studio.webp",
       "passengers": 3,
@@ -1994,6 +2668,7 @@ window.DRIVABLES = {
       "kmh": 144.0,
       "description": "Quarter-ton military cargo trailer on a lunette eye. Reverse a car onto it and it hitches itself. The bed is storage.",
       "fuel": "None",
+      "cargo": 500.0,
       "entries": [
         "v-000d24",
         "v-000d26"
@@ -2016,6 +2691,7 @@ window.DRIVABLES = {
       "kmh": 144.0,
       "description": "Two-wheel wooden cart. Back a horse between the shafts and it harnesses itself. The bed is storage.",
       "fuel": "None",
+      "cargo": 1500.0,
       "entries": [
         "v-000d20",
         "v-000d22"
@@ -2031,6 +2707,215 @@ window.DRIVABLES = {
       }
     },
     {
+      "profile": 49,
+      "name": "Street Cleaner",
+      "category": "Industrial",
+      "mph": 14.7,
+      "kmh": 23.66,
+      "description": "Restored atomic street sweeper. Open seat, compact running gear and a powered sweeping drum.",
+      "fuel": "Reactor Coolant",
+      "cargo": 100.0,
+      "entries": [
+        "v-000d50"
+      ],
+      "image": "fleet/street-cleaner-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Industrial machinery sounds",
+        "detail": "Drive motor, sweeping equipment and contact sounds."
+      }
+    },
+    {
+      "profile": 50,
+      "name": "Bucket Loader",
+      "category": "Industrial",
+      "mph": 6.71,
+      "kmh": 10.8,
+      "description": "Restored quarry shovel. Slow crawler, rotating cabin, powered bucket and sealed reactor. One operator.",
+      "fuel": "Reactor Coolant",
+      "cargo": 800.0,
+      "entries": [
+        "v-000d52",
+        "v-000d54",
+        "v-000d56",
+        "v-000d58",
+        "v-000d5a",
+        "v-000d5c",
+        "long15-construction",
+        "long15-junkyard"
+      ],
+      "image": "fleet/bucket-loader-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Industrial machinery sounds",
+        "detail": "Drive motor, tracks, rotating cab and bucket machinery."
+      }
+    },
+    {
+      "profile": 51,
+      "name": "Fighter Jet",
+      "category": "Air",
+      "mph": 335.54,
+      "kmh": 540.0,
+      "description": "Pre-War fighter with a 30 mm rotary cannon and twelve nuclear bombs. Payload drops one in flight. Press while parked to reload from carried mini-nukes.",
+      "fuel": "Jerry Cans",
+      "cargo": 100.0,
+      "entries": [
+        "v-000da3"
+      ],
+      "image": "fleet/fighter-jet-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "Jet aircraft sounds",
+        "detail": "Turbine, ignition, shutdown and a separate rotary-cannon loop."
+      }
+    },
+    {
+      "profile": 52,
+      "name": "Shuriken",
+      "category": "Bikes",
+      "mph": 100.0,
+      "kmh": 160.93,
+      "description": "Shuriken. Single seat, light frame, short gearing, 5 lb tool storage.",
+      "fuel": "Jerry Cans",
+      "cargo": 5.0,
+      "entries": [
+        "shuriken"
+      ],
+      "image": "fleet/shuriken-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "390cc enduro sound bank",
+        "detail": "Skril Studio motorcycle bank, with separate on-load and off-load stages."
+      }
+    },
+    {
+      "profile": 53,
+      "name": "Scrambler",
+      "category": "Bikes",
+      "mph": 115.0,
+      "kmh": 185.07,
+      "description": "Scrambler. Single seat, light frame, short gearing, 5 lb tool storage.",
+      "fuel": "Jerry Cans",
+      "cargo": 5.0,
+      "entries": [
+        "v-000dc8",
+        "v-000dca"
+      ],
+      "image": "fleet/scrambler-studio.webp",
+      "passengers": 0,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Motorcycle sound bank",
+        "detail": "Skril Studio motorcycle bank, with separate on-load and off-load stages."
+      }
+    },
+    {
+      "profile": 54,
+      "name": "Observation Balloon",
+      "category": "Air",
+      "mph": 6.71,
+      "kmh": 10.8,
+      "description": "Surplus hot air balloon. Burner on flamer fuel, crown vent, room for one companion, parachute stowed.",
+      "fuel": "Flamer Fuel",
+      "cargo": 100.0,
+      "entries": [
+        "observation-balloon"
+      ],
+      "image": "fleet/balloon-studio.webp",
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": true,
+      "sound": {
+        "source": "Burner and fabric sounds",
+        "detail": "Pilot light, burner, vent and basket or fabric movement."
+      }
+    },
+    {
+      "profile": 55,
+      "name": "Army Truck",
+      "category": "Cars",
+      "mph": 47.23,
+      "kmh": 76.01,
+      "description": "Army cargo truck, six wheels, twin rear axles. Five-speed, fuelled, cab seats four, canvas bows over the bed.",
+      "fuel": "Jerry Cans",
+      "cargo": 3000.0,
+      "entries": [
+        "v-000d72",
+        "v-000d74",
+        "v-000d76"
+      ],
+      "image": "fleet/army-truck-studio.webp",
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Ram 2500 Cummins",
+        "detail": "5.9-litre straight-six diesel engine and exhaust recordings."
+      }
+    },
+    {
+      "profile": 56,
+      "name": "Fire Engine",
+      "category": "Cars",
+      "mph": 47.23,
+      "kmh": 76.01,
+      "description": "Pre-war fire engine, four wheels, single rear axle. Five-speed, fuelled, cab seats two, ladder rack along the side.",
+      "fuel": "Jerry Cans",
+      "cargo": 3000.0,
+      "entries": [
+        "v-000d78",
+        "v-000d7a"
+      ],
+      "image": "fleet/fire-engine-studio.webp",
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Ram 2500 Cummins",
+        "detail": "5.9-litre straight-six diesel engine and exhaust recordings."
+      }
+    },
+    {
+      "profile": 57,
+      "name": "Supercharged Highwayman",
+      "category": "Cars",
+      "mph": 70.88,
+      "kmh": 114.07,
+      "description": "Supercharged Highwayman. Twice the horsepower, clean bodywork, four seats and radio.",
+      "fuel": "Energy Cells / MFCs",
+      "cargo": 600.0,
+      "entries": [
+        "supercharged-highwayman"
+      ],
+      "image": "fleet/highwayman.webp",
+      "passengers": 3,
+      "passengerNote": "A dog can use the rear position",
+      "boost": true,
+      "parachute": false,
+      "sound": {
+        "source": "Dodge Challenger 426 Hemi",
+        "detail": "V8 recordings provide the sound of the fuel-cell-powered Highwayman."
+      }
+    },
+    {
       "profile": 100,
       "name": "Go-kart",
       "category": "Oddballs",
@@ -2038,6 +2923,7 @@ window.DRIVABLES = {
       "kmh": 90.0,
       "description": "Single-seat racer. Eight plain colours, one fair racing tune.",
       "fuel": "None",
+      "cargo": 0.0,
       "entries": [
         "go-kart"
       ],

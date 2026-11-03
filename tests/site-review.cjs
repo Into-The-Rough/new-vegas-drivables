@@ -45,9 +45,23 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     assert.equal(await row('Boost, where fitted').locator('kbd').textContent(), 'Left Shift');
     await page.locator('#control-weapon').check();
     assert.equal(await row('Fire weapon').locator('kbd').textContent(), 'Left mouse');
+    assert.equal(await row('Reload / holster').locator('kbd').textContent(), 'R');
+    assert.match(await row('Reload / holster').textContent(), /Tap \/ hold/);
     await page.locator('#control-ride').selectOption('plane');
     assert.equal(await row('Landing gear').locator('kbd').textContent(), 'N');
     assert.equal(await row('Cruise hold').locator('kbd').textContent(), 'Numpad 5');
+    await page.locator('#control-ride').selectOption('horse');
+    assert.equal(await row('Footwork / sidestep').locator('kbd').textContent(), 'X');
+    assert.equal(await row('Free look').locator('kbd').textContent(), 'F');
+    await page.locator('#control-device').selectOption('xbox');
+    assert.equal(await row('Free look').locator('kbd').textContent(), '←');
+    await page.locator('#control-ride').selectOption('vtol');
+    assert.equal(await row('Flares').locator('kbd').textContent(), 'LT');
+    await page.locator('#control-device').selectOption('keyboard');
+    await page.locator('#control-ride').selectOption('industrial');
+    assert.equal(await row('Sweeper / work mode').locator('kbd').textContent(), 'N');
+    await page.locator('#control-ride').selectOption('balloon');
+    assert.equal(await row('Burner / climb').locator('kbd').textContent(), 'Space');
     await page.screenshot({path:'artifacts/keyboard-desktop.png', fullPage:false});
     await page.locator('.section-nav:visible a[href="#start"]').click();
     assert.ok((await page.locator('#installation').boundingBox()).y < (await page.locator('.first-ride').boundingBox()).y);
@@ -64,6 +78,28 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     assert.match(await page.locator('#map-scope').textContent(), /map only/);
     await page.reload();
     assert.doesNotMatch(await page.locator('#discovery-detail').textContent(), /Volare|Nellis/);
+    await page.locator('#search').fill('no-such-discovery');
+    assert.equal(await page.locator('.ride-row').count(), 0);
+    assert.match(await page.locator('#map-message').textContent(), /Locations hidden/);
+    await page.locator('#search').fill('');
+    await page.locator('#spoilers').check();
+    for (const id of ['stunt-biplane', 'monster-truck']) {
+      await page.goto(base + '/#ride=' + id);
+      assert.match(await page.locator('#discovery-detail').textContent(), /PENDING/);
+      assert.equal(await page.locator('#focus-pin').count(), 0);
+    }
+    await page.goto(base + '/#category=Industrial');
+    assert.equal(await page.locator('.ride-row').count(), 9);
+    await page.locator('#region').selectOption('Long 15');
+    assert.equal(await page.locator('.ride-row').count(), 2);
+    assert.equal(await page.locator('#focus-pin').count(), 0);
+    assert.match(await page.locator('#discovery-detail').textContent(), /DrivablesNVSE - Long15.esp/);
+    await page.goto(base + '/#menu-defaults');
+    assert.equal(await page.locator('#menu').isVisible(), true);
+    const defaults = page.locator('table').filter({has:page.locator('caption', {hasText:'Supplied defaults'})});
+    assert.match(await defaults.textContent(), /HandlingBalanced/);
+    assert.match(await defaults.textContent(), /World discoveriesOn/);
+    assert.match(await defaults.textContent(), /Debug free spawningOff/);
     for (const width of [390,360]) {
       await page.setViewportSize({width, height:844});
       await page.goto(base + '/#driving');

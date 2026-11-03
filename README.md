@@ -69,8 +69,10 @@ python3 scripts/build-pages.py
 npm run check
 ```
 
-The export combines the placement audit, horse records, current INI supply
-types and top speeds, race routes and the existing map calibration. Speeds use
+The export combines the placement audit with current ESM form records, horse
+records, shipped INI defaults, supplies, cargo limits, speeds and race routes.
+It checks the form manifest against the ESM hash and checks coverage of current
+vehicle profiles and managed discoveries. The existing map calibration is retained. Speeds use
 the F10 garage conversion of 70 game units per metre. The restore gates and public
 text live in the export scripts. Update those when the implementation changes.
 `site_copy.py` applies UK spelling and punctuation conventions to imported copy.
@@ -79,7 +81,9 @@ profile selects each description. Passenger counts, boost and parachute support
 come directly from the vehicle configuration.
 GitHub Actions publishes the committed export without access to private sources.
 
-The guide covers 33 types with discovery, reward or arena routes. The original
+The guide covers 44 vehicle types, 55 core discoveries, two optional Long 15
+placements and three wild horse herds, plus rewards and loans.
+The plain H1 and Stunt Biplane acquisition routes are PENDING by author request. The original
 Golf Cart profile is omitted. Camp Golf provides the cart discovery. The go-kart
 comes from the `racing.karts` add-on pack rather than the main INI, exported as
 profile 100 with its own studio render. The nine hitching rails are read from
@@ -126,7 +130,7 @@ Truck manifests. Older donor recommendations can describe superseded choices.
 The driving guide follows the current ride hints and runtime policies. Sound
 sources describe the recording basis, independently of fuel type and vehicle lore.
 
-The visual controller reference has twelve ride layouts, Xbox and Steam Deck
+The visual controller reference has fifteen ride layouts, Xbox and Steam Deck
 labels, and a weapon-drawn mode. `control-data.js` follows `RideControlsPolicy.h`,
 the current plane input and parachute input. Shared actions assume the stock
 Fallout pad layout. Stunt combinations use the same button renderer. Check the
@@ -136,21 +140,22 @@ requested December target is the only exception to the site's no-dates copy rule
 
 Additional vehicle images use the mod's 24 studio loading-screen renders. They
 are exported at their intended display aspect ratio, with small catalogue
-thumbnails. Ten further studio renders complete all 35 vehicle
-types. Eight guide stills come from the author's own videos. The source
+thumbnails. Additional studio renders cover vehicles without loading-screen artwork. Eight guide stills come from the author's own videos. The source
 folders and frame positions are recorded in `scripts/media_sources.py`. Refresh
 these with `python3 scripts/import-media.py /path/to/DrivablesNVSE /path/to/Videos`.
 The regular content export retains the vehicle image mapping. The screenshots
 are normal captured frames with no scene alterations. Images can be enlarged
 from the guides, catalogue and placement entries.
 
-The eight newer vehicles are rendered from their shipped meshes and textures
+Vehicles without loading-screen artwork are rendered from their shipped meshes and textures
 with `scripts/render-studio.py`, using softbox lighting and a reflective floor.
 Extract with `python3 scripts/render-studio.py --source /path/to/DrivablesNVSE
 --work /path/to/site/artifacts/studio`, then run Blender in background mode with
 `--python scripts/render-studio.py -- --work /path/to/site/artifacts/studio`.
 Use Windows paths for Windows Blender. `--vehicle desoto commonwealth` limits
-either stage to selected vehicles. Extraction needs PyFFI, Pillow and NumPy.
+either stage to selected vehicles. Extraction needs PyFFI, Pillow and NumPy. Add `--game-data /path/to/FalloutNewVegas/Data`
+when a mesh references vanilla textures. Extraction uses the mod’s BSA reader,
+and skinned geometry is posed before rendering.
 Rendering uses Cycles and does not alter the game assets.
 The media importer keeps the bundled images when these local sources are absent.
 

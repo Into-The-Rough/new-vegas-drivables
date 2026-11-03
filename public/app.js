@@ -2,7 +2,7 @@
   const data = window.DRIVABLES;
   const $ = id => document.getElementById(id);
   const escape = text => String(text ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const categories = ['All','Cars','Bikes','Air','Water','Armour','Oddballs','Horses'];
+  const categories = ['All','Cars','Bikes','Air','Water','Armour','Industrial','Oddballs','Horses'];
   let category = 'All';
   let selected = 'v-000caa';
   let toastTimer;
@@ -73,7 +73,7 @@
       <p class="detail-state">${escape(entry.state)}</p>
       ${entry.image?`<figure class="detail-image"><a href="assets/${escape(entry.image)}" data-lightbox data-caption="${escape(entry.name)} · vehicle image"><img src="assets/${escape(entry.image)}" width="1024" height="576" alt="${escape(entry.name)} vehicle image"></a><figcaption>View image · enlarge →</figcaption></figure>`:''}
       <p class="detail-location">${escape(show?entry.location:'Exact location hidden. Enable “Show map details” to see directions.')}${show&&entry.approximate?'<small>Regional map pin · follow these directions inside the area.</small>':''}</p>
-      <dl class="requirements"><div><dt>${label}</dt><dd>${escape(skill)}</dd></div><div><dt>Supplies</dt><dd>${escape(entry.parts)}</dd></div><div><dt>Runs on</dt><dd>${escape(entry.fuel)}</dd></div><div><dt>Access</dt><dd>${entry.kind==='herd'?'Tame first':entry.kind==='reward'?'Earned':entry.kind==='excluded'?'Not placed':entry.repair?'Restore':entry.state==='Quest reward'?'Quest':'Discover'}</dd></div></dl>
+      <dl class="requirements"><div><dt>${label}</dt><dd>${escape(skill)}</dd></div><div><dt>Supplies</dt><dd>${escape(entry.parts)}</dd></div><div><dt>Runs on</dt><dd>${escape(entry.fuel)}</dd></div><div><dt>Access</dt><dd>${entry.kind==='herd'?'Tame first':entry.state==='PENDING'?'PENDING':entry.state==='Race loan'?'Loan':entry.kind==='reward'?'Earned':entry.kind==='excluded'?'Not placed':entry.repair?'Restore':entry.state==='Quest reward'?'Quest':'Discover'}</dd></div></dl>
       </div>
       <div class="detail-description">
       <p class="detail-label acquisition-label">${entry.kind==='herd'?'Taming':'How to get it'}</p>
@@ -159,8 +159,8 @@
     button.addEventListener('click', () => { category=name; $('discovery-list').scrollTop=0; render(); });
     $('filters').append(button);
   });
-  ['formula-racer','stunt-biplane','monster-truck','go-kart'].forEach(id => {
-    const entry=data.entries.find(e=>e.id===id); const link=document.createElement('a'); link.className='reward-link'; link.href=shareHash(id);
+  data.entries.filter(entry => entry.kind === 'reward').forEach(entry => {
+    const link=document.createElement('a'); link.className='reward-link'; link.href=shareHash(entry.id);
     link.innerHTML=`<span>${escape(entry.name)}<small>${escape(entry.acquisition)}</small></span><span aria-hidden="true">→</span>`;
     $('reward-links').append(link);
   });

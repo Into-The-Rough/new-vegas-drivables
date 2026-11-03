@@ -1,6 +1,12 @@
 """Public recording identities, checked against active audio banks and provenance."""
 
 SOURCES = {
+    'street_cleaner': ('Industrial machinery sounds', 'Drive motor, sweeping equipment and contact sounds.'),
+    'bucket_loader': ('Industrial machinery sounds', 'Drive motor, tracks, rotating cab and bucket machinery.'),
+    'fighter_jet': ('Jet aircraft sounds', 'Turbine, ignition, shutdown and a separate rotary-cannon loop.'),
+    'shuriken': ('390cc enduro sound bank', 'Skril Studio motorcycle bank, with separate on-load and off-load stages.'),
+    'scrambler': ('Motorcycle sound bank', 'Skril Studio motorcycle bank, with separate on-load and off-load stages.'),
+    'balloon': ('Burner and fabric sounds', 'Pilot light, burner, vent and basket or fabric movement.'),
     'apocalyptic_buggy': ('Subaru Impreza GC8', '2.0-litre boxer engine and exhaust recordings.'),
     'hotrod': ('Dodge Challenger 426 Hemi', 'V8 engine and exhaust recordings. Shared by the Hotrod and Ford Falcon Interceptor.'),
     'old_rusty_car': ('Toyota Corolla E30', '1.2-litre four-cylinder engine and exhaust recordings.'),

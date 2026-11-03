@@ -11,6 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
 index = (public / 'index.html').read_text()
+default_rows = ''.join(f'<tr><th scope="row">{escape(row["name"])}</th><td>{escape(row["value"])}</td></tr>' for row in data['defaults'])
+index, count = re.subn(r'<!--default-settings-->.*?<!--/default-settings-->', lambda _: '<!--default-settings-->' + default_rows + '<!--/default-settings-->', index, flags=re.S)
+assert count == 1, 'expected one default settings slot'
+cargo_rows = ''.join(f'<tr><th scope="row">{escape(v["name"])}</th><td>{v["cargo"]:,.0f}</td></tr>' for v in sorted(data['vehicles'], key=lambda v: (v['cargo'], v['name'])) if v['cargo'] > 0)
+index, count = re.subn(r'<!--cargo-limits-->.*?<!--/cargo-limits-->', lambda _: '<!--cargo-limits-->' + cargo_rows + '<!--/cargo-limits-->', index, flags=re.S)
+assert count == 1, 'expected one cargo limits slot'
 index, count = re.subn(r'<!--metadata-->.*?<!--/metadata-->', lambda _: '<!--metadata-->' + metadata('index.html') + '<!--/metadata-->', index, flags=re.S)
 assert count == 1, 'expected one metadata slot'
 analytics = (ROOT / 'pages/analytics.html').read_text().strip()
@@ -39,7 +45,7 @@ rows = []
 for entry in data['entries']:
     gate = f"Survival {entry['survival']}" if entry['kind'] == 'herd' else f"Repair {entry['repair']}" if entry['repair'] else 'No repair skill gate'
     rows.append(f'''<tr id="{entry['id']}"><td><a href="index.html#ride={entry['id']}">{escape(entry['name'])}</a><br>{escape(entry['category'])} · {escape(entry['region'])}</td><td>{escape(entry['location'])}<br><small>{escape(entry['state'])}</small></td><td>{escape(gate)} · {escape(entry['parts'])}<br>{escape(entry['acquisition'])}{'<br><em>'+escape(entry['note'])+'</em>' if entry['note'] else ''}</td><td>{escape(entry['fuel'])}<br>{escape(entry['reserve'])}</td></tr>''')
-(public / 'locations.html').write_text(page('Complete location guide', f'''<h1>Complete location list</h1><p>40 vehicle placements, three horse herds and four race, arena and garage unlocks. This page includes exact location spoilers and works without JavaScript.</p><p>World placements must be enabled in F10 preferences. Starting conditions are for discoveries before you use or repair them.</p><div class="table-scroll"><table class="location-table"><thead><tr><th scope="col">Vehicle</th><th scope="col">Location / route</th><th scope="col">How to acquire it</th><th scope="col">Supply / starting reserve</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>'''))
+(public / 'locations.html').write_text(page('Complete location guide', f'''<h1>Complete location list</h1><p>{data['counts']['placements'] - data['counts']['optionalPlacements']} vehicle discoveries, {data['counts']['optionalPlacements']} optional Long 15 placements, three horse herds, plus rewards and race loans. Routes still awaiting a decision are marked PENDING. This page includes exact location spoilers and works without JavaScript.</p><p>World placements must be enabled in F10 preferences. Starting conditions are for discoveries before you use or repair them.</p><div class="table-scroll"><table class="location-table"><thead><tr><th scope="col">Vehicle</th><th scope="col">Location / route</th><th scope="col">How to acquire it</th><th scope="col">Supply / starting reserve</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>'''))
 rows = []
 for vehicle in sorted(data['vehicles'], key=lambda v: v['name']):
     links = ''.join(f'<a href="locations.html#{id}">{escape(next(e["location"] for e in data["entries"] if e["id"] == id))}</a>' for id in vehicle['entries'])

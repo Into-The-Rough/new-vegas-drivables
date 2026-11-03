@@ -2,6 +2,7 @@
 from PIL import Image
 
 RENDERS = {
+    57: 'highwayman',
     1: 'buggy', 2: 'hotrod', 3: 'rustybicycle', 4: 'motorcycle',
     6: 'skateboard', 7: 'oldrustycar', 8: 'unicycle', 9: 'buggy736',
     10: 'corvega', 11: 'truckflatbed', 12: 'wheelchair', 13: 'highwayman',
@@ -11,6 +12,8 @@ RENDERS = {
 }
 
 STUDIO_RENDERS = {
+    49: 'street-cleaner', 50: 'bucket-loader', 51: 'fighter-jet', 52: 'shuriken',
+    53: 'scrambler', 54: 'balloon', 55: 'army-truck', 56: 'fire-engine',
     39: 'pershing', 40: 'alien', 41: 'commonwealth', 42: 'marine-apc',
     43: 'interceptor', 44: 'desoto', 45: 'biplane', 46: 'monster-truck',
     100: 'go-kart', 47: 'trailer', 48: 'wooden-cart',

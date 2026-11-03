@@ -10,17 +10,23 @@ from site_metadata import BASE, PAGES
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
-assert len(data['entries']) == 47
-assert len({e['id'] for e in data['entries']}) == 47
-assert sum(e['kind']=='discovery' for e in data['entries']) == data['counts']['placements'] == 40
+assert len(data['entries']) == sum(data['counts'][key] for key in ('placements', 'herds', 'rewards'))
+assert len({e['id'] for e in data['entries']}) == len(data['entries'])
+assert sum(e['kind']=='discovery' for e in data['entries']) == data['counts']['placements'] == 57
 assert sum(e['kind']=='herd' for e in data['entries']) == 3
-assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 35
+assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 44
 assert next(e for e in data['entries'] if e['name']=='Hover Bike')['mapPoint'] is None
 assert next(e for e in data['entries'] if e['name']=='Alien Recon Craft')['fuel'] == 'None'
 assert next(e for e in data['entries'] if e['name']=='Corvega')['fuel'] == 'Reactor Coolant'
 assert '100' in next(e for e in data['entries'] if e['id']=='herd-3')['acquisition']
-assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck','go-kart'}
-assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 35
+assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck','go-kart','shuriken','observation-balloon','supercharged-highwayman','brotherhood-vertibird','nuka-monster-truck','sunset-monster-truck'}
+assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 44
+assert data['counts']['optionalPlacements'] == 2
+assert {e['id'] for e in data['entries'] if e['state'] == 'PENDING'} == {'stunt-biplane', 'monster-truck'}
+assert all(e['mapPoint'] is None for e in data['entries'] if e['region'] == 'Long 15')
+assert next(e for e in data['entries'] if e['id'] == 'go-kart')['state'] == 'Race loan'
+assert next(e for e in data['entries'] if e.get('profile') == 54)['fuel'] == 'Flamer Fuel'
+assert {v['profile'] for v in data['vehicles']} >= set(range(49, 58))
 assert len(data['courses']) == 6
 assert len(data['rails']) == 9 and all(len(r['point']) == 2 for r in data['rails'])
 assert len(data['arena']) == 12 and all(p['points'] for p in data['arena'])
@@ -113,4 +119,4 @@ for path in public.rglob('*'):
 for css in public.glob('*.css'):
     for raw in re.findall(r'url\([\'"]?([^\)\'\"]+)', css.read_text()):
         assert (public/raw).is_file(), f'missing CSS resource: {raw}'
-print('Static checks passed: 35 vehicle types, 40 placements, 3 herds, 9 hitching posts, 6 courses, 8 horse profiles. Links, assets and copy conventions pass.')
+print(f"Static checks passed: {data['counts']['vehicles']} vehicle types, {data['counts']['placements']} discoveries including two optional placements. Links, assets and copy conventions pass.")

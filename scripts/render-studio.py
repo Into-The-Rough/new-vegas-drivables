@@ -11,6 +11,14 @@ from pathlib import Path
 import sys
 
 MODELS = {
+    'street-cleaner': 'street_cleaner/street_cleaner_onebody.nif',
+    'bucket-loader': 'bucket_loader/bucket_loader_onebody.nif',
+    'fighter-jet': 'fighter_jet/fighter_jet_onebody.nif',
+    'shuriken': 'shuriken/shuriken_onebody.nif',
+    'scrambler': 'scrambler/scrambler_onebody.nif',
+    'balloon': 'balloon/balloon_onebody.nif',
+    'army-truck': 'truck_army/truck_army_onebody.nif',
+    'fire-engine': 'truck_fire/truck_fire_onebody.nif',
     'desoto': 'desoto/desoto_onebody.nif',
     'commonwealth': 'fo4-tank/fo4_tank_onebody.nif',
     'interceptor': 'interceptor/interceptor_onebody.nif',
@@ -25,7 +33,8 @@ MODELS = {
 }
 
 
-def extract(source, work, names):
+def extract(source, work, names, game_data=None):
+    import io
     import time
     time.clock = time.perf_counter
     import numpy as np
@@ -33,6 +42,11 @@ def extract(source, work, names):
     from pyffi.formats.nif import NifFormat as N
     work.mkdir(parents=True, exist_ok=True)
     converted = {}
+    archives = []
+    if game_data:
+        sys.path.insert(0, str(source / "tools"))
+        from bsa_archive import BSAReader
+        archives = [BSAReader(p) for p in sorted(game_data.glob("Fallout - Textures*.bsa"))]
 
     def texture(raw):
         relative = raw.decode().replace('\\', '/')
@@ -40,10 +54,11 @@ def extract(source, work, names):
             return ''
         if relative not in converted:
             path = source / 'mod' / relative
-            if not path.exists():
+            raw = path.read_bytes() if path.exists() else next((a.extract(relative) for a in archives if a.has_file(relative)), None)
+            if raw is None:
                 raise FileNotFoundError(path)
             filename = hashlib.sha1(relative.encode()).hexdigest()[:12] + '.png'
-            Image.open(path).convert('RGBA').save(work / filename)
+            Image.open(io.BytesIO(raw)).convert('RGBA').save(work / filename)
             converted[relative] = filename
         return converted[relative]
 
@@ -65,11 +80,12 @@ def extract(source, work, names):
                 continue
             shader = next((p for p in shape.properties if isinstance(p, N.BSShaderPPLightingProperty)), None)
             #animated exhaust and distortion meshes are not part of the parked vehicle
-            if not shader or not shader.texture_set or not shader.texture_set.textures[0].lower().startswith(b'textures\\drivables\\'):
+            if not shader or not shader.texture_set or shape.name.startswith(b'##') or b'\\effects\\' in shader.texture_set.textures[0].lower():
                 continue
             matrix = np.array(shape.get_transform(root).as_list()).T
-            vertices = np.array([v.as_list() for v in shape.data.vertices]) @ matrix[:3, :3].T + matrix[:3, 3]
-            normals = np.array([v.as_list() for v in shape.data.normals])
+            raw_vertices, raw_normals = shape.get_skin_deformation() if shape.skin_instance else (shape.data.vertices, shape.data.normals)
+            vertices = np.array([v.as_list() for v in raw_vertices]) @ matrix[:3, :3].T + matrix[:3, 3]
+            normals = np.array([v.as_list() for v in raw_normals])
             if len(normals):
                 normals = normals @ np.linalg.inv(matrix[:3, :3])
                 normals /= np.maximum(np.linalg.norm(normals, axis=1, keepdims=True), 1e-12)
@@ -212,10 +228,11 @@ if __name__ == '__main__':
     argv = sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else sys.argv[1:]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path)
+    parser.add_argument('--game-data', type=Path)
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--vehicle', nargs='+', choices=MODELS, default=list(MODELS))
     args = parser.parse_args(argv)
     if args.source:
-        extract(args.source, args.work, args.vehicle)
+        extract(args.source, args.work, args.vehicle, args.game_data)
     else:
         render(args.work, args.vehicle)

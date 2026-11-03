@@ -4,7 +4,7 @@ BASE = 'https://into-the-rough.github.io/new-vegas-drivables/'
 PAGES = {
     'index.html': ('New Vegas Drivables', 'Cars, bikes, aircraft, boats and horses for Fallout: New Vegas. Watch gameplay, explore placements and learn the controls, races and horse taming.'),
     'vehicles.html': ('Vehicle speeds', 'Compare the cars, motorcycles, aircraft, boats and other rides in New Vegas Drivables, with top speeds, fuel supplies and locations.'),
-    'locations.html': ('Complete location guide', 'Find all 36 vehicle placements, three wild horse herds and three unlocks in New Vegas Drivables. Includes location and quest spoilers.'),
+    'locations.html': ('Complete location guide', 'Find vehicle discoveries, wild horse herds, quest rewards and race prizes in New Vegas Drivables. Includes location and quest spoilers.'),
     'sounds.html': ('Sound & passengers', 'Explore the real-world engine recordings behind New Vegas Drivables and check which vehicles can carry your companions.'),
     'faq.html': ('FAQ', 'New Vegas Drivables release plans, requirements, TTW compatibility, controllers, Steam Deck and settings explained.'),
     'about.html': ('Ethos & development', 'Why New Vegas Drivables exists and how exploration, handling, sound and player choice shape the mod.'),

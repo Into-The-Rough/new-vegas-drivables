@@ -9,7 +9,9 @@ from pathlib import Path
 from PIL import Image
 from site_copy import clean_copy
 from reference_content import reference_content
-from media_sources import apply_images, export_renders
+from current_catalogue import update_catalogue
+from default_settings import defaults
+from media_sources import export_studio_renders, apply_images, export_renders
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -107,9 +109,9 @@ def export(source):
     config.read_dict({'Vehicle100': dict(kart['Vehicle red'])})
     entries.append(dict(id='go-kart', profile=100, name='Go-kart', category='Oddballs', kind='reward',
                         region='Unlocks', mapPoint=None, approximate=False,
-                        location='F10 → Garage → Oddballs, or lent at The Repconn Arena',
-                        state='Garage spawn', condition='Eight colours with the same handling. No fuel, no boost, one seat.',
-                        acquisition='Spawn any colour from F10 → Garage → Oddballs when World vehicle spawning is on. Choose The Repconn Arena in race setup to be lent the red kart against the other seven colours.',
+                        location='The Repconn Arena',
+                        state='Race loan', condition='Eight colours with the same handling. No fuel, no boost, one seat.',
+                        acquisition='Choose The Repconn Arena in race setup to be lent the red kart against the other seven colours.',
                         fuel='None', reserve='No fuel', repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
 
     for raw in audit['unplaced_profiles']:
@@ -120,14 +122,15 @@ def export(source):
                             profile=n, name=names.get(n, raw['name']), category=families.get(n, 'Cars'),
                             kind='excluded' if n == 15 else 'reward', region='Unlocks', mapPoint=None,
                             approximate=False, location=raw['proposed_location'],
-                            state={15:'No separate discovery',34:'First race win',45:'Visit Thunderdome',46:'Arena only'}[n],
-                            condition={15:'Camp Golf provides the world cart.',34:'One free car per character; fully repaired, 40 L fuel.',45:'Available in the Thunderdome.',46:'Available only in the Thunderdome.'}[n],
+                            state={15:'No separate discovery',34:'First race win',45:'PENDING',46:'PENDING'}[n],
+                            condition={15:'Camp Golf provides the world cart.',34:'One free car per character; fully repaired, 40 L fuel.',45:'Normal acquisition route pending.',46:'Normal acquisition route pending.'}[n],
                             acquisition={15:'There is no separate discovery for this older cart. Find the Camp Golf Cart at the resort forecourt.',
                                          34:'Finish first in a completed race against at least one opponent. Return from the race, then F10 → Garage → Formula Racer → Claim Prize. One free car per character.',
-                                         45:'Visit the Thunderdome once to unlock world spawning. The general World vehicle spawning setting must also be enabled.',
-                                         46:'Use the garage inside the Thunderdome. The Monster Truck cannot be brought home or spawned outside the arena.'}[n],
+                                         45:'PENDING: the normal acquisition route has not been decided.',
+                                         46:'PENDING: the normal acquisition route has not been decided.'}[n],
                             fuel=raw['fuel_type'].replace('Jerry Can','Jerry Cans'), reserve='See unlock conditions',
                             repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
+    update_catalogue(source, config, entries)
     key_landmarks = ['Goodsprings','Primm','Novac','Jacobstown','Nellis Air Force Base','Hoover Dam',
                      'Boulder City','Camp Searchlight','Camp McCarran']
     for entry in entries:
@@ -139,14 +142,19 @@ def export(source):
         if found:
             rails.append(dict(name=found[1], point=[float(found[2]), float(found[3])]))
     assert len(rails) == 9, rails
-    data = dict(counts=dict(vehicles=35, placements=40, herds=3),
+    data = dict(counts=dict(vehicles=len({e["profile"] for e in entries if "profile" in e}),
+                            placements=sum(e["kind"] == "discovery" for e in entries),
+                            herds=sum(e["kind"] == "herd" for e in entries),
+                            rewards=sum(e["kind"] == "reward" for e in entries),
+                            optionalPlacements=sum(e["region"] == "Long 15" for e in entries)),
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
                          landmarks=[landmarks[n] for n in key_landmarks]), entries=entries, rails=rails)
+    data["defaults"] = defaults(source, config)
     data.update(reference_content(source, config, entries, horses))
     export_renders(source, assets)
+    export_studio_renders(assets)
     apply_images(data)
-    assert len(entries) == 47 and len({v['id'] for v in entries}) == 47
-    assert sum(v['kind']=='discovery' for v in entries) == 40
+    assert len(entries) == len({v['id'] for v in entries})
     (ROOT/'public/content.js').write_text('window.DRIVABLES = '+json.dumps(data, ensure_ascii=False, indent=2)+';\n')
     print(f'Exported {len(entries)} guide entries and image assets.')
 

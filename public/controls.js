@@ -42,12 +42,12 @@
     let rows = ride.controls.map(row => row.slice());
     if (keyboard && ride.weapon) {
       if (drawn) {
-        rows = rows.filter(r => r[0] !== 'R');
-        rows.push(['Left mouse','Fire weapon','Hold'],['Right mouse','Aim weapon','Hold'],['R','Holster weapon','Press']);
+        rows = rows.filter(r => !['R','Left mouse','Right mouse'].includes(r[0]) && !(id === 'horse' && r[0] === 'X'));
+        rows.push(['Left mouse','Fire weapon','Hold'],['Right mouse','Aim weapon','Hold'],['R','Reload / holster','Tap / hold']);
       }
       rows.push(['G', drawn ? 'Holster weapon' : 'Draw weapon','Press']);
     } else if (drawn) {
-      rows = rows.filter(r => r[0] !== 'LB' && r[0] !== 'RB');
+      rows = rows.filter(r => r[0] !== 'LB' && r[0] !== 'RB' && !(id === 'horse' && r[0] === 'DLeft'));
       rows.push(['LB','Aim weapon','Hold'],['RB','Fire weapon','Hold'],['X','Reload / holster','Tap / hold']);
     } else if (ride.weapon) rows.push(['X','Draw weapon','Press']);
     if (id !== 'parachute') rows.push([keyboard ? 'E' : 'A','Get off / exit','Press'],[keyboard ? 'Tab' : 'B','Open Pip-Boy','Press']);
@@ -60,7 +60,7 @@
     $('control-rows').innerHTML = rows.map(rowMarkup).join('');
     $('control-extras').hidden = !ride.extras;
     $('control-extra-rows').innerHTML = (ride.extras || []).map(rowMarkup).join('');
-    $('control-note').textContent = drawn ? keyboard ? 'With a weapon drawn, use the mouse buttons to aim and fire. R or G holsters it while riding.' : 'With a weapon drawn, the bumpers aim and fire. Tap the reload button to reload, hold it to holster and restore your riding controls.' : ride.note || 'Controls shown are the defaults. Equipment such as boost, lights and radio is only available where fitted.';
+    $('control-note').textContent = drawn ? keyboard ? 'With a weapon drawn, use the mouse buttons to aim and fire. Tap R to reload, hold R to holster, or press G to put it away.' : 'With a weapon drawn, the bumpers aim and fire. Tap the reload button to reload, hold it to holster and restore your riding controls.' : ride.note || 'Controls shown are the defaults. Equipment such as boost, lights and radio is only available where fitted.';
     $('menu-chord').innerHTML = combo(keyboard ? ['F10'] : ['L3','R3']);
     document.querySelectorAll('[data-pad-stunt]').forEach(node => {
       node.innerHTML = stuntMarkup(node.dataset.padStunt);
