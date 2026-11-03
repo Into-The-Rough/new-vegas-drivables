@@ -122,12 +122,12 @@ def export(source):
                             profile=n, name=names.get(n, raw['name']), category=families.get(n, 'Cars'),
                             kind='excluded' if n == 15 else 'reward', region='Unlocks', mapPoint=None,
                             approximate=False, location=raw['proposed_location'],
-                            state={15:'No separate discovery',34:'First race win',45:'PENDING',46:'PENDING'}[n],
-                            condition={15:'Camp Golf provides the world cart.',34:'One free car per character; fully repaired, 40 L fuel.',45:'Normal acquisition route pending.',46:'Normal acquisition route pending.'}[n],
+                            state={15:'No separate discovery',34:'First race win',45:'Arena loan',46:'Arena loan'}[n],
+                            condition={15:'Camp Golf provides the world cart.',34:'One free car per character; fully repaired, 40 L fuel.',45:'Ready to use in the Thunderdome.',46:'Ready to use in the Thunderdome.'}[n],
                             acquisition={15:'There is no separate discovery for this older cart. Find the Camp Golf Cart at the resort forecourt.',
                                          34:'Finish first in a completed race against at least one opponent. Return from the race, then F10 → Garage → Formula Racer → Claim Prize. One free car per character.',
-                                         45:'PENDING: the normal acquisition route has not been decided.',
-                                         46:'PENDING: the normal acquisition route has not been decided.'}[n],
+                                         45:'Parked near the Thunderdome arrival point. This loan stays in the arena.',
+                                         46:'Parked near the Thunderdome arrival point. This loan stays in the arena.'}[n],
                             fuel=raw['fuel_type'].replace('Jerry Can','Jerry Cans'), reserve='See unlock conditions',
                             repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
     update_catalogue(source, config, entries)

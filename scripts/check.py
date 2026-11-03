@@ -22,7 +22,8 @@ assert '100' in next(e for e in data['entries'] if e['id']=='herd-3')['acquisiti
 assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck','go-kart','shuriken','observation-balloon','supercharged-highwayman','brotherhood-vertibird','nuka-monster-truck','sunset-monster-truck'}
 assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 44
 assert data['counts']['optionalPlacements'] == 2
-assert {e['id'] for e in data['entries'] if e['state'] == 'PENDING'} == {'stunt-biplane', 'monster-truck'}
+assert {e['id'] for e in data['entries'] if e['state'] == 'Arena loan'} == {'stunt-biplane', 'monster-truck'}
+assert all(e['state'] != 'PENDING' for e in data['entries'])
 assert all(e['mapPoint'] is None for e in data['entries'] if e['region'] == 'Long 15')
 assert next(e for e in data['entries'] if e['id'] == 'go-kart')['state'] == 'Race loan'
 assert next(e for e in data['entries'] if e.get('profile') == 54)['fuel'] == 'Flamer Fuel'

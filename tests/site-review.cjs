@@ -85,7 +85,8 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     await page.locator('#spoilers').check();
     for (const id of ['stunt-biplane', 'monster-truck']) {
       await page.goto(base + '/#ride=' + id);
-      assert.match(await page.locator('#discovery-detail').textContent(), /PENDING/);
+      assert.match(await page.locator('#discovery-detail').textContent(), /Arena loan/);
+      assert.match(await page.locator('#discovery-detail').textContent(), /Both stay in the arena/);
       assert.equal(await page.locator('#focus-pin').count(), 0);
     }
     await page.goto(base + '/#category=Industrial');

@@ -76,10 +76,11 @@ def update_catalogue(source, config, entries):
         if entry['profile'] == 38:
             entry['name'] = 'Golf Cart'
         if entry['id'] in ('stunt-biplane', 'monster-truck'):
-            entry.update(state='PENDING', location='Unlock route pending',
-                         acquisition='PENDING: the normal acquisition route has not been decided.',
-                         condition='This vehicle exists, but a normal way to obtain it is pending.',
-                         note='The named Monster Truck awards have their own unlocks.' if entry['profile'] == 46 else '')
+            entry.update(state='Arena loan', location='Thunderdome arrival area',
+                         acquisition='Enter through F10 → Racing → Thunderdome. The plain H1 Monster Truck and Stunt Biplane are parked near the arrival point, ready to use. Both stay in the arena when you leave and cannot be retrieved through your garage or taken to another race.',
+                         condition='Repaired, refuelled and returned to their parking spots when you come back. Loading a save during a visit keeps their current condition and position.',
+                         reserve='Full tank on arrival',
+                         note='The Nuka-Cola and Sunset Sarsaparilla Monster Truck awards have their own unlocks.' if entry['profile'] == 46 else '')
         if entry['id'] == 'go-kart':
             entry.update(state='Race loan', location='The Repconn Arena',
                          acquisition='Choose The Repconn Arena in F10 → Racing. Starting on foot lends you the red kart against the other seven colours. This is a race loan, not a free garage unlock.')

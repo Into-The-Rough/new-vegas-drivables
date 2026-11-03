@@ -83,7 +83,7 @@ GitHub Actions publishes the committed export without access to private sources.
 
 The guide covers 44 vehicle types, 55 core discoveries, two optional Long 15
 placements and three wild horse herds, plus rewards and loans.
-The plain H1 and Stunt Biplane acquisition routes are PENDING by author request. The original
+The plain H1 and Stunt Biplane are permanent Thunderdome loans, reset between visits. The original
 Golf Cart profile is omitted. Camp Golf provides the cart discovery. The go-kart
 comes from the `racing.karts` add-on pack rather than the main INI, exported as
 profile 100 with its own studio render. The nine hitching rails are read from
