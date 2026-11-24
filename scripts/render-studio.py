@@ -30,6 +30,7 @@ MODELS = {
     'go-kart': 'go_kart/go_kart_onebody.nif',
     'trailer': 'trailer_m8a1/trailer_m8a1.nif',
     'wooden-cart': 'wooden_cart/wooden_cart.nif',
+    'army-jeep': 'jeep_army/jeep_army_onebody.nif',
 }
 
 

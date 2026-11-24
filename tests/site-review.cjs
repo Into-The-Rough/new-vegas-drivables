@@ -70,7 +70,7 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     await page.locator('#stunt-filters').getByRole('button', {name:'All', exact:true}).click();
     assert.equal(await page.locator('[data-pad-stunt] kbd').count() > 15, true);
     assert.doesNotMatch(await page.locator('#stunts').textContent(), /undefined/);
-    assert.deepEqual(await page.locator('[data-pad-stunt="Skateboard/Kickflip"] kbd').allTextContents(), ['Left Shift','Space']);
+    assert.deepEqual(await page.locator('[data-pad-stunt="Skateboard/Kickflip"] kbd').allTextContents(), ['W','Space']);
     await page.goto(base + '/#ride=v-000c3b');
     assert.match(await page.locator('#discovery-detail').textContent(), /Volare/);
     await page.locator('#spoilers').uncheck();
@@ -98,8 +98,8 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     await page.goto(base + '/#menu-defaults');
     assert.equal(await page.locator('#menu').isVisible(), true);
     const defaults = page.locator('table').filter({has:page.locator('caption', {hasText:'Supplied defaults'})});
-    assert.match(await defaults.textContent(), /HandlingBalanced/);
-    assert.match(await defaults.textContent(), /World discoveriesOn/);
+    assert.match(await defaults.textContent(), /Handling presetBalanced/);
+    assert.match(await defaults.textContent(), /Vehicles to findOn/);
     assert.match(await defaults.textContent(), /Debug free spawningOff/);
     for (const width of [390,360]) {
       await page.setViewportSize({width, height:844});

@@ -52,12 +52,14 @@ def export(source):
         '000CA8': 'Brooks Tumbleweed Ranch — inside the curved metal shelter, facing its southern opening.',
         '000CD0': 'HELIOS One — beside the western approach, under camouflage netting.',
         '000CE0': 'Quarry Junction — tucked away on the western side, under a fitted canvas tarp.',
+        '000D22': "Grub n' Gulp rest stop: in the pull-off east of the shack.",
     }
     names = {16: 'Vikki and Vance Death Car', 45: 'Stunt Biplane', 46: 'H1 Monster Truck'}
     entries = []
     for raw in audit['active_placements']:
         n = int(raw['profile'].replace('Vehicle', ''))
-        c = config[raw['profile']]
+        n = {38: 15}.get(n, n)
+        c = config[f'Vehicle{n}']
         local = raw['ref'][2:]
         supply = ('Reactor Coolant' if c.getboolean('bReactorCoolant', fallback=False) else
                   'Energy Cells / MFCs' if c.getboolean('bFuelCells', fallback=False) else
@@ -103,6 +105,18 @@ def export(source):
                             survival=gate, ref=horses['travel_refs_local'][i], image=None,
                             acquisition=f'Inspect and tame a horse with effective Survival {gate}. Complete the calming interaction out of combat. Taming costs no items. Eligible horses can roll rare: Survival 100 and 5/5/5 traits.',
                             note='Ordinary wild horses replenish after three in-game days away. Tamed and rare individuals stay dead. A later new horse can roll rare.'))
+    sites = re.findall(r'\{(-?[\d.]+)f?, (-?[\d.]+)f?, -?[\d.]+f?\}', (source / 'drivables/WildHorseSites.h').read_text())
+    anchors = re.search(r'kAnchors\[\] = \{([^}]+)\}', (source / 'drivables/WildHorseSites.h').read_text())[1].split(', ')
+    for i, name in ((3, 'Camp Searchlight'), (4, 'Old Nuclear Test Site')):
+        slots = [(float(x), float(y)) for x, y in sites[12 + 2 * (i - 3):14 + 2 * (i - 3)]]
+        entries.append(dict(id=f'herd-{i+1}', name=f'Ghoul horses · Herd {i+1}', category='Horses',
+                            kind='herd', region='Mojave', mapPoint=[sum(x for x, _ in slots) / 2, sum(y for _, y in slots) / 2],
+                            approximate=False, location=name, state='Tame with Survival',
+                            condition='1–2 wild ghoul horses. Inspect each horse for its traits and requirement.',
+                            reserve='Stamina, not fuel', fuel='None', repair=0, tools=0, parts='No items',
+                            survival='50 / 100', ref=f'{int(anchors[i], 16):06X}', image=None,
+                            acquisition='Inspect and tame a ghoul horse with effective Survival 50. Complete the calming interaction out of combat. Taming costs no items. Now and then one rolls rare: the dark ghoul horse, Survival 100 and 5/5/5 traits.',
+                            note='Ghoul horses never spook, take more punishment than a living horse and are a little slower. Feral ghouls leave them alone. They replenish on the same three days as the living herds.'))
 
     kart = configparser.ConfigParser(interpolation=None, strict=False)
     kart.read(source / 'mod/config/DrivablesNVSE/addons/racing.karts/vehicles.ini')
@@ -110,7 +124,7 @@ def export(source):
     entries.append(dict(id='go-kart', profile=100, name='Go-kart', category='Oddballs', kind='reward',
                         region='Unlocks', mapPoint=None, approximate=False,
                         location='The Repconn Arena',
-                        state='Race loan', condition='Eight colours with the same handling. No fuel, no boost, one seat.',
+                        state='Race loan', condition='Eight colours with the same handling. No fuel, a recharging boost, one seat.',
                         acquisition='Choose The Repconn Arena in race setup to be lent the red kart against the other seven colours.',
                         fuel='None', reserve='No fuel', repair=0, tools=0, parts='No repair items', image=None, ref=None, note=''))
 
@@ -146,6 +160,7 @@ def export(source):
                             placements=sum(e["kind"] == "discovery" for e in entries),
                             herds=sum(e["kind"] == "herd" for e in entries),
                             rewards=sum(e["kind"] == "reward" for e in entries),
+                            roadFinds=sum(e["kind"] == "road" for e in entries),
                             optionalPlacements=sum(e["region"] == "Long 15" for e in entries)),
                 map=dict(bounds=chart['bounds'], border=chart['border'], area=chart['area'],
                          landmarks=[landmarks[n] for n in key_landmarks]), entries=entries, rails=rails)

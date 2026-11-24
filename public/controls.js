@@ -47,8 +47,9 @@
       }
       rows.push(['G', drawn ? 'Holster weapon' : 'Draw weapon','Press']);
     } else if (drawn) {
-      rows = rows.filter(r => r[0] !== 'LB' && r[0] !== 'RB' && !(id === 'horse' && r[0] === 'DLeft'));
-      rows.push(['LB','Aim weapon','Hold'],['RB','Fire weapon','Hold'],['X','Reload / holster','Tap / hold']);
+      const swapped = (ride.drawn || []).map(r => r[0]);
+      rows = rows.filter(r => r[0] !== 'LB' && r[0] !== 'RB' && !swapped.includes(r[0]) && !(id === 'horse' && ['DLeft','L3'].includes(r[0])));
+      rows.push(...(ride.drawn || []),['LB','Aim weapon','Hold'],['RB','Fire weapon','Hold'],['X','Reload / holster','Tap / hold']);
     } else if (ride.weapon) rows.push(['X','Draw weapon','Press']);
     if (id !== 'parachute') rows.push([keyboard ? 'E' : 'A','Get off / exit','Press'],[keyboard ? 'Tab' : 'B','Open Pip-Boy','Press']);
     rows.push([keyboard ? 'F' : 'Back','Change camera','Tap']);

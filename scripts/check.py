@@ -10,28 +10,28 @@ from site_metadata import BASE, PAGES
 ROOT = Path(__file__).resolve().parents[1]
 public = ROOT / 'public'
 data = json.loads((public / 'content.js').read_text().removeprefix('window.DRIVABLES = ').removesuffix(';\n'))
-assert len(data['entries']) == sum(data['counts'][key] for key in ('placements', 'herds', 'rewards'))
+assert len(data['entries']) == sum(data['counts'][key] for key in ('placements', 'herds', 'rewards', 'roadFinds'))
 assert len({e['id'] for e in data['entries']}) == len(data['entries'])
 assert sum(e['kind']=='discovery' for e in data['entries']) == data['counts']['placements'] == 57
-assert sum(e['kind']=='herd' for e in data['entries']) == 3
-assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 44
+assert sum(e['kind']=='herd' for e in data['entries']) == 5
+assert len({e['profile'] for e in data['entries'] if 'profile' in e}) == 45
 assert next(e for e in data['entries'] if e['name']=='Hover Bike')['mapPoint'] is None
 assert next(e for e in data['entries'] if e['name']=='Alien Recon Craft')['fuel'] == 'None'
 assert next(e for e in data['entries'] if e['name']=='Corvega')['fuel'] == 'Reactor Coolant'
 assert '100' in next(e for e in data['entries'] if e['id']=='herd-3')['acquisition']
 assert {e['id'] for e in data['entries'] if e['kind']=='reward'} == {'formula-racer','stunt-biplane','monster-truck','go-kart','shuriken','observation-balloon','supercharged-highwayman','brotherhood-vertibird','nuka-monster-truck','sunset-monster-truck'}
-assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 44
+assert len(data['vehicles']) == len({v['profile'] for v in data['vehicles']}) == 45
 assert data['counts']['optionalPlacements'] == 2
 assert {e['id'] for e in data['entries'] if e['state'] == 'Arena loan'} == {'stunt-biplane', 'monster-truck'}
 assert all(e['state'] != 'PENDING' for e in data['entries'])
 assert all(e['mapPoint'] is None for e in data['entries'] if e['region'] == 'Long 15')
 assert next(e for e in data['entries'] if e['id'] == 'go-kart')['state'] == 'Race loan'
 assert next(e for e in data['entries'] if e.get('profile') == 54)['fuel'] == 'Flamer Fuel'
-assert {v['profile'] for v in data['vehicles']} >= set(range(49, 58))
+assert {v['profile'] for v in data['vehicles']} >= set(range(49, 59))
 assert len(data['courses']) == 6
 assert len(data['rails']) == 9 and all(len(r['point']) == 2 for r in data['rails'])
 assert len(data['arena']) == 12 and all(p['points'] for p in data['arena'])
-assert len(data['horseTraits']) == 8
+assert len(data['horseTraits']) == 9
 assert {h['survival'] for h in data['horseTraits']} == {0, 50, 75, 100}
 for vehicle in data['vehicles']:
     assert vehicle['image'], f'missing vehicle image: {vehicle["name"]}'

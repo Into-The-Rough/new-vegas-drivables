@@ -34,7 +34,7 @@ DISCOVERIES = [
     ('000D58', 50, 'Bucket Loader', 'Industrial', 'Northeast of Sloan, east of Quarry Junction.', 35),
     ('000D5A', 50, 'Bucket Loader', 'Industrial', 'East-northeast of HELIOS One, southwest of El Dorado Gas & Service.', 35),
     ('000D5C', 50, 'Bucket Loader', 'Industrial', 'Southern Gypsum Train Yard.', 35),
-    ('000DA3', 51, 'Fighter Jet', 'Air', 'Nellis apron, beside the B-29 position and facing the long runway.', 0),
+    ('000DA3', 51, 'Fighter Jet', 'Air', 'Nellis, out on the long runway ahead of the B-29 and lined up for take-off.', 0),
     ('000D72', 55, 'Army Truck', 'Cars', 'Camp Searchlight, southern truck position.', 50),
     ('000D74', 55, 'Army Truck', 'Cars', 'Camp Searchlight, central truck position.', 50),
     ('000D76', 55, 'Army Truck', 'Cars', 'Camp Searchlight, northern truck position.', 50),
@@ -59,6 +59,10 @@ AWARDS = [
      'Complete A Valuable Lesson successfully, then collect the award from F10 → Garage inside the Thunderdome. The truck stays in the Thunderdome.'),
 ]
 
+ROAD_JEEP = ('NCR patrols drive these round the Mojave Outpost, Primm, the 188, Boulder City and Novac, NCR troopers on the road '
+             'use them too, and NCR hit squads sometimes turn up in one. Take one and it is yours, and the garage can fetch it after that. '
+             'Pulling a driver out of one counts as assault, like any other ride you steal off the road.')
+
 
 def update_catalogue(source, config, entries):
     manifest = json.loads((source / 'tools/esp_manifest.json').read_text())
@@ -73,7 +77,7 @@ def update_catalogue(source, config, entries):
             record = records[0x01000000 | int(entry['ref'], 16)]
             if not entry['approximate'] and entry['region'] == 'Mojave':
                 entry['mapPoint'] = list(struct.unpack('<6f', field(record, 'DATA'))[:2])
-        if entry['profile'] == 38:
+        if entry['profile'] == 15:
             entry['name'] = 'Golf Cart'
         if entry['id'] in ('stunt-biplane', 'monster-truck'):
             entry.update(state='Arena loan', location='Thunderdome arrival area',
@@ -116,6 +120,11 @@ def update_catalogue(source, config, entries):
                             reserve='Award delivery', acquisition=acquisition, fuel=supply(config[f'Vehicle{profile}']),
                             repair=0, tools=0, region='Unlocks', mapPoint=None, approximate=False,
                             parts='No repair items', image=None, note='Use the owned entry to retrieve it after collection.'))
+    entries.append(dict(id='ncr-army-jeep', profile=58, name='NCR Army Jeep', category='Cars', kind='road', ref=None,
+                        location='NCR road patrols', state='Road find', condition='Working vehicle',
+                        reserve='2 to 8 percent of a tank when taken from traffic', acquisition=ROAD_JEEP, fuel=supply(config['Vehicle58']), repair=0, tools=0,
+                        region='Unlocks', mapPoint=None, approximate=False, parts='No repair items', image=None,
+                        note='No jeep is parked anywhere. You have to take one off the NCR.'))
     for ident, location in [('long15-construction', 'Long 15, overpass construction site'), ('long15-junkyard', 'Long 15, Baker Junkyard')]:
         entries.append(dict(id=ident, profile=50, name='Bucket Loader', category='Industrial', kind='discovery',
                             ref=None, location=location, state='Optional patch', condition='Seized machinery', reserve='Empty',
@@ -126,5 +135,5 @@ def update_catalogue(source, config, entries):
     managed = {f'{int(value, 16):06X}' for value in re.findall(r'0x[0-9A-Fa-f]+', re.search(r'kVehicleIDs\[kCount\] = \{([^}]+)', policy)[1])}
     exported = {e['ref'] for e in entries if e['kind'] == 'discovery'}
     assert managed <= exported, f'undocumented managed placements: {managed - exported}'
-    expected_profiles = {int(s[7:]) for s in config.sections() if s.startswith('Vehicle') and s[7:].isdigit() and not 21 <= int(s[7:]) <= 32 and s != 'Vehicle15'}
+    expected_profiles = {int(s[7:]) for s in config.sections() if s.startswith('Vehicle') and s[7:].isdigit() and config[s].get('sRouteClass') != 'horse'}
     assert {e['profile'] for e in entries if 'profile' in e} == expected_profiles, 'undocumented vehicle profile'

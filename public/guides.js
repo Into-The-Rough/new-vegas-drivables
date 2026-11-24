@@ -11,9 +11,13 @@
     ['Motorcycle','Air control','Use Forward and Backward to pitch while airborne.','Adjust the bike’s attitude before landing.'],
     ['Bicycle','Wheelie','Hold Jump while moving.','Balance on the rear wheel.'],
     ['Bicycle','Bunny hop','Use Sprint and Jump together.','Sprint also increases pedalling effort and spends AP.'],
-    ['Skateboard','Ollie','Press Jump while moving.','Get rolling before the jump.'],
-    ['Skateboard','Kickflip','Use Boost and Jump together.','Land the trick to keep riding.'],
+    ['Skateboard','Ollie','Hold Jump to wind up, release to pop.','A longer hold and more speed pop higher.'],
+    ['Skateboard','Kickflip','Keep Forward held as you release Jump.','Let go of Forward first for a plain ollie.'],
     ['Skateboard','Manual','Hold Handbrake while moving.','Holding it too long can throw you off.'],
+    ['Skateboard','Spin','Hold Left or Right in the air.','180 up to 720. Land a half spin and you ride switch, tail first.'],
+    ['Skateboard','Grab','Hold Handbrake in the air.','A kickflip can’t be grabbed.'],
+    ['Skateboard','Pump','Hold Jump up a ramp’s curve, release at the top.','Run out of speed on a ramp and the board turns round and rolls back.'],
+    ['Skateboard','Grind','Come down on a rail or a ledge edge with some speed.','Along the rail is a 50-50, across it a boardslide. Jump to get off. The rails are in the Thunderdome skatepark.'],
     ['Hopper','Charged jump','Hold Jump while grounded, then release.','Forward keeps the ride bouncing. Steer to change direction.'],
     ['Pogo Stick','Charged jump','Hold Jump while grounded, then release.','Use Forward to bounce and steer to change direction. No fuel is needed.'],
     ['Hover Bike','Side dodge','Double-tap left or right.','A quick sideways move while travelling.'],
@@ -73,7 +77,7 @@
     selectedWorld = id;
     document.querySelectorAll('#world-list button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.world === id)));
     if (id === 'thunderdome') {
-      $('world-detail').innerHTML = `<h3>Thunderdome</h3><p>A dedicated arena for jumps, flight challenges and crushing cars. Enter through F10 → Racing → Thunderdome, then use Return Home when you are finished.</p>${worldPhoto(id)}${arenaMap()}<div class="arena-features"><div><h4>On the ground</h4><p>Ramps and loops, a truck jump, ring of fire and wall of fire. The crush line, crush pit and car tower give heavy vehicles their own challenges.</p></div><div><h4>In the air</h4><p>A ten-hoop course and pylon race, a knife-edge gap, a hangar fly-through, and low passes beneath the bridge and wires.</p></div></div><p class="world-access">The Nuka-Cola and Sunset Sarsaparilla Monster Truck awards stay in the arena. Their requirements are in the rewards guide. The plain H1 Monster Truck and Stunt Biplane are parked near the arrival point, ready to use. These loans stay in the arena when you leave, cannot be retrieved through your garage, and cannot travel to another race. They are repaired, refuelled and reparked when you return. Loading a save during a visit keeps them where you left them.</p><a class="button" href="#stunts">Stunt controls</a>`;
+      $('world-detail').innerHTML = `<h3>Thunderdome</h3><p>A dedicated arena for jumps, flight challenges and crushing cars. Enter through F10 → Racing → Thunderdome, then use Return Home when you are finished.</p>${worldPhoto(id)}${arenaMap()}<div class="arena-features"><div><h4>On the ground</h4><p>Ramps and loops, a truck jump, ring of fire and wall of fire. The crush line, crush pit and car tower give heavy vehicles their own challenges. West of the arrival there’s a skatepark with quarter pipes, a half pipe, a spine, stairs, a funbox, a ledge and a run of rails to grind.</p></div><div><h4>In the air</h4><p>A ten-hoop course and pylon race, a knife-edge gap, a hangar fly-through, and low passes beneath the bridge and wires.</p></div></div><p class="world-access">The plain H1 Monster Truck and Stunt Biplane are parked near the arrival point, ready to use, and there’s a skateboard on the east edge of the skatepark. The H1 also comes in Nuka-Cola and Sunset Sarsaparilla paint, but you have to earn those. Win the Nuka-Cola Speedway against at least one rival, and actually cross the line, for one. Finish A Valuable Lesson for the other. Both land in your garage, and like the plain one they never leave the Thunderdome. Same truck, better paint. These loans stay in the arena when you leave, cannot be retrieved through your garage, and cannot travel to another race. They are repaired, refuelled and reparked when you return. Loading a save during a visit keeps them where you left them.</p><a class="button" href="#stunts">Stunt controls</a>`;
       return;
     }
     if (id === 'mojave_horde') {

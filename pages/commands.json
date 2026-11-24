@@ -39,6 +39,25 @@
     "example": "let driver := MyCarRef.DrvAddDriver"
   },
   {
+    "name": "DrvContinueRide",
+    "syntax": "DrvContinueRide [vehicle]",
+    "parameters": [
+      {
+        "name": "vehicle",
+        "type": "ObjectRef",
+        "optional": true
+      }
+    ],
+    "condition": false,
+    "requiredReference": false,
+    "source": "commands/SeatCommands.cpp",
+    "group": "NPC driving",
+    "description": "Send a ride stopped at a route mark on its way.",
+    "returns": "1 if the ride was standing at a mark, 0 otherwise.",
+    "note": "With no vehicle named, the calling reference is used, then the ride carrying the player.",
+    "example": "DrvContinueRide MyCarRef"
+  },
+  {
     "name": "DrvDamageVehicle",
     "syntax": "DrvDamageVehicle <value> [vehicle]",
     "parameters": [
@@ -80,7 +99,7 @@
     "condition": false,
     "requiredReference": false,
     "source": "commands/DrvCommands.cpp",
-    "group": "Races & ramps",
+    "group": "Races",
     "description": "Queue the end of the current race.",
     "returns": "1 after queuing the request."
   },
@@ -436,6 +455,30 @@
     "note": "Choose a calm, stationary horse. Pass the horse, select it in the console, or omit the target while riding a horse."
   },
   {
+    "name": "DrvMarkRoute",
+    "syntax": "DrvMarkRoute <mark name> [wait seconds]",
+    "parameters": [
+      {
+        "name": "mark name",
+        "type": "String",
+        "optional": false
+      },
+      {
+        "name": "wait seconds",
+        "type": "Float",
+        "optional": true
+      }
+    ],
+    "condition": false,
+    "requiredReference": false,
+    "source": "commands/SeatCommands.cpp",
+    "group": "NPC driving",
+    "description": "Mark the spot you are standing on in the route being recorded.",
+    "returns": "1 on success, 0 on refusal.",
+    "note": "wait seconds: 0 or omitted passes the mark, a positive wait stops there that long, a negative wait stops until DrvContinueRide. Rides announce each mark through Drv:OnRideWaypoint.",
+    "example": "DrvMarkRoute Checkpoint -1"
+  },
+  {
     "name": "DrvMount",
     "syntax": "DrvMount [vehicle]",
     "parameters": [
@@ -452,25 +495,6 @@
     "description": "Request mounting the player on a vehicle.",
     "returns": "1 if the transition was requested, 0 otherwise.",
     "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. This starts an action. It does not mean the transition has finished."
-  },
-  {
-    "name": "DrvPlaceRamp",
-    "syntax": "DrvPlaceRamp <ramp>",
-    "parameters": [
-      {
-        "name": "ramp",
-        "type": "BoundObject",
-        "optional": false
-      }
-    ],
-    "condition": false,
-    "requiredReference": false,
-    "source": "commands/RampCommands.cpp",
-    "group": "Races & ramps",
-    "description": "Place a static ramp ahead of the player, aligned with their facing.",
-    "returns": "1 on success, 0 on refusal.",
-    "note": "Requires a STAT base. Placement uses terrain height where available. Check clearance yourself.",
-    "example": "DrvPlaceRamp DrvMegaTabletop"
   },
   {
     "name": "DrvPopTyre",
@@ -495,6 +519,25 @@
     "returns": "1 on success, 0 on refusal.",
     "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Use indices 0\u20135 for wheel slots. -1 punctures all slots. The vehicle must have an appropriate tyre rig for the expected visual result.",
     "example": "DrvPopTyre -1 MyCarRef"
+  },
+  {
+    "name": "DrvRecordRoute",
+    "syntax": "DrvRecordRoute [route name]",
+    "parameters": [
+      {
+        "name": "route name",
+        "type": "String",
+        "optional": true
+      }
+    ],
+    "condition": false,
+    "requiredReference": false,
+    "source": "commands/SeatCommands.cpp",
+    "group": "NPC driving",
+    "description": "Record a route by riding it.",
+    "returns": "1 when a recording starts, otherwise the number of points written.",
+    "note": "With a name, recording starts. With no name, the running recording is written to Data\\config\\drivables\\routes\\<name>.txt, ready for DrvStartRide.",
+    "example": "DrvRecordRoute MyRoute"
   },
   {
     "name": "DrvRecoverVehicle",
@@ -570,6 +613,30 @@
     "returns": "1 on success, 0 on refusal.",
     "note": "Pass a vehicle reference explicitly, or call on the vehicle / select it in the console. Omitting the argument does not automatically select your current ride. Requires the vehicle to be loaded, nearby, unlocked and unoccupied. On success the required item is consumed. This is separate from DrvRepairVehicle.",
     "example": "DrvRestoreVehicle MyCarRef"
+  },
+  {
+    "name": "DrvSeatPlayer",
+    "syntax": "DrvSeatPlayer [seat] [vehicle]",
+    "parameters": [
+      {
+        "name": "seat",
+        "type": "Integer",
+        "optional": true
+      },
+      {
+        "name": "vehicle",
+        "type": "ObjectRef",
+        "optional": true
+      }
+    ],
+    "condition": false,
+    "requiredReference": false,
+    "source": "commands/SeatCommands.cpp",
+    "group": "Occupants",
+    "description": "Seat the player as a passenger on an NPC-driven ride.",
+    "returns": "1 when the seat is taken or waits for the ride to get going, 0 when refused.",
+    "note": "Seat 0 or no seat takes the first free passenger seat. With no vehicle named, the calling reference is used.",
+    "example": "DrvSeatPlayer 0 MyCarRef"
   },
   {
     "name": "DrvSetFuel",
@@ -898,7 +965,7 @@
     "condition": false,
     "requiredReference": false,
     "source": "commands/DrvCommands.cpp",
-    "group": "Races & ramps",
+    "group": "Races",
     "description": "Queue race setup with optional vehicle assignments.",
     "returns": "1 if queued, 0 if refused.",
     "note": "Omitted options use defaults. The opponent argument is a FormList of supported vehicle bases, up to 16 entries. This queues setup rather than confirming the race has begun.",
@@ -930,7 +997,7 @@
     "group": "NPC driving",
     "description": "Start an NPC following a route, or wandering if the route is omitted.",
     "returns": "1 if accepted, 0 if refused.",
-    "note": "Route paths are Data-relative. Acceptance may queue a ride while its model loads.",
+    "note": "The route is a name, read from Data\\config\\drivables\\routes\\<name>.txt, the file DrvRecordRoute writes. Starting a ride that is already running reroutes it. Acceptance may queue a ride while its model loads.",
     "example": "DrvStartRide MyCarRef MyDriverRef"
   },
   {
@@ -959,29 +1026,29 @@
     "group": "NPC driving",
     "description": "Send an NPC in a vehicle to a destination reference.",
     "returns": "1 if accepted, 0 if refused.",
-    "note": "Use a placed destination reference. A successful request is not proof of arrival.",
+    "note": "Use a placed destination reference. A successful request is not proof of arrival. Starting a ride that is already running reroutes it.",
     "example": "DrvStartRideTo MyCarRef MyDriverRef MyDestinationRef"
   },
   {
     "name": "DrvStopRide",
-    "syntax": "DrvStopRide <vehicle> <retain motion>",
+    "syntax": "DrvStopRide [vehicle] [retain motion]",
     "parameters": [
       {
         "name": "vehicle",
         "type": "ObjectRef",
-        "optional": false
+        "optional": true
       },
       {
         "name": "retain motion",
         "type": "Integer",
-        "optional": false
+        "optional": true
       }
     ],
     "condition": false,
     "requiredReference": false,
     "source": "commands/DrvCommands.cpp",
     "group": "NPC driving",
-    "description": "Stop an NPC ride.",
+    "description": "Stop an NPC ride. With no vehicle named, it stops the ride selected in the console.",
     "returns": "1 on success, 0 on refusal.",
     "note": "retain motion: 0 stops the ride without retaining motion, 1 requests retaining motion.",
     "example": "DrvStopRide MyCarRef 0"

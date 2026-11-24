@@ -19,9 +19,9 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     await page.waitForURL('**/modders.html');
     await page.evaluate(() => document.fonts.ready);
     assert.equal(await page.locator('.primary-nav [aria-current="page"]').textContent(), 'Modders');
-    assert.equal(await page.locator('.command-entry').count(), 63);
+    assert.equal(await page.locator('.command-entry').count(), 66);
     await page.locator('#command-search').fill('fuel');
-    assert.ok(await page.locator('.command-entry:visible').count() < 63);
+    assert.ok(await page.locator('.command-entry:visible').count() < 66);
     assert.equal(await page.locator('#DrvGetFuel').isVisible(), true);
     await page.locator('#command-category').selectOption('Horses');
     assert.equal(await page.locator('#command-empty').isVisible(), true);
@@ -57,7 +57,7 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     await file.locator('#command-search').fill('no-such-command');
     assert.equal(await file.locator('#command-empty').isVisible(), true);
     await file.locator('#command-reset').click();
-    assert.equal(await file.locator('.command-entry:visible').count(), 63);
+    assert.equal(await file.locator('.command-entry:visible').count(), 66);
     const plain = await browser.newContext({javaScriptEnabled: false});
     const nojs = await plain.newPage();
     await nojs.goto(base + '/modders.html');
@@ -65,6 +65,6 @@ const base = (process.env.SITE_URL || 'http://127.0.0.1:4173').replace(/\/$/, ''
     assert.equal(await nojs.locator('#DrvGetFuel .command-body').isVisible(), true);
     assert.equal(await nojs.locator('.command-controls').isVisible(), false);
     assert.deepEqual(errors, []);
-    console.log('Modders guide passed: 63 commands, combined filters, deep links, clipboard, component links, mobile, local files and no-JavaScript reading.');
+    console.log('Modders guide passed: 66 commands, combined filters, deep links, clipboard, component links, mobile, local files and no-JavaScript reading.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

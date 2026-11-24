@@ -1,9 +1,10 @@
 window.DRIVABLES = {
   "counts": {
-    "vehicles": 44,
+    "vehicles": 45,
     "placements": 57,
-    "herds": 3,
+    "herds": 5,
     "rewards": 10,
+    "roadFinds": 1,
     "optionalPlacements": 2
   },
   "map": {
@@ -284,7 +285,7 @@ window.DRIVABLES = {
     },
     {
       "id": "v-000c5a",
-      "profile": 38,
+      "profile": 15,
       "name": "Golf Cart",
       "category": "Cars",
       "kind": "discovery",
@@ -1011,7 +1012,7 @@ window.DRIVABLES = {
       "category": "Oddballs",
       "kind": "discovery",
       "ref": "000D22",
-      "location": "Grub n' Gulp rest stop: beside the shack",
+      "location": "Grub n' Gulp rest stop: in the pull-off east of the shack.",
       "state": "Ready to hitch",
       "condition": "Ready",
       "reserve": "No fuel: horse-drawn",
@@ -1021,8 +1022,8 @@ window.DRIVABLES = {
       "tools": 0,
       "region": "Mojave",
       "mapPoint": [
-        7250.0,
-        58850.0
+        8100.0,
+        59220.0
       ],
       "approximate": false,
       "parts": "No parts",
@@ -1155,6 +1156,56 @@ window.DRIVABLES = {
       "note": "Ordinary wild horses replenish after three in-game days away. Tamed and rare individuals stay dead. A later new horse can roll rare."
     },
     {
+      "id": "herd-4",
+      "name": "Ghoul horses · Herd 4",
+      "category": "Horses",
+      "kind": "herd",
+      "region": "Mojave",
+      "mapPoint": [
+        33025.0,
+        -100333.0
+      ],
+      "approximate": false,
+      "location": "Camp Searchlight",
+      "state": "Tame with Survival",
+      "condition": "1–2 wild ghoul horses. Inspect each horse for its traits and requirement.",
+      "reserve": "Stamina, not fuel",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "parts": "No items",
+      "survival": "50 / 100",
+      "ref": "000E0A",
+      "image": null,
+      "acquisition": "Inspect and tame a ghoul horse with effective Survival 50. Complete the calming interaction out of combat. Taming costs no items. Now and then one rolls rare: the dark ghoul horse, Survival 100 and 5/5/5 traits.",
+      "note": "Ghoul horses never spook, take more punishment than a living horse and are a little slower. Feral ghouls leave them alone. They replenish on the same three days as the living herds."
+    },
+    {
+      "id": "herd-5",
+      "name": "Ghoul horses · Herd 5",
+      "category": "Horses",
+      "kind": "herd",
+      "region": "Mojave",
+      "mapPoint": [
+        -7854.0,
+        -117881.35
+      ],
+      "approximate": false,
+      "location": "Old Nuclear Test Site",
+      "state": "Tame with Survival",
+      "condition": "1–2 wild ghoul horses. Inspect each horse for its traits and requirement.",
+      "reserve": "Stamina, not fuel",
+      "fuel": "None",
+      "repair": 0,
+      "tools": 0,
+      "parts": "No items",
+      "survival": "50 / 100",
+      "ref": "000E0B",
+      "image": null,
+      "acquisition": "Inspect and tame a ghoul horse with effective Survival 50. Complete the calming interaction out of combat. Taming costs no items. Now and then one rolls rare: the dark ghoul horse, Survival 100 and 5/5/5 traits.",
+      "note": "Ghoul horses never spook, take more punishment than a living horse and are a little slower. Feral ghouls leave them alone. They replenish on the same three days as the living herds."
+    },
+    {
       "id": "go-kart",
       "profile": 100,
       "name": "Go-kart",
@@ -1165,7 +1216,7 @@ window.DRIVABLES = {
       "approximate": false,
       "location": "The Repconn Arena",
       "state": "Race loan",
-      "condition": "Eight colours with the same handling. No fuel, no boost, one seat.",
+      "condition": "Eight colours with the same handling. No fuel, a recharging boost, one seat.",
       "acquisition": "Choose The Repconn Arena in F10 → Racing. Starting on foot lends you the red kart against the other seven colours. This is a race loan, not a free garage unlock.",
       "fuel": "None",
       "reserve": "No fuel",
@@ -1424,7 +1475,7 @@ window.DRIVABLES = {
       "category": "Air",
       "kind": "discovery",
       "ref": "000DA3",
-      "location": "Nellis apron, beside the B-29 position and facing the long runway.",
+      "location": "Nellis, out on the long runway ahead of the B-29 and lined up for take-off.",
       "state": "Ready to fly",
       "condition": "Working vehicle",
       "reserve": "Check before departure",
@@ -1434,8 +1485,8 @@ window.DRIVABLES = {
       "tools": 0,
       "region": "Mojave",
       "mapPoint": [
-        36847.8984375,
-        133788.40625
+        38759.3984375,
+        134563.203125
       ],
       "approximate": false,
       "parts": "No repair items",
@@ -1750,6 +1801,28 @@ window.DRIVABLES = {
       "note": "Use the owned entry to retrieve it after collection."
     },
     {
+      "id": "ncr-army-jeep",
+      "profile": 58,
+      "name": "NCR Army Jeep",
+      "category": "Cars",
+      "kind": "road",
+      "ref": null,
+      "location": "NCR road patrols",
+      "state": "Road find",
+      "condition": "Working vehicle",
+      "reserve": "2 to 8 percent of a tank when taken from traffic",
+      "acquisition": "NCR patrols drive these round the Mojave Outpost, Primm, the 188, Boulder City and Novac, NCR troopers on the road use them too, and NCR hit squads sometimes turn up in one. Take one and it is yours, and the garage can fetch it after that. Pulling a driver out of one counts as assault, like any other ride you steal off the road.",
+      "fuel": "Jerry Cans",
+      "repair": 0,
+      "tools": 0,
+      "region": "Unlocks",
+      "mapPoint": null,
+      "approximate": false,
+      "parts": "No repair items",
+      "image": "fleet/army-jeep-studio.webp",
+      "note": "No jeep is parked anywhere. You have to take one off the NCR."
+    },
+    {
       "id": "long15-construction",
       "profile": 50,
       "name": "Bucket Loader",
@@ -1861,16 +1934,24 @@ window.DRIVABLES = {
   ],
   "defaults": [
     {
-      "name": "Handling",
+      "name": "Handling preset",
       "value": "Balanced"
     },
     {
-      "name": "Jump assistance",
+      "name": "Jump assist",
       "value": "Fun"
     },
     {
       "name": "Camera motion",
       "value": "Full"
+    },
+    {
+      "name": "Mount camera behind",
+      "value": "Off"
+    },
+    {
+      "name": "Exit keeps camera heading",
+      "value": "Off"
     },
     {
       "name": "Missile camera chance",
@@ -1885,11 +1966,11 @@ window.DRIVABLES = {
       "value": "Full"
     },
     {
-      "name": "World discoveries",
+      "name": "Vehicles to find",
       "value": "On"
     },
     {
-      "name": "World deliveries",
+      "name": "Wild horses",
       "value": "On"
     },
     {
@@ -1897,7 +1978,11 @@ window.DRIVABLES = {
       "value": "Off"
     },
     {
-      "name": "Vehicle loading screens",
+      "name": "Debug spawning in the world",
+      "value": "On"
+    },
+    {
+      "name": "Loading screens",
       "value": "On"
     },
     {
@@ -1913,11 +1998,11 @@ window.DRIVABLES = {
       "value": "On"
     },
     {
-      "name": "Vehicle dust",
+      "name": "Dust",
       "value": "On"
     },
     {
-      "name": "Horse follows your view",
+      "name": "Horse view steering",
       "value": "On"
     },
     {
@@ -1925,12 +2010,12 @@ window.DRIVABLES = {
       "value": "On"
     },
     {
-      "name": "Ambient traffic",
-      "value": "On"
+      "name": "Road traffic",
+      "value": "Normal"
     },
     {
-      "name": "Ambient traffic cap",
-      "value": "3 riders"
+      "name": "Traffic rides",
+      "value": "Everything"
     },
     {
       "name": "Mounted travellers",
@@ -1938,7 +2023,7 @@ window.DRIVABLES = {
     },
     {
       "name": "Traveller groups with a horse",
-      "value": "10%"
+      "value": "15%"
     },
     {
       "name": "Bicycle journeys",
@@ -2017,8 +2102,8 @@ window.DRIVABLES = {
       "profile": 4,
       "name": "Motorcycle",
       "category": "Bikes",
-      "mph": 173.23,
-      "kmh": 278.79,
+      "mph": 120.0,
+      "kmh": 193.11,
       "description": "Pre-war road motorcycle. Rider plus pillion, six-speed gearbox, petrol, chain drive.",
       "fuel": "Jerry Cans",
       "cargo": 0,
@@ -2087,7 +2172,7 @@ window.DRIVABLES = {
       "category": "Oddballs",
       "mph": 16.52,
       "kmh": 26.59,
-      "description": "Single-wheel pedal cycle. Fixed drive, no gears, no brakes, one rider.",
+      "description": "Single-wheel pedal cycle. Fixed drive, no gears, one foolish rider.",
       "fuel": "None",
       "cargo": 0,
       "entries": [
@@ -2131,7 +2216,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 68.9,
       "kmh": 110.88,
-      "description": "Chryslus Corvega Atomic V8. Fission-powered, three-speed automatic, seats two, radio.",
+      "description": "Chryslus Corvega Atomic V8. Fission-powered, three-speed automatic, seats two, radio optional extra.",
       "fuel": "Reactor Coolant",
       "cargo": 500.0,
       "entries": [
@@ -2199,7 +2284,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 70.88,
       "kmh": 114.07,
-      "description": "Chryslus Highwayman touring sedan. Fuel cell power, four-speed, seats four, radio.",
+      "description": "Fuel cell power, four-speed, seats four, radio. Looks rough, drives smooth.",
       "fuel": "Energy Cells / MFCs",
       "cargo": 600.0,
       "entries": [
@@ -2221,7 +2306,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 73.82,
       "kmh": 118.8,
-      "description": "Nevada Highway Patrol cruiser. Police V8, three-speed, petrol, seats four, siren and lights.",
+      "description": "Nevada Highway Patrol cruiser. Atomic V8, three-speed, seats four, siren and lights.",
       "fuel": "Reactor Coolant",
       "cargo": 450.0,
       "entries": [
@@ -2236,6 +2321,28 @@ window.DRIVABLES = {
       "sound": {
         "source": "Ford Crown Victoria",
         "detail": "4.6-litre V8 engine and exhaust recordings."
+      }
+    },
+    {
+      "profile": 15,
+      "name": "Golf Cart",
+      "category": "Cars",
+      "mph": 24.61,
+      "kmh": 39.6,
+      "description": "Three-wheel golf cart. Electric drive, single speed, seats two, no doors.",
+      "fuel": "Energy Cells / MFCs",
+      "cargo": 150.0,
+      "entries": [
+        "v-000c5a"
+      ],
+      "image": "fleet/golfcart.webp",
+      "passengers": 1,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Electric monowheel recordings",
+        "detail": "Compact electric drive sounds. Silent at rest, with a reversing beep and small horn."
       }
     },
     {
@@ -2266,7 +2373,7 @@ window.DRIVABLES = {
       "category": "Oddballs",
       "mph": 13.42,
       "kmh": 21.6,
-      "description": "Child's space hopper, adult sized. Human-powered, single rider, no brakes.",
+      "description": "Child's space hopper, adult sized. Human-powered, single rider.",
       "fuel": "None",
       "cargo": 0,
       "entries": [
@@ -2289,7 +2396,7 @@ window.DRIVABLES = {
       "category": "Oddballs",
       "mph": 9.59,
       "kmh": 15.43,
-      "description": "Spring-loaded pogo stick. Steel shaft, two foot pegs, one rider, no brakes.",
+      "description": "Spring-loaded pogo stick. Steel shaft, two foot pegs, one rider.",
       "fuel": "None",
       "cargo": 0,
       "entries": [
@@ -2311,7 +2418,7 @@ window.DRIVABLES = {
       "category": "Bikes",
       "mph": 53.69,
       "kmh": 86.4,
-      "description": "Prototype hover bike powered by Energy Cells or Microfusion Cells. Hovers over the ground and can hop or dodge sideways.",
+      "description": "Prototype hoverbike. Holds its height over any surface, six gears, no petrol, eats Energy Cells.",
       "fuel": "Energy Cells / MFCs",
       "cargo": 0,
       "entries": [
@@ -2333,7 +2440,7 @@ window.DRIVABLES = {
       "category": "Air",
       "mph": 89.48,
       "kmh": 144.0,
-      "description": "Enclave Vertibird. Twin tilt-rotor, two seats, six-stage throttle, fuelled.",
+      "description": "Twin tilt-rotors, three seats, six-stage throttle, reactor-powered.",
       "fuel": "Reactor Coolant",
       "cargo": 2000.0,
       "entries": [
@@ -2341,7 +2448,7 @@ window.DRIVABLES = {
         "brotherhood-vertibird"
       ],
       "image": "fleet/vertibird.webp",
-      "passengers": 1,
+      "passengers": 2,
       "passengerNote": "",
       "boost": false,
       "parachute": true,
@@ -2356,7 +2463,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 95.87,
       "kmh": 154.29,
-      "description": "Legion motor chariot. Twin bikes on a common axle, cart behind, three seats.",
+      "description": "Built by the Legion from two bikes and a cart. Common axle, three seats.",
       "fuel": "Jerry Cans",
       "cargo": 300.0,
       "entries": [
@@ -2461,34 +2568,12 @@ window.DRIVABLES = {
       }
     },
     {
-      "profile": 38,
-      "name": "Golf Cart",
-      "category": "Cars",
-      "mph": 24.61,
-      "kmh": 39.6,
-      "description": "Electric golf cart with a two-seat bench, canopy and single-speed drive.",
-      "fuel": "Energy Cells / MFCs",
-      "cargo": 150.0,
-      "entries": [
-        "v-000c5a"
-      ],
-      "image": "fleet/golfcart.webp",
-      "passengers": 1,
-      "passengerNote": "",
-      "boost": false,
-      "parachute": false,
-      "sound": {
-        "source": "Electric monowheel recordings",
-        "detail": "Compact electric drive sounds. Silent at rest, with a reversing beep and small horn."
-      }
-    },
-    {
       "profile": 39,
       "name": "M26 Pershing",
       "category": "Armour",
       "mph": 23.65,
       "kmh": 38.06,
-      "description": "M26 Pershing. Ninety millimetre gun on a full-traverse turret, forty tonnes, petrol V8, tracks either side.",
+      "description": "Pre-war American medium tank. Ninety millimetre gun, full-traverse turret, forty-two tonnes, petrol V8.",
       "fuel": "Jerry Cans",
       "cargo": 1000.0,
       "entries": [
@@ -2532,7 +2617,7 @@ window.DRIVABLES = {
       "category": "Armour",
       "mph": 20.45,
       "kmh": 32.91,
-      "description": "Commonwealth single-gun tank. Continuous tracks and a fully traversing cannon.",
+      "description": "Built a long way east of here. One big gun, a turret that turns all the way, tracks either side.",
       "fuel": "Jerry Cans",
       "cargo": 1000.0,
       "entries": [
@@ -2554,7 +2639,7 @@ window.DRIVABLES = {
       "category": "Armour",
       "mph": 23.65,
       "kmh": 38.06,
-      "description": "LVTP-8A Marine APC. Enclosed tracked transport with a rear loading ramp.",
+      "description": "Pre-war Marine landing vehicle. Enclosed cabin, rear loading ramp, one seat.",
       "fuel": "Jerry Cans",
       "cargo": 1500.0,
       "entries": [
@@ -2598,7 +2683,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 62.31,
       "kmh": 100.29,
-      "description": "Long, rusty DeSoto with a three-speed transmission, bench seats and a rebuilt cabin. Heavy and unhurried.",
+      "description": "Long, rusty atomic DeSoto with a three-speed transmission, bench seats and a rebuilt cabin. Heavy and unhurried.",
       "fuel": "Reactor Coolant",
       "cargo": 450.0,
       "entries": [
@@ -2734,7 +2819,7 @@ window.DRIVABLES = {
       "category": "Industrial",
       "mph": 6.71,
       "kmh": 10.8,
-      "description": "Restored quarry shovel. Slow crawler, rotating cabin, powered bucket and sealed reactor. One operator.",
+      "description": "Restored cable shovel. Slow crawler, rotating cabin, powered bucket, sealed reactor. One operator.",
       "fuel": "Reactor Coolant",
       "cargo": 800.0,
       "entries": [
@@ -2763,7 +2848,7 @@ window.DRIVABLES = {
       "category": "Air",
       "mph": 335.54,
       "kmh": 540.0,
-      "description": "Pre-War fighter with a 30 mm rotary cannon and twelve nuclear bombs. Payload drops one in flight. Press while parked to reload from carried mini-nukes.",
+      "description": "Pre-war fighter jet. Rotary cannon up front, twelve nuclear bombs in the bay.",
       "fuel": "Jerry Cans",
       "cargo": 100.0,
       "entries": [
@@ -2785,7 +2870,7 @@ window.DRIVABLES = {
       "category": "Bikes",
       "mph": 100.0,
       "kmh": 160.93,
-      "description": "Shuriken. Single seat, light frame, short gearing, 5 lb tool storage.",
+      "description": "Single seat, light frame, short gearing. Grips best on dirt, 5 lb tool storage.",
       "fuel": "Jerry Cans",
       "cargo": 5.0,
       "entries": [
@@ -2807,7 +2892,7 @@ window.DRIVABLES = {
       "category": "Bikes",
       "mph": 115.0,
       "kmh": 185.07,
-      "description": "Scrambler. Single seat, light frame, short gearing, 5 lb tool storage.",
+      "description": "Single seat, light frame, short gearing. Grips best on tarmac, 5 lb tool storage.",
       "fuel": "Jerry Cans",
       "cargo": 5.0,
       "entries": [
@@ -2899,7 +2984,7 @@ window.DRIVABLES = {
       "category": "Cars",
       "mph": 70.88,
       "kmh": 114.07,
-      "description": "Supercharged Highwayman. Twice the horsepower, clean bodywork, four seats and radio.",
+      "description": "Double the stock horsepower, clean bodywork, four seats and a working radio.",
       "fuel": "Energy Cells / MFCs",
       "cargo": 600.0,
       "entries": [
@@ -2916,12 +3001,34 @@ window.DRIVABLES = {
       }
     },
     {
+      "profile": 58,
+      "name": "NCR Army Jeep",
+      "category": "Cars",
+      "mph": 55.92,
+      "kmh": 90.0,
+      "description": "NCR Hub Division jeep. Four seats, no doors, a fold-flat screen and a four-cylinder that will climb anything slowly.",
+      "fuel": "Jerry Cans",
+      "cargo": 250.0,
+      "entries": [
+        "ncr-army-jeep"
+      ],
+      "image": "fleet/army-jeep-studio.webp",
+      "passengers": 3,
+      "passengerNote": "",
+      "boost": false,
+      "parachute": false,
+      "sound": {
+        "source": "Subaru Impreza GD WRX",
+        "detail": "2.0-litre boxer engine and exhaust recordings."
+      }
+    },
+    {
       "profile": 100,
       "name": "Go-kart",
       "category": "Oddballs",
       "mph": 55.92,
       "kmh": 90.0,
-      "description": "Single-seat racer. Eight plain colours, one fair racing tune.",
+      "description": "Single-seat kart. Small engine, short wheelbase, tuned for the track.",
       "fuel": "None",
       "cargo": 0.0,
       "entries": [
@@ -11543,7 +11650,7 @@ window.DRIVABLES = {
       "id": "mojave_steeplechase",
       "name": "Mojave Steeplechase",
       "kind": "Horses",
-      "description": "Horse racing on the cycle circuit, with eight fences around the lap. Keep enough stamina for the next jump and the final stretch.",
+      "description": "Horse racing on the cycle circuit, eight fences a lap. Save some sprint for the last stretch.",
       "style": "Horse racing",
       "access": "Choose the Mojave Steeplechase course in race setup.",
       "metres": 474,
@@ -15492,6 +15599,13 @@ window.DRIVABLES = {
       "survival": 75,
       "speed": 3,
       "endurance": 4,
+      "nerve": 5
+    },
+    {
+      "name": "Ghoul horse",
+      "survival": 50,
+      "speed": 2,
+      "endurance": 3,
       "nerve": 5
     },
     {

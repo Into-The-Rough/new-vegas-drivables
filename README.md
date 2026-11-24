@@ -81,10 +81,10 @@ profile selects each description. Passenger counts, boost and parachute support
 come directly from the vehicle configuration.
 GitHub Actions publishes the committed export without access to private sources.
 
-The guide covers 44 vehicle types, 55 core discoveries, two optional Long 15
-placements and three wild horse herds, plus rewards and loans.
-The plain H1 and Stunt Biplane are permanent Thunderdome loans, reset between visits. The original
-Golf Cart profile is omitted. Camp Golf provides the cart discovery. The go-kart
+The guide covers 45 vehicle types, 55 core discoveries, two optional Long 15
+placements and five wild horse herds, plus rewards, loans and the NCR Army Jeep,
+which is only found on the road. The plain H1 and Stunt Biplane are permanent
+Thunderdome loans, reset between visits. Camp Golf provides the Golf Cart discovery. The go-kart
 comes from the `racing.karts` add-on pack rather than the main INI, exported as
 profile 100 with its own studio render. The nine hitching rails are read from
 `tools/add_hitching_rails.py` and drawn on the placement map beside the herds.

@@ -8,7 +8,7 @@ RENDERS = {
     10: 'corvega', 11: 'truckflatbed', 12: 'wheelchair', 13: 'highwayman',
     14: 'patrolcar', 16: 'deathcar', 17: 'hopper', 18: 'pogo',
     19: 'hoverbike', 20: 'vertibird', 33: 'motorchariot', 34: 'formula',
-    35: 'boat02', 36: 'smallplane', 37: 'b29', 38: 'golfcart',
+    35: 'boat02', 36: 'smallplane', 37: 'b29', 15: 'golfcart',
 }
 
 STUDIO_RENDERS = {
@@ -16,7 +16,7 @@ STUDIO_RENDERS = {
     53: 'scrambler', 54: 'balloon', 55: 'army-truck', 56: 'fire-engine',
     39: 'pershing', 40: 'alien', 41: 'commonwealth', 42: 'marine-apc',
     43: 'interceptor', 44: 'desoto', 45: 'biplane', 46: 'monster-truck',
-    100: 'go-kart', 47: 'trailer', 48: 'wooden-cart',
+    100: 'go-kart', 47: 'trailer', 48: 'wooden-cart', 58: 'army-jeep',
 }
 
 CAPTURES = {

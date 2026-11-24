@@ -10,7 +10,7 @@ parser.add_argument('source', type=Path)
 args = parser.parse_args()
 notes = json.loads((ROOT / 'pages/command-notes.json').read_text())
 commands = []
-for filename in ('DrvCommands.cpp', 'ModderCommands.cpp', 'RampCommands.cpp'):
+for filename in ('DrvCommands.cpp', 'ModderCommands.cpp', 'SeatCommands.cpp'):
     source = (args.source / 'commands' / filename).read_text()
     params = {}
     for name, body in re.findall(r'constexpr (?:NVSE)?ParamInfo (\w+)\[\]\s*=\s*\{(.*?)\};', source, re.S):

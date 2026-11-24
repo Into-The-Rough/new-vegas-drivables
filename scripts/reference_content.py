@@ -1,4 +1,5 @@
 """Public vehicle specifications and course outlines from the shipped settings."""
+import re
 from pathlib import Path
 from site_copy import clean_copy
 from sound_sources import sound_source
@@ -17,7 +18,7 @@ COURSES = [
      'A tight off-road circuit set up for the Apocalyptic Buggy. A short lap puts the bends close together.',
      'Buggy racing', 'Choose the Ivanpah Buggy Race course in race setup.'),
     ('mojave_steeplechase', 'Mojave Steeplechase', 'Horses',
-     'Horse racing on the cycle circuit, with eight fences around the lap. Keep enough stamina for the next jump and the final stretch.',
+     'Horse racing on the cycle circuit, eight fences a lap. Save some sprint for the last stretch.',
      'Horse racing', 'Choose the Mojave Steeplechase course in race setup.'),
     ('repconn_arena', 'The Repconn Arena', 'Go-karts',
      'A walled figure-eight with a bridge crossover, banking and grandstands under two Repconn rockets. The wide lobe rewards momentum and the tight lobe needs earlier braking. No debris or raiders.',
@@ -33,10 +34,6 @@ def reference_content(source, config, entries, horses):
         c = config[f'Vehicle{profile}']
         metres_per_second = c.getfloat('fTopSpeed', fallback=c.getfloat('fSpeedCap', fallback=0)) / 70.0
         description = clean_copy(c.get('sTagline', ''))
-        if profile == 38:
-            description = 'Electric golf cart with a two-seat bench, canopy and single-speed drive.'
-        if profile == 19:
-            description = 'Prototype hover bike powered by Energy Cells or Microfusion Cells. Hovers over the ground and can hop or dodge sideways.'
         vehicles.append(dict(profile=profile, name=first['name'], category=first['category'],
                              mph=round(metres_per_second * 2.23693629, 2),
                              kmh=round(metres_per_second * 3.6, 2),
@@ -74,6 +71,15 @@ def reference_content(source, config, entries, horses):
             elif row[0] == 'start':
                 arena[-1]['points'].append([round(float(row[1])), round(float(row[2]))])
     return dict(vehicles=vehicles, courses=courses, arena=arena,
-                horseTraits=[dict(name=p['name'].replace(' (any coat)',''), survival=p['gate'],
-                                  speed=p['speed'], endurance=p['endurance'], nerve=p['nerve'])
-                             for p in horses['proposed_profiles']])
+                horseTraits=horse_traits(source))
+
+
+def horse_traits(source):
+    policy = (source / 'drivables/WildHorsePolicy.h').read_text()
+    body = re.search(r'Profile kProfiles\[\] = \{(.*?)\};', policy, re.S)[1]
+    rows = [dict(name=name, survival=int(survival), speed=int(speed), endurance=int(endurance), nerve=int(nerve))
+            for name, survival, speed, endurance, nerve in re.findall(r'\{"([^"]+)", (\d+), (\d+), (\d+), (\d+)\}', body)]
+    rows.sort(key=lambda row: row['name'] == 'Rare')
+    for row in rows:
+        row['name'] = {'Rare': 'Rare horse', 'Survivor': 'Ghoul horse'}.get(row['name'], row['name'])
+    return rows
