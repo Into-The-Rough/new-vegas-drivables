@@ -20,7 +20,7 @@ def export(source):
     audit = json.loads((source / 'docs/VEHICLE_PLACEMENT_AUDIT.json').read_text())
     horses = json.loads((source / 'docs/WILD_HORSES.json').read_text())
     config = configparser.ConfigParser(interpolation=None, strict=False)
-    config.read(source / 'config/DrivablesNVSE.ini')
+    config.read(source / 'config/NewVegasDrivables.ini')
     picker = (source / 'docs/WILD_HORSE_MAP.html').read_text()
     chart = json.loads(re.search(r'<script id="mapData" type="application/json">(.*?)</script>', picker, re.S)[1])
     png = re.search(r'id="mapImage"[^>]+src="data:image/png;base64,([^"]+)"', picker)[1]
@@ -119,7 +119,7 @@ def export(source):
                             note='Ghoul horses never spook, take more punishment than a living horse and are a little slower. Feral ghouls leave them alone. They replenish on the same three days as the living herds.'))
 
     kart = configparser.ConfigParser(interpolation=None, strict=False)
-    kart.read(source / 'mod/config/DrivablesNVSE/addons/racing.karts/vehicles.ini')
+    kart.read(source / 'mod/config/NewVegasDrivables/addons/racing.karts/vehicles.ini')
     config.read_dict({'Vehicle100': dict(kart['Vehicle red'])})
     entries.append(dict(id='go-kart', profile=100, name='Go-kart', category='Oddballs', kind='reward',
                         region='Unlocks', mapPoint=None, approximate=False,

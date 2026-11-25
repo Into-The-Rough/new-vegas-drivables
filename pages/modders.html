@@ -25,7 +25,7 @@
     <div class="author-columns"><ol class="author-steps">
       <li><h3>Make the model</h3><p>Author the body, wheel controls and collision in your NIF. Measure the axle positions, wheel sizes, seat and camera points from that model.</p></li>
       <li><h3>Create the vehicle record</h3><p>In your own ESP, add a <strong>CONT</strong> record and point its model path at your NIF. Use <strong>IDLE</strong> records for driver poses. Detached parts usually use <strong>MSTT</strong> records.</p></li>
-      <li><h3>Describe it in a pack</h3><p>Create <code>pack.ini</code> and a vehicle definition under <code>config/DrivablesNVSE/addons/</code>. Give the pack and vehicle stable names. Fill every measured field in the template.</p></li>
+      <li><h3>Describe it in a pack</h3><p>Create <code>pack.ini</code> and a vehicle definition under <code>config/NewVegasDrivables/addons/</code>. Give the pack and vehicle stable names. Fill every measured field in the template.</p></li>
       <li><h3>Fit the driver and tune it</h3><p>Choose a driver idle or animation pack, fit the seat and check both cameras. Set mass, engine torque, braking and gear ratios. Keep optional damage disabled until its parts are ready.</p></li>
       <li><h3>Validate, package, then test</h3><p>The author kit checks files and definitions. Check driving, collision, entry, exit and saving in game yourself. Package the ESP, models, textures and definitions as a separate mod.</p></li>
     </ol><aside class="author-aside"><h3>A pack owns its files</h3><pre><code>MyCar/
@@ -34,7 +34,7 @@
     YourCars.esp
     meshes/yourname/coupe.nif
     textures/yourname/...
-    config/DrivablesNVSE/addons/
+    config/NewVegasDrivables/addons/
       yourname.cars/
         pack.ini
         vehicles/coupe.ini
@@ -111,7 +111,7 @@ if horse
 endif</code></pre><button type="button" data-copy>Copy example</button></div><p>Command 2 means wait. It requires a living stabled horse. Use 1 for follow or 0 for free.</p></div>
     </div></section>
 
-  <section id="troubleshooting" class="modder-section"><div class="section-intro"><h2>When it doesn’t work</h2><p>Start with the validator’s file, section and field message. For runtime rejection, check <code>drivables_nvse.log</code> in the game directory or your mod manager’s overwrite output.</p></div>
+  <section id="troubleshooting" class="modder-section"><div class="section-intro"><h2>When it doesn’t work</h2><p>Start with the validator’s file, section and field message. For runtime rejection, check <code>new_vegas_drivables.log</code> in the game directory or your mod manager’s overwrite output.</p></div>
     <details class="author-detail"><summary>The pack is rejected</summary><p>Check required plugins, qualified FormIDs, record types, duplicate ownership and missing files. Two packs cannot claim the same vehicle base or livery. Unknown definition keys are errors. INCOMPLETE means a check could not run, not that the pack passed.</p></details>
     <details class="author-detail"><summary>The car appears, but I cannot mount it</summary><p>Check the loaded rigid body, mass, required control nodes and transforms. Then check any declared part nodes, debris models and driver animations. The log includes the vehicle ID and rejection reason. <a href="#DrvGetVehicleUseFailure">DrvGetVehicleUseFailure</a> can identify a gameplay access restriction.</p></details>
     <details class="author-detail"><summary>The wheels float, turn strangely or shade incorrectly</summary><p>Compare the exported wheel centres and radii with the INI measurements. Check steering and spin pivots, front/rear offsets and contact probes. For a mirrored wheel, inspect triangle winding and outward normals before changing its textures or specular settings.</p></details>

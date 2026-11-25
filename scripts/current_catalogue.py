@@ -66,7 +66,7 @@ ROAD_JEEP = ('NCR patrols drive these round the Mojave Outpost, Primm, the 188, 
 
 def update_catalogue(source, config, entries):
     manifest = json.loads((source / 'tools/esp_manifest.json').read_text())
-    assert hashlib.sha256((source / 'dist/DrivablesNVSE.esm').read_bytes()).hexdigest() == manifest['expected_sha256'], 'refresh the form manifest before exporting'
+    assert hashlib.sha256((source / 'dist/New Vegas Drivables.esm').read_bytes()).hexdigest() == manifest['expected_sha256'], 'refresh the form manifest before exporting'
     records = {int(r['form_id'], 16): r for r in records_in(manifest)}
     for entry in entries:
         if 'profile' not in entry: continue
@@ -128,7 +128,7 @@ def update_catalogue(source, config, entries):
     for ident, location in [('long15-construction', 'Long 15, overpass construction site'), ('long15-junkyard', 'Long 15, Baker Junkyard')]:
         entries.append(dict(id=ident, profile=50, name='Bucket Loader', category='Industrial', kind='discovery',
                             ref=None, location=location, state='Optional patch', condition='Seized machinery', reserve='Empty',
-                            acquisition='Requires Long15Reloaded.esm and DrivablesNVSE - Long15.esp. Inspect the original cabin, with Repair 35 and one carried box of Car Repair Tools. The toolbox is consumed. Add Reactor Coolant before driving.',
+                            acquisition='Requires Long15Reloaded.esm and New Vegas Drivables - Long15.esp. Inspect the original cabin, with Repair 35 and one carried box of Car Repair Tools. The toolbox is consumed. Add Reactor Coolant before driving.',
                             fuel='Reactor Coolant', repair=35, tools=1, region='Long 15', mapPoint=None,
                             approximate=False, parts='1 Car Repair Tools', image=None, note='Outside the Mojave map.'))
     policy = (source / 'drivables/WorldDistributionPolicy.h').read_text()

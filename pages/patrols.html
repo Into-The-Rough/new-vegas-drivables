@@ -19,13 +19,13 @@
   </section>
 
   <section id="first-patrol" class="modder-section">
-    <div class="section-intro"><h2>Your first patrol</h2><p>The example is an NCR supply run: one army jeep with a driver and a couple of troopers, travelling between NCR places. Your plugin needs <code>DrivablesNVSE.esm</code> as a master.</p></div>
+    <div class="section-intro"><h2>Your first patrol</h2><p>The example is an NCR supply run: one army jeep with a driver and a couple of troopers, travelling between NCR places. Your plugin needs <code>New Vegas Drivables.esm</code> as a master.</p></div>
     <div class="author-columns"><ol class="author-steps">
       <li><h3>Make the pools</h3><p>Create three form lists in your plugin. Drivers: NPC bases or a levelled NPC list. Vehicles: vehicle bases from the mod, such as <code>DrvJeepArmy</code> or <code>DrvMotorcycle</code>. Destinations: the map marker references the patrol should travel to, taken from the <a href="#roads">road table</a>. Repeat an entry in a list to make it more likely.</p></li>
       <li><h3>Write the quest script</h3><p>Declare the variables the mod reads and set them once. The last three declared, <code>fLastSpawn</code>, <code>iAlive</code> and <code>rLastLeader</code>, are the mod’s own: declare them and never set them. The block after the set-up decides when the patrol may appear. The script on the right is complete.</p></li>
       <li><h3>Create the quest</h3><p>Tick <strong>Start Game Enabled</strong>, attach the script and give it a short script delay. The shipped patrols use 0.25 seconds.</p></li>
       <li><h3>Put it on the list</h3><p>The script adds its own quest to <code>DrvEncounters</code>. The mod reads that list when a save loads, so after installing your plugin, save and load once. Do not edit <code>DrvEncounters</code> in your plugin: two mods that both override the list would cancel each other out.</p></li>
-      <li><h3>Test it</h3><p>Stand near one of your roads and enter <code>DrvStartEncounter MySupplyRun</code> in the console. It works as soon as the quest is running, before the save and load. The patrol starts if it can. If it cannot, the corner message and <code>drivables_nvse.log</code> say why.</p></li>
+      <li><h3>Test it</h3><p>Stand near one of your roads and enter <code>DrvStartEncounter MySupplyRun</code> in the console. It works as soon as the quest is running, before the save and load. The patrol starts if it can. If it cannot, the corner message and <code>new_vegas_drivables.log</code> say why.</p></li>
     </ol><aside class="author-aside"><h3>The whole script</h3><div class="code-sample"><pre><code>scn MySupplyRunScript
 
 ref rDrivers
@@ -150,7 +150,7 @@ End</code></pre><button type="button" data-copy>Copy script</button></div></asid
     </ul>
   </section>
 
-  <section id="patrol-troubleshooting" class="modder-section"><div class="section-intro"><h2>When it does not appear</h2><p>Open <code>drivables_nvse.log</code> in the game directory or your mod manager’s overwrite output and search for your quest’s editor ID. Each attempt says what held it.</p></div>
+  <section id="patrol-troubleshooting" class="modder-section"><div class="section-intro"><h2>When it does not appear</h2><p>Open <code>new_vegas_drivables.log</code> in the game directory or your mod manager’s overwrite output and search for your quest’s editor ID. Each attempt says what held it.</p></div>
     <details class="author-detail"><summary>My quest is never mentioned in the log</summary><p>It is not on the list yet. Check that your script ran <code>AddFormToFormList DrvEncounters</code>, then save and load. The line <code>encounter: DrvEncounters holds N quests</code> should count one more than before.</p></details>
     <details class="author-detail"><summary>“gate closed”</summary><p>Your script has <code>iGate</code> at 0. Check the conditions that set it and that the quest is running.</p></details>
     <details class="author-detail"><summary>“cooldown” or “convoy interval”</summary><p>It is waiting its turn. The first is your own <code>fCooldown</code>. The second is the gap the mod keeps between any two groups. <code>DrvStartEncounter</code> skips both for a test.</p></details>
