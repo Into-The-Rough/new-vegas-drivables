@@ -10,6 +10,7 @@ PAGES = {
     'about.html': ('Ethos & development', 'Why New Vegas Drivables exists and how exploration, handling, sound and player choice shape the mod.'),
     'credits.html': ('Credits', 'Credits and sources for New Vegas Drivables, its vehicle guide, artwork and typeface.'),
     'modders.html': ('Modders', 'Create vehicles for New Vegas Drivables. Guides to meshes, wheels, tyres, glass, lights, configuration, commands and events.'),
+    'patrols.html': ('Road patrols', 'Put your own patrol on the road in New Vegas Drivables. A quest, three lists and the 21 roads the mod already drives.'),
 }
 
 

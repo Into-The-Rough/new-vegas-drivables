@@ -35,6 +35,9 @@ hierarchy lives in `scripts/site_navigation.py`, with the same generated markup
 on the interactive index and standalone pages. Existing fragment URLs remain
 valid. About and credits remain in the footer.
 
+The road patrols guide for mod authors is `pages/patrols.html`, published as `patrols.html` and linked from the
+Modders page. It shares the Modders styles and its copy button.
+
 Edit `pages/modders.html` for the guide and `pages/command-notes.json` for command
 explanations. Refresh signatures with
 `python3 scripts/import-commands.py /path/to/DrivablesNVSE`, then run

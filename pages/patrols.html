@@ -1,0 +1,164 @@
+<article class="modders-page">
+  <div class="draft-strip"><span>Author guide</span><p>Patrols on the roads the mod already has. New roads cannot be added from a plugin yet.</p></div>
+  <div class="modder-heading"><div><p class="eyebrow">For mod authors</p><h1>Put your own patrol on the road.</h1><p>A patrol is a quest in your own plugin. You choose who rides, what they ride and where they are heading. The mod finds a road, puts them on it near the player and drives them there. No DLL work and no new models.</p></div><a class="button" href="#first-patrol">Your first patrol ↓</a></div>
+  <nav class="modder-jumps" aria-label="Patrol topics"><a href="#how-it-works">How it works</a><a href="#first-patrol">Your first patrol</a><a href="#variables">Variables</a><a href="#roads">Roads</a><a href="#limits">Limits</a><a href="#patrol-troubleshooting">Troubleshooting</a></nav>
+
+  <section id="how-it-works" class="modder-section">
+    <div class="section-intro"><h2>What a patrol is</h2><p>Every group the mod puts on the road, from the Crimson Caravan to the NCR patrol jeep, is built the same way. Yours is no different.</p></div>
+    <div class="detail-columns"><div><h3>Three parts</h3><ul>
+      <li><strong>A quest</strong> with a script. The script declares a handful of variables by name and the mod reads them.</li>
+      <li><strong>Pools</strong>: a list of drivers, a list of vehicles and a list of the places the patrol travels to.</li>
+      <li><strong>The <code>DrvEncounters</code> form list.</strong> A quest on that list is one the mod will consider.</li>
+    </ul></div><div><h3>What the mod does with it</h3><ul>
+      <li>Picks a road that ends at one of your destinations and admits every vehicle in the group.</li>
+      <li>Places the group on that road out of the player’s sight and within reach.</li>
+      <li>Drives it along the road, round obstacles and past other traffic, to the far end.</li>
+      <li>Retires it once the player has left it behind.</li>
+    </ul></div></div>
+    <p class="draft-note">Riders only exist near the player. A patrol is something you meet on the road, not a convoy that crosses the map while you are elsewhere.</p>
+  </section>
+
+  <section id="first-patrol" class="modder-section">
+    <div class="section-intro"><h2>Your first patrol</h2><p>The example is an NCR supply run: one army jeep with a driver and a couple of troopers, travelling between NCR places. Your plugin needs <code>DrivablesNVSE.esm</code> as a master.</p></div>
+    <div class="author-columns"><ol class="author-steps">
+      <li><h3>Make the pools</h3><p>Create three form lists in your plugin. Drivers: NPC bases or a levelled NPC list. Vehicles: vehicle bases from the mod, such as <code>DrvJeepArmy</code> or <code>DrvMotorcycle</code>. Destinations: the map marker references the patrol should travel to, taken from the <a href="#roads">road table</a>. Repeat an entry in a list to make it more likely.</p></li>
+      <li><h3>Write the quest script</h3><p>Declare the variables the mod reads and set them once. The last three declared, <code>fLastSpawn</code>, <code>iAlive</code> and <code>rLastLeader</code>, are the mod’s own: declare them and never set them. The block after the set-up decides when the patrol may appear. The script on the right is complete.</p></li>
+      <li><h3>Create the quest</h3><p>Tick <strong>Start Game Enabled</strong>, attach the script and give it a short script delay. The shipped patrols use 0.25 seconds.</p></li>
+      <li><h3>Put it on the list</h3><p>The script adds its own quest to <code>DrvEncounters</code>. The mod reads that list when a save loads, so after installing your plugin, save and load once. Do not edit <code>DrvEncounters</code> in your plugin: two mods that both override the list would cancel each other out.</p></li>
+      <li><h3>Test it</h3><p>Stand near one of your roads and enter <code>DrvStartEncounter MySupplyRun</code> in the console. It works as soon as the quest is running, before the save and load. The patrol starts if it can. If it cannot, the corner message and <code>drivables_nvse.log</code> say why.</p></li>
+    </ol><aside class="author-aside"><h3>The whole script</h3><div class="code-sample"><pre><code>scn MySupplyRunScript
+
+ref rDrivers
+ref rVehicles
+ref rDestinations
+ref rPassengers
+int iPassengers
+int iCount
+int iMaxAlive
+int iPlacement
+int iCategory
+int iSizing
+int iGate
+int iInit
+float fCooldown
+float fWeight
+float fDensity
+float fHaltSeconds
+
+float fLastSpawn
+int iAlive
+ref rLastLeader
+
+Begin GameMode
+	if iInit == 0
+		set iInit to 1
+		set rDrivers to MySupplyDrivers
+		set rVehicles to MySupplyVehicles
+		set rDestinations to MySupplyDestinations
+		set rPassengers to MySupplyTroopers
+		set iPassengers to 2
+		set iCount to 1
+		set iMaxAlive to 1
+		set iPlacement to 6
+		set iCategory to 2
+		set iSizing to 1
+		set fCooldown to 900
+		set fWeight to 0.6
+		set fHaltSeconds to 60
+		AddFormToFormList DrvEncounters MySupplyRun
+	endif
+
+	if Player.GetDistance MojaveOutpostMapMarker &lt; 30000 || Player.GetDistance PrimmMapMarker &lt; 30000
+		set iGate to 1
+	else
+		set iGate to 0
+	endif
+	set fDensity to 1
+End</code></pre><button type="button" data-copy>Copy script</button></div></aside></div>
+  </section>
+
+  <section id="variables" class="modder-section">
+    <div class="section-intro"><h2>The variables</h2><p>The mod finds each one by its name, so spell them exactly. Declare only the ones you use. A variable you leave out takes its default.</p></div>
+    <div class="table-scroll"><table class="event-table"><thead><tr><th>Variable</th><th>Type</th><th>What it sets</th></tr></thead><tbody>
+      <tr><th><code>rDrivers</code></th><td>form list or levelled NPC</td><td>Who drives the lead vehicle.</td></tr>
+      <tr><th><code>rVehicles</code></th><td>form list or levelled list</td><td>What the lead vehicle can be. The mod only uses entries the chosen road admits.</td></tr>
+      <tr><th><code>rDestinations</code></th><td>form list of map markers</td><td>Where the patrol travels to. It appears on a road that ends at one of them.</td></tr>
+      <tr><th><code>iPlacement</code></th><td>int</td><td>Set to <strong>6</strong> for a road patrol.</td></tr>
+      <tr><th><code>iCategory</code></th><td>int</td><td><strong>2</strong> for a group, which takes the one group slot near the player and waits out the interval between convoys. <strong>0</strong> for a lone rider counted with ordinary traffic.</td></tr>
+      <tr><th><code>iCount</code></th><td>int</td><td>Vehicles in the group, 1 to 4.</td></tr>
+      <tr><th><code>iSizing</code></th><td>int</td><td>How <code>iCount</code> is used. <strong>0</strong> draws a size up to it, <strong>1</strong> brings exactly that many, <strong>2</strong> brings any number from one to it.</td></tr>
+      <tr><th><code>iMaxAlive</code></th><td>int</td><td>How many of this patrol’s riders may exist at once.</td></tr>
+      <tr><th><code>fCooldown</code></th><td>float</td><td>Seconds of play between spawns. Waiting, sleeping and fast travel run it down.</td></tr>
+      <tr><th><code>fWeight</code></th><td>float</td><td>Its chance against the other groups that could appear. The shipped patrols use 0.5 to 0.6.</td></tr>
+      <tr><th><code>fDensity</code></th><td>float</td><td>Set to 1. Lower it from your script to thin the patrol out, as the Crimson Caravan does when its owner dies.</td></tr>
+      <tr><th><code>iGate</code></th><td>int</td><td>Set to 1 while the patrol may appear and 0 while it may not. Your script decides: place, quest stage, reputation, time of day.</td></tr>
+      <tr><th><code>fHaltSeconds</code></th><td>float</td><td>Set it and the group halts at each end of its road, stands watch for about that long, then turns round and rides back.</td></tr>
+      <tr><th><code>rEscorts</code>, <code>rEscortDrivers</code></th><td>form lists</td><td>Vehicles and drivers for the rest of the group. Without them the followers come from the lead pools.</td></tr>
+      <tr><th><code>rLeaders</code>, <code>fLeaderChance</code></th><td>form list, float</td><td>A different lead vehicle at that chance, as the Legion patrol’s chariot.</td></tr>
+      <tr><th><code>rPassengers</code>, <code>iPassengers</code></th><td>form list, int</td><td>Crew for the lead vehicle’s spare seats, and how many.</td></tr>
+      <tr><th><code>rTrailers</code>, <code>fTrailerChance</code></th><td>form list, float</td><td>A trailer or cart behind the lead vehicle at that chance.</td></tr>
+      <tr><th><code>iInit</code></th><td>int</td><td>Your own flag so the set-up block runs once.</td></tr>
+    </tbody></table></div>
+    <h3>What the mod writes back</h3>
+    <div class="table-scroll"><table class="event-table"><thead><tr><th>Variable</th><th>Type</th><th>Holds</th></tr></thead><tbody>
+      <tr><th><code>fLastSpawn</code></th><td>float</td><td><code>GameDaysPassed</code> at the last spawn.</td></tr>
+      <tr><th><code>iAlive</code></th><td>int</td><td>How many of the patrol’s riders exist now.</td></tr>
+      <tr><th><code>rLastLeader</code></th><td>ref</td><td>The driver who led the last group.</td></tr>
+    </tbody></table></div>
+    <p>Declare all three even if you never read them: the cooldown is kept in <code>fLastSpawn</code> and does nothing without it. They save with the quest, so a cooldown survives a reload. The <code>Drv:OnEncounterSpawn</code> and <code>Drv:OnEncounterEnd</code> events on the <a href="modders.html#events">Modders page</a> report the same moments.</p>
+  </section>
+
+  <section id="roads" class="modder-section">
+    <div class="section-intro"><h2>The roads</h2><p>A patrol rides one of these 21 roads, either way along it. Put a road’s end marker in your destinations list and the patrol can appear on that road, heading for that end.</p></div>
+    <div class="table-scroll"><table class="event-table"><thead><tr><th>Road</th><th>One end</th><th>Other end</th></tr></thead><tbody>
+      <tr><th>The 188 to Boulder City</th><td><code>188MapMarker</code></td><td><code>BoulderCityMapMarker</code></td></tr>
+      <tr><th>The 188 to Novac</th><td><code>188MapMarker</code></td><td><code>NovacMapMarker</code></td></tr>
+      <tr><th>The 188 to Sloan</th><td><code>188MapMarker</code></td><td><code>SloanMapMarker</code></td></tr>
+      <tr><th>The 188 to Camp Golf</th><td><code>188MapMarker</code></td><td><code>CampGolfMapMarker</code></td></tr>
+      <tr><th>Westside to the 188</th><td><code>WestsideWestEntranceMapMarker</code></td><td><code>188MapMarker</code></td></tr>
+      <tr><th>Crimson Caravan to the 188</th><td><code>CrimsonCaravanMapMarker</code></td><td><code>188MapMarker</code></td></tr>
+      <tr><th>Crimson Caravan to Bitter Springs</th><td><code>CrimsonCaravanMapMarker</code></td><td><code>BitterSpringsMarkerREF</code></td></tr>
+      <tr><th>Sloan to Crimson Caravan</th><td><code>SloanMapMarker</code></td><td><code>CrimsonCaravanMapMarker</code></td></tr>
+      <tr><th>Bonnie Springs to Westside</th><td><code>BonnieSpringsMapMarker</code></td><td><code>WestsideWestEntranceMapMarker</code></td></tr>
+      <tr><th>Goodsprings to Sloan</th><td>Goodsprings map marker (no editor ID, form <code>000CDF51</code>)</td><td><code>SloanMapMarker</code></td></tr>
+      <tr><th>Goodsprings to Primm</th><td>Goodsprings map marker (no editor ID, form <code>000CDF51</code>)</td><td><code>PrimmMapMarker</code></td></tr>
+      <tr><th>Sloan to Primm</th><td><code>SloanMapMarker</code></td><td><code>PrimmMapMarker</code></td></tr>
+      <tr><th>Primm to Mojave Outpost</th><td><code>PrimmMapMarker</code></td><td><code>MojaveOutpostMapMarker</code></td></tr>
+      <tr><th>Primm to Novac via Nipton</th><td><code>PrimmMapMarker</code></td><td><code>NovacMapMarker</code></td></tr>
+      <tr><th>Mojave Outpost to Nipton</th><td><code>MojaveOutpostMapMarker</code></td><td><code>NiptonMapMarker</code></td></tr>
+      <tr><th>Mojave Outpost to Novac</th><td><code>MojaveOutpostMapMarker</code></td><td><code>NovacMapMarker</code></td></tr>
+      <tr><th>Nipton to Novac</th><td><code>NiptonMapMarker</code></td><td><code>NovacMapMarker</code></td></tr>
+      <tr><th>Boulder City to Novac</th><td><code>BoulderCityMapMarker</code></td><td><code>NovacMapMarker</code></td></tr>
+      <tr><th>Novac to Searchlight</th><td><code>NovacMapMarker</code></td><td><code>SearchlightMapMarker</code></td></tr>
+      <tr><th>Searchlight to Viper’s Encampment</th><td><code>SearchlightMapMarker</code></td><td><code>Highway95VipersMapMarker</code></td></tr>
+      <tr><th>Cottonwood Cove to Searchlight</th><td><code>CottonwoodCoveMapMarker</code></td><td><code>SearchlightMapMarker</code></td></tr>
+    </tbody></table></div>
+    <p>The Goodsprings map marker is the one road end with no editor ID. Pick the reference itself in the GECK when you add it to a form list. Where a script needs a name, such as a <code>GetDistance</code> check in your gate, use <code>GoodspringsArrivalMarker</code>, the fast-travel arrival point the map marker links to.</p>
+    <h3>What each road admits</h3>
+    <p>Every vehicle in the mod has a road class. Horses, bicycles, motorcycles, cars and the rest ride all 21 roads. The heavy trucks ride none of them at present: the switchbacks, ditches and tight turns on these roads have not been proven for a truck’s turning circle. A truck in your vehicle list is simply never picked.</p>
+  </section>
+
+  <section id="limits" class="modder-section">
+    <div class="section-intro"><h2>What it will not do</h2><p>Better to know before you build around it.</p></div>
+    <ul class="release-checks">
+      <li>No new roads from a plugin. The 21 roads are generated from the game’s road surfaces with our own tools. Camp McCarran, the Strip and Freeside are not on any of them.</li>
+      <li>No timetable. A cooldown is the nearest thing to a schedule, and a patrol only ever appears near the player.</li>
+      <li>No fights started for you. Riders whose factions would fight the people where the patrol would appear are not placed there.</li>
+      <li>One group at a time. A group shares the roads with the mod’s own convoys and waits its turn after them.</li>
+      <li>Four vehicles at most in a group.</li>
+      <li>The riders are ordinary NPCs. Their factions, weapons and packages decide what they do when they meet trouble.</li>
+    </ul>
+  </section>
+
+  <section id="patrol-troubleshooting" class="modder-section"><div class="section-intro"><h2>When it does not appear</h2><p>Open <code>drivables_nvse.log</code> in the game directory or your mod manager’s overwrite output and search for your quest’s editor ID. Each attempt says what held it.</p></div>
+    <details class="author-detail"><summary>My quest is never mentioned in the log</summary><p>It is not on the list yet. Check that your script ran <code>AddFormToFormList DrvEncounters</code>, then save and load. The line <code>encounter: DrvEncounters holds N quests</code> should count one more than before.</p></details>
+    <details class="author-detail"><summary>“gate closed”</summary><p>Your script has <code>iGate</code> at 0. Check the conditions that set it and that the quest is running.</p></details>
+    <details class="author-detail"><summary>“cooldown” or “convoy interval”</summary><p>It is waiting its turn. The first is your own <code>fCooldown</code>. The second is the gap the mod keeps between any two groups. <code>DrvStartEncounter</code> skips both for a test.</p></details>
+    <details class="author-detail"><summary>“No patrol road within reach” or “No patrol road point within reach is free”</summary><p>None of your destinations is the end of a road near the player, or every point on those roads is in view, taken or too close to its end. Move away from town, look elsewhere and try again. The log line counts each reason.</p></details>
+    <details class="author-detail"><summary>The wrong vehicle turns up, or never the one I listed</summary><p>The road does not admit it. Check its class against <a href="#roads">what each road admits</a>.</p></details>
+    <details class="author-detail"><summary>The patrol appears and attacks, or is attacked</summary><p>That is its drivers’ factions at work. Use NPC bases whose factions fit the roads you send them down.</p></details>
+  </section>
+
+  <p class="modder-end"><a href="#first-patrol">Back to your first patrol ↑</a><a href="modders.html">Modders ↑</a></p>
+  <p id="copy-status" class="sr-only" role="status"></p>
+</article>
